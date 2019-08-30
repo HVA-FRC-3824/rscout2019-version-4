@@ -1,0 +1,9 @@
+{
+  "name": "r-scout2019.55",
+  "version": "0.0.0",
+  "description": "rScout2019.55",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
