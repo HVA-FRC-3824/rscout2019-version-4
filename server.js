@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
             type: 'GET',
             dataType: 'json',
             headers: {
-                'X-TBA-Auth-Key': 'jFZAiivEncdZC24mwCGqWnImGrGJdwVRBP9m0djqwY25I42B1NpocGJikWZSu0CZ'
+                'X-TBA-Auth-Key': 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (result) {
@@ -58,7 +58,7 @@ http.createServer(function (req, res) {
             type: 'GET',
             dataType: 'json',
             headers: {
-                'X-TBA-Auth-Key': 'jFZAiivEncdZC24mwCGqWnImGrGJdwVRBP9m0djqwY25I42B1NpocGJikWZSu0CZ'
+                'X-TBA-Auth-Key': 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (result) {
@@ -82,7 +82,7 @@ http.createServer(function (req, res) {
             type: 'GET',
             dataType: 'json',
             headers: {
-                'X-TBA-Auth-Key': 'jFZAiivEncdZC24mwCGqWnImGrGJdwVRBP9m0djqwY25I42B1NpocGJikWZSu0CZ'
+                'X-TBA-Auth-Key': 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
             },
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function (result) {
@@ -423,7 +423,7 @@ http.createServer(function (req, res) {
     };
 
     //Listen on port 3824
-    var server = http.listen(3824, "0.0.0.0", function (err) {
+    var server = http.listen(1337, "0.0.0.0", function (err) {
         if (err) {
             logger.fatal(err);
             throw err;
@@ -488,7 +488,7 @@ http.createServer(function (req, res) {
         var red3 = matchInfo.alliances.red.team_keys[2].substr(3);
         var blue1 = matchInfo.alliances.blue.team_keys[0].substr(3);
         var blue2 = matchInfo.alliances.blue.team_keys[1].substr(3);
-        prevar blue3 = matchInfo.alliances.blue.team_keys[2].substr(3);
+        var blue3 = matchInfo.alliances.blue.team_keys[2].substr(3);
 
         Match.create({
             matchNumber: matchNumber,
