@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Scouting App</title>
+
+   <!--<link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+    $.ajax({
+        url: "https://www.thebluealliance.com/api/v3/status/" /*+ "tnkn2019" + "/teams/simple"*/,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'X-TBA-Auth-Key': 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
+        },
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        success: function (result) {
+            for(var i = 0; i < result.length; i++) {
+                alert(result.length)
+            }
+        },
+        error: function (error) {
+            alert('f');
+            console.log(error);
+        }
+    });
+        document.getElementById("buttonId").addEventListener('click', get);
+    </script>
+    <button>
+    "Pong!"
+    </button>
+</body>
+</html>
