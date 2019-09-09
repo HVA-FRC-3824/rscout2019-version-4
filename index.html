@@ -9,33 +9,30 @@
    <!--<link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" /> -->
 </head>
-    
+
 <body>
     <div id="root"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        headers: {
-            "accept: application/json"
-             "X-TBA-Auth-Key: hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6"
+        function loadDoc() {
+            $.ajax({
+                url: 'https://www.thebluealliance.com/api/v3/teams/0',
+                headers: {
+                    'X-TBA-Auth-Key': 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
+                },
+                method: 'GET',
+                dataType: 'json',
+            });
+            $(document).ajaxError(function () {
+                alert("An error occurred!");
+            });
         }
-        $(document).ready(function(){
-            $("button").click(function(){
-                $.get("https://www.thebluealliance.com/api/v3/status", function(result){
-                    $.each(result, function(field){
-                        $("div").append(field + " ");
-                    });
-                });
-            });
-        $(document).ajaxError(function(){
-            alert("An error occurred!");
-            });
-        });
     </script>
     <p>
-        Ignore me
+        data
     </p>
-    <button>
-        I don't do anything right now
+    <button type= "button" onclick="loadDoc(data)">
+        Change Content
     </button>
 </body>
 </html>
