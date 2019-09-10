@@ -11,24 +11,23 @@
     <div id="root"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        headers: {
-            "accept: application/json"
-             "X-TBA-Auth-Key: hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6"
-        }
-        $(document).ready(function(){
-            $("button").click(function(){
-                $.get("https://www.thebluealliance.com/api/v3/status", function(result){
-                    $.each(result, function(field){
-                        $("div").append(field + " ");
-                    });
-                });
-            });
-        $(document).ajaxError(function(){
-            alert("An error occurred!");
+        $.ajax({
+            url: 'https://www.thebluealliance.com/api/v3/team/frc254/awards',
+            headers: {
+                'X-TBA-Auth-Key' : 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
+            },
+            method: 'GET',
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+            }
+        });
+            $(document).ajaxError(function(){
+                alert("An error occurred!");
             });
     </script>
     <p>
-    Open console to view data.
+        Open console to view data.
     </p>
 </body>
 </html>
