@@ -16,7 +16,7 @@ function getID() {
         }
 }
 function getOutput() {
-    var urlOutput = prompt("Enter your output: awards, simple, robots")
+    var urlOutput = prompt("Enter your output: awards, simple, robots");
     if (urlOutput != null) { //This statement causes the function to return a null value if there is no input from the user
         return "/" + urlOutput
     } else {
