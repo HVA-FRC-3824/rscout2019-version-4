@@ -4,30 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Scouting App</title>
+    <title>
+        Scouting App
+    </title>
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root"> </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        $.ajax({
-            url: 'https://www.thebluealliance.com/api/v3/team/frc254/awards',
-            headers: {
-                'X-TBA-Auth-Key' : 'hhfIK2pSbl02wS0OQ2m593517wGnrSmjYdJ9C6jbMfKkvZtnoiB8qUWc0X0WwpC6'
-            },
-            method: 'GET',
-            dataType: 'json',
-            success: function(data){
-                console.log(data);
-            }
-        });
-            $(document).ajaxError(function(){
-                alert("An error occurred!");
-            });
-    </script>
+    <script type="text/javascript" src="/scripts.js"></script> <!-- Acesses the external javascript to pull from The Blue Alliance-->
     <p>
-        Open console to view data.
+        Open console (Press F12 Knox) to view data.
     </p>
+    <h1>
+        button time
+    </h1>
+    <button id="awards" href="">
+        this might do something at somepoint
+    </button>
 </body>
 </html>
