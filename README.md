@@ -1,1 +1,1 @@
-﻿# rScout2019.75
+#This is the test repo for the 2019-2020 RoHAWKtics scouting app. The goal of this program is to create a framework that can be adapted to whatever game FIRST decides to throw at us. If you have any questions please direct them to Evan Boswell or Nick Broyles.
