@@ -24,7 +24,7 @@ function getOutput() {
     }
 }
 //These variables store the data returned from the functions.
-var a = 'https://www.thebluealliance.com/api/v3'; //base TBA url
+var a = 'https://www.thebluealliance.com/api/v3/'; //base TBA url
 var b = getCategory();
 var c = getID();
 var d = getOutput();
