@@ -16,7 +16,7 @@ var SimpleConsole = function (options) {
         icon.innerHTML = '<svg width="1em" height="1em" viewBox="' + viewBox + '">' + svg + '</svg>';
         to_element.insertBefore(icon, to_element.firstChild);
     };
-
+     
     var add_chevron = function (to_element) {
         add_svg(to_element, "input-chevron",
             '<path d="M6,4L10,8L6,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>'
