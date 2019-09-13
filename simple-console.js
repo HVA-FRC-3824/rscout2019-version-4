@@ -7,7 +7,7 @@ var SimpleConsole = function (options) {
     var output_only = options.outputOnly;
     var handle_command = options.handleCommand;
     var placeholder = options.placeholder || "";
-    var autofocus = options.autofocus;
+    //var autofocus = options.autofocus;
     var storage_id = options.storageID || "simple-console";
 
     var add_svg = function (to_element, icon_class_name, svg, viewBox = "0 0 16 16") {
