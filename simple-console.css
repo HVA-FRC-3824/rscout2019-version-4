@@ -7,21 +7,25 @@
 }
 
 .simple-console-output {
+    color: white;
     overflow: auto;
 }
 
 .simple-console-output,
 .simple-console-input-wrapper {
+    color: white;
     flex: 0;
     flex-basis: auto;
 }
 
 .simple-console-input-wrapper {
+    color: white;
     display: flex;
     flex-shrink: 0;
 }
 
 .simple-console-input {
+    color: white;
     flex: 1;
     font-size: inherit;
     height: 1em;
@@ -32,11 +36,13 @@
 }
 
     .simple-console-input:focus {
+        color: white;
         outline: 0;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
     }
 
 .simple-console-input-wrapper button {
+    color: white;
     margin-left: 0.2rem;
     background: transparent;
     color: inherit;
@@ -51,23 +57,25 @@
 }
 
     .simple-console-input-wrapper button svg {
+        color: white;
         width: 1em;
         height: 1em;
         pointer-events: none;
     }
 
 .simple-console-input-wrapper button {
+    color: white;
     outline: 0;
 }
 
     .simple-console-input-wrapper button:hover,
     .simple-console-input-wrapper button:focus {
-        color: #4078c0;
+        color: white;
     }
 
 .dark .simple-console-input-wrapper button:hover,
 .dark .simple-console-input-wrapper button:focus {
-    color: #007CFF;
+    color: white;
 }
 
 .simple-console-input-wrapper button:active {
@@ -75,6 +83,7 @@
 }
 
 .simple-console-input-wrapper .popup-menu {
+    color: white;
     position: absolute;
     right: 0;
     margin: 0.5em;
