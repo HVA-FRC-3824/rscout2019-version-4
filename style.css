@@ -10,9 +10,9 @@ h1 {
 }
 
 table {
-    color: white
+    width: 5px;
     margin: 5px;
-    width: 290px;
+    color: white
 }
 
 th {
