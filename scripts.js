@@ -47,18 +47,18 @@ function kidnap() {
         },
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
-        success: function (data) { //this function logs our data in the console if it is successfully pulled
+        success: function(data) { //this function logs our data in the console if it is successfully pulled
             con.log(JSON.stringify(data));
         }
     });
-    $(document).ajaxError(function () { //this function alerts an error if the pulling the data is unsuccessful
+    $(document).ajaxError(function() { //this function alerts an error if the pulling the data is unsuccessful
         alert("An error occurred!");
     });
 }
 
 var con = new SimpleConsole({
     placeholder: "Enter JavaScript",
-    handleCommand: function (command) {
+    handleCommand: function(command) {
         try {
             con.log(eval(command));
         } catch (error) {
