@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,6 +6,7 @@
     <title>Welcome to Firebase Hosting</title>
 
     <!-- update the version number as needed -->
+    
     <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
@@ -38,7 +39,8 @@
       <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -61,5 +63,10 @@
         }
       });
     </script>
+    <h2>
+        <button onclick=kidnap()>
+            Pull Data :D
+        </button>
+    </h2>
   </body>
 </html>
