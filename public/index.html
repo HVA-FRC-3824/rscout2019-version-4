@@ -42,16 +42,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      //document.addEventListener('DOMContentLoaded', function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //
         // firebase.auth().onAuthStateChanged(user => { });
-        firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+       // firebase.database().ref('/path/to/ref').set({
+        
         // firebase.messaging().requestPermission().then(() => { });
         // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+       /* var admin = require("firebase-admin");
+        var db = admin.database();
+        var ref = db.ref("server/saving-data/firescout2019");
+        var teamsRef = ref.child("users");
+        teamsRef.set({
+            teamslist: {
+                James();
+        });
+        */
 
         try {
           let app = firebase.app();
@@ -61,7 +71,6 @@
           console.error(e);
           document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
         }
-      });
     </script>
     <h2>
         <button onclick=kidnap()>
