@@ -1,5 +1,3 @@
-var James
-
 function kidnap() {
     //These functions ask the user for information that will be used in The Blue Alliance url
     function getCategory() {
@@ -41,6 +39,7 @@ function kidnap() {
         var u = a + b + c + d
         return u
     }
+    var James
     //This ajax code requests data from The Blue Alliance
     $.ajax({
         url: url(), //This is the url we send to TBA which requests our data
@@ -49,9 +48,10 @@ function kidnap() {
         },
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
-        success: function(data) { //this function logs our data in the console if it is successfully pulled
-            James = data
-            console.log(JSON.stringify(James));
+        success: function (data) { //this function logs our data in the console if it is successfully pulled
+            James = JSON.stringify(data);
+            console.log(JSON.stringify(James))
+            return James
         }
     });
     $(document).ajaxError(function() { //this function alerts an error if the pulling the data is unsuccessful
@@ -59,9 +59,8 @@ function kidnap() {
     });
 }
 
-function wack() {
+function tbaData() {
     firebase.database().ref('firescout2019/').set({
-        team: 3824,
-        rank: 1
+        James()
     })
 }
