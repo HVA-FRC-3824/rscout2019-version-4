@@ -49,7 +49,7 @@ function kidnap() {
         },
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
-        success: function (data) { //this function logs our data in the console if it is successfully pulled
+        success: function(data) { //this function logs our data in the console if it is successfully pulled
             James = data
             console.log(JSON.stringify(James));
         }
@@ -59,9 +59,9 @@ function kidnap() {
     });
 }
 
-function fuckFirebase() {
-    firebase.database().ref().set({
-
-
+function wack() {
+    firebase.database().ref('firescout2019/').set({
+        team: 3824,
+        rank: 1
     })
 }
