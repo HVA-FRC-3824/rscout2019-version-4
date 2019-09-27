@@ -21,53 +21,22 @@
 
 <body>
     <div id="message">
-        <h2>Welcome</h2>
-        <h1>Firebase Hosting Setup Complete</h1>
-        <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+        <h2>Welcome Mortals</h2>
+        <h1>This boy workin</h1>
+        <p>You're seeing this because WE ACCOMPLISHED A TASK</p>
         <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
+
     <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-            // // The Firebase SDK is initialized and available here!
-            // Set the configuration for your app
-            // TODO: Replace with your project's config object
-            var config = {
-                apiKey: "AIzaSyDt_RPu8QtD_o-ciZbF13dzuIpxvVeti8Q ",
-                authDomain: "https://firescout2019.firebaseapp.com",
-                databaseURL: "https://firescout2019.firebaseio.com",
-            };
-            //firebase.initializeApp(config);
-            // Get a reference to the database service
-            var database = firebase.database();
-
-            // firebase.auth().onAuthStateChanged(user => { });
-            // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-            // firebase.messaging().requestPermission().then(() => { });
-            // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-            //
-            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-            try {
-                let app = firebase.app();
-                let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-                document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-            } catch (e) {
-                console.error(e);
-                document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-            }
-        });
-    </script>
     <button onclick=kidnap()>
-        do something please
+        Pull Event Data
     </button>
     <h2>
         <button onclick=tbaData()>
-            ??
+            Push Event Data
         </button>
     </h2>
 </body>
