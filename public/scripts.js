@@ -2,7 +2,8 @@ var James = null
 function kidnap() {
     //These functions ask the user for information that will be used in The Blue Alliance url
     function getCategory() {
-        var urlCategory = prompt("Enter Category: team, teams, or event");
+        //var urlCategory = prompt("Enter Category: team, teams, or event");
+        var urlCategory = document.getElementById("category").value;
         if (urlCategory != "") { //This statement causes the function to return a null value if there is no input from the user
             return "/" + urlCategory
         } else {
@@ -11,7 +12,8 @@ function kidnap() {
     }
 
     function getID() {
-        var urlID = prompt("Enter team number or event id:");
+        //var urlID = prompt("Enter team number or event id:");
+        var urlID = document.getElementById("ID").value;
         if (urlID != "") { //This statement causes the function to return a null value if there is no input from the user
             return "/" + urlID
         } else {
@@ -20,7 +22,8 @@ function kidnap() {
     }
 
     function getOutput() {
-        var urlOutput = prompt("Enter your output: awards, simple, teams");
+        //var urlOutput = prompt("Enter your output: awards, simple, teams");
+        var urlOutput = document.getElementById("output").value;
         if (urlOutput != "") { //This statement causes the function to return a null value if there is no input from the user
             return "/" + urlOutput
         } else {
@@ -63,4 +66,5 @@ function tbaData() {
     firebase.database().ref('firescout2019/').set({
         teams: James
     })
+    alert("Data may or may not have been pushed");
 }
