@@ -1,9 +1,17 @@
 ﻿body {
-    background-image: url(3824logo.jpg)
+    background-image: url("../images/3824logo.jpg");
+    background-position: 65% 0%;
+    background-color: #e0d7bf;
     color: rgba(0, 0, 0, 0.87);
     font-family: Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
+}
+
+h2 {
+    position: absolute;
+    top: 50px;
+    left: 570px;
 }
 
 #message {
@@ -24,7 +32,7 @@
 #message h1 {
     font-size: 22px;
     font-weight: 300;
-    color: rgba(0, 0, 0, 0.6);
+    color: rgb(241, 241, 241);
     margin: 0 0 16px;
 }
 
@@ -47,11 +55,11 @@
 
 #message,
 #message a {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgb(250, 250, 250);
 }
 
 #load {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 13px;
 }
