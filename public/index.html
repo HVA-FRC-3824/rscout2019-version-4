@@ -4,40 +4,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>FireScout Main Menu</title>
 
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href=".\css\index.css">
 </head>
 
 <body>
-    <div id="message">
-        <h2>Welcome Mortals</h2>
-        <h1>This boy workin</h1>
-        <p>You're seeing this because WE ACCOMPLISHED A TASK</p>
-        <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-
-    <script type="text/javascript" src="./scripts.js"></script>
-    <script type="text/javascript" src="./firebase.js"></script>
+    <script type="text/javascript" src="./js/scripts.js"></script>
+    <script type="text/javascript" src="./js/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <p id="load">Firebase SDK Loading&hellip;</p>
-    <button onclick=kidnap()>
-        Pull Event Data
-    </button>
     <h2>
-        <button onclick=tbaData()>
-            Push Event Data
+    <form action="./pullPush.html">
+        <button type="submit">
+        Analytics
         </button>
+    </form>
     </h2>
 
     <form action>
