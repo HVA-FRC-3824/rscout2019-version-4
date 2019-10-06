@@ -8,17 +8,29 @@
     padding: 0;
 }
 
-h2 {
+#buttons {
     position: absolute;
-    top: 50px;
-    left: 570px;
+    top: 5%;
+    left: 50%;
+}
+
+.button {color:
+    odr oe;
+    text-align: center;
+    text-decoration: none;
+    background-color: rebeccapurple;
+    padding: 20px, 32px;
+    margin: 25%, 5%;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #message {
     background: white;
     max-width: 360px;
     margin: 100px auto 16px;
-    padding: 32px 24px;
+    padding: 32pfx 24px;
     border-radius: 3px;
 }
 
@@ -64,6 +76,7 @@ h2 {
     font-size: 13px;
 }
 
+/* */
 button {
     background-color: rebeccapurple;
     border: none;
@@ -80,6 +93,7 @@ button {
 button:hover {
     background-color: black;
 }
+
 
 @media (max-width: 600px) {
     body,
