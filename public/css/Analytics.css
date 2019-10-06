@@ -1,4 +1,4 @@
-﻿body {
+body {
     background-image: url("../images/3824logo.jpg");
     background-position: 65% 0%;
     background-color: #e0d7bf;
@@ -12,6 +12,11 @@ h2 {
     position: absolute;
     top: 50px;
     left: 570px;
+}
+h3 {
+    position: absolute;
+    top:50px;
+    left:800px;
 }
 
 #message {
@@ -75,10 +80,6 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: black;
 }
 
 @media (max-width: 600px) {
