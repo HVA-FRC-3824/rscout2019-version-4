@@ -1,6 +1,8 @@
 ﻿body {
     background-image: url("../images/3824logo.jpg");
-    background-position: 65% 0%;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
     background-color: #e0d7bf;
     color: rgba(0, 0, 0, 0.87);
     font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -30,7 +32,7 @@
     background: white;
     max-width: 360px;
     margin: 100px auto 16px;
-    padding: 32pfx 24px;
+    padding: 32px 24px;
     border-radius: 3px;
 }
 
@@ -91,7 +93,7 @@ button {
 }
 
 button:hover {
-    background-color: black;
+    background-color: darkblue;
 }
 
 
