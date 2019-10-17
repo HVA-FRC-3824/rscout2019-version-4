@@ -1,0 +1,45 @@
+html {
+    background: url("../images/3824logo.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: black;
+    color: darkblue;
+
+}
+
+h1 {
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+.button1 {
+    position: absolute;
+    left: 41%;
+    top: 5%;
+    font-size: xx-large;
+}
+
+button {
+    background-color: rebeccapurple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}

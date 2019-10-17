@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FireScout Settings</title>
+<title>FireScout Analytics Page</title>
 <!-- update the version number as needed -->
 <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
 <!-- include only the Firebase features as you need -->
@@ -12,13 +12,24 @@
 <!-- initialize the SDK after all desired features are loaded -->
 <script defer src="/__/firebase/init.js"></script>
 <!--reference the css stuff-->
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="./css/index.css">
 <!--reference javascript stuff-->
-<script type="text/javascript" src="./scripts.js"></script>
-<script type="text/javascript" src="./firebase.js"></script>
+<script type="text/javascript" src="./js/scripts.js"></script>
+<script type="text/javascript" src="./js/firebase.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
+    <h3>
+        <button onclick=kidnap()>
+            Kidnap data
+        </button>
+    </h3>
+    <h2>
+        <button onclick=tbaData()>
+            Push Event Data
+        </button>
+    </h2>
 
 </body>
+
 </html>
