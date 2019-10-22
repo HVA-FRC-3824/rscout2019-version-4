@@ -20,6 +20,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <button class="tablink" onclick=openTab()>
+    <button class="tablink" onclick=openTab() id="defaultOpen">Auto</button>
+    <button class="tablink" onclick=openTab()>Teleop</button>
+    <button class="tablink" onclick=openTab()>Endgame</button>
+
+    <div id="Auto" class="tabcontent"></div>
+
+    <div id="Teleop" class="tabcontent"></div>
+
+    <div id="Endgame" class="tabcontent"></div>
+
 </body>
 </html>
