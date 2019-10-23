@@ -14,22 +14,20 @@
 <!--reference the css stuff-->
 <link rel="stylesheet" type="text/css" href="./css/real-scouting.css">
 <!--reference javascript stuff-->
-<script type="text/javascript" src="./scripts.js"></script>
+<script type="text/javascript" src="./analytics.js"></script>
 <script type="text/javascript" src="./firebase.js"></script>
 <script type="text/javascript" src="./js/match-scouting.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <script>document.getElementById("defaultOpen").click();</script>
-    <button class="tablink" onclick=openPage() id="defaultOpen">Auto</button>
-    <button class="tablink" onclick=openPage()>Teleop</button>
-    <button class="tablink" onclick=openPage()>Endgame</button>
-    <button class="tablink" onclick=openPage()>Misc</button>
+    <button class="tablink" onclick="openPage('Auto','red')" id="defaultOpen">Auto</button>
+    <button class="tablink" onclick="openPage('Teleop','blue')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Endgame','purple')"> Endgame </button>
+    <button class="tablink" onclick="openPage('Misc','green')"> Misc </button>
 
     <div id="Auto" class="tabcontent">
-        <h3>
-            test
-        </h3>
+        <h3>test</h3>
     </div>
 
     <div id="Teleop" class="tabcontent"></div>
