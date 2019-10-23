@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Match Scouting</title>
-<!-- update the version number as needed -->
-<script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
-<!-- include only the Firebase features as you need -->
-<script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
-<script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
-<!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
-<script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
-<!-- initialize the SDK after all desired features are loaded -->
-<script defer src="/__/firebase/init.js"></script>
-<!--reference the css stuff-->
-<link rel="stylesheet" type="text/css" href="./css/match-scouting.css">
-<!--reference javascript stuff-->
-<script type="text/javascript" src="./analytics.js"></script>
-<script type="text/javascript" src="./firebase.js"></script>
-<script type="text/javascript" src="./js/match-scouting.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Match Scouting</title>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!--reference the css stuff-->
+    <link rel="stylesheet" type="text/css" href="./css/match-scouting.css">
+    <!--reference javascript stuff-->
+    <script type="text/javascript" src="./analytics.js"></script>
+    <script type="text/javascript" src="./firebase.js"></script>
+    <script type="text/javascript" src="./js/match-scouting.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
     <button onclick=getMatchInfo() class=button1>
         Enter Match Info 
     </button>
+
+    <button onclick=goToSchedule() class=button2>
+         Schedule
+    </button>
 </body>
+
 </html>

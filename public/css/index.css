@@ -16,31 +16,31 @@ body {
 }
 
 .button1 {
-    font-size: 45%;
+    font-size: 130%;
     position: absolute;
     top: 4.20%;
-    left: 41%;
+    left: 30%;
 }
 
 .button2 {
-    font-size: 45%;
+    font-size: 130%;
+    position: absolute;
+    top: 4.20%;
+    left: 38.44%;
+}
+
+.button3 {
+    font-size: 130%;
     position: absolute;
     top: 4.20%;
     left: 50%;
 }
 
-.button3 {
-    font-size: 45%;
-    position: absolute;
-    top: 4.20%;
-    left: 61.9%;
-}
-
 .button4 {
-    font-size: 45%;
+    font-size: 130%;
     position: absolute;
     top: 4.20%;
-    left: 32.2%;
+    left: 59.85%;
 }
 
 #message {
