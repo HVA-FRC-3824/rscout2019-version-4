@@ -6,7 +6,7 @@ function getMatchInfo() {
     location.replace("./real-scouting.html");
 }
 
-function openPage(pageName, elmnt, color) {
+function openPage(pageName, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -17,7 +17,7 @@ function openPage(pageName, elmnt, color) {
     // Remove the background color of all tablinks/buttons
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
+      tablinks[i].style.backgroundColor = "black";
     }
   
     // Show the specific tab content
@@ -29,3 +29,5 @@ function openPage(pageName, elmnt, color) {
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
   }
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();

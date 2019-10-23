@@ -29,3 +29,16 @@ body, html {
     padding: 100px 20px;
     height: 100%;
   }
+
+  h3 {
+    background: purple;
+    max-width: 360px;
+    margin: 100px auto 16px;
+    padding: 32px 24px;
+    border-radius: 3px;
+  }
+
+#Auto {background-color: red;}
+#Teleop {background-color: green;}
+#Endgame {background-color: blue;}
+#Misc {background-color: orange;}
