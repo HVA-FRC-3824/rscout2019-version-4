@@ -52,6 +52,10 @@ function kidnap() {
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
         success: function (data) { //this function logs our data in the console if it is successfully pulled
+            data.sort(function(a, b) {
+                return a.name > b.name;
+            });
+            data.sort();
             James = data
             console.log(JSON.stringify(James))
             return James
