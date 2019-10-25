@@ -52,12 +52,9 @@ function kidnap() {
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
         success: function (data) { //this function logs our data in the console if it is successfully pulled
-            data.sort(function(a, b) {
-                return a.name > b.name;
-            });
-            data.sort();
+            data.sort(sortById("match_number"));
             James = data
-            console.log(JSON.stringify(James))
+            console.log(James);
             return James
         }
     });
@@ -65,6 +62,12 @@ function kidnap() {
         alert("An error occurred!");
     });
 }
+
+var sortById = function(prop) {
+    return function(x, y) {
+        return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
+    };
+};
 
 function tbaData() {
     firebase.database().ref('firescout2019/').set({
