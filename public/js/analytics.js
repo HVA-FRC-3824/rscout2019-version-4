@@ -75,3 +75,11 @@ function tbaData() {
     })
     alert("Data may or may not have been pushed");
 }
+
+function makeSchedule() {
+    for (i = 0; i < James.length; i++){
+        if (James.comp_level = "qm") {
+            console.log(James[i]);    
+        }
+    }       
+}
