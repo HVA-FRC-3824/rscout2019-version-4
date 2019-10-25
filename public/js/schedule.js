@@ -1,0 +1,1 @@
+var qualifications = firebase.database().ref('teams').orderByChild('comp_level/');
