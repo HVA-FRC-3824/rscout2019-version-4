@@ -1,5 +1,6 @@
-var James = null
+
 function kidnap() {
+    var James = null
     //These functions ask the user for information that will be used in The Blue Alliance url
     function getCategory() {
         var urlCategory = prompt("Enter Category: team, teams, or event");
@@ -63,6 +64,8 @@ function kidnap() {
     });
 }
 
+var James = 1
+
 var sortById = function(prop) {
     return function(x, y) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
@@ -77,9 +80,9 @@ function tbaData() {
 }
 
 function makeSchedule() {
-    for (i = 0; i < James.length; i++){
+    for (let i = 0; i < James.length; i++){
         if (James.comp_level = "qm") {
-            console.log(James[i]);    
+            console.log(James[i]); 
         }
     }       
 }
