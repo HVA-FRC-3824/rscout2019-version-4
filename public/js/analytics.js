@@ -1,6 +1,5 @@
-
+var James = null
 function kidnap() {
-    var James = null
     //These functions ask the user for information that will be used in The Blue Alliance url
     function getCategory() {
         var urlCategory = prompt("Enter Category: team, teams, or event");
@@ -9,8 +8,8 @@ function kidnap() {
             return "/" + urlCategory
         } else {
             return ""
-        }
-    }
+        };
+    };
 
     function getID() {
         var urlID = prompt("Enter team number or event id:");
@@ -19,8 +18,8 @@ function kidnap() {
             return "/" + urlID
         } else {
             return ""
-        }
-    }
+        };
+    };
 
     function getOutput() {
         var urlOutput = prompt("Enter your output: awards, simple, teams");
@@ -29,8 +28,8 @@ function kidnap() {
             return "/" + urlOutput
         } else {
             return ""
-        }
-    }
+        };
+    };
 
     //These variables store the data returned from the functions.
     var a = 'https://www.thebluealliance.com/api/v3'; //base TBA url
@@ -43,7 +42,7 @@ function kidnap() {
     function url() {
         var u = a + b + c + d
         return u
-    }
+    };
     //This ajax code requests data from The Blue Alliance
     $.ajax({
         url: url(), //This is the url we send to TBA which requests our data
@@ -57,14 +56,12 @@ function kidnap() {
             James = data
             console.log(James);
             return James
-        }
+        },
     });
     $(document).ajaxError(function() { //this function alerts an error if the pulling the data is unsuccessful
         alert("An error occurred!");
     });
-}
-
-var James = 1
+};
 
 var sortById = function(prop) {
     return function(x, y) {
@@ -75,14 +72,14 @@ var sortById = function(prop) {
 function tbaData() {
     firebase.database().ref('firescout2019/').set({
         teams: James
-    })
+    });
     alert("Data may or may not have been pushed");
-}
+};
 
 function makeSchedule() {
     for (let i = 0; i < James.length; i++){
         if (James.comp_level = "qm") {
             console.log(James[i]);
-        }
-    }
-}
+        };
+    };
+};
