@@ -11,7 +11,6 @@ html {
 body {
     background-color: black;
     color: darkblue;
-
 }
 
 h1 {
@@ -23,6 +22,13 @@ h1 {
 .button1 {
     position: absolute;
     left: 41%;
+    top: 5%;
+    font-size: xx-large;
+}
+
+.button2 {
+    position: absolute;
+    left: 61%;
     top: 5%;
     font-size: xx-large;
 }
