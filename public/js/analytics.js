@@ -82,7 +82,7 @@ function tbaData() {
 function makeSchedule() {
     for (let i = 0; i < James.length; i++){
         if (James.comp_level = "qm") {
-            console.log(James[i]); 
+            console.log(James[i]);
         }
-    }       
+    }
 }
