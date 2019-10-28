@@ -1,16 +1,33 @@
-var matchNumber;
-var teamNumber;
+var matchNumber; teamNumber; James; data;
 
-function getMatchInfo() {
-    matchNumber = prompt("Enter Match number: ");
-    teamNumber = prompt("Team Number: ");
-    location.replace("./real-scouting.html");
-}
+//pulls the matches from TBA
+data = kidnap('/event/2019hop/matches');
+//sorts matches
+//data.sort(sortById("match_number"));
+//function to sort matches
+var sortById = function(prop) {
+    return function(x, y) {
+        return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
+    };
+};
 
-function goToSchedule() {
-    location.replace("./schedule.html");
-}
+//Makes schedule
+function makeSchedule() {
+    console.log();
+    /*var i;
+    for (i = 0; i < James.length; i++){
+        if (James.comp_level == "qm") {
+            console.log(James[i]);
+            matchNumber = ("Match " + i);
+            btn = document.createElement("BUTTON");
+            btn.innerHTML = matchNumber;
+            document.body.appendChild(btn);
+        };
+    };
+    */
+};
 
+/* ------------for real-scouting------------- */
 function openPage(pageName, color) {
     // Hide all elements with class="tabcontent" by default
     var i, tabcontent, tablinks;
@@ -38,3 +55,6 @@ function openPage(pageName, color) {
 document.getElementById("defaultOpen").click(); {
 
 }
+
+/* ------------for real-scouting------------- */
+
