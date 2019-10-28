@@ -1,7 +1,6 @@
 var matchNumber; teamNumber; James; data;
 
 //pulls the matches from TBA
-data = kidnap('/event/2019hop/matches');
 //sorts matches
 //data.sort(sortById("match_number"));
 //function to sort matches
@@ -13,7 +12,8 @@ var sortById = function(prop) {
 
 //Makes schedule
 function makeSchedule() {
-    console.log();
+    data = kidnap('/event/2019hop/matches');
+    //console.log();
     /*var i;
     for (i = 0; i < James.length; i++){
         if (James.comp_level == "qm") {
