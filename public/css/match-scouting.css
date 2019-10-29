@@ -1,6 +1,9 @@
 body {
     background-color: black;
     color: darkblue;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 h1 {
@@ -11,8 +14,8 @@ h1 {
 
 .button1 {
     position: absolute;
-    left: 41%;
-    top: 5%;
+    left: 7.5%;
+    top: 7.5%;
     font-size: xx-large;
 }
 
