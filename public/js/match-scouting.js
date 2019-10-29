@@ -1,31 +1,21 @@
-var matchNumber; teamNumber; James; data;
-
-//pulls the matches from TBA
-//sorts matches
-//data.sort(sortById("match_number"));
-//function to sort matches
-var sortById = function(prop) {
-    return function(x, y) {
-        return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
-    };
-};
+var matchNumber; teamNumber; data;
 
 //Makes schedule
 function makeSchedule() {
-    data = kidnap('/event/2019hop/matches');
-    //console.log();
-    /*var i;
+    kidnap("/event/2019hop/matches")
+    James.sort(sortById("match_number"))
+    //console.log(James);
+    var i;
     for (i = 0; i < James.length; i++){
-        if (James.comp_level == "qm") {
-            console.log(James[i]);
+        if (James[i].comp_level == "qm") {
             matchNumber = ("Match " + i);
             btn = document.createElement("BUTTON");
             btn.innerHTML = matchNumber;
             document.body.appendChild(btn);
         };
     };
-    */
 };
+
 
 /* ------------for real-scouting------------- */
 function openPage(pageName, color) {
@@ -57,4 +47,3 @@ document.getElementById("defaultOpen").click(); {
 }
 
 /* ------------for real-scouting------------- */
-
