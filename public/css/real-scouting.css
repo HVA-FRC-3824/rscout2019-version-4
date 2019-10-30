@@ -8,7 +8,7 @@ body, html {
   /* Style tab links */
   .tablink {
     background-color: #555;
-    color: purple;
+    color: white;
     float: left;
     border: none;
     outline: none;
@@ -38,7 +38,7 @@ body, html {
     border-radius: 3px;
   }
 
-#Auto {background-color: red;}
-#Teleop {background-color: green;}
-#Endgame {background-color: blue;}
-#Misc {background-color: orange;}
+#Auto {background-color: black;}
+#Teleop {background-color: black;}
+#Endgame {background-color: black;}
+#Misc {background-color: black;}
