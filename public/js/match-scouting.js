@@ -1,22 +1,23 @@
-var matchInfo; teamNumber; data; redAlliance; blueAlliance; 
+var matchInfo; teamNumber; data; redAlliance; blueAlliance;  //Initialize varibles
 
-function createAlliance(i) {
+function createAlliance(i) {  //This function creates each and concatenates each alliance
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
-}3
-//Makes schedule
-function makeSchedule() {
-    kidnap("/event/2019hop/matches");
-    James.sort(sortById("match_number"));
-    var i, k;
-    for (i = 0, k = 0; i < James.length; i++) {
-        if (James[i].comp_level == "qm") {
+}
+
+
+function makeSchedule() {  //Makes schedule
+    kidnap("/event/2019hop/matches");  //Runs kidnap with the specified url
+    James.sort(sortById("match_number"));  //Sorts the output of the of kidnap by match number 
+    var i, k  //Initialize varibles
+    for (i = 0, k = 0; i < James.length; i++) {  //For loop for creating the schedule
+        if (James[i].comp_level == "qm") {  //If statement to exclude playoff matches from schedule
             k++;
-            createAlliance(i);
-            matchInfo = ("Match " + k + ": " + redAlliance + " | vs | " + blueAlliance);
-            btn = document.createElement("BUTTON");
-            btn.innerHTML = matchInfo;
-            document.body.appendChild(btn);
+            createAlliance(i); //Runs create alliance to print match participants on the button
+            matchInfo = ("Match " + k + ": " + redAlliance + " | vs | " + blueAlliance);  //Defines matchInfo as the text of the button
+            btn = document.createElement("BUTTON");  //creates a button
+            btn.innerHTML = matchInfo;  //Writes the matchInfo onto the button
+            document.body.appendChild(btn);  //Adds each button to the page
         };
     };
 };
