@@ -29,5 +29,13 @@ function tbaData() {
     firebase.database().ref('firescout2019/').set({
         teams: James
     });
-    alert('Data may or may not have been pushed');
+    alert("Data may or may not have been pushed");
+};
+
+function makeSchedule() {
+    for (let i = 0; i < kidnap("/event/2019hop/matches"); i++){
+        if (James.comp_level = "qm") {
+            console.log(James[i]);
+        };
+    };
 };
