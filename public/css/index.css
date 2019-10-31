@@ -15,34 +15,36 @@ body {
     padding: 0;
 }
 
+/*
 .button1 {
-    font-size: 130%;
+    font-size: 100%;
     position: absolute;
+    float:left;
     top: 4.20%;
     left: 30%;
 }
 
 .button2 {
-    font-size: 130%;
+    font-size: 100%;
     position: absolute;
     top: 4.20%;
     left: 38.44%;
 }
 
 .button3 {
-    font-size: 130%;
+    font-size: 100%;
     position: absolute;
     top: 4.20%;
     left: 50%;
 }
 
 .button4 {
-    font-size: 130%;
+    font-size: 100%;
     position: absolute;
     top: 4.20%;
     left: 59.85%;
 }
-
+*/
 #message {
     background: white;
     max-width: 360px;
@@ -95,14 +97,16 @@ body {
     left: 45%;
 }
 
-button {
+.btn-group .button {
     background-color: rebeccapurple;
-    border: none;
+    float:left;
+    border: 1px solid black;
+    margin: 0 auto;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    align-content: center;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;

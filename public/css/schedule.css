@@ -14,16 +14,8 @@ h1 {
 
 .button1 {
     position: absolute;
-    left: 7.5%;
-    top: 7.5%;
-    font-size: xx-large;
-}
-
-.button2 {
-    position: absolute;
-    left: 61%;
-    top: 5%;
-    font-size: xx-large;
+    top: 0%;
+    left: 0%;
 }
 
 button {
