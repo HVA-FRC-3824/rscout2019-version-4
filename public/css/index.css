@@ -15,11 +15,10 @@ body {
     padding: 0;
 }
 
-/*
 .button1 {
     font-size: 100%;
     position: absolute;
-    float:left;
+    float:center;
     top: 4.20%;
     left: 30%;
 }
@@ -44,7 +43,21 @@ body {
     top: 4.20%;
     left: 59.85%;
 }
-*/
+
+.buttonBack {
+    background-color: rebeccapurple;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    align-content: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 #message {
     background: white;
     max-width: 360px;

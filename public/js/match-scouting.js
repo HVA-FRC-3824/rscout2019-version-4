@@ -1,10 +1,9 @@
-var matchInfo; teamNumber; data; redAlliance; blueAlliance; k;  //* Initialize varibles
+var matchInfo; teamNumber; data; redAlliance; blueAlliance; k; btn;  //* Initialize varibles
 
 function createAlliance(i) {  //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
 }
-
 
 function makeSchedule() {  //* Makes schedule
     kidnap("/event/2019hop/matches");  //* Runs kidnap with the specified url
@@ -12,13 +11,17 @@ function makeSchedule() {  //* Makes schedule
     for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) {  //* For loop for creating the schedule
         if (James[matchNumber].comp_level == "qm") {  //* If statement to exclude playoff matches from schedule
             k++;
-            createAlliance(matchNumber); //* Runs create alliance to print match participants on the button
+            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
             matchInfo = ("Match " + k + ": " + redAlliance + " | vs | " + blueAlliance);  //* Defines matchInfo as the text of the button
             btn = document.createElement("BUTTON");  //* creates a button
             btn.innerHTML = matchInfo;  //* Writes the matchInfo onto the button
-            document.body.appendChild(btn);  //* Adds each button to the page
+            document.body.appendChild(btn);
         };
     };
+};
+
+function replacePage() {
+    location.replace("./real-scouting.html");
 };
 
 /* ------------for real-scouting------------- */
