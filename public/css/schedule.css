@@ -12,6 +12,10 @@ h1 {
     text-align: center;
 }
 
+a {
+    color: white;
+}
+
 .buttonBack {
     background-color: rebeccapurple;
     position: absolute;
