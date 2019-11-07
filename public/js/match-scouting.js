@@ -1,21 +1,30 @@
-var matchInfo; teamNumber; data; redAlliance; blueAlliance; k; btn;  //* Initialize varibles
+var matchInfo;
+teamNumber;
+data;
+redAlliance;
+blueAlliance;
+k;
+btn;
+L;
+matches = []; //* Initialize varibles
 
-function createAlliance(i) {  //* This function creates each and concatenates each alliance number into a string
+function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
 }
 
-function makeSchedule() {  //* Makes schedule
-    kidnap("/event/2019hop/matches");  //* Runs kidnap with the specified url
-    James.sort(sortById("match_number"));  //* Sorts the output of the of kidnap by match number
-    for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) {  //* For loop for creating the schedule
-        if (James[matchNumber].comp_level == "qm") {  //* If statement to exclude playoff matches from schedule
+function makeSchedule() { //* Makes schedule
+    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
+        if (James[matchNumber].comp_level == "qm") { //* If statement to exclude playoff matches from schedule
             k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
             matchInfo = ("<a href=./real-scouting.html>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</a>"); //* Defines matchInfo as the text of a button
-            btn = document.createElement("BUTTON");  //* creates a button
-            btn.innerHTML = matchInfo;  //* Writes the matchInfo onto the button
+            btn = document.createElement("BUTTON"); //* creates a button
+            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button1
             document.body.appendChild(btn);
+            
         };
     };
 };
