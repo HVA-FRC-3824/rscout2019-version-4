@@ -18,7 +18,7 @@ function makeSchedule() { //* Makes schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
             k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage()'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick = replacePage("+k+")>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.id = k;
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
@@ -27,21 +27,26 @@ function makeSchedule() { //* Makes schedule
     };
 };
 
+
+//!Jovi's Solution
+
 // www.website.com/index.php?variable=82141
 // $_GET["variable"]; <-- 82141
 
-ksvar url = window.location.href;
-// url <-- www.website.com/index.php?variable=82141
-// for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
+//var url = window.location.href;
+//url <-- www.website.com/index.php?variable=82141
+//for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
 
-function mNumber() {
-    mNumber = btn.getElementById("BUTTON");
-    console.log(mNumber);
+
+function getNum() {
+    mNumber = document.getElementById("BUTTON");
+    alert(mNumber);
 }
 
-function replacePage() {
-    location.replace("./real-scouting.html");
-    mNumber();
+function replacePage(id) {
+    var mNumber = id;
+    alert(id);
+    location.replace("./real-scouting.html.");
     //mNumber = btn.getElementById(id);
 }
 
@@ -66,8 +71,9 @@ function openPage(pageName, color) {
     //* Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
 };
+
 //* Get the element with id="defaultOpen" and click on it
 //document.getElementById("defaultOpen").click();
-document.querySelector('.content .value').innerHTML = mNumber;
+//document.querySelector('.content .value').innerHTML = mNumber;
 
 /* ------------for real-scouting------------- */
