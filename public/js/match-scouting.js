@@ -27,6 +27,13 @@ function makeSchedule() { //* Makes schedule
     };
 };
 
+// www.website.com/index.php?variable=82141
+// $_GET["variable"]; <-- 82141
+
+ksvar url = window.location.href;
+// url <-- www.website.com/index.php?variable=82141
+// for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
+
 function mNumber() {
     mNumber = btn.getElementById("BUTTON");
     console.log(mNumber);
