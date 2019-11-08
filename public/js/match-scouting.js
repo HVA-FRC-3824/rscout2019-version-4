@@ -36,11 +36,12 @@ function makeSchedule() { //* Makes schedule
 function replacePage(id) {
     var mNumber = id;
     alert(mNumber);
-    //return mNumber
+    localStorage.setItem("num", mNumber);
     location.replace("./real-scouting.html");
 }
 
 function getNum() {
+    mNumber = localStorage.getItem("num");
     alert(mNumber);
 }
 
