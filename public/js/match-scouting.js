@@ -39,14 +39,14 @@ function makeSchedule() { //* Makes schedule
 
 
 function getNum() {
-    mNumber = document.getElementById("BUTTON");
     alert(mNumber);
-}
+};
 
 function replacePage(id) {
     var mNumber = id;
     alert(id);
     location.replace("./real-scouting.html.");
+    return mNumber;
     //mNumber = btn.getElementById(id);
 }
 
