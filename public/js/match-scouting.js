@@ -38,6 +38,7 @@ function replacePage(id) {
     alert(mNumber);
     localStorage.setItem("num", mNumber);
     location.replace("./real-scouting.html");
+    document.getElementById("matchnumber").innerHTML = mNumber;
 }
 
 function getNum() {
@@ -64,10 +65,10 @@ function openPage(pageName, color) {
     document.getElementById(pageName).style.display = "block";
 
     //* Add the specific color to the button used to open the tab content
-    elmnt.style.backgroundColor = color;
+    //Element.style.backgroundColor = color;
 };
 //* Get the element with id="defaultOpen" and click on it
 //document.getElementById("defaultOpen").click();
-document.querySelector('.content .value').innerHTML = mNumber;
+//$('.defaultOpen').click();
 
 /* ------------for real-scouting------------- */
