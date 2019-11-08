@@ -18,9 +18,8 @@ function makeSchedule() { //* Makes schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
             k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage()'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick = 'replacePage("+k+")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
-            btn.id = k;
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
         };
@@ -30,19 +29,19 @@ function makeSchedule() { //* Makes schedule
 // www.website.com/index.php?variable=82141
 // $_GET["variable"]; <-- 82141
 
-ksvar url = window.location.href;
+// ksvar url = window.location.href;
 // url <-- www.website.com/index.php?variable=82141
 // for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
 
-function mNumber() {
-    mNumber = btn.getElementById("BUTTON");
-    console.log(mNumber);
+function replacePage(id) {
+    var mNumber = id;
+    alert(mNumber);
+    //return mNumber
+    location.replace("./real-scouting.html");
 }
 
-function replacePage() {
-    location.replace("./real-scouting.html");
-    mNumber();
-    //mNumber = btn.getElementById(id);
+function getNum() {
+    alert(mNumber);
 }
 
 /* ------------for real-scouting------------- */
