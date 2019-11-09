@@ -62,7 +62,6 @@ function replacePage(id) {
     alert(mNumber);
     localStorage.setItem("num", mNumber);
     location.replace("./real-scouting.html");
-    document.getElementById("matchnumber").innerHTML = mNumber;
 }
 
 function getNum() {
@@ -90,15 +89,19 @@ function openPage(pageName, color) {
     document.getElementById(pageName).style.display = "block";
 
     //* Add the specific color to the button used to open the tab content
-    //Element.style.backgroundColor = color;
+    elmnt.style.backgroundColor = color;
 };
 
 //* Get the element with id="defaultOpen" and click on it
 //document.getElementById("defaultOpen").click();
 <<<<<<< HEAD
+<<<<<<< HEAD
 //document.querySelector('.content .value').innerHTML = mNumber;
 =======
 //$('.defaultOpen').click();
 >>>>>>> 50763b4bc764083e5dd9d34abcc4672ae7e91b38
+=======
+document.querySelector('.content .value').innerHTML = mNumber;
+>>>>>>> parent of 50763b4... tried to change the page layout
 
 /* ------------for real-scouting------------- */
