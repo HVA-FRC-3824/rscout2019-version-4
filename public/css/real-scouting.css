@@ -38,12 +38,6 @@ body, html {
     border-radius: 3px;
   }
 
-  .match {
-    color: white;
-    font-size: 13px;
-    float: left;
-  }
-
 #Auto {background-color: black;}
 #Teleop {background-color: black;}
 #Endgame {background-color: black;}
