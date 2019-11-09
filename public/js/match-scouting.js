@@ -60,12 +60,13 @@ function replacePage(id) {
 function replacePage(id) {
     var mNumber = id;
     alert(mNumber);
-    //return mNumber
+    localStorage.setItem("num", mNumber);
     location.replace("./real-scouting.html");
     document.getElementById("matchnumber").innerHTML = mNumber;
 }
 
 function getNum() {
+    mNumber = localStorage.getItem("num");
     alert(mNumber);
 >>>>>>> 50763b4bc764083e5dd9d34abcc4672ae7e91b38
 }
