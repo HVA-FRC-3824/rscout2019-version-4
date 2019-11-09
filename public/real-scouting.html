@@ -23,21 +23,20 @@
 </head>
 
 <body>
-    <script>
-        document.getElementById("defaultOpen").click();
-    </script>
-
     <button class="tablink" onclick="openPage('Auto','white')" id="defaultOpen">Auto</button>
     <button class="tablink" onclick="openPage('Teleop','white')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <!--<button class="tablink" onclick="openPage('Misc','white')"> Misc </button>-->
     <button class="tablink" onclick=getNum()> Endgame </button>
 
+    <!--JS needed to initalize the page-->
+    <script>document.getElementById("defaultOpen").click();</script>
+
     <div id="Auto" class="tabcontent">
-        <h3 class="content">
-            Match: <span class = "value">
-            </span>
-        </h3>
+       <!-- <button onclick=getNum()> Get value</button> -->
+        <h1 class="match">
+            Match: <p id="matchnumber"></p>
+        </h1>
     </div>
 
     <div id="Teleop" class="tabcontent"></div>
