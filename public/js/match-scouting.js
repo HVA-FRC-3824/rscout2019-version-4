@@ -18,11 +18,7 @@ function makeSchedule() { //* Makes schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
             k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-<<<<<<< HEAD
-            matchInfo = ("<button onclick = replacePage("+k+")>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
-=======
             matchInfo = ("<button onclick = 'replacePage("+k+")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
->>>>>>> 50763b4bc764083e5dd9d34abcc4672ae7e91b38
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
@@ -36,23 +32,6 @@ function makeSchedule() { //* Makes schedule
 // www.website.com/index.php?variable=82141
 // $_GET["variable"]; <-- 82141
 
-<<<<<<< HEAD
-//var url = window.location.href;
-//url <-- www.website.com/index.php?variable=82141
-//for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
-
-
-function getNum() {
-    alert(mNumber);
-};
-
-function replacePage(id) {
-    var mNumber = id;
-    alert(id);
-    location.replace("./real-scouting.html.");
-    return mNumber;
-    //mNumber = btn.getElementById(id);
-=======
 // ksvar url = window.location.href;
 // url <-- www.website.com/index.php?variable=82141
 // for loop --> if (url.charAt(i) == '?') --> var variableName --> variable --> if (variableName == "variable") --> var variableId = 82141
@@ -67,7 +46,6 @@ function replacePage(id) {
 function getNum() {
     mNumber = localStorage.getItem("num");
     alert(mNumber);
->>>>>>> 50763b4bc764083e5dd9d34abcc4672ae7e91b38
 }
 
 /* ------------for real-scouting------------- */
@@ -94,14 +72,7 @@ function openPage(pageName, color) {
 
 //* Get the element with id="defaultOpen" and click on it
 //document.getElementById("defaultOpen").click();
-<<<<<<< HEAD
-<<<<<<< HEAD
 //document.querySelector('.content .value').innerHTML = mNumber;
-=======
 //$('.defaultOpen').click();
->>>>>>> 50763b4bc764083e5dd9d34abcc4672ae7e91b38
-=======
 document.querySelector('.content .value').innerHTML = mNumber;
->>>>>>> parent of 50763b4... tried to change the page layout
-
 /* ------------for real-scouting------------- */
