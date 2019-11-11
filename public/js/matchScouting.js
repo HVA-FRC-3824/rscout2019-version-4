@@ -1,10 +1,12 @@
-var matchInfo;
+var matchInfo = "";
 redAlliance = "";
 blueAlliance = "";
 k = 0;
 btn = "";
 mNumber = 0;
-matches = []; //* Initialize varibles
+matches = [];
+names = ""; //* Initialize varibles
+
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
@@ -60,9 +62,9 @@ function openPage(pageName, color) {
     elmnt.style.backgroundColor = color;
 };
 
+
 //* Get the element with id="defaultOpen" and click on it
 //document.getElementById("defaultOpen").click();
 //document.querySelector('.content .value').innerHTML = mNumber;
 //$('.defaultOpen').click();
-document.querySelector('.content .value').innerHTML = mNumber;
 /* ------------for matchScouting------------- */

@@ -33,19 +33,19 @@
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
 
-    <div id="Pre" class="tabcontent">
-        <h1 class = "nameInput">
-            Name: <span class = "value"></span>
-        </h1>
-        <h3 class="content">
-            Match: <span class = "value">
-            </span>
-        </h3>
-    </div>
-
-    <div id="Auto" class="tabcontent">
+    <div id="Pre" class = "tabcontent">
+        <form type = "submit">
+            Name: <br>
+            <input type = "text" name = "name"> 
+        </form>
+        <form>
+            Robot: <br>
+            <input type = "radio" robot = "robot"
+        </form>
 
     </div>
+
+    <div id="Auto" class="tabcontent"></div>
 
     <div id="Teleop" class="tabcontent"></div>
 
