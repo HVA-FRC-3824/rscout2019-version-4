@@ -39,6 +39,7 @@ body, html {
   }
 
 #Auto {background-color: black;}
+#Pre {background-color: black;}
 #Teleop {background-color: black;}
 #Endgame {background-color: black;}
-#Misc {background-color: black;}
+#Post {background-color: black;}

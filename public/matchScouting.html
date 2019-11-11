@@ -14,11 +14,11 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/real-scouting.css">
+    <link rel="stylesheet" type="text/css" href="./css/matchScouting.css">
     <!--reference javascript stuff-->
     <script type="text/javascript" src="./analytics.js"></script>
     <script type="text/javascript" src="./firebase.js"></script>
-    <script type="text/javascript" src="./js/match-scouting.js"></script>
+    <script type="text/javascript" src="./js/matchScouting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -27,10 +27,11 @@
         document.getElementById("defaultOpen").click();
     </script>
 
-    <button class="tablink" onclick="openPage('Auto','white')" id="defaultOpen">Auto</button>
+    <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
+    <button class="tablink" onclick="openPage('Auto','white')">Auto</button>
     <button class="tablink" onclick="openPage('Teleop','white')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
-    <button class="tablink" onclick="openPage('Misc','white')"> Misc </button>
+    <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
 
     <div id="Auto" class="tabcontent">
         <button onclick=getNum()> Get value</button>
@@ -38,6 +39,10 @@
             Match: <span class = "value">
             </span>
         </h3>
+    </div>
+
+    <div id="Auto" class="tabcontent">
+
     </div>
 
     <div id="Teleop" class="tabcontent"></div>

@@ -30,7 +30,7 @@ function replacePage(id) {
     var mNumber = id;
     alert(mNumber);
     localStorage.setItem("num", mNumber);
-    location.replace("./real-scouting.html");
+    location.replace("./matchScouting.html");
 };
 
 function getNum() {
@@ -38,7 +38,7 @@ function getNum() {
     alert(mNumber);
 };
 
-/* ------------for real-scouting------------- */
+/* ------------for matchScouting------------- */
 function openPage(pageName, color) {
     //* Hide all elements with class="tabcontent" by default
     var i, tabcontent, tablinks;
@@ -65,4 +65,4 @@ function openPage(pageName, color) {
 //document.querySelector('.content .value').innerHTML = mNumber;
 //$('.defaultOpen').click();
 document.querySelector('.content .value').innerHTML = mNumber;
-/* ------------for real-scouting------------- */
+/* ------------for matchScouting------------- */
