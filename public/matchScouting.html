@@ -33,25 +33,32 @@
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
 
-    <div id="Pre" class = "tabcontent">
-        <form type = "submit">
+    <div id="Pre" class="tabcontent">
+        <form type="submit">
             Name: <br>
-            <input type = "text" name = "name"> 
-        </form>
-        <form>
-            Robot: <br>
-            <input type = "radio" robot = "robot"
+            <input type="text" name="name">
         </form>
 
+        <div class="radio-group">
+            <label>
+                Robot: <br>
+                <input type="radio" id="blue" name="name" value="Blue 1"> Blue 1<br>
+                <input type="radio" id="blue" name="name" value="Blue 2"> Blue 2<br>
+                <input type="radio" id="blue" name="name" value="Blue 3"> Blue 3<br>
+                <input type="radio"     name="name" value="Red 1"> Red 1<br>
+                <input type="radio"  name="name" value="Red 2"> Red 2<br>
+                <input type="radio"  name="name" value="Red 3"> Red 3<br>
+            </label>
+        </div>
     </div>
 
-    <div id="Auto" class="tabcontent"></div>
+    <div id="Auto " class="tabcontent "></div>
 
-    <div id="Teleop" class="tabcontent"></div>
+    <div id="Teleop " class="tabcontent "></div>
 
-    <div id="Endgame" class="tabcontent"></div>
+    <div id="Endgame " class="tabcontent "></div>
 
-    <div id="Misc" class="tabcontent"></div>
+    <div id="Misc " class="tabcontent "></div>
 
 </body>
 

@@ -7,7 +7,6 @@ mNumber = 0;
 matches = [];
 names = ""; //* Initialize varibles
 
-
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
@@ -20,7 +19,7 @@ function makeSchedule() { //* Makes schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
             k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage("+k+")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick = 'replacePage(" + k + ")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
@@ -49,22 +48,29 @@ function openPage(pageName, color) {
         tabcontent[i].style.display = "";
     };
 
-    //* Remove the background color of all tablinks/buttons
+    //* Remove the background color of all tablinks/buttonss
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "purple";
+        tablinks[i].style.backgroundColor = "rebeccapurple";
     };
 
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
 
-    //* Add the specific color to the button used to open the tab content
-    elmnt.style.backgroundColor = color;
+
 };
 
+function fieldBlue() {
+    var pic = "./images/frcFieldRed"
+    document.getElementById('bigpic').src = pic.replace('90x90', '225x225');
+    document.getElementById('bigpic').style.display = 'block';
+}
 
-//* Get the element with id="defaultOpen" and click on it
-//document.getElementById("defaultOpen").click();
-//document.querySelector('.content .value').innerHTML = mNumber;
-//$('.defaultOpen').click();
+function fieldRed() {
+    var img = document.createElement("img");
+    img.id = "imgRobotStart"
+    img.src = "/images/frcFieldRed";
+    img.alt = "red field";
+    document.appendChild(img);
+}
 /* ------------for matchScouting------------- */

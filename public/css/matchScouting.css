@@ -1,45 +1,77 @@
 /* Set height of body and the document to 100% to enable "full page tabs" */
-body, html {
+
+body,
+html {
     height: 100%;
     margin: 0;
     font-family: Arial;
-  }
-  
-  /* Style tab links */
-  .tablink {
+}
+
+
+/* Style tab links */
+
+.tablink {
     background-color: #555;
-    color: white;
+    color: rebeccapurple;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     font-size: 17px;
-    width: 25%;
-  }
-  
-  .tablink:hover {
-    background-color: red;
-  }
-  
-  /* Style the tab content (and add height:100% for full page content) */
-  .tabcontent {
+    width: 20%;
+}
+
+.tablink:hover {
+    background-color: blue;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+
+.tabcontent {
     color: lightblue;
     display: none;
     padding: 100px 20px;
     height: 100%;
-  }
+}
 
-  h3 {
+h3 {
     background: black;
     max-width: 360px;
     margin: 100px auto 16px;
     padding: 32px 24px;
     border-radius: 3px;
-  }
+}
 
-#Auto {background-color: black;}
-#Pre {background-color: black;}
-#Teleop {background-color: black;}
-#Endgame {background-color: black;}
-#Post {background-color: black;}
+.radio {
+    color: white;
+    font-size: 1000px;
+    height: 2em;
+    width: 100%;
+    border: 0px;
+}
+
+.imgRobotStart {
+    width: 50000px
+}
+
+#Auto {
+    background-color: black;
+}
+
+#Pre {
+    background-color: black;
+}
+
+#Teleop {
+    background-color: black;
+}
+
+#Endgame {
+    background-color: black;
+}
+
+#Post {
+    background-color: black;
+}
