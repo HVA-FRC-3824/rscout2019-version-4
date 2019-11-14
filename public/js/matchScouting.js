@@ -40,7 +40,7 @@ function getNum() {
 };
 
 /* ------------for matchScouting------------- */
-function openPage(pageName, color) {
+function openPage(pageName) {
     //* Hide all elements with class="tabcontent" by default
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");

@@ -44,16 +44,14 @@ h3 {
     border-radius: 3px;
 }
 
-.radio {
-    color: white;
-    font-size: 1000px;
-    height: 2em;
-    width: 100%;
+input[type=radio] {
     border: 0px;
+    width: 25%;
+    height: 1em;
 }
 
-.imgRobotStart {
-    width: 50000px
+.robotRadio {
+    font-size: 35px;
 }
 
 #Auto {
