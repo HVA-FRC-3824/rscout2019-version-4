@@ -61,16 +61,16 @@ function openPage(pageName) {
 };
 
 function fieldBlue() {
-    var pic = "./images/frcFieldRed"
-    document.getElementById('bigpic').src = pic.replace('90x90', '225x225');
-    document.getElementById('bigpic').style.display = 'block';
+    var img = document.createElement("img");
+    img.id = "FieldStart"
+    img.src = "../public/images/frcFieldBlue.png"
+    document.body.appendChild(img);
 }
 
 function fieldRed() {
     var img = document.createElement("img");
-    img.id = "imgRobotStart"
-    img.src = "/images/frcFieldRed";
-    img.alt = "red field";
-    document.appendChild(img);
+    img.id = "FieldStart"
+    img.src = "../public/images/frcFieldRed.png"
+    document.body.appendChild(img);
 }
 /* ------------for matchScouting------------- */

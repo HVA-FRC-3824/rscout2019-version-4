@@ -12,7 +12,7 @@ html {
 
 .tablink {
     background-color: #555;
-    color: rebeccapurple;
+    color: white;
     float: left;
     border: none;
     outline: none;
@@ -46,12 +46,18 @@ h3 {
 
 input[type=radio] {
     border: 0px;
-    width: 25%;
+    width: 2%;
     height: 1em;
 }
 
 .robotRadio {
-    font-size: 35px;
+    font-size: 50px;
+}
+
+img {
+    position: absolute;
+    left: 75%;
+    top: 10%;
 }
 
 #Auto {
