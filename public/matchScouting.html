@@ -25,7 +25,7 @@
 <body>
 
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white')">Auto</button>
+    <button class="tablink" onclick="openPage('Auto','white'); autoScout()">Auto</button>
     <button class="tablink" onclick="openPage('Teleop','white')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
@@ -58,6 +58,10 @@
                     <input type="radio" onclick="fieldRed()" id="red" name="name" value="Red 3"> Red 3<br>
                 </label>
             </form>
+        </div>
+        <div class = "robotStart">
+            <img src = "./images/frcFieldBlue.png" width="30%" heigth="60%"></img>
+            <img src = "./images/frcFieldRed.png" width="30%" heigth="60%"></img>
         </div>
     </div>
 
