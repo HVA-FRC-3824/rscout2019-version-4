@@ -54,13 +54,33 @@ input[type=radio] {
     font-size: 50px;
 }
 
-.robotStart {
+.container {
+    position: relative;
+    width: 50%;
+    left: 70%;
+    bottom: 50%;
+  }
+  
+  /* Make the image responsive */
+  .container img {
+    width: 50%;
+    height: auto;
+  }
+
+  .container .btn {
     position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
-    width: 500px;
-    height: 500px;
-}
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: green;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 
 #Auto {
     background-color: black;

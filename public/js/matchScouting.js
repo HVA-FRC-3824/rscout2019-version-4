@@ -6,7 +6,8 @@ btn = "";
 mNumber = 0;
 matches = [];
 names = "";
-img; //* Initialize varibles
+img;
+startPos; //* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
@@ -33,12 +34,9 @@ function replacePage(id) {
     alert(mNumber);
     localStorage.setItem("num", mNumber);
     location.replace("./matchScouting.html");
+
 };
 
-function getNum() {
-    mNumber = localStorage.getItem("num");
-    alert(mNumber);
-};
 
 /* ------------for matchScouting------------- */
 function openPage(pageName) {
@@ -57,27 +55,8 @@ function openPage(pageName) {
 
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
-
-
 };
 
-/*function fieldBlue() {
-    img = document.createElement("img");
-    img.id = "FieldStart"
-    img.src = "../public/images/frcFieldBlue.png"
-    document.body.appendChild(img);
-};
-
-function fieldRed() {
-    img = document.createElement("img");
-    img.id = "FieldStart"
-    img.src = "../public/images/frcFieldRed.png"
-    document.body.appendChild(img);
-};
-
-function autoScout() {
-    img = document.getElementById("FieldStart");
-    document.body.removeChild(img);
-};
-*/
-/* ------------for matchScouting------------- */
+funciton chooseStart(F); {
+    startPos = F;
+}
