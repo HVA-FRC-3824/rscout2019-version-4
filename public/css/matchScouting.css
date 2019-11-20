@@ -55,19 +55,20 @@ input[type=radio] {
 }
 
 .container {
-    position: relative;
+    position: absolute;
     width: 50%;
-    left: 70%;
-    bottom: 50%;
+    top: 20%;
+    left: 40%;
   }
   
   /* Make the image responsive */
   .container img {
+    position: relative;
     width: 50%;
     height: auto;
   }
 
-  .container .btn {
+  .container btn {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -80,7 +81,47 @@ input[type=radio] {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    
   }
+
+  .container .blueTopRight{
+    color: blue;
+    position: fixed;
+    top: 47.75%;
+    left: 40%;
+    height: 9%;
+    width: 5.8%;
+    resize: both;
+    opacity: 0.5;
+  }
+
+    .container .blueTopLeft{
+        color: blue;
+    }
+
+  .container .blueCenter{
+    color: blue;
+  }
+
+.container .blueBottomRight{
+    color: blue;
+ }
+
+.container .blueBottomLeft{
+    color: blue;
+}
+
+.container .blueTopRight{
+      color: blue;
+}
+
+.container .blueTopRight{
+      
+}
+
+.container .blueTopRight{
+      
+}
 
 #Auto {
     background-color: black;

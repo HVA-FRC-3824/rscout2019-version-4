@@ -57,6 +57,7 @@ function openPage(pageName) {
     document.getElementById(pageName).style.display = "block";
 };
 
-funciton chooseStart(F); {
-    startPos = F;
+function chooseStart(p) {
+    startPos = p;
 }
+
