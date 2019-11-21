@@ -59,68 +59,125 @@ input[type=radio] {
     width: 50%;
     top: 20%;
     left: 40%;
-  }
-  
-  /* Make the image responsive */
-  .container img {
+}
+
+
+/* Make the image responsive */
+
+.container img {
     position: relative;
-    width: 50%;
+    width: auto;
     height: auto;
-  }
+}
 
-  .container btn {
+.container .blueTopRight {
+    color: blue;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: green;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    
-  }
-
-  .container .blueTopRight{
-    color: blue;
-    position: fixed;
-    top: 47.75%;
-    left: 40%;
-    height: 9%;
-    width: 5.8%;
-    resize: both;
-    opacity: 0.5;
-  }
-
-    .container .blueTopLeft{
-        color: blue;
-    }
-
-  .container .blueCenter{
-    color: blue;
-  }
-
-.container .blueBottomRight{
-    color: blue;
- }
-
-.container .blueBottomLeft{
-    color: blue;
+    top: 64%;
+    left: 0%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
 }
 
-.container .blueTopRight{
-      color: blue;
+.container .blueTopLeft {
+    color: blue;
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
 }
 
-.container .blueTopRight{
-      
+.container .blueCenter {
+    color: blue;
+    position: absolute;
+    top: 37.4%;
+    left: 11%;
+    height: 23.5%;
+    width: 13%;
+    resize: inherit;
+    opacity: 0;
 }
 
-.container .blueTopRight{
-      
+.container .blueBottomRight {
+    color: blue;
+    position: absolute;
+    top: 64%;
+    left: 14%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .blueBottomLeft {
+    color: blue;
+    position: absolute;
+    top: 15%;
+    left: 14%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .redTopRight {
+    color: blue;
+    position: absolute;
+    top: 15%;
+    left: 47%;
+    height: 19%;
+    width: 12%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .redTopLeft {
+    color: blue;
+    position: absolute;
+    top: 64%;
+    left: 47%;
+    height: 19%;
+    width: 12%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .redCenter {
+    color: blue;
+    position: absolute;
+    top: 37.4%;
+    left: 32%;
+    height: 23.5%;
+    width: 13%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .redBottomLeft {
+    color: blue;
+    position: absolute;
+    top: 64%;
+    left: 34%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
+}
+
+.container .redBottomRight {
+    color: blue;
+    position: absolute;
+    top: 15%;
+    left: 34%;
+    height: 19%;
+    width: 11%;
+    resize: inherit;
+    opacity: 0;
 }
 
 #Auto {

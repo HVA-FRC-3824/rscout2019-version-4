@@ -59,5 +59,5 @@ function openPage(pageName) {
 
 function chooseStart(p) {
     startPos = p;
+    alert(startPos);
 }
-
