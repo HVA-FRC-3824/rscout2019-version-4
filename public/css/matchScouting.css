@@ -7,6 +7,7 @@ html {
     font-family: Arial;
 }
 
+/* ----------------------FOR PRE MATCH INFO-----------------------/*
 
 /* Style tab links */
 
@@ -36,12 +37,12 @@ html {
     height: 100%;
 }
 
-h3 {
+h1 {
     color: white;
     font-size: 20px;
     text-align: center;
-    position: absolulte;
-    top: 8%;
+    position: absolute;
+    top: 10%;
     left: 45%;
 }
 
@@ -200,6 +201,22 @@ input[type=radio] {
     -webkit-appearance:none;
     border-radius: 0;
 }
+
+.container .driveCenter {
+    color: blue;
+
+}
+
+/* ----------------FOR AUTO TAB-------------------- */
+
+div.fullField {
+    position: absolute;
+    left: 0%;
+    top: 8%;
+    width: auto;
+    height: 1%;
+}
+
 
 #Auto {
     background-color: black;

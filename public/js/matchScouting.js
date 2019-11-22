@@ -61,3 +61,7 @@ function chooseStart(p) {
     startPos = p;
     alert(startPos);
 }
+
+function chooseDriveStation(drive){
+    driveStation = drive;
+}

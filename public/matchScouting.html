@@ -60,7 +60,7 @@
             </form>
         </div>
 
-        <h3>Robot Start Position: </h3>
+        <h1>Robot Start Position</h1>
 
         <div class="container">
             <img src="./images/startingHABs.png"></img>
@@ -70,20 +70,28 @@
             <button class="blueBottomRight" onclick="chooseStart('blueBottomRight')"></button>
             <button class="blueCenter" onclick="chooseStart('blueCenter')"></button>
             <button class="redTopRight" onclick="chooseStart('redTopRight')"></button>
-            <button class="redTopLeft" onclick="chooseStart('redTopLeft')"><button>
+            <button class="redTopLeft" onclick="chooseStart('redTopLeft')"></button>
             <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
             <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
             <button class="redCenter" onclick="chooseStart('redCenter')"></button>
+
+            <!--<button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
+            <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
+            <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
         </div>
     </div>
 
-    <div id="Auto " class="tabcontent "></div>
+    <div id="Auto" class="tabcontent ">
+        <div class="fullField">
+            <img src="./images/frcField.png" alt="full field" style="width:100%; height:100;"></img>
+        </div>
+    </div>
 
-    <div id="Teleop " class="tabcontent "></div>
+    <div id="Teleop" class="tabcontent "></div>
 
-    <div id="Endgame " class="tabcontent "></div>
+    <div id="Endgame" class="tabcontent "></div>
 
-    <div id="Misc " class="tabcontent "></div>
+    <div id="Post" class="tabcontent "></div>
 
 </body>
 
