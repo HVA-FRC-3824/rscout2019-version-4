@@ -6,8 +6,8 @@ btn = "";
 mNumber = 0;
 matches = [];
 names = "";
-img;
-startPos; //* Initialize varibles
+startPos;
+//* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
@@ -56,6 +56,13 @@ function openPage(pageName) {
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
 };
+
+var slider = document.getElementById("input");
+var output = document.getElementById("returnInput");
+output.innerHTML = slider.value;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
 
 function chooseStart(p) {
     startPos = p;
