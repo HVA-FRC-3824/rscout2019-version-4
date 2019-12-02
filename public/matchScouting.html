@@ -23,9 +23,8 @@
 </head>
 
 <body>
-
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white')">Auto</button>
+    <button class="tablink" onclick="openPage('Auto','white'), teamColor('startPos')">Auto</button>
     <button class="tablink" onclick="openPage('Teleop','white')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
@@ -74,7 +73,6 @@
             <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
             <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
             <button class="redCenter" onclick="chooseStart('redCenter')"></button>
-
             <!--<button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
             <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
             <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
@@ -82,12 +80,27 @@
     </div>
 
     <div id="Auto" class="tabcontent">
+        <h3>Speed:</h3>
+        <h2>Accuracy:</h2>
             <img src="./images/frcField.png" alt="full field" id="fullField"></img>
             <form>
-                Input:
-                <input type="range" id="input" class="slider" name="n" min="0" max="10">
-                <p>Value: <span id="returnInput"></span></p>
+                <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
             </form>
+            <form>
+                <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
+            </form>
+            <div class="counter">
+            <h4 class="text-center"># Dropped</h4>
+            <div class="input-group input-number-group">
+                <div class="input-group-button">
+                    <span class="input-number-decrement">-</span>
+                </div>
+                <input class="input-number" type="number" value="1" min="0" max="1000">
+                <div class="input-group-button">
+                    <span class="input-number-increment">+</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="Teleop" class="tabcontent "></div>
@@ -97,5 +110,4 @@
     <div id="Post" class="tabcontent "></div>
 
 </body>
-
 </html>

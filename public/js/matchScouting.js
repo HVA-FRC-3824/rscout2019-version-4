@@ -6,7 +6,7 @@ btn = "";
 mNumber = 0;
 matches = [];
 names = "";
-startPos;
+startPos = "";
 //* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
@@ -20,7 +20,7 @@ function makeSchedule() { //* Makes schedule
     for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
             k++;
-            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+            createAlliance(matchNumber); //* Runs createAlpliance to print match participants on the button
             matchInfo = ("<button onclick = 'replacePage(" + k + ")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
@@ -71,4 +71,27 @@ function chooseStart(p) {
 
 function chooseDriveStation(drive){
     driveStation = drive;
+}
+
+$('.input-number-increment').click(function() {
+    var $input = $(this).parents('.input-number-group').find('.input-number');
+    var val = parseInt($input.val(), 10);
+    $input.val(val + 1);
+  });
+  
+  $('.input-number-decrement').click(function() {
+    var $input = $(this).parents('.input-number-group').find('.input-number');
+    var val = parseInt($input.val(), 10);
+    $input.val(val - 1);
+  });
+    
+
+function teamColor() {
+    document.getElementById("Auto").img;
+
+    if (startPos.slice(0, 3) == "red") {
+        alert("red");
+    } else if (startPos.slice(0, 3) == "blu") {
+        alert("blu");
+    }
 }

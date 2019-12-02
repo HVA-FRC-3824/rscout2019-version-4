@@ -212,13 +212,13 @@ input[type=radio] {
 #Auto img {
     position: absolute;
     left: 0%;
-    top: 7%;
+    top: 8.5%;
     width: 100%;
     height: 85%;
     align-content: center;
 }
 
-.slider {
+.sliderSpeed {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 25%; /* Full-width */
@@ -229,10 +229,26 @@ input[type=radio] {
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
     position: absolute;
-    top: 94%;
+    top: 95%;
+    left: 10%;
 }
 
-.slider::-webkit-slider-thumb {
+.sliderAccuracy {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 25%; /* Full-width */
+    height: 15px; /* Specified height */
+    background: white; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: .7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    position: absolute;
+    top: 95%;
+    left: 55%;
+}
+
+.sliderAccuracy::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 15px;
@@ -241,7 +257,100 @@ input[type=radio] {
     cursor: pointer;
   }
 
+  .sliderSpeed::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: purple;
+    cursor: pointer;
+  }
 
+h3 {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top : 93%;
+    left: 5%
+}
+
+h2 {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top: 93%;
+    left: 40%;
+}
+
+
+.input-number-group {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .input-number-group input[type=number]::-webkit-inner-spin-button,
+  .input-number-group input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+            appearance: none;
+  }
+  
+  .input-number-group .input-group-button {
+    line-height: calc(80px/2 - 5px);
+  }
+  
+  .input-number-group .input-number {
+    width: 80px;
+    padding: 0 12px;
+    text-align: center;
+    outline: none;
+    display: block;
+    margin: 0;
+  }
+  
+  .input-number-group .input-number,
+  .input-number-group .input-number-decrement,
+  .input-number-group .input-number-increment {
+    border: 1px solid #cacaca;
+    height: 40px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border-radius: 0;
+  }
+  
+  .input-number-group .input-number-decrement,
+  .input-number-group .input-number-increment {
+    display: inline-block;
+    width: 40px;
+    background: #e6e6e6;
+    color: #0a0a0a;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  
+  .input-number-group .input-number-decrement {
+    margin-right: 0.3rem;
+  }
+  
+  .input-number-group .input-number-increment {
+    margin-left: 0.3rem;
+  }
+  
+.counter {
+    position: absolute;
+    top: 98%;
+    left: 35%;
+    size: 700%;
+}
+  
 #Auto {
     background-color: black;
     color: white;
