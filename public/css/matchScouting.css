@@ -204,7 +204,6 @@ input[type=radio] {
 
 .container .driveCenter {
     color: blue;
-
 }
 
 /* ----------------FOR AUTO TAB-------------------- */
@@ -230,7 +229,7 @@ input[type=radio] {
     transition: opacity .2s;
     position: absolute;
     top: 95%;
-    left: 10%;
+    left: 7%;
 }
 
 .sliderAccuracy {
@@ -245,7 +244,7 @@ input[type=radio] {
     transition: opacity .2s;
     position: absolute;
     top: 95%;
-    left: 55%;
+    left: 40%;
 }
 
 .sliderAccuracy::-webkit-slider-thumb {
@@ -271,7 +270,7 @@ h3 {
     font-size: 15px;
     position: absolute;
     top : 93%;
-    left: 5%
+    left: 2%
 }
 
 h2 {
@@ -279,7 +278,7 @@ h2 {
     font-size: 15px;
     position: absolute;
     top: 93%;
-    left: 40%;
+    left: 33%;
 }
 
 
@@ -303,7 +302,8 @@ h2 {
   }
   
   .input-number-group .input-number {
-    width: 80px;
+    color: white;
+    width: 50px;
     padding: 0 12px;
     text-align: center;
     outline: none;
@@ -315,7 +315,7 @@ h2 {
   .input-number-group .input-number-decrement,
   .input-number-group .input-number-increment {
     border: 1px solid #cacaca;
-    height: 40px;
+    height: 25px;
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -326,13 +326,13 @@ h2 {
   .input-number-group .input-number-decrement,
   .input-number-group .input-number-increment {
     display: inline-block;
-    width: 40px;
+    width: 30px;
     background: #e6e6e6;
-    color: #0a0a0a;
+    color: black;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 400;
   }
   
@@ -346,9 +346,15 @@ h2 {
   
 .counter {
     position: absolute;
-    top: 98%;
-    left: 35%;
-    size: 700%;
+    top: 95%;
+    left: 80%;
+}
+
+h4 {
+    position: absolute;
+    top: 91.5%;
+    left: 70%;
+
 }
   
 #Auto {

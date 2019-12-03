@@ -7,6 +7,9 @@ mNumber = 0;
 matches = [];
 names = "";
 startPos = "";
+robotAction = "";
+itemsDropped = "";
+var droppedAuto = 0;
 //* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
@@ -55,6 +58,7 @@ function openPage(pageName) {
 
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
+    document.getElementById("input-number").innerHTML = 0;
 };
 
 var slider = document.getElementById("input");
@@ -73,25 +77,30 @@ function chooseDriveStation(drive){
     driveStation = drive;
 }
 
-$('.input-number-increment').click(function() {
-    var $input = $(this).parents('.input-number-group').find('.input-number');
-    var val = parseInt($input.val(), 10);
-    $input.val(val + 1);
-  });
-  
-  $('.input-number-decrement').click(function() {
-    var $input = $(this).parents('.input-number-group').find('.input-number');
-    var val = parseInt($input.val(), 10);
-    $input.val(val - 1);
-  });
-    
+function increment() {
+    droppedAuto++;
+    document.getElementById("input-number").innerHTML = droppedAuto;
+}
+
+function decrement() {
+    droppedAuto--;
+    document.getElementById("input-number").innerHTML = droppedAuto;
+}
 
 function teamColor() {
-    document.getElementById("Auto").img;
-
     if (startPos.slice(0, 3) == "red") {
         alert("red");
+        document.getElementById("autoField").src = "./images/frcFieldRed.png";
     } else if (startPos.slice(0, 3) == "blu") {
         alert("blu");
+        document.getElementById("autoField").src = "./images/frcFieldBlue.png";
+    } else {
+        alert("no button");
+        document.getElementById("autoField").src = "./images/frcField.png";
     }
+}
+
+function fieldInput(f) {
+    robotAction = f;
+    alert(robotaction);
 }
