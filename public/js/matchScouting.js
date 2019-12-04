@@ -9,12 +9,13 @@ names = "";
 startPos = "";
 robotAction = "";
 itemsDropped = "";
-var droppedAuto = 0;
+droppedAuto = 0;
 //* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
+    
 }
 
 function makeSchedule() { //* Makes schedule
@@ -90,13 +91,12 @@ function decrement() {
 function teamColor() {
     if (startPos.slice(0, 3) == "red") {
         alert("red");
-        document.getElementById("autoField").src = "./images/frcFieldRed.png";
+        document.getElementById("autoField").src = "./images/frcAutoRed.png";
     } else if (startPos.slice(0, 3) == "blu") {
         alert("blu");
-        document.getElementById("autoField").src = "./images/frcFieldBlue.png";
+        document.getElementById("autoField").src = "./images/frcAutoBlue.png";
     } else {
         alert("no button");
-        document.getElementById("autoField").src = "./images/frcField.png";
     }
 }
 

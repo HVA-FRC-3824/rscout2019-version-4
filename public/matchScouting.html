@@ -82,10 +82,17 @@
     <div id="Auto" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
-
-            <!--<button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>-->
         
-           <img src="" alt="auto field" id="autoField"></img>
+                <img src="" alt="auto field" id="autoField"></img>
+                <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
+                <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
+                <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
+                <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
+                <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
+                <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
+                <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
+        
+           
             <form>
                 <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
             </form>
@@ -104,7 +111,8 @@
                 </div>
             </div>
         </div>
-    </div>
+        
+    
 
     <div id="Teleop" class="tabcontent">
 <!--        <h3>Speed:</h3>
