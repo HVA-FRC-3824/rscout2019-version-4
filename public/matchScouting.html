@@ -25,7 +25,7 @@
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('startPos')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
 
@@ -42,10 +42,10 @@
                     <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 1"> Blue 1<br>
                 </label>
                 <label class="radio">
-                    <input type="radio"  onclick="fieldBlue()" id="blue" name="name" value="Blue 2"> Blue 2<br>
+                    <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 2"> Blue 2<br>
                 </label>
                 <label class="radio">
-                    <input type="radio"  onclick="fieldBlue()" id="blue" name="name" value="Blue 3"> Blue 3<br>
+                    <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 3"> Blue 3<br>
                 </label>
                 <label class="radio">
                     <input type="radio" onclick="fieldRed()" id="red" name="name" value="Red 1"> Red 1<br>
@@ -82,75 +82,86 @@
     <div id="Auto" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
-        
-                <img src="" alt="auto field" id="autoField"></img>
-                <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
-                <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
-                <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
-                <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
-                <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
-                <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
-                <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
-        
-           
-            <form>
-                <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
-            </form>
-            <form>
-                <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-            </form>
-            <h4># Dropped:</h4>
-            <div class="counter">
+
+        <img src="" alt="auto field" id="autoField"></img>
+        <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
+        <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
+        <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
+        <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
+        <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
+        <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
+        <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
+
+        <form>
+            <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
+        </form>
+        <form>
+            <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
+        </form>
+        <h4># Dropped:</h4>
+        <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
                     <span onclick="decrement()" class="input-number-decrement">-</span>
                 </div>
                 <span class="input-number" id="input-number"></span>
                 <div class="input-group-button">
-                    <span onclick="increment()" class="input-number-increment" id = "incrementButton">+</span>
+                    <span onclick="increment()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
         </div>
-        
-    
-
-    <div id="Teleop" class="tabcontent">
-<!--        <h3>Speed:</h3>
-        <h2>Accuracy:</h2>
-
-        <div class="containerRed">
-            <img src="./images/frcFieldRed.png"></img>
-            <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
-        </div>
-        <div class="containerBlu">
-            <img src="./images/frcFieldBlue.png"></img>
-
-
-        </div>
-            <img src="./images/frcField.png" alt="auto field" id="autoField"></img>
-            <form>
-                <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
-            </form>
-            <form>
-                <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-            </form>
-            <h4># Dropped:</h4>
-            <div class="counter">
-            <div class="input-group input-number-group">
-                <div class="input-group-button">
-                    <span class="input-number-decrement">-</span>
-                </div>
-                <input class="input-number" type="number" value="1" min="0" max="1000">
-                <div class="input-group-button">
-                    <span class="input-number-increment">+</span>
-                </div>
-            </div>
-        </div>-->
     </div>
 
-    <div id="Endgame" class="tabcontent"></div>
+    <div id="Teleop" class="tabcontent">
+        <h3>Speed:</h3>
+        <h2>Accuracy:</h2>
 
-    <div id="Post" class="tabcontent"></div>
+        <img src="" alt="auto field" id="autoField2"></img>
+        <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
+        <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
+        <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
+        <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
+        <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
+        <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
+        <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
+
+        <form>
+            <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
+        </form>
+        <form>
+            <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
+        </form>
+        <h4># Dropped:</h4>
+        <div class="counter">
+            <div class="input-group input-number-group">
+                <div class="input-group-button">
+                    <span onclick="decrement2()" class="input-number-decrement">-</span>
+                </div>
+                <span class="input-number2" id="input-number2"></span>
+                <div class="input-group-button">
+                    <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Endgame" class="tabcontent">
+        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
+        <input type="radio" onclick="hasClimbed()" name="Climbed?" value="Climbed"> Climbed<br>
+        <button class="timerButton" onclick="timer()" id="Start" name="start">Start<br>
+        <button class="timerButton" onclick="stopTimer()" id="Stop" name="stop">
+        <div class="timerText">
+            <p id="demo"></p>
+        </div>
+    </div>
+
+
+
+
+    <div id="Post" class="tabcontent">
+        <button class="nextButton" id="nextButton" onclick="nextMatch()">Next Match</button>
+    </div>
 
 </body>
+
 </html>

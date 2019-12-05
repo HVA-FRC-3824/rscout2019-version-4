@@ -10,12 +10,15 @@ startPos = "";
 robotAction = "";
 itemsDropped = "";
 droppedAuto = 0;
+droppedTeleop = 0;
+bigBoiTime = 0;
+
 //* Initialize varibles
 
 function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
-    
+
 }
 
 function makeSchedule() { //* Makes schedule
@@ -35,14 +38,21 @@ function makeSchedule() { //* Makes schedule
 
 function replacePage(id) {
     var mNumber = id;
-    alert(mNumber);
     localStorage.setItem("num", mNumber);
     location.replace("./matchScouting.html");
 
 };
 
-
 /* ------------for matchScouting------------- */
+
+function nextMatch() {
+    mNumber = localStorage.getItem("num");
+    mNumber++;
+    localStorage.setItem("num", mNumber);
+    alert(mNumber);
+    location.replace("./matchScouting.html");
+}
+
 function openPage(pageName) {
     //* Hide all elements with class="tabcontent" by default
     var i, tabcontent, tablinks;
@@ -60,13 +70,14 @@ function openPage(pageName) {
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
     document.getElementById("input-number").innerHTML = 0;
+    document.getElementById("input-number2").innerHTML = 0;
 };
 
 var slider = document.getElementById("input");
 var output = document.getElementById("returnInput");
 output.innerHTML = slider.value;
 slider.oninput = function() {
-  output.innerHTML = this.value;
+    output.innerHTML = this.value;
 }
 
 function chooseStart(p) {
@@ -74,7 +85,7 @@ function chooseStart(p) {
     alert(startPos);
 }
 
-function chooseDriveStation(drive){
+function chooseDriveStation(drive) {
     driveStation = drive;
 }
 
@@ -83,18 +94,28 @@ function increment() {
     document.getElementById("input-number").innerHTML = droppedAuto;
 }
 
+function increment2() {
+    droppedTeleop++;
+    document.getElementById("input-number2").innerHTML = droppedTeleop;
+}
+
 function decrement() {
     droppedAuto--;
     document.getElementById("input-number").innerHTML = droppedAuto;
 }
 
-function teamColor() {
+function decrement2() {
+    droppedTeleop--;
+    document.getElementById("input-number2").innerHTML = droppedTeleop;
+}
+
+function teamColor() { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
     if (startPos.slice(0, 3) == "red") {
-        alert("red");
         document.getElementById("autoField").src = "./images/frcAutoRed.png";
+        document.getElementById("autoField2").src = "./images/frcAutoRed.png";
     } else if (startPos.slice(0, 3) == "blu") {
-        alert("blu");
         document.getElementById("autoField").src = "./images/frcAutoBlue.png";
+        document.getElementById("autoField2").src = "./images/frcAutoBlue.png";
     } else {
         alert("no button");
     }
@@ -103,4 +124,21 @@ function teamColor() {
 function fieldInput(f) {
     robotAction = f;
     alert(robotaction);
+}
+
+//Endgame Timer
+function timer() {
+    setInterval(makeTime, 1000);
+
+}
+
+function stopTimer() {
+    clearTimeout(makeTime);
+}
+
+function makeTime() {
+
+    bigBoiTime++;
+    document.getElementById("demo").innerHTML = bigBoiTime;
+
 }
