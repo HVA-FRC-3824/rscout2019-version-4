@@ -153,7 +153,10 @@
     </h>
 
     <div id="Endgame" class="tabcontent">
+        <h7>Climb Rank:</h7>
        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
+
+        <h8>Climb Timer</h8>
         <button class="timerStartButton" onclick="timer(); this.onclick=null;" id="Start" name="start">Start<br></button>
         <button class="timerStopButton" onclick="stopTimer()" id="Stop" name="stop">Stop</button>
         <div class="timerText">
@@ -161,24 +164,26 @@
         </div>
                 <div class="climbOption">
                     <form>
-                        Climb Option <br>
+                        Climb Options <br>
                         <label class="radio">
-                            <input type="radio" onclick="didClimb('one')" id="red" name="name" value="climb">Climbed by themselves<br>
+                            <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Hab 3<br>
                         </label>
-                        <label class="radio">.show {display: block;}
-                        </style>
-                        </head>
-                        <body>
-                            <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Climbed and supported one other robot<br>
+                            <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Hab 2<br>
                         </label>
                         <label class="radio">
-                            <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Climbed and supported two other robots<br>
+                            <input type="radio" onclick="didClimb('one')" id="red" name="name" value="climb">Parked on platform<br>
                         </label>
                         <label class="radio">
-                            <input type="radio" onclick="didClimb('parked')" id="red" name="name" value="climb">Parked on Platform<br>
+                            <input type="radio" onclick="didClimb('threeSupportedOne')" id="red" name="name" value="climb">Hab 3, Supported one other<br>
                         </label>
                         <label class="radio">
-                            <input type="radio" onclick="didClimb('NA')" id="red" name="name" value="climb">Did not Climb<br>
+                            <input type="radio" onclick="didClimb('threeSupportedTwo')" id="red" name="name" value="climb">Hab 3, supported two others<br>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
                         </label>
                     </form>
                 </div>

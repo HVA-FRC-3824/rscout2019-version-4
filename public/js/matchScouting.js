@@ -73,6 +73,7 @@ function openPage(pageName) {
     document.getElementById(pageName).style.display = "block";
     document.getElementById("input-number").innerHTML = 0;
     document.getElementById("input-number2").innerHTML = 0;
+    document.getElementById("demo").innerHTML = climbTime;
 };
 
 var slider = document.getElementById("input");
