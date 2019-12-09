@@ -11,7 +11,9 @@ robotAction = "";
 itemsDropped = "";
 droppedAuto = 0;
 droppedTeleop = 0;
-bigBoiTime = 0;
+climbTime = 0;
+timeKeep = 0;
+climbType = "";
 
 //* Initialize varibles
 
@@ -123,22 +125,27 @@ function teamColor() { //!TODO Add full-field functionality to teleop and make s
 
 function fieldInput(f) {
     robotAction = f;
-    alert(robotaction);
+    alert(robotAction);
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 //Endgame Timer
 function timer() {
-    setInterval(makeTime, 1000);
+    timeKeep = setInterval(makeTime, 1000);
 
 }
 
 function stopTimer() {
-    clearTimeout(makeTime);
+    clearInterval(timeKeep);
+
 }
 
 function makeTime() {
-
-    bigBoiTime++;
-    document.getElementById("demo").innerHTML = bigBoiTime;
-
+    climbTime++;
+    document.getElementById("demo").innerHTML = climbTime;
 }
+
+function didClimb(p) {
+    climbType = p;
+}
+  

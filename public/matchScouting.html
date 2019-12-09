@@ -39,22 +39,22 @@
             <form>
                 Robot: <br>
                 <label class="radio">
-                    <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 1"> Blue 1<br>
+                    <input type="radio" id="blue" name="name" value="Blue 1"> Blue 1<br>
                 </label>
                 <label class="radio">
-                    <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 2"> Blue 2<br>
+                    <input type="radio" id="blue" name="name" value="Blue 2"> Blue 2<br>
                 </label>
                 <label class="radio">
-                    <input type="radio" onclick="fieldBlue()" id="blue" name="name" value="Blue 3"> Blue 3<br>
+                    <input type="radio" id="blue" name="name" value="Blue 3"> Blue 3<br>
                 </label>
                 <label class="radio">
-                    <input type="radio" onclick="fieldRed()" id="red" name="name" value="Red 1"> Red 1<br>
+                    <input type="radio" id="red" name="name" value="Red 1"> Red 1<br>
                 </label>
                 <label class="radio">
-                    <input type="radio" onclick="fieldRed()" id="red" name="name" value="Red 2"> Red 2<br>
+                    <input type="radio" id="red" name="name" value="Red 2"> Red 2<br>
                 </label>
                 <label class="radio">
-                    <input type="radio" onclick="fieldRed()" id="red" name="name" value="Red 3"> Red 3<br>
+                    <input type="radio" id="red" name="name" value="Red 3"> Red 3<br>
                 </label>
             </form>
         </div>
@@ -85,6 +85,11 @@
 
         <img src="" alt="auto field" id="autoField"></img>
         <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
         <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
@@ -110,9 +115,10 @@
                 </div>
             </div>
         </div>
+        <h6>AUTO</h6>
     </div>
 
-    <div id="Teleop" class="tabcontent">
+    <h id="Teleop" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
 
@@ -143,20 +149,41 @@
                 </div>
             </div>
         </div>
-    </div>
+        <h6>TELEOP</h6>
+    </h>
 
     <div id="Endgame" class="tabcontent">
-        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
-        <input type="radio" onclick="hasClimbed()" name="Climbed?" value="Climbed"> Climbed<br>
-        <button class="timerButton" onclick="timer()" id="Start" name="start">Start<br>
-        <button class="timerButton" onclick="stopTimer()" id="Stop" name="stop">
+       <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
+        <button class="timerStartButton" onclick="timer(); this.onclick=null;" id="Start" name="start">Start<br></button>
+        <button class="timerStopButton" onclick="stopTimer()" id="Stop" name="stop">Stop</button>
         <div class="timerText">
             <p id="demo"></p>
         </div>
+                <div class="climbOption">
+                    <form>
+                        Climb Option <br>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('one')" id="red" name="name" value="climb">Climbed by themselves<br>
+                        </label>
+                        <label class="radio">.show {display: block;}
+                        </style>
+                        </head>
+                        <body>
+                            <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Climbed and supported one other robot<br>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Climbed and supported two other robots<br>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('parked')" id="red" name="name" value="climb">Parked on Platform<br>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" onclick="didClimb('NA')" id="red" name="name" value="climb">Did not Climb<br>
+                        </label>
+                    </form>
+                </div>
+
     </div>
-
-
-
 
     <div id="Post" class="tabcontent">
         <button class="nextButton" id="nextButton" onclick="nextMatch()">Next Match</button>
