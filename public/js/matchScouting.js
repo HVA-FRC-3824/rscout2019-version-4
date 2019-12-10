@@ -125,7 +125,7 @@ function teamColor() { //!TODO Add full-field functionality to teleop and make s
 
 function fieldInput(f) {
     robotAction = f;
-    alert(robotAction);
+    //alert(robotAction);
     document.getElementById("myDropdown").classList.toggle("show");
 }
 

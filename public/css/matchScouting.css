@@ -393,12 +393,12 @@
         -webkit-appearance: none;
         border-radius: 0;
     }
-    
+
     .rocketLeft:hover, .rocketLeft:focus {
         background-color: blueviolet;
     }
 
-    .rocketLeft-content {
+    .dropdown-content {
         display: none;
         position: absolute;
         background-color: #f1f1f1;
@@ -418,7 +418,7 @@
       .rocketLeft a:hover {background-color: #ddd;}
 
       .show {display: block;}
-      
+
     .rocketRight {
         position: absolute;
         top: 74.5%;
