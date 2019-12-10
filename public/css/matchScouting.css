@@ -547,6 +547,9 @@
     .timerText {
         font-size: 200%;
         color: white;
+        position: absolute;
+        top: 16%;
+        left: 17.5%;
     }
     
     .timerStartButton {
@@ -561,6 +564,9 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
+        position: absolute;
+        top:18%;
+        left: 10%;
     }
 
     .timerStopButton {
@@ -585,4 +591,47 @@
         position: absolute;
         top: 12%;
         left: 40%;
+    }
+
+    .sliderClimb {
+        position: absolute;
+        top: 18%;
+        left: 75%;
+        -webkit-appearance: none;
+        /* Override default CSS styles */
+        appearance: none;
+        width: 15%;
+        /* Full-width */
+        height: 15px;
+        /* Specified height */
+        background: white;
+        /* Grey background */
+        outline: none;
+        /* Remove outline */
+        opacity: .7;
+        /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s;
+        /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    .sliderClimb::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        background: purple;
+        cursor: pointer;
+    }
+
+    h7 {
+        position: absolute;
+        top: 15%;
+        left: 75%;
+    }
+
+    h8 {
+        position:absolute;
+        top:15%;
+        left: 16%;
     }
