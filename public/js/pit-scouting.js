@@ -1,7 +1,7 @@
 var teamNum;
-var weight;
-var driveTrain;
-var robotData;
+weight;
+driveTrain;
+ robotData;
 
 function button() {
     teamNum = prompt("Team Number")

@@ -5,12 +5,12 @@
     <title>Scouting</title>
     <meta charset="UTF-8">
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.9.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.9.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.9.0/firebase-database.js"></script>
     <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
-    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.9.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
@@ -86,9 +86,9 @@
         <img src="" alt="auto field" id="autoField"></img>
         <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
         <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="#cargo">Placed Cargo</a>
+            <a href="#hatch">Placed Hatch</a>
+            <a href="#eventuallychange">Literally dropped off the face of the earth</a>
         </div>
         <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
@@ -164,7 +164,7 @@
         </div>
                 <div class="climbOption">
                     <form>
-                        Climb Options <br>
+                        Climb Options: <br>
                         <label class="radio">
                             <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Hab 3<br>
                         </label>
@@ -191,7 +191,10 @@
     </div>
 
     <div id="Post" class="tabcontent">
+        <h7>Overall Rating:</h7>
         <button class="nextButton" id="nextButton" onclick="nextMatch()">Next Match</button>
+        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
+        <input type="text" class="notes">Notes:<br>
     </div>
 
 </body>
