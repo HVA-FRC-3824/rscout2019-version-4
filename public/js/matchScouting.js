@@ -24,7 +24,7 @@ function createAlliance(i) { //* This function creates each and concatenates eac
 }
 
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/scmb2019/matches"); //* Runs kidnap with the specified url
+    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
