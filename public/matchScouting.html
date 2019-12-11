@@ -5,12 +5,12 @@
     <title>Scouting</title>
     <meta charset="UTF-8">
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.9.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.9.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.9.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
     <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
-    <script defer src="/__/firebase/7.9.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
@@ -25,7 +25,7 @@
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('startPos')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')">Teleop</button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
 
@@ -140,7 +140,7 @@
         <h4># Dropped:</h4>
         <div class="counter">
             <div class="input-group input-number-group">
-                <div class="input-group-button">
+                <div class="input-group-button"></div>
                     <span onclick="decrement2()" class="input-number-decrement">-</span>
                 </div>
                 <span class="input-number2" id="input-number2"></span>
@@ -148,9 +148,8 @@
                     <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
+            <h6>TELEOP</h6>
         </div>
-        <h6>TELEOP</h6>
-    </div>
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
@@ -193,9 +192,9 @@
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <button class="nextButton" id="nextButton" onclick="nextMatch()">Next Match</button>
-        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
-        <input type="text" class="notes">Notes:<br>
-    </div>
+       <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
+       Notes: <input type="text" class="notes"><br>
+    </div> 
 
 </body>
 
