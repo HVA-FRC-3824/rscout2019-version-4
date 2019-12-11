@@ -82,22 +82,20 @@
     <div id="Auto" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
-
         <img src="" alt="auto field" id="autoField"></img>
-        <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="#cargo">Placed Cargo</a>
-            <a href="#hatch">Placed Hatch</a>
-            <a href="#eventuallychange">Literally dropped off the face of the earth</a>
+        <div id="autoDropdown" class="autoDropdown-content">
+            <a href="#cargo" onclick="hideAutoDropdown()">Placed Cargo</a>
+            <a href="#hatch" onclick="hideAutoDropdown()">Placed Hatch</a>
+            <a href="#cargo" onclick="hideAutoDropdown()">Picked Up Cargo</a>
+            <a href="#hatch" onclick="hideAutoDropdown()">Picked Up Hatch</a>
         </div>
-
-        <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
-        <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
-        <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
-        <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
-        <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
-
+        <button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
+        <button class="rocketRight" onclick="autoFieldInput('rocketRight')"></button>
+        <button class="cargoShipRight" onclick="autoFieldInput('cargoShipRight')"></button>
+        <button class="cargoShipLeft" onclick="autoFieldInput('cargoShipLeft')"></button>
+        <button class="cargoShipMid" onclick="autoFieldInput('cargoShipMid')"></button>
+        <button class="leftPickup" onclick="autoFieldInput('leftPickup')"></button>
+        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>
         <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
@@ -116,21 +114,28 @@
                 </div>
             </div>
         </div>
-        <h6>AUTO</h6>
+        <h5>AUTO</h5>
     </div>
 
     <div id="Teleop" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
+        <h5>TELEOP</h5>
+        <div id="teleopDropdown" class="teleopDropdown-content">
+            <a href="#cargo" onclick="hideTeleopDropdown()">Placed Cargo</a>
+            <a href="#hatch" onclick="hideTeleopDropdown()">Placed Hatch</a>
+            <a href="#pickedCargo" onclick="hideTeleopDropdown()">Picked up Cargo</a>
+            <a href="#pickedHatch" onclick="hideTeleopDropdown()">Picked up Hatch</a>
+        </div>
 
         <img src="" alt="auto field" id="autoField2"></img>
-        <button class="rocketLeft" onclick="fieldInput('rocketLeft')"></button>
-        <button class="rocketRight" onclick="fieldInput('rocketRight')"></button>
-        <button class="cargoShipRight" onclick="fieldInput('cargoShipRight')"></button>
-        <button class="cargoShipLeft" onclick="fieldInput('cargoShipLeft')"></button>
-        <button class="cargoShipMid" onclick="fieldInput('cargoShipMid')"></button>
-        <button class="leftPickup" onclick="fieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="fieldInput('rightPickup')"></button>
+        <button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
+        <button class="rocketRight" onclick="teleopFieldInput('rocketRight')"></button>
+        <button class="cargoShipRight" onclick="teleopFieldInput('cargoShipRight')"></button>
+        <button class="cargoShipLeft" onclick="teleopFieldInput('cargoShipLeft')"></button>
+        <button class="cargoShipMid" onclick="teleopFieldInput('cargoShipMid')"></button>
+        <button class="leftPickup" onclick="teleopFieldInput('leftPickup')"></button>
+        <button class="rightPickup" onclick="teleopFieldInput('rightPickup')"></button>
 
         <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
@@ -149,8 +154,8 @@
                     <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
             </div>
         </div>
-        <h6>TELEOP</h6>
     </div>
+</div>
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
@@ -186,8 +191,7 @@
                             <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
                         </label>
                     </form>
-                </div>
-
+            </div>        
     </div>
 
     <div id="Post" class="tabcontent">

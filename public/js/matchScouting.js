@@ -83,12 +83,6 @@ function openPage(pageName) {
     document.getElementById("demo").innerHTML = climbTime;
 };
 
-var slider = document.getElementById("input");
-var output = document.getElementById("returnInput");
-slider.oninput = function() {
-    output.innerHTML = this.value;
-}
-
 function chooseStart(p) {
     startPos = p;
     alert(startPos);
@@ -130,21 +124,24 @@ function teamColor() { //!TODO Add full-field functionality to teleop and make s
     }
 }
 
-function fieldInput(f) {
+function autoFieldInput(f) {
     robotAction = f;
     //alert(robotAction);
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("autoDropdown").classList.toggle("show");
+}
+
+function teleopFieldInput (f) {
+    robotAction = f;
+    document.getElementById("teleopDropdown").classList.toggle("show");
 }
 
 //Endgame Timer
 function timer() {
     timeKeep = setInterval(makeTime, 1000);
-
 }
 
 function stopTimer() {
     clearInterval(timeKeep);
-
 }
 
 function makeTime() {
@@ -153,6 +150,15 @@ function makeTime() {
 }
 
 function didClimb(p) {
-    climbType = p;
+    climbType = p; 
 }
-  
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function hideAutoDropdown() {
+    document.getElementById("autoDropdown").classList.toggle("show");
+}
+
+function hideTeleopDropdown() {
+    document.getElementById("teleopDropdown").classList.remove("show");
+}
