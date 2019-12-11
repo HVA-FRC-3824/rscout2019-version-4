@@ -24,7 +24,7 @@ function createAlliance(i) { //* This function creates each and concatenates eac
 }
 
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/2019tnkn/matches"); //* Runs kidnap with the specified url
+    kidnap("/event/scmb2019/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
@@ -49,14 +49,11 @@ function replacePage(id) {
 
 function nextMatch() {
     mNumber = localStorage.getItem("num");
-    var database = firebase.database;
-    firebase.database().ref('firescout2019/').set({
-        test: "test"
-        /*"start position": startPos,
+    firebase.database().ref('firescout2019/' + mNumber).set({
+        "start position": startPos,
         "climb": climbType,
         "timer": climbTime,
         "dropped in auto": droppedAuto
-        */
     });
     mNumber++;
     localStorage.setItem("num", mNumber);
@@ -158,23 +155,4 @@ function makeTime() {
 function didClimb(p) {
     climbType = p;
 }
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
   
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.rocketLeft')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
