@@ -47,20 +47,22 @@ function replacePage(id) {
 
 /* ------------for matchScouting------------- */
 
+function pushFirebase() {
+    alert("test");
+    var database = firebase.database;
+    firebase.database().ref('firescout2019/' + mNumber).set({
+        matchNumber: mNumber,
+        startPosition: startPos
+    });
+}
+
 function nextMatch() {
     mNumber = localStorage.getItem("num");
-  /*  firebase.database().ref('firescout2019/' + mNumber).set({
-        "start position": startPos,
-        "climb": climbType,
-        "timer": climbTime,
-        "dropped in auto": droppedAuto
-    }); */
     mNumber++;
     localStorage.setItem("num", mNumber);
     alert(mNumber);
-    location.replace("./matchScouting.html");
-    
 }
+//location.replace("./matchScouting.html");
 
 function openPage(pageName) {
     //* Hide all elements with class="tabcontent" by default
@@ -130,7 +132,7 @@ function autoFieldInput(f) {
     document.getElementById("autoDropdown").classList.toggle("show");
 }
 
-function teleopFieldInput (f) {
+function teleopFieldInput(f) {
     robotAction = f;
     document.getElementById("teleopDropdown").classList.toggle("show");
 }
@@ -150,7 +152,7 @@ function makeTime() {
 }
 
 function didClimb(p) {
-    climbType = p; 
+    climbType = p;
 }
 
 /* When the user clicks on the button,

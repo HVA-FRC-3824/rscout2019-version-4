@@ -5,12 +5,12 @@
     <title>Scouting</title>
     <meta charset="UTF-8">
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.9.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.9.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.9.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
     <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
-    <script defer src="/__/firebase/7.9.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
@@ -152,14 +152,14 @@
                 <span class="input-number2" id="input-number2"></span>
                 <div class="input-group-button">
                     <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
-       <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
+        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
 
         <h8>Climb Timer</h8>
         <button class="timerStartButton" onclick="timer(); this.onclick=null;" id="Start" name="start">Start<br></button>
@@ -167,38 +167,38 @@
         <div class="timerText">
             <p id="demo"></p>
         </div>
-                <div class="climbOption">
-                    <form>
-                        Climb Options: <br>
-                        <label class="radio">
+        <div class="climbOption">
+            <form>
+                Climb Options: <br>
+                <label class="radio">
                             <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Hab 3<br>
                         </label>
-                            <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Hab 2<br>
-                        </label>
-                        <label class="radio">
+                <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Hab 2<br>
+                </label>
+                <label class="radio">
                             <input type="radio" onclick="didClimb('one')" id="red" name="name" value="climb">Parked on platform<br>
                         </label>
-                        <label class="radio">
+                <label class="radio">
                             <input type="radio" onclick="didClimb('threeSupportedOne')" id="red" name="name" value="climb">Hab 3, Supported one other<br>
                         </label>
-                        <label class="radio">
+                <label class="radio">
                             <input type="radio" onclick="didClimb('threeSupportedTwo')" id="red" name="name" value="climb">Hab 3, supported two others<br>
                         </label>
-                        <label class="radio">
+                <label class="radio">
                             <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
                         </label>
-                        <label class="radio">
+                <label class="radio">
                             <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
                         </label>
-                    </form>
-            </div>        
+            </form>
+        </div>
     </div>
 
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="nextMatch()">Next Match</button>
-        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5"> 
+        <button class="nextButton" id="nextButton" onclick="pushFirebase(); nextMatch();">Next Match</button>
+        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
         <input type="text" class="notes"><br>
     </div>
 
