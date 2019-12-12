@@ -49,12 +49,12 @@ function replacePage(id) {
 
 function nextMatch() {
     mNumber = localStorage.getItem("num");
-    firebase.database().ref('firescout2019/' + mNumber).set({
+  /*  firebase.database().ref('firescout2019/' + mNumber).set({
         "start position": startPos,
         "climb": climbType,
         "timer": climbTime,
         "dropped in auto": droppedAuto
-    });
+    }); */
     mNumber++;
     localStorage.setItem("num", mNumber);
     alert(mNumber);
