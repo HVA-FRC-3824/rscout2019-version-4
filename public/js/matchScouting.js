@@ -47,10 +47,11 @@ function replacePage(id) {
 /* ------------for matchScouting------------- */
 
 function pushFirebase() {
+    alert("test");
     var database = firebase.database;
     firebase.database().ref('firescout2019/' + mNumber).set({
-        "Match Number": mNumber,
-        "startPosition": startPos,
+        matchNumber: mNumber,
+        startPosition: startPos
     });
 }
 
