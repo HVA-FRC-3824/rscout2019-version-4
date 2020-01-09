@@ -17,8 +17,7 @@ climbType = "";
 
 //* Initialize varibles
 
-function createAlliance(match) { //* This function creates each and concatenates each alliance number into a string
-    i = match - 1;
+function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
     redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
     blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
 
@@ -27,10 +26,11 @@ function createAlliance(match) { //* This function creates each and concatenates
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
         if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
+            k++;
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage(" + matchNumber + ")'>Match " + matchNumber + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick = 'replacePage(" + k + ")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
@@ -42,6 +42,7 @@ function replacePage(id) {
     var mNumber = id;
     localStorage.setItem("num", mNumber);
     location.replace("./matchScouting.html");
+
 };
 
 /* ------------for matchScouting------------- */
@@ -50,8 +51,8 @@ function pushFirebase() {
     alert("test");
     var database = firebase.database;
     firebase.database().ref('firescout2019/' + mNumber).set({
-        matchNumber: mNumber,
-        startPosition: startPos
+        "Match Number": mNumber + 1,
+        "startPosition": startPos,
     });
 }
 
