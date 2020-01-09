@@ -23,26 +23,25 @@ function createAlliance(i) { //* This function creates each and concatenates eac
 
 }
 
-function makeSchedule() { //* Makes schedule
-    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
-    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    for (matchNumber = 0, k = 0; matchNumber < James.length; matchNumber++) { //* For loop for creating the schedule
-        if (James[matchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
-            k++;
-            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage(" + k + ")'>Match " + k + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
-            btn = document.createElement("BUTTON"); //* creates a button
-            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-            document.body.appendChild(btn);
-        };
-    };
-};
-
 function replacePage(id) {
     var mNumber = id;
     localStorage.setItem("num", mNumber);
     location.replace("./matchScouting.html");
+};
 
+function makeSchedule() { //* Makes schedule
+    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    for (databaseMatchNumber = 0, qualMatchNumber = 1; databaseMatchNumber < James.length; databaseMatchNumber++) { //* For loop for creating the schedule
+        if (James[databaseMatchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
+            createAlliance(databaseMatchNumber); //* Runs createAlliance to print match participants on the button
+            matchInfo = ("<button onclick = 'replacePage(" + qualMatchNumber + ")'>Match " + qualMatchNumber + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+            btn = document.createElement("BUTTON"); //* creates a button
+            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+            document.body.appendChild(btn);
+            qualMatchNumber++;
+        };
+    };
 };
 
 /* ------------for matchScouting------------- */
