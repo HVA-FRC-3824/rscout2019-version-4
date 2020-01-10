@@ -11,7 +11,7 @@
     <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
     <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
     <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
+    <!-- initialize the SDK after all desiread features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
     <link rel="stylesheet" type="text/css" href="./css/matchScouting.css">
@@ -28,6 +28,7 @@
     <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
+    <button type="submit" class="tablink">Main Menu</button>
 
     <div id="Pre" class="tabcontent">
         <form>
@@ -162,10 +163,11 @@
         <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
 
         <h8>Climb Timer</h8>
-        <button class="timerStartButton" onclick="timer(); this.onclick=null;" id="Start" name="start">Start<br></button>
-        <button class="timerStopButton" onclick="stopTimer()" id="Stop" name="stop">Stop</button>
+        <button class="timerStartButton" onclick="startTimer();" id="Start" name="start">Start<br></button>
+        <button class="timerStopButton" onclick="stopTimer();" id="Stop" name="stop">Stop</button>
+        <button class="timerResetButton" onclick="resetTime();" id="Reset" name="reset">Reset</button>
         <div class="timerText">
-            <p id="demo"></p>
+            <p id="climbed_time"></p>
         </div>
         <div class="climbOption">
             <form>

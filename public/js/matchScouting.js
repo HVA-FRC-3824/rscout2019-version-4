@@ -17,40 +17,39 @@ climbType = "";
 
 //* Initialize varibles
 
-function createAlliance(i) { //* This function creates each and concatenates each alliance number into a string
-    redAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
-    blueAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
+function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
+    i = matchNumber - 1
+    blueAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
 
 }
 
-function replacePage(id) {
-    var mNumber = id;
+function startMatchScouting(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
+    localStorage.setItem("alliances", alliances);
     location.replace("./matchScouting.html");
 };
 
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    for (databaseMatchNumber = 0, qualMatchNumber = 1; databaseMatchNumber < James.length; databaseMatchNumber++) { //* For loop for creating the schedule
-        if (James[databaseMatchNumber].comp_level === "qm") { //* If statement to exclude playoff matches from schedule
-            createAlliance(databaseMatchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick = 'replacePage(" + qualMatchNumber + ")'>Match " + qualMatchNumber + ": " + redAlliance + " | vs | " + blueAlliance + "</button>"); //*Defines matchInfo as the text of a button
+    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+            var currentAlliances = James[matchNumber-1].alliances; // will put into JSON to set in local storage
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + 0 + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
-            qualMatchNumber++;
-        };
     };
 };
 
 /* ------------for matchScouting------------- */
 
 function pushFirebase() {
-    alert("test");
-    var database = firebase.database;
-    firebase.database().ref('firescout2019/' + mNumber).set({
-        "Match Number": mNumber + 1,
+    //var database = firebase.database;
+    match = mNumber + 1
+    firebase.database().ref('firescout2019/' + match).set({
+        "Match Number": match,
         "startPosition": startPos,
     });
 }
@@ -59,7 +58,7 @@ function nextMatch() {
     mNumber = localStorage.getItem("num");
     mNumber++;
     localStorage.setItem("num", mNumber);
-    alert(mNumber);
+    alert("Now scouting: Match " + mNumber);
 }
 //location.replace("./matchScouting.html");
 
@@ -137,17 +136,30 @@ function teleopFieldInput(f) {
 }
 
 //Endgame Timer
-function timer() {
-    timeKeep = setInterval(makeTime, 1000);
+
+var climbTime = 0;
+
+function startTimer() {
+    if (timeKeep != null) {
+        clearInterval(timeKeep);
+    }
+    timeKeep = setInterval(incrementTime, 10);
+    console.log("starting timer");
 }
 
 function stopTimer() {
     clearInterval(timeKeep);
+    console.log("stopping timer");
 }
 
-function makeTime() {
-    climbTime++;
-    document.getElementById("demo").innerHTML = climbTime;
+function incrementTime() {
+    climbTime += .01;
+    document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
+}
+
+function resetTime() {
+    climbTime = 0;
+    document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
 
 function didClimb(p) {
