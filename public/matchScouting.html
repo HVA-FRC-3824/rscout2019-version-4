@@ -39,26 +39,39 @@
         <div class="robotRadio">
             <form>
                 Robot: <br>
-                <label class="radio">
-                    <input type="radio" id="blue" name="name" value="Blue 1"> Blue 1<br>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="blue" name="name" value="Blue 2"> Blue 2<br>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="blue" name="name" value="Blue 3"> Blue 3<br>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="red" name="name" value="Red 1"> Red 1<br>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="red" name="name" value="Red 2"> Red 2<br>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="red" name="name" value="Red 3"> Red 3<br>
-                </label>
+                <label class="radio" id="blue_1">
+                    <input type="radio" id="blue" name="name" value="Blue 1"> Blue 1, 
+                </label><br>
+                <label class="radio" id="blue_2">
+                    <input type="radio" id="blue" name="name" value="Blue 2"> Blue 2, 
+                </label><br>
+                <label class="radio" id="blue_3">
+                    <input type="radio" id="blue" name="name" value="Blue 3"> Blue 3, 
+                </label><br>
+                <label class="radio" id="red_1">
+                    <input type="radio" id="red" name="name" value="Red 1"> Red 1, 
+                </label><br>
+                <label class="radio" id="red_2">
+                    <input type="radio" id="red" name="name" value="Red 2"> Red 2, 
+                </label><br>
+                <label class="radio" id="red_3">
+                    <input type="radio" id="red" name="name" value="Red 3"> Red 3, 
+                </label><br>
             </form>
         </div>
+
+        <script>
+            //Display team numbers alongside position
+            var alliances = JSON.parse(localStorage.getItem("alliances"))
+            console.log(alliances);
+            document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
+            document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
+            document.getElementById("blue_3").innerHTML += alliances.blue.team_keys[2].slice(3);
+
+            document.getElementById("red_1").innerHTML += alliances.red.team_keys[0].slice(3);
+            document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
+            document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
+        </script>
 
         <h1>Robot Start Position</h1>
 

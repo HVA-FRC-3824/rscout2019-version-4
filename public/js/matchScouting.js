@@ -26,7 +26,7 @@ function createAlliance(matchNumber) { //* This function creates each and concat
 
 function startMatchScouting(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
-    localStorage.setItem("alliances", alliances);
+    localStorage.setItem("alliances", JSON.stringify(alliances));
     location.replace("./matchScouting.html");
 };
 
@@ -35,8 +35,7 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            var currentAlliances = James[matchNumber-1].alliances; // will put into JSON to set in local storage
-            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + 0 + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
@@ -48,10 +47,12 @@ function makeSchedule() { //* Makes schedule
 function pushFirebase() {
     //var database = firebase.database;
     match = mNumber + 1
+    /*
     firebase.database().ref('firescout2019/' + match).set({
         "Match Number": match,
         "startPosition": startPos,
     });
+    */
 }
 
 function nextMatch() {
