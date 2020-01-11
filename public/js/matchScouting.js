@@ -46,13 +46,44 @@ function makeSchedule() { //* Makes schedule
 
 function pushFirebase() {
     //var database = firebase.database;
-    match = mNumber + 1
-    /*
+    match = localStorage.getItem("num");
+    var teamNumber = 0;
+
+    console.log(driveStation);
+
+    var alliances = JSON.parse(localStorage.getItem("alliances"))
+
+    switch(driveStation) {
+        case "B1":
+            teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
+            break;
+        case "B2":
+            teamNumber = parseInt(alliances.blue.team_keys[1].slice(3));
+            break;
+        case "B3":
+            teamNumber = parseInt(alliances.blue.team_keys[2].slice(3));
+            break;
+        case "R1":
+            teamNumber = parseInt(alliances.red.team_keys[0].slice(3));
+            break;
+        case "R2":
+            teamNumber = parseInt(alliances.red.team_keys[1].slice(3));
+            break;
+        case "R3":
+            teamNumber = parseInt(alliances.red.team_keys[2].slice(3));
+            break;
+        default:
+            teamNumber = 9999;
+            break;
+        
+    }
+
     firebase.database().ref('firescout2019/' + match).set({
         "Match Number": match,
+        "teamNumber": teamNumber,
+        "driveStation": driveStation,
         "startPosition": startPos,
     });
-    */
 }
 
 function nextMatch() {
@@ -90,6 +121,7 @@ function chooseStart(p) {
 }
 
 function chooseDriveStation(drive) {
+    console.log(drive);
     driveStation = drive;
 }
 

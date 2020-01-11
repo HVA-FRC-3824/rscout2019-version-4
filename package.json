@@ -5,5 +5,8 @@
   "main": "server.js",
   "author": {
     "name": "Evan Boswell"
+  },
+  "devDependencies": {
+    "eslint-plugin-promise": "^4.2.1"
   }
 }
