@@ -15,7 +15,7 @@ timeKeep = 0;
 slider = 0;
 climbType = "";
 
-//* Initialize varibles
+//* Initialize variblesks
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     i = matchNumber - 1
@@ -36,7 +36,7 @@ function makeSchedule() { //* Makes schedule
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
             var currentAlliances = James[matchNumber-1].alliances; // will put into JSON to set in local storage
-            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + 0 + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + 0 + ")'> Match " + matchNumber + ": <p style='color:#ff5569'>" + redAlliance + "</p> | vs | <p style='color:#5569ff'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
             btn = document.createElement("BUTTON"); //* creates a button
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);

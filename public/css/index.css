@@ -45,7 +45,7 @@ body {
 }
 
 .buttonBack {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     position: absolute;
     top: 0%;
     left: 0%;
@@ -111,7 +111,7 @@ body {
 }
 
 .btn-group .button {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     float:left;
     border: 1px solid black;
     margin: 0 auto;
@@ -126,6 +126,6 @@ body {
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #aaaaff;
 }
 

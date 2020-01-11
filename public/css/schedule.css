@@ -25,14 +25,14 @@ a {
 }
 
 .buttonBack {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     position: absolute;
     top: 0%;
     left: 0%;
 }
 
 .button1 {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -45,7 +45,7 @@ a {
 }
 
 button {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -58,7 +58,7 @@ button {
 }
 
 .button2 {
-    background-color: rebeccapurple;
+    background-color: #7722cc;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -71,5 +71,5 @@ button {
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #aaaaff;
 }

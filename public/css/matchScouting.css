@@ -26,7 +26,7 @@
     }
     
     .tablink:hover {
-        background-color: blue;
+        background-color: grey;
     }
     /* Style the tab content (and add height:100% for full page content) */
     
@@ -263,7 +263,7 @@
         appearance: none;
         width: 15px;
         height: 15px;
-        background: purple;
+        background: #7722cc;
         cursor: pointer;
     }
     
@@ -272,7 +272,7 @@
         appearance: none;
         width: 15px;
         height: 15px;
-        background: purple;
+        background: #7722cc;
         cursor: pointer;
     }
     
@@ -392,7 +392,7 @@
         height: 19%;
         width: 12%;
         opacity: 0;
-        color: blueviolet;
+        color: #7722cc;
         -webkit-appearance: none;
         border-radius: 0;
     }
@@ -470,11 +470,11 @@
     }
  
     .autoDropdown:hover, .autoDropdown:focus {
-        background-color: blueviolet;
+        background-color: #7722cc;
     }
 
     .teleopDropdown:hover, .teleopDropdown:focus {
-        background-color: blueviolet;
+        background-color: #7722cc;
     }
     
     .teleopDropdown-content, .autoDropdown-content {
@@ -519,7 +519,7 @@
     }
     
     .nextButton {
-        background-color: rebeccapurple;
+        background-color: #7722cc;
         border: 1px solid black;
         margin: 0 auto;
         color: white;
@@ -563,7 +563,7 @@
     }
     
     .timerStartButton {
-        background-color: rebeccapurple;
+        background-color: #7722cc;
         border: 1px solid black;
         margin: 0 auto;
         color: white;
@@ -577,7 +577,7 @@
     }
 
     .timerStopButton {
-        background-color: rebeccapurple;
+        background-color: #7722cc;
         border: 1px solid black;
         margin: 0 auto;
         color: white;
@@ -638,7 +638,7 @@
         appearance: none;
         width: 15px;
         height: 15px;
-        background: purple;
+        background: #7722cc;
         cursor: pointer;
     }
 
