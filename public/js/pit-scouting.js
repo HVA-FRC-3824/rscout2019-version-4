@@ -1,12 +1,20 @@
 var teamNum;
-weight;
-driveTrain;
- robotData;
+var weight;
+var driveTrain;
+var robotData;
 
 function button() {
     teamNum = prompt("Team Number")
     weight = prompt("Robot Weight")
     driveTrain = prompt("Drive Train")
-    console.log(robotData);
+    robotData = {teamNum: teamNum, weight: weight, driveTrain: driveTrain};
+    addPitToFirebase(robotData);
 }
-var robotData = [teamNum, weight, driveTrain];
+
+function addPitToFirebase(data) {
+    console.log(data);
+    firebase.database().ref('pitscouting/' + data.teamNum).set({
+        "Weight": data.weight,
+        "DriveTrain": data.driveTrain,
+    });
+}

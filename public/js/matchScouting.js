@@ -33,6 +33,7 @@ function startMatchScouting(mNumber, alliances) {
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
             createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
             matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
@@ -40,7 +41,20 @@ function makeSchedule() { //* Makes schedule
             btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
             document.body.appendChild(btn);
     };
+    localStorage.setItem("blueAllianceData", JSON.stringify(James));
 };
+
+function loadSchedule() {
+    James = JSON.parse(localStorage.getItem("blueAllianceData"));
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+            btn = document.createElement("BUTTON"); //* creates a button
+            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+            document.body.appendChild(btn);
+    };
+}
 
 /* ------------for matchScouting------------- */
 
@@ -78,7 +92,7 @@ function pushFirebase() {
         
     }
 
-    firebase.database().ref('firescout2019/' + match).set({
+    firebase.database().ref('matchscouting/' + match).set({
         "Match Number": match,
         "teamNumber": teamNumber,
         "driveStation": driveStation,
@@ -90,7 +104,7 @@ function nextMatch() {
     mNumber = localStorage.getItem("num");
     mNumber++;
     localStorage.setItem("num", mNumber);
-    alert("Now scouting: Match " + mNumber);
+    location.replace("./schedule.html");
 }
 //location.replace("./matchScouting.html");
 

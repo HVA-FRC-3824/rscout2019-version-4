@@ -2,6 +2,17 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desiread features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!--reference the css stuff-->
     <!--reference the css stuff-->
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <!--reference javascript stuff-->
@@ -18,11 +29,11 @@
             Back
         </button>
     </form>
-    <form onclick=button()>
-        <button type="submit" class="button2">
-            pitScout
-        </button>
-    </form>
+    <center>
+    <button onclick=button()>
+        pitScout
+    </button>
+    </center>
 
 
 </body>
