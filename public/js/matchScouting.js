@@ -15,7 +15,7 @@ timeKeep = 0;
 slider = 0;
 climbType = "";
 
-//* Initialize varibles
+//* Initialize variblesks
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     i = matchNumber - 1
@@ -35,11 +35,11 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
-        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-        document.body.appendChild(btn);
+            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+            btn = document.createElement("BUTTON"); //* creates a button
+            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+            document.body.appendChild(btn);
     };
     localStorage.setItem("blueAllianceData", JSON.stringify(James));
 };
@@ -48,17 +48,17 @@ function loadSchedule() {
     James = JSON.parse(localStorage.getItem("blueAllianceData"));
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
-        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-        document.body.appendChild(btn);
+            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+            btn = document.createElement("BUTTON"); //* creates a button
+            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+            document.body.appendChild(btn);
     };
 }
 
 /* ------------for matchScouting------------- */
 
-function createMatchArray() {
+function pushFirebase() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
     var teamNumber = 0;
@@ -67,7 +67,7 @@ function createMatchArray() {
 
     var alliances = JSON.parse(localStorage.getItem("alliances"))
 
-    switch (driveStation) {
+    switch(driveStation) {
         case "B1":
             teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
             break;
@@ -89,24 +89,18 @@ function createMatchArray() {
         default:
             teamNumber = 9999;
             break;
-
+        
     }
-    matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos };
-    pushFirebaseMatch(matchDataArray);
-}
 
-function pushFirebaseMatch(data) {
-    console.log(data);
-    firebase.database().ref('matchscouting/' + data.match).set({
-        "teamNumber": data.teamNumber,
-        "driveStation": data.driveStation,
-        "startPosition": data.startPos,
+    firebase.database().ref('matchscouting/' + match).set({
+        "Match Number": match,
+        "teamNumber": teamNumber,
+        "driveStation": driveStation,
+        "startPosition": startPos,
     });
-    setTimeout(nextMatch, 1000);
 }
 
 function nextMatch() {
-    console.log(match)
     mNumber = localStorage.getItem("num");
     mNumber++;
     localStorage.setItem("num", mNumber);
@@ -122,7 +116,7 @@ function openPage(pageName) {
         tabcontent[i].style.display = "";
     };
 
-    //* Remove the background color of all tablinks/buttons
+    //* Remove the background color of all tablinks/buttonss
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "rebeccapurple";
