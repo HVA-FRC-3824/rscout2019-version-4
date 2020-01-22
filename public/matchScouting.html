@@ -36,7 +36,7 @@
             <input type="text" name="name">
         </form>
 
-        <div class="robotRadio">
+        <div class="robotRadio" >
             <form id="driveStation">
                 Robot: <br>
                 <label class="radio" id="blue_1">
@@ -76,7 +76,7 @@
         <h1>Robot Start Position</h1>
 
         <div class="container">
-            <!--<img src="./images/startingHABs.png"></img>
+            <img src="./images/startingHABs.png"></img>
             <button class="blueTopRight" onclick="chooseStart('blueTopRight')"></button>
             <button class="blueTopLeft" onclick="chooseStart('blueTopLeft')"></button>
             <button class="blueBottomLeft" onclick="chooseStart('blueBottomLeft')"></button>
@@ -87,10 +87,9 @@
             <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
             <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
             <button class="redCenter" onclick="chooseStart('redCenter')"></button>
-            <button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
+            <!--<button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
             <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
             <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
-            <input type="range" id="startPosition" class="sliderStartPosition" name="StartPosition" min="0" max="25">
         </div>
     </div>
 
@@ -213,46 +212,7 @@
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
-                            <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
-                        </label>
-                <label class="radio">
-                            <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
-                        </label>
-            </form>
-        </div>
-    </div>
-
-    <div id="Post" class="tabcontent">
-        <h7>Overall Rating:</h7>
-        <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
-                            <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
-                        </label>
-                <label class="radio">
-                            <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
-                        </label>
-            </form>
-        </div>
-    </div>
-
-    <div id="Post" class="tabcontent">
-        <h7>Overall Rating:</h7>
-        <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
-                            <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
-                        </label>
-                <label class="radio">
-                            <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
-                        </label>
-            </form>
-        </div>
-    </div>
-
-    <div id="Post" class="tabcontent">
-        <h7>Overall Rating:</h7>
-        <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
+        <button class="nextButton" id="nextButton" onclick="pushFirebase(); nextMatch();">Next Match</button>
         <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
         <input type="text" class="notes"><br>
     </div>
