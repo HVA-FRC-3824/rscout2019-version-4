@@ -10,9 +10,11 @@
     /* ----------------------FOR PRE MATCH INFO-----------------------/*
 
 /* Style tab links */
+    
     .body {
         position: relative;
     }
+    
     .tablink {
         background-color: #555;
         color: white;
@@ -291,8 +293,8 @@
         top: 93%;
         left: 33%;
     }
-
-    h5 { 
+    
+    h5 {
         color: greenyellow;
         font-size: 80px;
         position: absolute;
@@ -396,7 +398,7 @@
         -webkit-appearance: none;
         border-radius: 0;
     }
-
+    
     .rocketRight {
         position: absolute;
         top: 74.5%;
@@ -468,39 +470,49 @@
         -webkit-appearance: none;
         border-radius: 0;
     }
- 
-    .autoDropdown:hover, .autoDropdown:focus {
-        background-color: #7722cc;
-    }
-
-    .teleopDropdown:hover, .teleopDropdown:focus {
+    
+    .autoDropdown:hover,
+    .autoDropdown:focus {
         background-color: #7722cc;
     }
     
-    .teleopDropdown-content, .autoDropdown-content {
+    .teleopDropdown:hover,
+    .teleopDropdown:focus {
+        background-color: #7722cc;
+    }
+    
+    .teleopDropdown-content,
+    .autoDropdown-content {
         display: none;
         position: relative;
         background-color: #f1f1f1;
         overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
         left: 50%;
         width: 30%;
     }
-
-    .teleopDropdown-content a, .autoDropdown-content a {
+    
+    .teleopDropdown-content a,
+    .autoDropdown-content a {
         color: black;
         padding: 1% 1%;
         text-decoration: none;
         display: block;
     }
-      .autoDropdown a:hover {background-color: #ddd;}
-
-      .teleopDropdown a:hover {background-color: #ddd;}
-
-
-      .show {display: block;}
-
+    
+    .autoDropdown a:hover {
+        background-color: #ddd;
+    }
+    
+    .teleopDropdown a:hover {
+        background-color: #ddd;
+    }
+    
+    .show {
+        display: block;
+    }
+    
     #Teleop img {
         position: absolute;
         left: 0%;
@@ -509,7 +521,7 @@
         height: 85%;
         align-content: center;
     }
-
+    
     h6 {
         color: red;
         font-size: 110px;
@@ -531,7 +543,7 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
+    
     #Auto {
         background-color: black;
         color: white;
@@ -575,7 +587,7 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
+    
     .timerStopButton {
         background-color: #7722cc;
         border: 1px solid black;
@@ -589,7 +601,7 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
+    
     .timerResetButton {
         background-color: grey;
         border: 1px solid black;
@@ -603,14 +615,44 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
+    
     .climbOption {
         font-size: 30px;
         position: absolute;
         top: 12%;
         left: 40%;
     }
-
+    
+    .sliderStartPosition {
+        position: absolute;
+        top: 18%;
+        left: 15%;
+        -webkit-appearance: slider-vertical;
+        /* Override default CSS styles */
+        appearance: none;
+        width: 15%;
+        /* Full-width */
+        height: 400px;
+        /* Specified height */
+        background: white;
+        /* Grey background */
+        outline: none;
+        /* Remove outline */
+        opacity: .7;
+        /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s;
+        /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+    
+    .sliderStartPosition::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        background: #7722cc;
+        cursor: pointer;
+    }
+    
     .sliderClimb {
         position: absolute;
         top: 18%;
@@ -632,7 +674,7 @@
         /* 0.2 seconds transition on hover */
         transition: opacity .2s;
     }
-
+    
     .sliderClimb::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
@@ -641,21 +683,21 @@
         background: #7722cc;
         cursor: pointer;
     }
-
+    
     h7 {
         position: absolute;
         top: 15%;
         left: 75%;
     }
-
+    
     h8 {
-        position:absolute;
-        top:15%;
+        position: absolute;
+        top: 15%;
         left: 16%;
     }
-
+    
     h9 {
-        position:absolute;
+        position: absolute;
         top: 10%;
         left: 20%;
     }

@@ -102,7 +102,7 @@ function pushFirebaseMatch(data) {
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
     });
-    nextMatch();
+    setTimeout(nextMatch, 1000);
 }
 
 function nextMatch() {
