@@ -15,7 +15,7 @@ timeKeep = 0;
 slider = 0;
 climbType = "";
 
-//* Initialize variblesks
+//* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     i = matchNumber - 1
@@ -58,7 +58,7 @@ function loadSchedule() {
 
 /* ------------for matchScouting------------- */
 
-function pushFirebase() {
+function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
     var teamNumber = 0;
@@ -93,7 +93,6 @@ function pushFirebase() {
     }
     matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos };
     pushFirebaseMatch(matchDataArray);
-
 }
 
 function pushFirebaseMatch(data) {
@@ -103,10 +102,11 @@ function pushFirebaseMatch(data) {
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
     });
-    setTimeout(nextMatch, 1000);
+    nextMatch();
 }
 
 function nextMatch() {
+    console.log(match)
     mNumber = localStorage.getItem("num");
     mNumber++;
     localStorage.setItem("num", mNumber);
@@ -122,7 +122,7 @@ function openPage(pageName) {
         tabcontent[i].style.display = "";
     };
 
-    //* Remove the background color of all tablinks/buttonss
+    //* Remove the background color of all tablinks/buttons
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "rebeccapurple";
@@ -210,94 +210,13 @@ function incrementTime() {
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
+function resetTime() {
+    climbTime = 0;
+    document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
 
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
-}
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
-    document.getElementById("autoDropdown").classList.toggle("show");
-}
-
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
+function didClimb(p) {
+    climbType = p;
 }
 
 /* When the user clicks on the button,

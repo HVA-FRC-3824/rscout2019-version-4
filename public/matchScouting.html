@@ -30,7 +30,7 @@
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
 
-    <button id="Pre" class="tabcontent">
+    <div id="Pre" class="tabcontent">
         <form>
             Name: <br>
             <input type="text" name="name">
@@ -75,10 +75,24 @@
 
         <h1>Robot Start Position</h1>
 
-        <button class="container">
+        <div class="container">
+            <!--<img src="./images/startingHABs.png"></img>
+            <button class="blueTopRight" onclick="chooseStart('blueTopRight')"></button>
+            <button class="blueTopLeft" onclick="chooseStart('blueTopLeft')"></button>
+            <button class="blueBottomLeft" onclick="chooseStart('blueBottomLeft')"></button>
+            <button class="blueBottomRight" onclick="chooseStart('blueBottomRight')"></button>
+            <button class="blueCenter" onclick="chooseStart('blueCenter')"></button>
+            <button class="redTopRight" onclick="chooseStart('redTopRight')"></button>
+            <button class="redTopLeft" onclick="chooseStart('redTopLeft')"></button>
+            <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
+            <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
+            <button class="redCenter" onclick="chooseStart('redCenter')"></button>
+            <button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
+            <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
+            <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
             <input type="range" id="startPosition" class="sliderStartPosition" name="StartPosition" min="0" max="25">
-        </button>
-    </button>
+        </div>
+    </div>
 
     <div id="Auto" class="tabcontent">
         <h3>Speed:</h3>
@@ -199,7 +213,9 @@
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="pushFirebase(); nextMatch();">Next Match</button>
+        =
+        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
+
         <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
         <input type="text" class="notes"><br>
     </div>
@@ -207,14 +223,3 @@
 </body>
 
 </html>
-</button>
-
-</body>
-
-</html>
-</div>
-
-</body>
-
-</html>
-</div>
