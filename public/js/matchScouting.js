@@ -14,13 +14,14 @@ climbTime = 0;
 timeKeep = 0;
 slider = 0;
 climbType = "";
+filteredJames = [];
 
 //* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    i = matchNumber - 1
-    blueAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
-    redAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
+    var i = matchNumber - 1
+    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 
 }
 
@@ -30,18 +31,24 @@ function startMatchScouting(mNumber, alliances) {
     location.replace("./matchScouting.html");
 };
 
+function filterSchedule(qual) {
+    return qual.comp_level == "qm";
+}
+
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
+    kidnap("/event/2019hop/matches"); //* Runs kidnap w ith the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    filteredJames = James.filter(filterSchedule);
+    var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
-    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
     };
-    localStorage.setItem("blueAllianceData", JSON.stringify(James));
+    localStorage.setItem("blueAllianceData", JSON.stringify(filteredJames));
 };
 
 function loadSchedule() {
