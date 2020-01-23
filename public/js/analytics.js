@@ -24,10 +24,3 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
-
-/*function makeSchedule() {
-    for (let i = 0; i < kidnap("/event/2019hop/matches"); i++) {
-        console.log(James[i]);
-    };
-};
-*/
