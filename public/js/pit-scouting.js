@@ -14,7 +14,7 @@ function createPitArrary() {
 function addPitToFirebase(data) {
     console.log(data);
     console.log(teamNum);
-    firebase.database().ref('pitscouting/' + data.teamNum).set({
+    firebase.database().ref('pitScouting/' + data.teamNum).set({
         "Weight": data.weight,
         "DriveTrain": data.driveTrain,
     });

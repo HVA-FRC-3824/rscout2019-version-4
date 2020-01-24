@@ -109,13 +109,11 @@ function createMatchArray() {
 
 function pushFirebaseMatch(data) {
     console.log(data);
-    firebase.database().ref('matchscouting/' + data.match).set({
-        "teamNumber": data.teamNumber,
+    firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
     });
     setTimeout(nextMatch, 1000);
-
 }
 
 function nextMatch() {
