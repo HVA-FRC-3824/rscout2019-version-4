@@ -18,6 +18,9 @@ filteredJames = [];
 
 //* Initialize varibles
 
+const dbMatchNum = firebase.database().ref().child('Match Number'); //!New stuff that doesn't really work
+const dbTeamNum = dbMatchNum.child("Team Number");
+
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     var i = matchNumber - 1
     blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
@@ -36,14 +39,14 @@ function filterSchedule(qual) {
 }
 
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/2019hop/matches"); //* Runs kidnap w ith the specified url
+    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
     for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
@@ -98,6 +101,8 @@ function createMatchArray() {
             break;
 
     }
+
+    var startPos = document.getElementById("startPos").value;
     matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos };
     pushFirebaseMatch(matchDataArray);
 }
@@ -110,6 +115,7 @@ function pushFirebaseMatch(data) {
         "startPosition": data.startPos,
     });
     setTimeout(nextMatch, 1000);
+
 }
 
 function nextMatch() {
@@ -141,11 +147,6 @@ function openPage(pageName) {
     document.getElementById("input-number2").innerHTML = 0;
     document.getElementById("demo").innerHTML = climbTime;
 };
-
-function chooseStart(p) {
-    startPos = p;
-    alert(startPos);
-}
 
 function chooseDriveStation(drive) {
     console.log(drive);
