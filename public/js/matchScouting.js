@@ -16,10 +16,10 @@ slider = 0;
 climbType = "";
 filteredJames = [];
 
+
 //* Initialize varibles
 
-const dbMatchNum = firebase.database().ref().child('Match Number'); //!New stuff that doesn't really work
-const dbTeamNum = dbMatchNum.child("Team Number");
+
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     var i = matchNumber - 1
