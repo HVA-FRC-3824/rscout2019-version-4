@@ -147,11 +147,18 @@ function openPage(pageName) {
     document.getElementById("demo").innerHTML = climbTime;
 };
 
-function getShootSpot() {
+function getShootSpotAuto() {
     var shootX = event.clientX;
     var shootY = event.clientY;
-    var shootPosition = "X coords: " + shootX + ", Y coords: " + shootY;
-    console.log(shootPosition);
+    var shootPositionAuto = "X coords: " + shootX + ", Y coords: " + shootY;
+    console.log(shootPositionAuto);
+}
+
+function getShootSpotTeleop() {
+    var shootX = event.clientX;
+    var shootY = event.clientY;
+    var shootPositionTeleop = "X coords: " + shootX + ", Y coords: " + shootY;
+    console.log(shootPositionTeleop);
 }
 
 function chooseDriveStation(drive) {
@@ -160,23 +167,27 @@ function chooseDriveStation(drive) {
     alert(teamSide);
     if (teamSide == "R") {
         document.getElementById("autoField").src = "./images/red-field.png";
-        document.getElementById("autoField2").src = "./images/full-field.png";
+        document.getElementById("teleopField").src = "./images/full-field.png";
     } else if (teamSide == "B") {
         document.getElementById("autoField").src = "./images/blue-field.png";
-        document.getElementById("autoField2").src = "./images/full-field.png";
+        document.getElementById("teleopField").src = "./images/full-field.png";
     } else {
         alert("no button");
     }
 }
 
 function increment() {
-    ballsHeldAuto++;
-    document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    if (ballsHeldTeleop < 5) {
+        ballsHeldAuto++;
+        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    }
 }
 
-function increment2() {
-    ballsHeldTeleop++;
-    document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+function incrementTelop() {
+    if (ballsHeldTeleop < 5) {
+        ballsHeldTeleop++;
+        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+    }
 }
 
 function decrement() {
@@ -186,7 +197,7 @@ function decrement() {
     }
 }
 
-function decrement2() {
+function decrementTeleop() {
     if (ballsHeldTeleop > 0) {
         ballsHeldTeleop--;
         document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
@@ -255,10 +266,14 @@ toggle between hiding and showing the dropdown content */
 function hideAutoDropdown(whereScored) {
     robotScore = robotScore + (whereScored * 2);
     decrement();
+    //shootPosition = shootHeatMap[];
     document.getElementById("autoDropdown").classList.toggle("show");
     console.log(robotScore);
 }
 
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
+function hideTeleopDropdown(whereScored) {
+    robotScore = robotScore + whereScored;
+    decrementTeleop();
+    document.getElementById("teleopDropdown").classList.toggle("show");
+    console.log(robotScore);
 }

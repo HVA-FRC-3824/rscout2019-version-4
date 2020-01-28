@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     <title>Scouting</title>
@@ -80,24 +79,30 @@
         </div>
     </div>
 
-    <button id="Auto" class="tabcontent">
+    <!--
+============================================
+    This is Auto 
+============================================
+-->
+
+    <div id="Auto" class="tabcontent">
         <!--<h3>Speed:</h3>
             <h2>Accuracy:</h2>-->
-        <img onclick="getShootSpot(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
+        <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div id="autoDropdown" class="autoDropdown-content">
             <a href="#innerPort" onclick="hideAutoDropdown(3)">Scored 3</a>
             <a href="#outterPort" onclick="hideAutoDropdown(2)">Scored 2</a>
             <a href="#lowerPort" onclick="hideAutoDropdown(1)">Scored 1</a>
         </div>
+        <button class="pickupButton" onclick="increment();">Picked Up From Floor</button>
         <!--<button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
         <button class="rocketRight" onclick="autoFieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="autoFieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="autoFieldInput('cargoShipLeft')"></button>
         <button class="cargoShipMid" onclick="autoFieldInput('cargoShipMid')"></button>
         <button class="leftPickup" onclick="autoFieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>-->
-
-        <!--<form>
+        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>
+        <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
         <form>
@@ -115,28 +120,32 @@
                 </div>
             </div>
         </div>
-        <h5>AUTO</h5>
-    </<button>
+    </div>
+
+    <!--
+============================================
+    This is Teleop  
+============================================
+    -->
 
     <div id="Teleop" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
         <h5>TELEOP</h5>
         <div id="teleopDropdown" class="teleopDropdown-content">
-            <a href="#innerPort" onclick="hideTeleopDropdown()">Scored 3</a>
-            <a href="#outerPort" onclick="hideTeleopDropdown()">Scored 2</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown()">Scored 1</a>
+            <a href="#innerPort" onclick="hideTeleopDropdown(3)">Scored 3</a>
+            <a href="#outerPort" onclick="hideTeleopDropdown(2)">Scored 2</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown(1)">Scored 1</a>
         </div>
 
-        <img src="" alt="auto field" id="autoField2"></img>
-        <button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
+        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
+        <!--<button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
         <button class="rocketRight" onclick="teleopFieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="teleopFieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="teleopFieldInput('cargoShipLeft')"></button>
         <button class="cargoShipMid" onclick="teleopFieldInput('cargoShipMid')"></button>
         <button class="leftPickup" onclick="teleopFieldInput('leftPickup')"></button>
         <button class="rightPickup" onclick="teleopFieldInput('rightPickup')"></button>
-        <!--
         <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
@@ -148,15 +157,21 @@
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
-                    <span onclick="decrement2()" class="input-number-decrement">-</span>
+                    <span onclick="decrementTeleop()" class="input-number-decrement">-</span>
                 </div>
                 <span class="input-number2" id="input-number2"></span>
                 <div class="input-group-button">
-                    <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
+                    <span onclick="incrementTelop()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
         </div>
     </div>
+    <!--
+============================================
+    We're in the Endgame now
+============================================
+    -->
+
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
@@ -196,14 +211,44 @@
         </div>
     </div>
 
+    <!--
+============================================
+    This is Post Match
+============================================
+    -->
+
+
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <h9>Notes: </h9>
         <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
         <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
-        <input type="text" class="notes"><br>
+
     </div>
 
 </body>
 
-</html>
+</input>
+
+<!-- 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌💨🏃 
+    💨...🏃 
+    ...🏃 
+    ..🚶 
+    .🚶 
+    🚶‍♂️
+    h*ck, i missed the bus 
+-->
