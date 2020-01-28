@@ -24,8 +24,8 @@
 
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white'), teamColor('startPos')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
@@ -73,52 +73,37 @@
             document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
         </script>
 
-        <h1>Robot Start Position</h1>
+        <h1>Robot Start Position:</h1>
 
         <div class="container">
-            <!--<img src="./images/startingHABs.png"></img>
-            <button class="blueTopRight" onclick="chooseStart('blueTopRight')"></button>
-            <button class="blueTopLeft" onclick="chooseStart('blueTopLeft')"></button>
-            <button class="blueBottomLeft" onclick="chooseStart('blueBottomLeft')"></button>
-            <button class="blueBottomRight" onclick="chooseStart('blueBottomRight')"></button>
-            <button class="blueCenter" onclick="chooseStart('blueCenter')"></button>
-            <button class="redTopRight" onclick="chooseStart('redTopRight')"></button>
-            <button class="redTopLeft" onclick="chooseStart('redTopLeft')"></button>
-            <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
-            <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
-            <button class="redCenter" onclick="chooseStart('redCenter')"></button>
-            <button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
-            <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
-            <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
-            <input type="range" id="startPos" class="sliderStartPosition" name="StartPosition" min="0" max="3">
+            <input type="range" id="startPos" class="sliderStartPosition" name="StartPosition" min="0" max="2">
         </div>
     </div>
 
-    <div id="Auto" class="tabcontent">
-        <h3>Speed:</h3>
-        <h2>Accuracy:</h2>
-        <img src="" alt="auto field" id="autoField"></img>
+    <button id="Auto" class="tabcontent">
+        <!--<h3>Speed:</h3>
+            <h2>Accuracy:</h2>-->
+        <img onclick="getShootSpot(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div id="autoDropdown" class="autoDropdown-content">
-            <a href="#cargo" onclick="hideAutoDropdown()">Placed Cargo</a>
-            <a href="#hatch" onclick="hideAutoDropdown()">Placed Hatch</a>
-            <a href="#ca
-            rgo" onclick="hideAutoDropdown()">Picked Up Cargo</a>
-            <a href="#hatch" onclick="hideAutoDropdown()">Picked Up Hatch</a>
+            <a href="#innerPort" onclick="hideAutoDropdown(3)">Scored 3</a>
+            <a href="#outterPort" onclick="hideAutoDropdown(2)">Scored 2</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown(1)">Scored 1</a>
         </div>
-        <button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
+        <!--<button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
         <button class="rocketRight" onclick="autoFieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="autoFieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="autoFieldInput('cargoShipLeft')"></button>
         <button class="cargoShipMid" onclick="autoFieldInput('cargoShipMid')"></button>
         <button class="leftPickup" onclick="autoFieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>
-        <form>
+        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>-->
+
+        <!--<form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
         <form>
             <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-        </form>
-        <h4># Dropped:</h4>
+        </form>-->
+        <h4>Balls Held: </h4>
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
@@ -131,17 +116,16 @@
             </div>
         </div>
         <h5>AUTO</h5>
-    </div>
+    </<button>
 
     <div id="Teleop" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
         <h5>TELEOP</h5>
         <div id="teleopDropdown" class="teleopDropdown-content">
-            <a href="#cargo" onclick="hideTeleopDropdown()">Placed Cargo</a>
-            <a href="#hatch" onclick="hideTeleopDropdown()">Placed Hatch</a>
-            <a href="#pickedCargo" onclick="hideTeleopDropdown()">Picked up Cargo</a>
-            <a href="#pickedHatch" onclick="hideTeleopDropdown()">Picked up Hatch</a>
+            <a href="#innerPort" onclick="hideTeleopDropdown()">Scored 3</a>
+            <a href="#outerPort" onclick="hideTeleopDropdown()">Scored 2</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown()">Scored 1</a>
         </div>
 
         <img src="" alt="auto field" id="autoField2"></img>
@@ -152,14 +136,15 @@
         <button class="cargoShipMid" onclick="teleopFieldInput('cargoShipMid')"></button>
         <button class="leftPickup" onclick="teleopFieldInput('leftPickup')"></button>
         <button class="rightPickup" onclick="teleopFieldInput('rightPickup')"></button>
-
+        <!--
         <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
         <form>
             <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
         </form>
-        <h4># Dropped:</h4>
+        -->
+        <h4>Balls Held:</h4>
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">

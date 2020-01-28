@@ -8,18 +8,18 @@ names = "";
 startPos = "";
 robotAction = "";
 itemsDropped = "";
-droppedAuto = 0;
-droppedTeleop = 0;
 climbTime = 0;
 timeKeep = 0;
 slider = 0;
 climbType = "";
 filteredJames = [];
-
+ballsHeldAuto = 0;
+ballsHeldTeleop = 0;
+teamSide = "";
+robotScore = 0;
+drive = "";
 
 //* Initialize varibles
-
-
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
     var i = matchNumber - 1
@@ -103,7 +103,7 @@ function createMatchArray() {
     }
 
     var startPos = document.getElementById("startPos").value;
-    matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos };
+    matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore };
     pushFirebaseMatch(matchDataArray);
 }
 
@@ -112,6 +112,7 @@ function pushFirebaseMatch(data) {
     firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
+        "robotScore": data.robotScore,
     });
     setTimeout(nextMatch, 1000);
 }
@@ -146,42 +147,66 @@ function openPage(pageName) {
     document.getElementById("demo").innerHTML = climbTime;
 };
 
+function getShootSpot() {
+    var shootX = event.clientX;
+    var shootY = event.clientY;
+    var shootPosition = "X coords: " + shootX + ", Y coords: " + shootY;
+    console.log(shootPosition);
+}
+
 function chooseDriveStation(drive) {
-    console.log(drive);
     driveStation = drive;
-}
-
-function increment() {
-    droppedAuto++;
-    document.getElementById("input-number").innerHTML = droppedAuto;
-}
-
-function increment2() {
-    droppedTeleop++;
-    document.getElementById("input-number2").innerHTML = droppedTeleop;
-}
-
-function decrement() {
-    droppedAuto--;
-    document.getElementById("input-number").innerHTML = droppedAuto;
-}
-
-function decrement2() {
-    droppedTeleop--;
-    document.getElementById("input-number2").innerHTML = droppedTeleop;
-}
-
-function teamColor() { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
-    if (startPos.slice(0, 3) == "red") {
-        document.getElementById("autoField").src = "./images/frcAutoRed.png";
-        document.getElementById("autoField2").src = "./images/frcAutoRed.png";
-    } else if (startPos.slice(0, 3) == "blu") {
-        document.getElementById("autoField").src = "./images/frcAutoBlue.png";
-        document.getElementById("autoField2").src = "./images/frcAutoBlue.png";
+    teamSide = drive.slice(0, 1);
+    alert(teamSide);
+    if (teamSide == "R") {
+        document.getElementById("autoField").src = "./images/red-field.png";
+        document.getElementById("autoField2").src = "./images/full-field.png";
+    } else if (teamSide == "B") {
+        document.getElementById("autoField").src = "./images/blue-field.png";
+        document.getElementById("autoField2").src = "./images/full-field.png";
     } else {
         alert("no button");
     }
 }
+
+function increment() {
+    ballsHeldAuto++;
+    document.getElementById("input-number").innerHTML = ballsHeldAuto;
+}
+
+function increment2() {
+    ballsHeldTeleop++;
+    document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+}
+
+function decrement() {
+    if (ballsHeldAuto > 0) {
+        ballsHeldAuto--;
+        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    }
+}
+
+function decrement2() {
+    if (ballsHeldTeleop > 0) {
+        ballsHeldTeleop--;
+        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+    }
+}
+/*
+function teamColor(driveStation) { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
+    teamSide = drive.slice(0);
+    alert(teamSide);
+    if (teamside == "R") {
+        document.getElementById("autoField").src = "../images/red-field.png";
+        document.getElementById("autoField2").src = "../images/red-field.png";
+    } else if (teamside == "B") {
+        document.getElementById("autoField").src = "../images/blue-field.png";
+        document.getElementById("autoField2").src = "../images/blue-field.png";
+    } else {
+        alert("no button");
+    }
+} 
+*/
 
 function autoFieldInput(f) {
     robotAction = f;
@@ -227,8 +252,11 @@ function didClimb(p) {
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
+function hideAutoDropdown(whereScored) {
+    robotScore = robotScore + (whereScored * 2);
+    decrement();
     document.getElementById("autoDropdown").classList.toggle("show");
+    console.log(robotScore);
 }
 
 function hideTeleopDropdown() {
