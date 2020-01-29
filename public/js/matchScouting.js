@@ -72,7 +72,7 @@ function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
     var teamNumber = 0;
-
+    startPos = localStorage.getItem("startPos");
     console.log(driveStation);
 
     var alliances = JSON.parse(localStorage.getItem("alliances"))
@@ -102,7 +102,7 @@ function createMatchArray() {
 
     }
 
-    var startPos = document.getElementById("startPos").value;
+
     matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore };
     pushFirebaseMatch(matchDataArray);
 }
@@ -161,10 +161,19 @@ function getShootSpotTeleop() {
     console.log(shootPositionTeleop);
 }
 
+function chooseRobotPostition(position) {
+    var startPos = position;
+    localStorage.setItem("startPos", startPos);
+}
+
+function chooseStartBalls(startBalls) {
+
+}
+
 function chooseDriveStation(drive) {
     driveStation = drive;
     teamSide = drive.slice(0, 1);
-    alert(teamSide);
+
     if (teamSide == "R") {
         document.getElementById("autoField").src = "./images/red-field.png";
         document.getElementById("teleopField").src = "./images/full-field.png";
@@ -177,7 +186,7 @@ function chooseDriveStation(drive) {
 }
 
 function increment() {
-    if (ballsHeldTeleop < 5) {
+    if (ballsHeldAuto < 5) {
         ballsHeldAuto++;
         document.getElementById("input-number").innerHTML = ballsHeldAuto;
     }
@@ -216,7 +225,7 @@ function teamColor(driveStation) { //!TODO Add full-field functionality to teleo
     } else {
         alert("no button");
     }
-} 
+}
 */
 
 function autoFieldInput(f) {

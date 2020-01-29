@@ -57,6 +57,8 @@
                     <input type="radio" id="red" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
                 </label><br>
             </form>
+
+
         </div>
 
         <script>
@@ -74,9 +76,32 @@
 
         <h1>Robot Start Position:</h1>
 
-        <div class="container">
-            <input type="range" id="startPos" class="sliderStartPosition" name="StartPosition" min="0" max="2">
-        </div>
+        <form id=startPosition>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
+            </label><br>
+        </form>
+        <form id=startingBalls>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
+            </label><br>
+        </form>
+
     </div>
 
     <!--
@@ -171,7 +196,6 @@
     We're in the Endgame now
 ============================================
     -->
-
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
