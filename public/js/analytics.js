@@ -11,11 +11,6 @@ function kidnap(newUrl) {
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
         success: function(data) { //this function logs our data in the console if it is successfully pulled
             James = data;
-            for (var i = 0; i < James.length; i++) {
-                if (James[i].comp_level != "qm") {
-                    James.splice(i, i + 1);
-                }
-            }
             return James;
         },
     });
@@ -29,10 +24,3 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
-
-/*function makeSchedule() {
-    for (let i = 0; i < kidnap("/event/2019hop/matches"); i++) {
-        console.log(James[i]);
-    };
-};
-*/

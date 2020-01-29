@@ -8,19 +8,23 @@ names = "";
 startPos = "";
 robotAction = "";
 itemsDropped = "";
-droppedAuto = 0;
-droppedTeleop = 0;
 climbTime = 0;
 timeKeep = 0;
 slider = 0;
 climbType = "";
+filteredJames = [];
+ballsHeldAuto = 0;
+ballsHeldTeleop = 0;
+teamSide = "";
+robotScore = 0;
+drive = "";
 
-//* Initialize variblesks
+//* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    i = matchNumber - 1
-    blueAlliance = James[i].alliances.blue.team_keys[0].slice(3) + " | " + James[i].alliances.blue.team_keys[1].slice(3) + " | " + James[i].alliances.blue.team_keys[2].slice(3);
-    redAlliance = James[i].alliances.red.team_keys[0].slice(3) + " | " + James[i].alliances.red.team_keys[1].slice(3) + " | " + James[i].alliances.red.team_keys[2].slice(3);
+    var i = matchNumber - 1
+    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 
 }
 
@@ -30,44 +34,50 @@ function startMatchScouting(mNumber, alliances) {
     location.replace("./matchScouting.html");
 };
 
+function filterSchedule(qual) {
+    return qual.comp_level == "qm";
+}
+
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    filteredJames = James.filter(filterSchedule);
+    var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
-    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-            btn = document.createElement("BUTTON"); //* creates a button
-            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-            document.body.appendChild(btn);
+    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
+        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("BUTTON"); //* creates a button
+        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+        document.body.appendChild(btn);
     };
-    localStorage.setItem("blueAllianceData", JSON.stringify(James));
+    localStorage.setItem("blueAllianceData", JSON.stringify(filteredJames));
 };
 
 function loadSchedule() {
     James = JSON.parse(localStorage.getItem("blueAllianceData"));
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-            createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-            matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-            btn = document.createElement("BUTTON"); //* creates a button
-            btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-            document.body.appendChild(btn);
+        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("BUTTON"); //* creates a button
+        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+        document.body.appendChild(btn);
     };
 }
 
 /* ------------for matchScouting------------- */
 
-function pushFirebase() {
+function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
     var teamNumber = 0;
-
+    startPos = localStorage.getItem("startPos");
     console.log(driveStation);
 
     var alliances = JSON.parse(localStorage.getItem("alliances"))
 
-    switch(driveStation) {
+    switch (driveStation) {
         case "B1":
             teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
             break;
@@ -89,18 +99,26 @@ function pushFirebase() {
         default:
             teamNumber = 9999;
             break;
-        
+
     }
 
-    firebase.database().ref('matchscouting/' + match).set({
-        "Match Number": match,
-        "teamNumber": teamNumber,
-        "driveStation": driveStation,
-        "startPosition": startPos,
+
+    matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore };
+    pushFirebaseMatch(matchDataArray);
+}
+
+function pushFirebaseMatch(data) {
+    console.log(data);
+    firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/').set({
+        "driveStation": data.driveStation,
+        "startPosition": data.startPos,
+        "robotScore": data.robotScore,
     });
+    setTimeout(nextMatch, 1000);
 }
 
 function nextMatch() {
+    console.log(match)
     mNumber = localStorage.getItem("num");
     mNumber++;
     localStorage.setItem("num", mNumber);
@@ -116,7 +134,7 @@ function openPage(pageName) {
         tabcontent[i].style.display = "";
     };
 
-    //* Remove the background color of all tablinks/buttonss
+    //* Remove the background color of all tablinks/buttons
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "rebeccapurple";
@@ -129,47 +147,86 @@ function openPage(pageName) {
     document.getElementById("demo").innerHTML = climbTime;
 };
 
-function chooseStart(p) {
-    startPos = p;
-    alert(startPos);
+function getShootSpotAuto() {
+    var shootX = event.clientX;
+    var shootY = event.clientY;
+    var shootPositionAuto = "X coords: " + shootX + ", Y coords: " + shootY;
+    console.log(shootPositionAuto);
+}
+
+function getShootSpotTeleop() {
+    var shootX = event.clientX;
+    var shootY = event.clientY;
+    var shootPositionTeleop = "X coords: " + shootX + ", Y coords: " + shootY;
+    console.log(shootPositionTeleop);
+}
+
+function chooseRobotPostition(position) {
+    var startPos = position;
+    localStorage.setItem("startPos", startPos);
+}
+
+function chooseStartBalls(startBalls) {
+
 }
 
 function chooseDriveStation(drive) {
-    console.log(drive);
     driveStation = drive;
-}
+    teamSide = drive.slice(0, 1);
 
-function increment() {
-    droppedAuto++;
-    document.getElementById("input-number").innerHTML = droppedAuto;
-}
-
-function increment2() {
-    droppedTeleop++;
-    document.getElementById("input-number2").innerHTML = droppedTeleop;
-}
-
-function decrement() {
-    droppedAuto--;
-    document.getElementById("input-number").innerHTML = droppedAuto;
-}
-
-function decrement2() {
-    droppedTeleop--;
-    document.getElementById("input-number2").innerHTML = droppedTeleop;
-}
-
-function teamColor() { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
-    if (startPos.slice(0, 3) == "red") {
-        document.getElementById("autoField").src = "./images/frcAutoRed.png";
-        document.getElementById("autoField2").src = "./images/frcAutoRed.png";
-    } else if (startPos.slice(0, 3) == "blu") {
-        document.getElementById("autoField").src = "./images/frcAutoBlue.png";
-        document.getElementById("autoField2").src = "./images/frcAutoBlue.png";
+    if (teamSide == "R") {
+        document.getElementById("autoField").src = "./images/red-field.png";
+        document.getElementById("teleopField").src = "./images/full-field.png";
+    } else if (teamSide == "B") {
+        document.getElementById("autoField").src = "./images/blue-field.png";
+        document.getElementById("teleopField").src = "./images/full-field.png";
     } else {
         alert("no button");
     }
 }
+
+function increment() {
+    if (ballsHeldAuto < 5) {
+        ballsHeldAuto++;
+        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    }
+}
+
+function incrementTelop() {
+    if (ballsHeldTeleop < 5) {
+        ballsHeldTeleop++;
+        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+    }
+}
+
+function decrement() {
+    if (ballsHeldAuto > 0) {
+        ballsHeldAuto--;
+        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    }
+}
+
+function decrementTeleop() {
+    if (ballsHeldTeleop > 0) {
+        ballsHeldTeleop--;
+        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+    }
+}
+/*
+function teamColor(driveStation) { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
+    teamSide = drive.slice(0);
+    alert(teamSide);
+    if (teamside == "R") {
+        document.getElementById("autoField").src = "../images/red-field.png";
+        document.getElementById("autoField2").src = "../images/red-field.png";
+    } else if (teamside == "B") {
+        document.getElementById("autoField").src = "../images/blue-field.png";
+        document.getElementById("autoField2").src = "../images/blue-field.png";
+    } else {
+        alert("no button");
+    }
+}
+*/
 
 function autoFieldInput(f) {
     robotAction = f;
@@ -215,10 +272,17 @@ function didClimb(p) {
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function hideAutoDropdown() {
+function hideAutoDropdown(whereScored) {
+    robotScore = robotScore + (whereScored * 2);
+    decrement();
+    //shootPosition = shootHeatMap[];
     document.getElementById("autoDropdown").classList.toggle("show");
+    console.log(robotScore);
 }
 
-function hideTeleopDropdown() {
-    document.getElementById("teleopDropdown").classList.remove("show");
+function hideTeleopDropdown(whereScored) {
+    robotScore = robotScore + whereScored;
+    decrementTeleop();
+    document.getElementById("teleopDropdown").classList.toggle("show");
+    console.log(robotScore);
 }

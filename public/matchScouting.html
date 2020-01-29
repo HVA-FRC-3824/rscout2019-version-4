@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     <title>Scouting</title>
@@ -24,8 +23,8 @@
 
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white'), teamColor('startPos')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('startPos')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
@@ -36,7 +35,7 @@
             <input type="text" name="name">
         </form>
 
-        <div class="robotRadio" >
+        <div class="robotRadio">
             <form id="driveStation">
                 Robot: <br>
                 <label class="radio" id="blue_1">
@@ -58,6 +57,8 @@
                     <input type="radio" id="red" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
                 </label><br>
             </form>
+
+
         </div>
 
         <script>
@@ -73,37 +74,53 @@
             document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
         </script>
 
-        <h1>Robot Start Position</h1>
+        <h1>Robot Start Position:</h1>
 
-        <div class="container">
-            <img src="./images/startingHABs.png"></img>
-            <button class="blueTopRight" onclick="chooseStart('blueTopRight')"></button>
-            <button class="blueTopLeft" onclick="chooseStart('blueTopLeft')"></button>
-            <button class="blueBottomLeft" onclick="chooseStart('blueBottomLeft')"></button>
-            <button class="blueBottomRight" onclick="chooseStart('blueBottomRight')"></button>
-            <button class="blueCenter" onclick="chooseStart('blueCenter')"></button>
-            <button class="redTopRight" onclick="chooseStart('redTopRight')"></button>
-            <button class="redTopLeft" onclick="chooseStart('redTopLeft')"></button>
-            <button class="redBottomLeft" onclick="chooseStart('redBottomLeft')"></button>
-            <button class="redBottomRight" onclick="chooseStart('redBottomRight')"></button>
-            <button class="redCenter" onclick="chooseStart('redCenter')"></button>
-            <!--<button class="driveCenter" onclick="chooseDriveStation('driveCenter')"></button>
-            <button class="driveLeft" onclick="chooseDriveStation('driveLeft')"></button>
-            <button class="driveRight" onclick="chooseDriveStation('driveRight')"></button>-->
-        </div>
+        <form id=startPosition>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
+            </label><br>
+        </form>
+        <form id=startingBalls>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
+            </label><br>
+            <label class="radio" id="startTop">
+                <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
+            </label><br>
+        </form>
+
     </div>
 
+    <!--
+============================================
+    This is Auto 
+============================================
+-->
+
     <div id="Auto" class="tabcontent">
-        <h3>Speed:</h3>
-        <h2>Accuracy:</h2>
-        <img src="" alt="auto field" id="autoField"></img>
+        <!--<h3>Speed:</h3>
+            <h2>Accuracy:</h2>-->
+        <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div id="autoDropdown" class="autoDropdown-content">
-            <a href="#cargo" onclick="hideAutoDropdown()">Placed Cargo</a>
-            <a href="#hatch" onclick="hideAutoDropdown()">Placed Hatch</a>
-            <a href="#cargo" onclick="hideAutoDropdown()">Picked Up Cargo</a>
-            <a href="#hatch" onclick="hideAutoDropdown()">Picked Up Hatch</a>
+            <a href="#innerPort" onclick="hideAutoDropdown(3)">Scored 3</a>
+            <a href="#outterPort" onclick="hideAutoDropdown(2)">Scored 2</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown(1)">Scored 1</a>
         </div>
-        <button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
+        <button class="pickupButton" onclick="increment();">Picked Up From Floor</button>
+        <!--<button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
         <button class="rocketRight" onclick="autoFieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="autoFieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="autoFieldInput('cargoShipLeft')"></button>
@@ -115,8 +132,8 @@
         </form>
         <form>
             <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-        </form>
-        <h4># Dropped:</h4>
+        </form>-->
+        <h4>Balls Held: </h4>
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
@@ -128,48 +145,57 @@
                 </div>
             </div>
         </div>
-        <h5>AUTO</h5>
     </div>
+
+    <!--
+============================================
+    This is Teleop  
+============================================
+    -->
 
     <div id="Teleop" class="tabcontent">
         <h3>Speed:</h3>
         <h2>Accuracy:</h2>
         <h5>TELEOP</h5>
         <div id="teleopDropdown" class="teleopDropdown-content">
-            <a href="#cargo" onclick="hideTeleopDropdown()">Placed Cargo</a>
-            <a href="#hatch" onclick="hideTeleopDropdown()">Placed Hatch</a>
-            <a href="#pickedCargo" onclick="hideTeleopDropdown()">Picked up Cargo</a>
-            <a href="#pickedHatch" onclick="hideTeleopDropdown()">Picked up Hatch</a>
+            <a href="#innerPort" onclick="hideTeleopDropdown(3)">Scored 3</a>
+            <a href="#outerPort" onclick="hideTeleopDropdown(2)">Scored 2</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown(1)">Scored 1</a>
         </div>
 
-        <img src="" alt="auto field" id="autoField2"></img>
-        <button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
+        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
+        <!--<button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
         <button class="rocketRight" onclick="teleopFieldInput('rocketRight')"></button>
         <button class="cargoShipRight" onclick="teleopFieldInput('cargoShipRight')"></button>
         <button class="cargoShipLeft" onclick="teleopFieldInput('cargoShipLeft')"></button>
         <button class="cargoShipMid" onclick="teleopFieldInput('cargoShipMid')"></button>
         <button class="leftPickup" onclick="teleopFieldInput('leftPickup')"></button>
         <button class="rightPickup" onclick="teleopFieldInput('rightPickup')"></button>
-
         <form>
             <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
         </form>
         <form>
             <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
         </form>
-        <h4># Dropped:</h4>
+        -->
+        <h4>Balls Held:</h4>
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
-                    <span onclick="decrement2()" class="input-number-decrement">-</span>
+                    <span onclick="decrementTeleop()" class="input-number-decrement">-</span>
                 </div>
                 <span class="input-number2" id="input-number2"></span>
                 <div class="input-group-button">
-                    <span onclick="increment2()" class="input-number-increment" id="incrementButton">+</span>
+                    <span onclick="incrementTelop()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
         </div>
     </div>
+    <!--
+============================================
+    We're in the Endgame now
+============================================
+    -->
 
     <div id="Endgame" class="tabcontent">
         <h7>Climb Rank:</h7>
@@ -209,14 +235,44 @@
         </div>
     </div>
 
+    <!--
+============================================
+    This is Post Match
+============================================
+    -->
+
+
     <div id="Post" class="tabcontent">
         <h7>Overall Rating:</h7>
         <h9>Notes: </h9>
-        <button class="nextButton" id="nextButton" onclick="pushFirebase(); nextMatch();">Next Match</button>
+        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
         <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
-        <input type="text" class="notes"><br>
+
     </div>
 
 </body>
 
-</html>
+</input>
+
+<!-- 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌. 🏃 
+    🚌💨🏃 
+    💨...🏃 
+    ...🏃 
+    ..🚶 
+    .🚶 
+    🚶‍♂️
+    h*ck, i missed the bus 
+-->
