@@ -63,7 +63,7 @@
 
         <script>
             //Display team numbers alongside position
-            var alliances = JSON.parse(localStorage.getItem("alliances"))
+            var alliances = JSON.parse(localStorage.getItem("alliances"));
             console.log(alliances);
             document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
             document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
