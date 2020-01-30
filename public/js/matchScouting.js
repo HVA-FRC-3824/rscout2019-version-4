@@ -167,7 +167,9 @@ function chooseRobotPostition(position) {
 }
 
 function chooseStartBalls(startBalls) {
-
+    for (i = 0; i <= (startBalls - 1); i++) {
+        increment();
+    }
 }
 
 function chooseDriveStation(drive) {
@@ -183,6 +185,15 @@ function chooseDriveStation(drive) {
     } else {
         alert("no button");
     }
+}
+
+function updateBallsHeld() {
+    increment()
+    decrement()
+}
+
+function transferBalls() {
+    ballsHeldAuto = ballsHeldTeleop;
 }
 
 function increment() {
