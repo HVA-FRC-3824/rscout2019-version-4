@@ -1,4 +1,4 @@
-html {
+/*html {
     background: url("../images/3824logo.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -6,12 +6,46 @@ html {
     background-size: cover;
     height: 100%;
     overflow: hidden;
+}*/
+* {
+    margin: 0;
+    padding: 0;
 }
 
-button {
-    margin: .05%;
-    padding: 1%;
-    background-color: whitesmoke;
-    color: purple;
-  }
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 40% 1fr 40%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". title title ."
+    ". header header ."
+    ". sidebar content ."
+    ". footer footer .";
+}
 
+.title {
+    grid-area: title;
+}
+
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+}
+
+.footer {
+    grid-area: footer;
+}
+.grid div:nth-child(even) {
+    background-color: greenyellow;
+}
+
+.grid div:nth-child(odd) {
+    background-color: blueviolet;
+}
