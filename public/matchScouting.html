@@ -23,17 +23,16 @@
 
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive'), updateBallsHeld()">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation'), transferBalls()"> Teleop </button>
+    <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
 
     <div id="Pre" class="tabcontent">
-        <form>
-            Name: <br>
-            <input type="text" name="name">
-        </form>
+
+        Name: <br>
+        <input type="text" name="name" value="" id="scouterName">
 
         <div class="robotRadio">
             <form id="driveStation">
@@ -119,20 +118,14 @@
             <a href="#outterPort" onclick="hideAutoDropdown(2)">Scored 2</a>
             <a href="#lowerPort" onclick="hideAutoDropdown(1)">Scored 1</a>
         </div>
-        <button class="pickupButton" onclick="increment();">Picked Up From Floor</button>
-        <!--<button class="rocketLeft" onclick="autoFieldInput('rocketLeft')"></button>
-        <button class="rocketRight" onclick="autoFieldInput('rocketRight')"></button>
-        <button class="cargoShipRight" onclick="autoFieldInput('cargoShipRight')"></button>
-        <button class="cargoShipLeft" onclick="autoFieldInput('cargoShipLeft')"></button>
-        <button class="cargoShipMid" onclick="autoFieldInput('cargoShipMid')"></button>
-        <button class="leftPickup" onclick="autoFieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="autoFieldInput('rightPickup')"></button>
-        <form>
-            <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
-        </form>
-        <form>
-            <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-        </form>-->
+        <!-- Here the 0 that is passed in tells it to increment the auto pickups-->
+        <button class="pickupButton" onclick="increment(0, 0);">Picked Up From Floor</button>
+        <button class="pickupButton2" onclick="increment(0, 1);">Picked Up From Loading Zone</button>
+        <!--<button class="pickupButton" onclick="increment(0, 2);">Picked Up From Steal</button>
+        
+            Could add steal option
+        
+        -->
         <h4>Balls Held: </h4>
         <div class="counter">
             <div class="input-group input-number-group">
@@ -162,31 +155,26 @@
             <a href="#outerPort" onclick="hideTeleopDropdown(2)">Scored 2</a>
             <a href="#lowerPort" onclick="hideTeleopDropdown(1)">Scored 1</a>
         </div>
+        <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
 
-        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
-        <!--<button class="rocketLeft" onclick="teleopFieldInput('rocketLeft')"></button>
-        <button class="rocketRight" onclick="teleopFieldInput('rocketRight')"></button>
-        <button class="cargoShipRight" onclick="teleopFieldInput('cargoShipRight')"></button>
-        <button class="cargoShipLeft" onclick="teleopFieldInput('cargoShipLeft')"></button>
-        <button class="cargoShipMid" onclick="teleopFieldInput('cargoShipMid')"></button>
-        <button class="leftPickup" onclick="teleopFieldInput('leftPickup')"></button>
-        <button class="rightPickup" onclick="teleopFieldInput('rightPickup')"></button>
-        <form>
-            <input type="range" id="Speed" class="sliderSpeed" name="Speed" min="1" max="5">
-        </form>
-        <form>
-            <input type="range" id="Accuracy" class="sliderAccuracy" name="Speed" min="1" max="5">
-        </form>
+        <button class="pickupButton" onclick="increment(1, 0);">Picked Up From Floor</button>
+        <button class="pickupButton2" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
+        <!--<button class="pickupButton" onclick="increment(1, 2);">Picked Up From Steal</button>
+        
+            Could add a Steal Option
+            
         -->
+        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
+
         <h4>Balls Held:</h4>
         <div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
-                    <span onclick="decrementTeleop()" class="input-number-decrement">-</span>
+                    <span onclick="decrement()" class="input-number-decrement">-</span>
                 </div>
                 <span class="input-number2" id="input-number2"></span>
                 <div class="input-group-button">
-                    <span onclick="incrementTelop()" class="input-number-increment" id="incrementButton">+</span>
+                    <span onclick="increment()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
         </div>

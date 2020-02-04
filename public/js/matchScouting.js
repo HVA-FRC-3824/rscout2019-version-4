@@ -13,11 +13,15 @@ timeKeep = 0;
 slider = 0;
 climbType = "";
 filteredJames = [];
-ballsHeldAuto = 0;
+ballsHeld = 0;
 ballsHeldTeleop = 0;
 teamSide = "";
 robotScore = 0;
 drive = "";
+pickedUpAutoFloor = 0;
+pickedUpTeleopFloor = 0;
+pickedUpAutoBay = 0;
+pickedUpTeleopBay = 0;
 
 //* Initialize varibles
 
@@ -75,6 +79,9 @@ function createMatchArray() {
     startPos = localStorage.getItem("startPos");
     console.log(driveStation);
 
+    var name = document.getElementById("scouterName").value;
+
+
     var alliances = JSON.parse(localStorage.getItem("alliances"))
 
     switch (driveStation) {
@@ -103,16 +110,20 @@ function createMatchArray() {
     }
 
 
-    matchDataArray = { match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore };
+    matchDataArray = { name: name, match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore, pickedUpAutoBay: pickedUpAutoBay, pickedUpAutoFloor: pickedUpAutoFloor, pickedUpTeleopFloor: pickedUpTeleopFloor, pickedUpTeleopBay: pickedUpTeleopBay };
     pushFirebaseMatch(matchDataArray);
 }
 
 function pushFirebaseMatch(data) {
     console.log(data);
-    firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/').set({
+    firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
         "robotScore": data.robotScore,
+        "autoPickedUpFloor": data.pickedUpAutoFloor,
+        "autoPickedUpBay": data.pickedUpAutoBay,
+        "teleopPickedUpFloor": data.pickedUpTeleopFloor,
+        "teleopPickedUpBay": data.pickedUpTeleopBay,
     });
     setTimeout(nextMatch, 1000);
 }
@@ -167,8 +178,9 @@ function chooseRobotPostition(position) {
 }
 
 function chooseStartBalls(startBalls) {
+    ballsHeld = 0;
     for (i = 0; i <= (startBalls - 1); i++) {
-        increment();
+        increment(4, 4);
     }
 }
 
@@ -187,41 +199,39 @@ function chooseDriveStation(drive) {
     }
 }
 
-function updateBallsHeld() {
-    increment()
-    decrement()
-}
-
-function transferBalls() {
-    ballsHeldAuto = ballsHeldTeleop;
-}
-
-function increment() {
-    if (ballsHeldAuto < 5) {
-        ballsHeldAuto++;
-        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+function increment(teleOrAuto, wherePickedUp) {
+    if (ballsHeld < 5) {
+        ballsHeld++;
+        document.getElementById("input-number").innerHTML = ballsHeld;
     }
-}
-
-function incrementTelop() {
-    if (ballsHeldTeleop < 5) {
-        ballsHeldTeleop++;
-        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
+    console.log(ballsHeld + " balls held");
+    if (teleOrAuto == 0) {
+        if (wherePickedUp == 0) {
+            pickedUpAutoFloor++;
+            console.log(pickedUpAutoFloor + " picked up in auto floor");
+        } else {
+            pickedUpAutoBay++;
+            console.log(pickedUpAutoBay + " picked up in auto loading bay");
+        }
+    } else if (teleOrAuto == 1) {
+        if (wherePickedUp == 0) {
+            pickedUpTeleopFloor++;
+            console.log(pickedUpTeleopFloor + " picked up in teleop floor");
+        } else {
+            pickedUpTeleopBay++;
+            console.log(pickedUpTeleopBay + " picked up in auto loading bay");
+        }
+    } else {
+        console.log("debugIncrement");
     }
 }
 
 function decrement() {
-    if (ballsHeldAuto > 0) {
-        ballsHeldAuto--;
-        document.getElementById("input-number").innerHTML = ballsHeldAuto;
+    if (ballsHeld > 0) {
+        ballsHeld--;
+        document.getElementById("input-number").innerHTML = ballsHeld;
     }
-}
-
-function decrementTeleop() {
-    if (ballsHeldTeleop > 0) {
-        ballsHeldTeleop--;
-        document.getElementById("input-number2").innerHTML = ballsHeldTeleop;
-    }
+    console.log(ballsHeld + " balls held");
 }
 /*
 function teamColor(driveStation) { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
@@ -288,12 +298,12 @@ function hideAutoDropdown(whereScored) {
     decrement();
     //shootPosition = shootHeatMap[];
     document.getElementById("autoDropdown").classList.toggle("show");
-    console.log(robotScore);
+    console.log(robotScore + " points");
 }
 
 function hideTeleopDropdown(whereScored) {
     robotScore = robotScore + whereScored;
-    decrementTeleop();
+    decrement();
     document.getElementById("teleopDropdown").classList.toggle("show");
-    console.log(robotScore);
+    console.log(robotScore + " points");
 }
