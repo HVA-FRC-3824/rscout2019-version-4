@@ -200,24 +200,27 @@
             <form>
                 Climb Options: <br>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('three')" id="red" name="name" value="climb">Hab 3<br>
-                        </label>
-                <input type="radio" onclick="didClimb('two')" id="red" name="name" value="climb">Hab 2<br>
-                </label>
+                    <input type="radio" onclick="didClimb('none')" id="red" name="name" value="climb">Did not climb<br>
+                <label>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('one')" id="red" name="name" value="climb">Parked on platform<br>
-                        </label>
+                            <input type="radio" onclick="didClimb('alone')" id="red" name="name" value="climb">Climbed alone<br>
+                        <label>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('threeSupportedOne')" id="red" name="name" value="climb">Hab 3, Supported one other<br>
+                            <input type="radio" onclick="didClimb('withOne')" id="red" name="name" value="climb">Climbed with 1 other<br>
                         </label>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('threeSupportedTwo')" id="red" name="name" value="climb">Hab 3, supported two others<br>
+                            <input type="radio" onclick="didClimb('withTwo')" id="red" name="name" value="climb">Climbed with 2 other<br>
                         </label>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('twoSupportedOne')" id="red" name="name" value="climb">Hab 2, supported one other<br>
+                            <input type="radio" onclick="didClimb('supportedOne')" id="red" name="name" value="climb">Climbed and supported 1 other robot<br>
                         </label>
                 <label class="radio">
-                            <input type="radio" onclick="didClimb('twoSupportedTwo')" id="red" name="name" value="climb">Hab 2, supported two others<br>
+                            <input type="radio" onclick="didClimb('supportedTwo')" id="red" name="name" value="climb">Climbed and supported 2 other robots<br>
+                        </label>
+                <br> Is Level: <br>
+                <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider" id="levelCheck" onclick="levelCheck()"></span>
                         </label>
             </form>
         </div>

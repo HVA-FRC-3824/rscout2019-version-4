@@ -22,6 +22,7 @@ pickedUpAutoFloor = 0;
 pickedUpTeleopFloor = 0;
 pickedUpAutoBay = 0;
 pickedUpTeleopBay = 0;
+isLevel = "";
 
 //* Initialize varibles
 
@@ -110,7 +111,21 @@ function createMatchArray() {
     }
 
 
-    matchDataArray = { name: name, match: match, teamNumber: teamNumber, driveStation: driveStation, startPos: startPos, robotScore: robotScore, pickedUpAutoBay: pickedUpAutoBay, pickedUpAutoFloor: pickedUpAutoFloor, pickedUpTeleopFloor: pickedUpTeleopFloor, pickedUpTeleopBay: pickedUpTeleopBay };
+    matchDataArray = {
+        name: name,
+        match: match,
+        teamNumber: teamNumber,
+        driveStation: driveStation,
+        startPos: startPos,
+        robotScore: robotScore,
+        pickedUpAutoBay: pickedUpAutoBay,
+        pickedUpAutoFloor: pickedUpAutoFloor,
+        pickedUpTeleopFloor: pickedUpTeleopFloor,
+        pickedUpTeleopBay: pickedUpTeleopBay,
+        climbType: climbType,
+        isLevel: isLevel
+    };
+
     pushFirebaseMatch(matchDataArray);
 }
 
@@ -124,6 +139,7 @@ function pushFirebaseMatch(data) {
         "autoPickedUpBay": data.pickedUpAutoBay,
         "teleopPickedUpFloor": data.pickedUpTeleopFloor,
         "teleopPickedUpBay": data.pickedUpTeleopBay,
+        "climbType": data.climbType + " " + data.isLevel
     });
     setTimeout(nextMatch, 1000);
 }
@@ -233,21 +249,6 @@ function decrement() {
     }
     console.log(ballsHeld + " balls held");
 }
-/*
-function teamColor(driveStation) { //!TODO Add full-field functionality to teleop and make sure the field can swap orientation
-    teamSide = drive.slice(0);
-    alert(teamSide);
-    if (teamside == "R") {
-        document.getElementById("autoField").src = "../images/red-field.png";
-        document.getElementById("autoField2").src = "../images/red-field.png";
-    } else if (teamside == "B") {
-        document.getElementById("autoField").src = "../images/blue-field.png";
-        document.getElementById("autoField2").src = "../images/blue-field.png";
-    } else {
-        alert("no button");
-    }
-}
-*/
 
 function autoFieldInput(f) {
     robotAction = f;
@@ -289,6 +290,15 @@ function resetTime() {
 
 function didClimb(p) {
     climbType = p;
+}
+
+function levelCheck() {
+    var levelCheck = document.getElementById("levelCheck");
+    if (levelCheck.checked == true) {
+        isLevel = "level";
+    } else {
+        isLevel = "notLevel";
+    }
 }
 
 /* When the user clicks on the button,
