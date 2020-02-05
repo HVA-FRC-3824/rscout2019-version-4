@@ -147,16 +147,14 @@
     -->
 
     <div id="Teleop" class="tabcontent">
-        <h3>Speed:</h3>
-        <h2>Accuracy:</h2>
-        <h5>TELEOP</h5>
         <div id="teleopDropdown" class="teleopDropdown-content">
             <a href="#innerPort" onclick="hideTeleopDropdown(3)">Scored 3</a>
             <a href="#outerPort" onclick="hideTeleopDropdown(2)">Scored 2</a>
             <a href="#lowerPort" onclick="hideTeleopDropdown(1)">Scored 1</a>
         </div>
-        <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
+        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
 
+        <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
         <button class="pickupButton" onclick="increment(1, 0);">Picked Up From Floor</button>
         <button class="pickupButton2" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
         <!--<button class="pickupButton" onclick="increment(1, 2);">Picked Up From Steal</button>
@@ -164,7 +162,6 @@
             Could add a Steal Option
             
         -->
-        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
 
         <h4>Balls Held:</h4>
         <div class="counter">
@@ -186,8 +183,6 @@
     -->
 
     <div id="Endgame" class="tabcontent">
-        <h7>Climb Rank:</h7>
-        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
 
         <h8>Climb Timer</h8>
         <button class="timerStartButton" onclick="startTimer();" id="Start" name="start">Start<br></button>
@@ -234,10 +229,10 @@
 
 
     <div id="Post" class="tabcontent">
-        <h7>Overall Rating:</h7>
+
         <h9>Notes: </h9>
+        <input type="text" name="name" value="" id="notes">
         <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
-        <input type="range" id="Climb" class="sliderClimb" name="Climb" min="1" max="5">
 
     </div>
 

@@ -23,6 +23,10 @@ pickedUpTeleopFloor = 0;
 pickedUpAutoBay = 0;
 pickedUpTeleopBay = 0;
 isLevel = "";
+notes = "";
+
+
+
 
 //* Initialize varibles
 
@@ -81,6 +85,7 @@ function createMatchArray() {
     console.log(driveStation);
 
     var name = document.getElementById("scouterName").value;
+    var notes = document.getElementById("notes").value;
 
 
     var alliances = JSON.parse(localStorage.getItem("alliances"))
@@ -123,7 +128,9 @@ function createMatchArray() {
         pickedUpTeleopFloor: pickedUpTeleopFloor,
         pickedUpTeleopBay: pickedUpTeleopBay,
         climbType: climbType,
-        isLevel: isLevel
+        isLevel: isLevel,
+        notes: notes,
+        climbTime: climbTime,
     };
 
     pushFirebaseMatch(matchDataArray);
@@ -131,7 +138,7 @@ function createMatchArray() {
 
 function pushFirebaseMatch(data) {
     console.log(data);
-    firebase.database().ref('matchNumber/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
+    firebase.database().ref('MatchScouting/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
         "robotScore": data.robotScore,
@@ -139,7 +146,10 @@ function pushFirebaseMatch(data) {
         "autoPickedUpBay": data.pickedUpAutoBay,
         "teleopPickedUpFloor": data.pickedUpTeleopFloor,
         "teleopPickedUpBay": data.pickedUpTeleopBay,
-        "climbType": data.climbType + " " + data.isLevel
+        "climbType": data.climbType + " " + data.isLevel,
+        "notes": data.notes,
+        "climbTime": data.climbTime,
+
     });
     setTimeout(nextMatch, 1000);
 }
@@ -151,7 +161,7 @@ function nextMatch() {
     localStorage.setItem("num", mNumber);
     location.replace("./schedule.html");
 }
-//location.replace("./matchScouting.html");
+
 
 function openPage(pageName) {
     //* Hide all elements with class="tabcontent" by default
