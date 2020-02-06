@@ -57,7 +57,6 @@
                 </label><br>
             </form>
 
-
         </div>
 
         <script>
@@ -232,7 +231,23 @@
 
         <h9>Notes: </h9>
         <input type="text" name="name" value="" id="notes">
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button>
+        <br>
+        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button> <br> Color Wheel: <br>
+        <label class="radio">
+            <input type="radio" onclick="colorWheel(0)" name="wheel" >Did not use color wheel<br>
+        <label>
+        <label class="radio">
+            <input type="radio" onclick="colorWheel(1)" name="wheel" >Selected color on color wheel<br>
+        <label>
+        <label class="radio">
+            <input type="radio" onclick="colorWheel(2)" name="wheel" >Spun wheel 3 times<br>
+        <label>
+        <label class="radio">
+            <input type="radio" onclick="colorWheel(4)" name="wheel" >Spun three times and chose color<br>
+        <label>
+        <label class="radio">
+            <input type="radio" onclick="colorWheel(3)" name="wheel" >Attempted color wheel and failed<br>
+        <label>
 
     </div>
 

@@ -4,7 +4,7 @@ blueAlliance = "";
 k = 0;
 btn = "";
 mNumber = 0;
-names = "";
+names = "No Name";
 startPos = "";
 robotAction = "";
 itemsDropped = "";
@@ -24,6 +24,7 @@ pickedUpAutoBay = 0;
 pickedUpTeleopBay = 0;
 isLevel = "";
 notes = "";
+colorWheel = "";
 
 
 
@@ -131,6 +132,7 @@ function createMatchArray() {
         isLevel: isLevel,
         notes: notes,
         climbTime: climbTime,
+        colorWheel: colorWheel,
     };
 
     pushFirebaseMatch(matchDataArray);
@@ -149,7 +151,7 @@ function pushFirebaseMatch(data) {
         "climbType": data.climbType + " " + data.isLevel,
         "notes": data.notes,
         "climbTime": data.climbTime,
-
+        "colorWheel": data.colorWheel,
     });
     setTimeout(nextMatch, 1000);
 }
@@ -308,6 +310,26 @@ function levelCheck() {
         isLevel = "level";
     } else {
         isLevel = "notLevel";
+    }
+}
+
+function colorWheel(didSpin) {
+    console.log("colorWheel function");
+    if (didSpin == 0) {
+        console.log("didntSpin");
+        colorWheel = "didntSpin";
+    } else if (didSpin == 1) {
+        console.log("selectedColor");
+        colorWheel = "selectedColor";
+    } else if (didSpin == 2) {
+        conosle.log("spun3Times");
+        colorWheel = "spun3Times";
+    } else if (didSpin == 3) {
+        console.log("failedWheel");
+        colorWheel = "failedWheel";
+    } else if (didSpin == 4) {
+        console.log("didBoth");
+        colorWheel = "didBoth";
     }
 }
 
