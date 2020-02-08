@@ -30,10 +30,8 @@
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
 
     <div id="Pre" class="tabcontent">
-
         Name: <br>
         <input type="text" name="name" id="scouterName" value="No Name">
-        <p id="matchNum"></p>
         <div class="robotRadio">
             <form id="driveStation">
                 Robot: <br>
@@ -59,45 +57,51 @@
 
         </div>
 
-        <script>
-            //Display team numbers alongside position
-            var alliances = JSON.parse(localStorage.getItem("alliances"))
-            console.log(alliances);
-            document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
-            document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
-            document.getElementById("blue_3").innerHTML += alliances.blue.team_keys[2].slice(3);
 
-            document.getElementById("red_1").innerHTML += alliances.red.team_keys[0].slice(3);
-            document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
-            document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
-        </script>
+        <div>
+            <h2 id="matchNumber">Match Number</h2>
+            <script>
+                //Display team numbers alongside position
+                var alliances = JSON.parse(localStorage.getItem("alliances"))
+                console.log(alliances);
+                document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
+                document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
+                document.getElementById("blue_3").innerHTML += alliances.blue.team_keys[2].slice(3);
+
+                document.getElementById("red_1").innerHTML += alliances.red.team_keys[0].slice(3);
+                document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
+                document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
+                var match = localStorage.getItem("num");
+                document.getElementById("matchNumber").innerHTML = match;
+            </script>
 
 
-        <form id=startPosition>
-            <label class="radio" id="startTop">
+            <form id=startPosition>
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
             </label><br>
-            <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
             </label><br>
-            <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
             </label><br>
-        </form>
-        <form id=startingBalls>
-            <label class="radio" id="startTop">
+            </form>
+            <form id=startingBalls>
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
             </label><br>
-            <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
             </label><br>
-            <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
             </label><br>
-            <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
             </label><br>
-        </form>
+            </form>
+        </div>
 
     </div>
 
@@ -225,13 +229,11 @@
 ============================================
     -->
 
-
     <div id="Post" class="tabcontent">
-
         <h9>Notes: </h9>
         <input type="text" name="name" value="" id="notes">
         <br>
-        <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button> <br> Color Wheel: <br>
+        <button class="button" id="button" onclick="createMatchArray();">Next Match</button> <br> Color Wheel: <br>
         <label class="radio">
             <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
         <label>

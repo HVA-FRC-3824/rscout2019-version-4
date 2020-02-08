@@ -25,7 +25,8 @@ pickedUpTeleopBay = 0;
 isLevel = "";
 notes = "";
 colorWheel = "";
-matchNum = "";
+xCoords = [];
+yCoords = [];
 
 
 //* Initialize varibles
@@ -187,7 +188,11 @@ function openPage(pageName) {
     document.getElementById(pageName).style.display = "block";
     document.getElementById("input-number").innerHTML = 0;
     document.getElementById("input-number2").innerHTML = 0;
-    document.getElementById("demo").innerHTML = climbTime;
+    //document.getElementById("demo").innerHTML = climbTime;
+    var match = localStorage.getItem("num");
+    document.getElementById("matchNum").innerHTML = match;
+    console.log(match);
+
 };
 
 function wheel(didSpin) {
@@ -209,6 +214,10 @@ function getShootSpotAuto() {
     var shootY = event.clientY;
     var shootPositionAuto = "X coords: " + shootX + ", Y coords: " + shootY;
     console.log(shootPositionAuto);
+    xCoords.push(shootX);
+    yCoords.push(shootY);
+    console.log(xCoords);
+    console.log(yCoords);
 }
 
 function getShootSpotTeleop() {
@@ -229,7 +238,6 @@ function chooseStartBalls(startBalls) {
         increment(4, 4);
     }
 
-    console.log(matchNum);
 }
 
 function chooseDriveStation(drive) {
