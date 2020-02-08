@@ -25,8 +25,7 @@ pickedUpTeleopBay = 0;
 isLevel = "";
 notes = "";
 colorWheel = "";
-
-
+matchNum = "";
 
 
 //* Initialize varibles
@@ -78,14 +77,19 @@ function loadSchedule() {
 
 /* ------------for matchScouting------------- */
 
+
+
 function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
+    //thanks erick
+
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
     console.log(driveStation);
 
     var name = document.getElementById("scouterName").value;
+
     var notes = document.getElementById("notes").value;
 
 
@@ -186,6 +190,20 @@ function openPage(pageName) {
     document.getElementById("demo").innerHTML = climbTime;
 };
 
+function wheel(didSpin) {
+    if (didSpin == 0) {
+        colorWheel = "didntSpin";
+    } else if (didSpin == 1) {
+        colorWheel = "selectedColor";
+    } else if (didSpin == 2) {
+        colorWheel = "spun3Times";
+    } else if (didSpin == 3) {
+        colorWheel = "failedWheel";
+    } else if (didSpin == 4) {
+        colorWheel = "didBoth";
+    }
+}
+
 function getShootSpotAuto() {
     var shootX = event.clientX;
     var shootY = event.clientY;
@@ -210,6 +228,8 @@ function chooseStartBalls(startBalls) {
     for (i = 0; i <= (startBalls - 1); i++) {
         increment(4, 4);
     }
+
+    console.log(matchNum);
 }
 
 function chooseDriveStation(drive) {
@@ -313,25 +333,6 @@ function levelCheck() {
     }
 }
 
-function colorWheel(didSpin) {
-    console.log("colorWheel function");
-    if (didSpin == 0) {
-        console.log("didntSpin");
-        colorWheel = "didntSpin";
-    } else if (didSpin == 1) {
-        console.log("selectedColor");
-        colorWheel = "selectedColor";
-    } else if (didSpin == 2) {
-        conosle.log("spun3Times");
-        colorWheel = "spun3Times";
-    } else if (didSpin == 3) {
-        console.log("failedWheel");
-        colorWheel = "failedWheel";
-    } else if (didSpin == 4) {
-        console.log("didBoth");
-        colorWheel = "didBoth";
-    }
-}
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

@@ -32,8 +32,8 @@
     <div id="Pre" class="tabcontent">
 
         Name: <br>
-        <input type="text" name="name" value="" id="scouterName">
-
+        <input type="text" name="name" id="scouterName" value="No Name">
+        <p id="matchNum"></p>
         <div class="robotRadio">
             <form id="driveStation">
                 Robot: <br>
@@ -72,7 +72,6 @@
             document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
         </script>
 
-        <h1>Robot Start Position:</h1>
 
         <form id=startPosition>
             <label class="radio" id="startTop">
@@ -234,19 +233,19 @@
         <br>
         <button class="nextButton" id="nextButton" onclick="createMatchArray();">Next Match</button> <br> Color Wheel: <br>
         <label class="radio">
-            <input type="radio" onclick="colorWheel(0)" name="wheel" >Did not use color wheel<br>
+            <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
         <label>
         <label class="radio">
-            <input type="radio" onclick="colorWheel(1)" name="wheel" >Selected color on color wheel<br>
+            <input type="radio" onclick="wheel(1)" name="wheel" >Selected color on color wheel<br>
         <label>
         <label class="radio">
-            <input type="radio" onclick="colorWheel(2)" name="wheel" >Spun wheel 3 times<br>
+            <input type="radio" onclick="wheel(2)" name="wheel" >Spun wheel 3 times<br>
         <label>
         <label class="radio">
-            <input type="radio" onclick="colorWheel(4)" name="wheel" >Spun three times and chose color<br>
+            <input type="radio" onclick="wheel(4)" name="wheel" >Spun three times and chose color<br>
         <label>
         <label class="radio">
-            <input type="radio" onclick="colorWheel(3)" name="wheel" >Attempted color wheel and failed<br>
+            <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
         <label>
 
     </div>
