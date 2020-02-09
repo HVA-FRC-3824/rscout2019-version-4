@@ -218,6 +218,10 @@ function getShootSpotAuto() {
     yCoords.push(shootY);
     console.log(xCoords);
     console.log(yCoords);
+    var autoImage = document.querySelector("#autoField");
+    var autoWidth = autoImage.clientWidth;
+    var autoHeight = autoImage.clientHeight;
+    console.log("Current width=" + autoWidth + ", " + "Original height=" + autoHeight);
 }
 
 function getShootSpotTeleop() {
