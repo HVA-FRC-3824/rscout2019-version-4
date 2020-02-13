@@ -22,11 +22,24 @@ pickedUpAutoFloor = 0;
 pickedUpTeleopFloor = 0;
 pickedUpAutoBay = 0;
 pickedUpTeleopBay = 0;
+whereScoredG = 1;
 isLevel = "";
 notes = "";
 colorWheel = "";
-xCoords = [];
-yCoords = [];
+xAutoCoords = [];
+yAutoCoords = [];
+xTeleCoords = [];
+yTeleCoords = [];
+autoX = 0;
+autoY = 0;
+teleX = 0;
+teleY = 0;
+autoFieldWidth = 1033;
+autoFieldHeight = 638;
+fullFieldWidth = 1287;
+fullFieldHeight = 638;
+dropDownCheck = false;
+inTeleop = false;
 
 
 //* Initialize varibles
@@ -140,12 +153,19 @@ function createMatchArray() {
         colorWheel: colorWheel,
     };
 
-    pushFirebaseMatch(matchDataArray);
+    heatMapArray = {
+        xauto: xAutoCoords,
+        yauto: yAutoCoords,
+        xtele: xTeleCoords,
+        ytele: yTeleCoords,
+    }
+
+    pushFirebaseMatch(matchDataArray, heatMapArray);
 }
 
-function pushFirebaseMatch(data) {
+function pushFirebaseMatch(data, heatData) {
     console.log(data);
-    firebase.database().ref('MatchScouting/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
+    firebase.database().ref('matchScouting/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
         "robotScore": data.robotScore,
@@ -157,6 +177,13 @@ function pushFirebaseMatch(data) {
         "notes": data.notes,
         "climbTime": data.climbTime,
         "colorWheel": data.colorWheel,
+    });
+    firebase.database().ref('heatMap/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
+        "x auto": heatData.xauto,
+        "y auto": heatData.yauto,
+        "x tele": heatData.xtele,
+        "y tele": heatData.ytele,
+        "drive station": data.driveStation,
     });
     setTimeout(nextMatch, 1000);
 }
@@ -210,25 +237,39 @@ function wheel(didSpin) {
 }
 
 function getShootSpotAuto() {
-    var shootX = event.clientX;
-    var shootY = event.clientY;
-    var shootPositionAuto = "X coords: " + shootX + ", Y coords: " + shootY;
-    console.log(shootPositionAuto);
-    xCoords.push(shootX);
-    yCoords.push(shootY);
-    console.log(xCoords);
-    console.log(yCoords);
     var autoImage = document.querySelector("#autoField");
-    var autoWidth = autoImage.clientWidth;
-    var autoHeight = autoImage.clientHeight;
-    console.log("Current width=" + autoWidth + ", " + "Original height=" + autoHeight);
+    autoWidth = autoImage.clientWidth;
+    autoHeight = autoImage.clientHeight;
+    autoWidthPercent = autoWidth / autoFieldWidth;
+    autoHeightPercent = autoHeight / autoFieldHeight;
+    autoWidthMult = 1 / autoWidthPercent;
+    autoHeightMult = 1 / autoHeightPercent;
+    console.log("Current width=" + autoWidth + ", " + "Current height=" + autoHeight);
+    var autoButton = document.querySelector("#defaultOpen");
+    var buttonHeight = autoButton.clientHeight;
+    autoX = event.clientX;
+    autoY = event.clientY - buttonHeight;
+    console.log("x: " + autoX + ", " + "y: " + autoY)
+    autoX = autoX * autoWidthMult;
+    autoY = autoY * autoHeightMult;
 }
 
 function getShootSpotTeleop() {
-    var shootX = event.clientX;
-    var shootY = event.clientY;
-    var shootPositionTeleop = "X coords: " + shootX + ", Y coords: " + shootY;
-    console.log(shootPositionTeleop);
+    var teleImage = document.querySelector("#teleopField");
+    teleWidth = teleImage.clientWidth;
+    teleHeight = teleImage.clientHeight;
+    teleWidthPercent = teleWidth / fullFieldWidth;
+    teleHeightPercent = teleHeight / fullFieldHeight;
+    teleWidthMult = 1 / teleWidthPercent;
+    teleHeightMult = 1 / teleHeightPercent;
+    console.log("Current width=" + teleWidth + ", " + "Current height=" + teleHeight);
+    var teleButton = document.querySelector("#defaultOpen");
+    var buttonHeight = teleButton.clientHeight;
+    teleX = event.clientX;
+    teleY = event.clientY - buttonHeight;
+    console.log("x: " + teleX + ", " + "y: " + teleY)
+    teleX = teleX * teleWidthMult;
+    teleY = teleY * teleHeightMult;
 }
 
 function chooseRobotPostition(position) {
@@ -262,7 +303,7 @@ function chooseDriveStation(drive) {
 function increment(teleOrAuto, wherePickedUp) {
     if (ballsHeld < 5) {
         ballsHeld++;
-        document.getElementById("input-number").innerHTML = ballsHeld;
+
     }
     console.log(ballsHeld + " balls held");
     if (teleOrAuto == 0) {
@@ -284,27 +325,48 @@ function increment(teleOrAuto, wherePickedUp) {
     } else {
         console.log("debugIncrement");
     }
+    document.getElementById("ballsHeld").innerHTML = ballsHeld;
+    if (inTeleop = true) {
+        document.getElementById("ballsHeld2").innerHTML = ballsHeld;
+    }
 }
 
 function decrement() {
     if (ballsHeld > 0) {
         ballsHeld--;
-        document.getElementById("input-number").innerHTML = ballsHeld;
     }
     console.log(ballsHeld + " balls held");
+    document.getElementById("ballsHeld").innerHTML = ballsHeld;
+    if (inTeleop = true) {
+        document.getElementById("ballsHeld2").innerHTML = ballsHeld;
+    }
 }
 
-function autoFieldInput(f) {
-    robotAction = f;
-    //alert(robotAction);
-    document.getElementById("autoDropdown").classList.toggle("show");
+function autoFieldInput() {
+    if (dropDownCheck == false) {
+        document.getElementById("autoDropdown").classList.toggle("show");
+    }
+    dropDownCheck = true;
 }
 
-function teleopFieldInput(f) {
-    robotAction = f;
-    document.getElementById("teleopDropdown").classList.toggle("show");
+function teleopFieldInput() {
+    if (dropDownCheck == false) {
+        document.getElementById("teleopDropdown").classList.toggle("show");
+    }
+    dropDownCheck = true;
 }
 
+function autoFieldInput2() {
+    document.getElementById("autoDropdown2").classList.toggle("show");
+}
+
+function teleopFieldInput2() {
+    document.getElementById("teleopDropdown2").classList.toggle("show");
+}
+
+function transferBalls() {
+    document.getElementById("ballsHeld2").innerHTML = ballsHeld;
+}
 //Endgame Timer
 
 var climbTime = 0;
@@ -349,16 +411,38 @@ function levelCheck() {
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function hideAutoDropdown(whereScored) {
-    robotScore = robotScore + (whereScored * 2);
-    decrement();
-    //shootPosition = shootHeatMap[];
+    whereScoredG = whereScored;
     document.getElementById("autoDropdown").classList.toggle("show");
-    console.log(robotScore + " points");
+}
+
+function hideAutoDropdown2(howManyScored) {
+    robotScore = robotScore + ((whereScoredG * 2) * howManyScored);
+    for (i = 0; i < howManyScored; i++) {
+        decrement();
+        xAutoCoords.push(autoX);
+        yAutoCoords.push(autoY);
+        console.log(xAutoCoords);
+        console.log(yAutoCoords);
+    }
+    document.getElementById("autoDropdown2").classList.toggle("show");
+    console.log(robotScore);
+    dropDownCheck = false;
 }
 
 function hideTeleopDropdown(whereScored) {
-    robotScore = robotScore + whereScored;
-    decrement();
+    whereScoredG = whereScored;
     document.getElementById("teleopDropdown").classList.toggle("show");
+    console.log(whereScoredG + " whereScored");
+}
+
+function hideTeleopDropdown2(howManyScored) {
+    robotScore = robotScore + (whereScoredG * howManyScored);
+    for (i = 0; i < howManyScored; i++) {
+        decrement();
+        //xAutoCoords.push(autoX);
+        //yAutoCoords.push(autoY);
+    }
+    document.getElementById("teleopDropdown2").classList.toggle("show");
     console.log(robotScore + " points");
+    dropDownCheck = false;
 }

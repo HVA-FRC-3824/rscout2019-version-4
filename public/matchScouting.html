@@ -24,7 +24,7 @@
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation'), transferBalls()"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
@@ -86,6 +86,7 @@
                 <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
             </label><br>
+                <br>
             </form>
             <form id=startingBalls>
                 <label class="radio" id="startTop">
@@ -112,13 +113,20 @@
     -->
 
     <div id="Auto" class="tabcontent">
-        <!--<h3>Speed:</h3>
-            <h2>Accuracy:</h2>-->
+
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div id="autoDropdown" class="autoDropdown-content">
-            <a href="#innerPort" onclick="hideAutoDropdown(3)">Scored 3</a>
-            <a href="#outterPort" onclick="hideAutoDropdown(2)">Scored 2</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown(1)">Scored 1</a>
+            <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Scored 3</a>
+            <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Scored 2</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown(1),autoFieldInput2()">Scored 1</a>
+        </div>
+        <!--The dropdown after the first dropdown -->
+        <div id="autoDropdown2" class="autoDropdown-content">
+            <a href="#innerPort" onclick="hideAutoDropdown2(5)">5 Balls</a>
+            <a href="#outerPort" onclick="hideAutoDropdown2(4)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown2(3)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown2(2)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown2(1)">1 Ball</a>
         </div>
         <!-- Here the 0 that is passed in tells it to increment the auto pickups-->
         <button class="pickupButton" onclick="increment(0, 0);">Picked Up From Floor</button>
@@ -128,8 +136,9 @@
             Could add steal option
         
         -->
-        <h4>Balls Held: </h4>
-        <div class="counter">
+        <h4 id="ballsHeld"> Balls Held </h4>
+
+        <!--<div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
                     <span onclick="decrement()" class="input-number-decrement">-</span>
@@ -139,7 +148,7 @@
                     <span onclick="increment()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
 
     <!--
@@ -149,13 +158,19 @@
     -->
 
     <div id="Teleop" class="tabcontent">
-        <div id="teleopDropdown" class="teleopDropdown-content">
-            <a href="#innerPort" onclick="hideTeleopDropdown(3)">Scored 3</a>
-            <a href="#outerPort" onclick="hideTeleopDropdown(2)">Scored 2</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown(1)">Scored 1</a>
-        </div>
         <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
-
+        <div id="teleopDropdown" class="teleopDropdown-content">
+            <a href="#innerPort" onclick="hideTeleopDropdown(3),teleopFieldInput2()">Scored 3</a>
+            <a href="#outerPort" onclick="hideTeleopDropdown(2),teleopFieldInput2()">Scored 2</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown(1),teleopFieldInput2()">Scored 1</a>
+        </div>
+        <div id="teleopDropdown2" class="teleopDropdown-content">
+            <a href="#innerPort" onclick="hideTeleopDropdown2(5)">5 Balls</a>
+            <a href="#outerPort" onclick="hideTeleopDropdown2(4)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown2(3)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown2(2)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideTeleopDropdown2(1)">1 Ball</a>
+        </div>
         <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
         <button class="pickupButton" onclick="increment(1, 0);">Picked Up From Floor</button>
         <button class="pickupButton2" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
@@ -165,8 +180,9 @@
             
         -->
 
-        <h4>Balls Held:</h4>
-        <div class="counter">
+        <h4 id="ballsHeldTele"> Balls Held </h4>
+
+        <!--<div class="counter">
             <div class="input-group input-number-group">
                 <div class="input-group-button">
                     <span onclick="decrement()" class="input-number-decrement">-</span>
@@ -176,7 +192,7 @@
                     <span onclick="increment()" class="input-number-increment" id="incrementButton">+</span>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <!--
 ============================================
