@@ -267,7 +267,7 @@ function getShootSpotTeleop() {
     var buttonHeight = teleButton.clientHeight;
     teleX = event.clientX;
     teleY = event.clientY - buttonHeight;
-    console.log("x: " + teleX + ", " + "y: " + teleY)
+    console.log("tele x: " + teleX + ", " + "tele y: " + teleY)
     teleX = teleX * teleWidthMult;
     teleY = teleY * teleHeightMult;
 }
