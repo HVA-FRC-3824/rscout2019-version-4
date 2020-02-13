@@ -178,7 +178,7 @@ function pushFirebaseMatch(data, heatData) {
         "climbTime": data.climbTime,
         "colorWheel": data.colorWheel,
     });
-    firebase.database().ref('heatMap/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
+    firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "x auto": heatData.xauto,
         "y auto": heatData.yauto,
         "x tele": heatData.xtele,
@@ -433,8 +433,10 @@ function hideTeleopDropdown2(howManyScored) {
     robotScore = robotScore + (whereScoredG * howManyScored);
     for (i = 0; i < howManyScored; i++) {
         decrement();
-        //xAutoCoords.push(autoX);
-        //yAutoCoords.push(autoY);
+        xTeleCoords.push(teleX);
+        yTeleCoords.push(teleY);
+        console.log(xTeleCoords);
+        console.log(yTeleCoords);
     }
     document.getElementById("teleopDropdown2").classList.toggle("show");
     console.log(robotScore + " points");
