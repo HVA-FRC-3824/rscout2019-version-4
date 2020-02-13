@@ -23,7 +23,7 @@ pickedUpTeleopFloor = 0;
 pickedUpAutoBay = 0;
 pickedUpTeleopBay = 0;
 whereScoredG = 1;
-isLevel = "";
+isLevel = "notLevel";
 notes = "";
 colorWheel = "";
 xAutoCoords = [];
@@ -326,9 +326,6 @@ function increment(teleOrAuto, wherePickedUp) {
         console.log("debugIncrement");
     }
     document.getElementById("ballsHeld").innerHTML = ballsHeld;
-    if (inTeleop = true) {
-        document.getElementById("ballsHeld2").innerHTML = ballsHeld;
-    }
 }
 
 function decrement() {
@@ -337,9 +334,6 @@ function decrement() {
     }
     console.log(ballsHeld + " balls held");
     document.getElementById("ballsHeld").innerHTML = ballsHeld;
-    if (inTeleop = true) {
-        document.getElementById("ballsHeld2").innerHTML = ballsHeld;
-    }
 }
 
 function autoFieldInput() {
