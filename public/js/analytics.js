@@ -24,9 +24,26 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
+
 /*
 function pullFirebase() {
-    var robotNum = document.getElementById("robotNum").value;
-    return firebase.database().ref('/heatMap/' + robotNum).once('value').then(function(snapshot));
-
+    
+    return firebase.database().ref('/heatMap/' + robotNum).once('value')
+};
 */
+
+function displayText() {
+    var robotNum = document.getElementById("robotNum").value;
+    firebase.database().ref('/heatMap/' + robotNum).on("value", gotData);
+}
+
+function gotData(data) {
+    var robotData = data.val();
+    console.log(robotData);
+    var matches = Object.keys(robotData);
+    console.log(matches);
+    /*
+    var slicedMatches = [];
+    for (var i=0; i<4)
+    */
+}
