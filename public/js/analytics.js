@@ -37,11 +37,30 @@ function displayText() {
     firebase.database().ref('/heatMap/' + robotNum).on("value", gotData);
 }
 
+function pullNames(matches) {
+    matches = matches[0];
+    var robotNum = document.getElementById("robotNum").value;
+    firebase.database().ref('/heatMap/' + '/' + robotNum + '/' + matches).on("value", setsVar);
+}
+
+function setsVar(data) {
+    var names = data.val();
+    var namesArray = Object.keys(names);
+    console.log(names);
+    console.log(namesArray);
+    console.log("this function is acutally running")
+}
+
 function gotData(data) {
     var robotData = data.val();
     console.log(robotData);
     var matches = Object.keys(robotData);
+    pullNames(matches);
+    /*var robotString = JSON.stringify(robotData);*/
+    console.log(robotString);
     console.log(matches);
+    console.log(testMatch);
+    console.log(scoutName);
     /*
     var slicedMatches = [];
     for (var i=0; i<4)
