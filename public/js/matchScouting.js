@@ -188,6 +188,7 @@ function pushFirebaseMatch(data, heatData) {
     setTimeout(nextMatch, 1000);
 }
 
+//Brings you back to the populate matches/shedule page
 function nextMatch() {
     console.log(match)
     mNumber = localStorage.getItem("num");
@@ -196,7 +197,7 @@ function nextMatch() {
     location.replace("./schedule.html");
 }
 
-
+//the tab buttons at the top of the page
 function openPage(pageName) {
     //* Hide all elements with class="tabcontent" by default
     var i, tabcontent, tablinks;
@@ -222,6 +223,8 @@ function openPage(pageName) {
 
 };
 
+
+//checks the state of the wheel spin radio button and sets that to the global variable
 function wheel(didSpin) {
     if (didSpin == 0) {
         colorWheel = "didntSpin";
@@ -236,6 +239,8 @@ function wheel(didSpin) {
     }
 }
 
+
+//query's the image coords and does grant's heatmap stuff so they work
 function getShootSpotAuto() {
     var autoImage = document.querySelector("#autoField");
     autoWidth = autoImage.clientWidth;
@@ -254,6 +259,7 @@ function getShootSpotAuto() {
     autoY = autoY * autoHeightMult;
 }
 
+//does the same as get shoot spot auto but for teleop
 function getShootSpotTeleop() {
     var teleImage = document.querySelector("#teleopField");
     teleWidth = teleImage.clientWidth;
@@ -272,11 +278,14 @@ function getShootSpotTeleop() {
     teleY = teleY * teleHeightMult;
 }
 
+
+//local stores the choose robot start position radio buttons
 function chooseRobotPostition(position) {
     var startPos = position;
     localStorage.setItem("startPos", startPos);
 }
 
+//sets the balls held counter to however many the robot started with
 function chooseStartBalls(startBalls) {
     ballsHeld = 0;
     for (i = 0; i <= (startBalls - 1); i++) {
@@ -285,6 +294,7 @@ function chooseStartBalls(startBalls) {
 
 }
 
+//picks the field image to use in auto based on the driver station
 function chooseDriveStation(drive) {
     driveStation = drive;
     teamSide = drive.slice(0, 1);
@@ -300,6 +310,8 @@ function chooseDriveStation(drive) {
     }
 }
 
+
+//increments the balls held variable and adds to the picked up in auto and picked up in tele
 function increment(teleOrAuto, wherePickedUp) {
     if (ballsHeld < 5) {
         ballsHeld++;
@@ -326,16 +338,22 @@ function increment(teleOrAuto, wherePickedUp) {
         console.log("debugIncrement");
     }
     document.getElementById("ballsHeld").innerHTML = ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
 }
 
+
+//decrements the balls held counter
 function decrement() {
     if (ballsHeld > 0) {
         ballsHeld--;
     }
     console.log(ballsHeld + " balls held");
     document.getElementById("ballsHeld").innerHTML = ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
 }
 
+
+//opens up the first dropdown when click on field
 function autoFieldInput() {
     if (dropDownCheck == false) {
         document.getElementById("autoDropdown").classList.toggle("show");
@@ -343,6 +361,8 @@ function autoFieldInput() {
     dropDownCheck = true;
 }
 
+
+//does whats above but teleop
 function teleopFieldInput() {
     if (dropDownCheck == false) {
         document.getElementById("teleopDropdown").classList.toggle("show");
@@ -350,19 +370,24 @@ function teleopFieldInput() {
     dropDownCheck = true;
 }
 
+
+//opens the second dropdown/popup whem you click on the first one
 function autoFieldInput2() {
     document.getElementById("autoDropdown2").classList.toggle("show");
 }
 
+
+//same as above but tele
 function teleopFieldInput2() {
     document.getElementById("teleopDropdown2").classList.toggle("show");
 }
 
+//transfers the balls held value from auto to tele
 function transferBalls() {
-    document.getElementById("ballsHeld2").innerHTML = ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
 }
-//Endgame Timer
 
+//Endgame Timer
 var climbTime = 0;
 
 function startTimer() {
@@ -387,11 +412,15 @@ function resetTime() {
     climbTime = 0;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
+//end of timer code
 
+
+//sets the climb radio button to a global variable
 function didClimb(p) {
     climbType = p;
 }
 
+//checks the position of the toggle switch for is level
 function levelCheck() {
     var levelCheck = document.getElementById("levelCheck");
     if (levelCheck.checked == true) {
@@ -409,6 +438,7 @@ function hideAutoDropdown(whereScored) {
     document.getElementById("autoDropdown").classList.toggle("show");
 }
 
+//hides the second dropdown in auto and pushes the coords for the heat map and the robot score
 function hideAutoDropdown2(howManyScored) {
     robotScore = robotScore + ((whereScoredG * 2) * howManyScored);
     for (i = 0; i < howManyScored; i++) {

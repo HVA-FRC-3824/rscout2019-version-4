@@ -24,3 +24,9 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
+/*
+function pullFirebase() {
+    var robotNum = document.getElementById("robotNum").value;
+    return firebase.database().ref('/heatMap/' + robotNum).once('value').then(function(snapshot));
+
+*/

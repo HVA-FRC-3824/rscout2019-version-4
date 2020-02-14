@@ -24,7 +24,7 @@
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation'), transferBalls()"> Teleop </button>
+    <button class="tablink" onclick="transferBalls(), openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
     <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
@@ -130,9 +130,9 @@
         </div>
         <!-- Here the 0 that is passed in tells it to increment the auto pickups-->
         <button class="pickupButton" onclick="increment(0, 0);">Picked Up From Floor</button>
-        <button class="pickupButton2" onclick="increment(0, 1);">Picked Up From Loading Zone</button>
-        <!--<button class="pickupButton" onclick="increment(0, 2);">Picked Up From Steal</button>
-        
+        <!--<button class="pickupButton2" onclick="increment(0, 1);">Picked Up From Loading Zone</button>
+            <button class="pickupButton" onclick="increment(0, 2);">Picked Up From Steal</button>
+            Also the loading zone isn't needed in auto
             Could add steal option
         
         -->
