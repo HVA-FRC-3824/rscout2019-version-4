@@ -1,3 +1,8 @@
+var robotNum = "";
+matches = [];
+currentName = [];
+match9 = 9;
+
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
     var baseUrl = 'https://www.thebluealliance.com/api/v3'; //base TBA url
@@ -33,34 +38,57 @@ function pullFirebase() {
 */
 
 function displayText() {
-    var robotNum = document.getElementById("robotNum").value;
+    robotNum = document.getElementById("robotNum").value;
     firebase.database().ref('/heatMap/' + robotNum).on("value", gotData);
 }
 
 function pullNames(matches) {
-    matches = matches[0];
-    var robotNum = document.getElementById("robotNum").value;
-    firebase.database().ref('/heatMap/' + '/' + robotNum + '/' + matches).on("value", setsVar);
+    match9 = matches[0];
+    firebase.database().ref('/heatMap/' + robotNum + '/' + match9).on("value", setsName);
 }
 
-function setsVar(data) {
+function setsName(data) {
     var names = data.val();
     var namesArray = Object.keys(names);
     console.log(names);
     console.log(namesArray);
-    console.log("this function is acutally running")
+    pullCoords(namesArray);
+}
+
+function pullCoords(namesArray) {
+    currentName = namesArray[0];
+    firebase.database().ref('/heatMap/' + robotNum + '/' + match9 + '/' + currentName).on("value", setsCoords);
+}
+
+function setsCoords(data) {
+    var xy = data.val();
+    var xyArray = Object.keys(xy);
+    console.log(xyArray);
+    xyCoords(xyArray);
+}
+
+function xyCoords(xyArray) {
+    xautoarray = xyArray[0];
+    firebase.database().ref('/heatMap/' + robotNum + '/' + match9 + '/' + currentName + '/' + xautoarray).on("value", coordArrays);
+}
+
+function coordArrays(data) {
+    var currentCoords = data.val();
+    console.log(currentCoords);
 }
 
 function gotData(data) {
     var robotData = data.val();
-    console.log(robotData);
-    var matches = Object.keys(robotData);
+    //console.log(robotData);
+    matches = Object.keys(robotData);
     pullNames(matches);
-    /*var robotString = JSON.stringify(robotData);*/
-    console.log(robotString);
     console.log(matches);
-    console.log(testMatch);
-    console.log(scoutName);
+
+    /*var robotString = JSON.stringify(robotData);*/
+    //console.log(robotString);
+
+    //console.log(testMatch);
+    //console.log(scoutName);
     /*
     var slicedMatches = [];
     for (var i=0; i<4)

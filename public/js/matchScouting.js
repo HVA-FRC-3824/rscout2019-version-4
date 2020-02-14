@@ -183,7 +183,6 @@ function pushFirebaseMatch(data, heatData) {
         "y auto": heatData.yauto,
         "x tele": heatData.xtele,
         "y tele": heatData.ytele,
-        "drive station": data.driveStation,
     });
     setTimeout(nextMatch, 1000);
 }
