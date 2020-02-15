@@ -21,6 +21,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
+<div class="matchNumHead" id="matchNumHead">
+    <h1 id="matchNumber">Match Number</h1>
+</div>
+
+
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
@@ -30,11 +35,10 @@
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
 
     <div id="Pre" class="tabcontent">
-        Name: <br>
-        <input type="text" name="name" id="scouterName" value="No Name">
         <div class="robotRadio">
+            Scouter Name:
+            <input type="text" name="name" id="scouterName" value="No Name"> <br><br>
             <form id="driveStation">
-                Robot: <br>
                 <label class="radio" id="blue_1">
                     <input type="radio" id="blue" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
                 </label><br>
@@ -57,9 +61,8 @@
 
         </div>
 
+        <div class=preMatchInfo>
 
-        <div>
-            <h2 id="matchNumber">Match Number</h2>
             <script>
                 //Display team numbers alongside position
                 var alliances = JSON.parse(localStorage.getItem("alliances"))
@@ -72,11 +75,12 @@
                 document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
                 document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
                 var match = localStorage.getItem("num");
-                document.getElementById("matchNumber").innerHTML = match;
+                document.getElementById("matchNumber").innerHTML = "Match Number: " + match;
             </script>
 
 
             <form id=startPosition>
+                Field Start Position <br>
                 <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
             </label><br>
@@ -85,7 +89,7 @@
             </label><br>
                 <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
-            </label><br>
+            </label><br><br>Balls started with
                 <br>
             </form>
             <form id=startingBalls>
@@ -116,9 +120,9 @@
 
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div id="autoDropdown" class="autoDropdown-content">
-            <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Scored 3</a>
-            <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Scored 2</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown(1),autoFieldInput2()">Scored 1</a>
+            <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Inner Port</a>
+            <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Outer Top</a>
+            <a href="#lowerPort" onclick="hideAutoDropdown(1),autoFieldInput2()">Lower Port</a>
         </div>
         <!--The dropdown after the first dropdown -->
         <div id="autoDropdown2" class="autoDropdown-content">
@@ -246,11 +250,12 @@
     -->
 
     <div id="Post" class="tabcontent">
-        <h9>Notes: </h9>
-        <input type="text" name="name" value="" id="notes">
         <br>
-        <button class="button" id="button" onclick="createMatchArray();">Next Match</button> <br> Color Wheel: <br>
-        <label class="radio">
+        <div class=postMatchInfo>
+            <button class="button" id="button" onclick="createMatchArray();">Next Match</button>
+            <h9>Notes: </h9><input type="text" name="name" value="" id="notes">
+            <br> Color Wheel: <br>
+            <label class="radio">
             <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
         <label>
         <label class="radio">
@@ -265,6 +270,7 @@
         <label class="radio">
             <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
         <label>
+        </div>
 
     </div>
 

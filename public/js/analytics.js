@@ -2,6 +2,8 @@ var robotNum = "";
 currentName = [];
 currentMatch = 0;
 matches = [];
+pulledDataFirebase = 0;
+otherName = true;
 
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
@@ -30,29 +32,28 @@ var sortById = function(prop) {
     };
 };
 
-/*
-function pullFirebase() {
-    
-    return firebase.database().ref('/heatMap/' + robotNum).once('value')
-};
-*/
-
 function displayText() {
     robotNum = document.getElementById("robotNum").value;
-    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData);
+    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData(testvar));
+}
+
+function gotData(data) {
+    var robotData = data.val();
+    matches = Object.keys(robotData);
+    console.log(matches);
+    pullNames(matches);
 }
 
 function pullNames(matches) {
-    for (i = 0; i < matches.length; i++) {
+    while (otherName) {
         console.log(matches.length);
         currentMatch = matches[i];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
-        console.log("matches");
-        for (j = 0; j < 5000; j++) {
-            console.log("Loading...");
-        }
+        otherName = false;
+        console.log("preventsSkips is now " + otherName + " and pullNames is waiting for it to finish");
     }
 }
+
 
 function setsName(data) {
     var names = data.val();
@@ -74,14 +75,23 @@ function pullCoords(namesArray) {
 }
 
 function setsCoords(data) {
-    var xy = data.val();
-    console.log(xy);
+    if (pulledDataFirebase <= namesArray.length) {
+        ++pulledDataFirebase;
+        console.log(robotNum, currentMatch, currentName);
+        var xy = data.val();
+        console.log(xy);
+    }
+
+    if (pulledDataFirebase > namesArray.length) {
+        pulledDataFirebase = 0;
+
+    }
     //var xyArray = Object.keys(xy);
     //console.log(xyArray);
     //xyCoords(xyArray);
 }
 
-function xyCoords(xyArray) {
+/*function xyCoords(xyArray) {
     for (i = 0; i < xyArray.length; i++) {
         currentCoordArray = xyArray[i];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName + '/' + currentCoordArray).once("value", coordArrays);
@@ -90,28 +100,9 @@ function xyCoords(xyArray) {
             console.log("Loading...");
         }
     }
-}
+}*/
 
-function coordArrays(data) {
+/*function coordArrays(data) {
     var currentCoords = data.val();
     //console.log(currentCoords);
-}
-
-function gotData(data) {
-    var robotData = data.val();
-    //console.log(robotData);
-    matches = Object.keys(robotData);
-    console.log(matches);
-    pullNames(matches);
-    //console.log(matches);
-
-    /*var robotString = JSON.stringify(robotData);*/
-    //console.log(robotString);
-
-    //console.log(testMatch);
-    //console.log(scoutName);
-    /*
-    var slicedMatches = [];
-    for (var i=0; i<4)
-    */
-}
+}*/

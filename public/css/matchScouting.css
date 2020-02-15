@@ -1,307 +1,270 @@
-    /* Set height of body and the document to 100% to enable "full page tabs" */
-    
-    body,
-    html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial;
-        overflow-x: hidden;
-    }
-    /* ----------------------FOR PRE MATCH INFO-----------------------/*
+/* Set height of body and the document to 100% to enable "full page tabs" */
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+    overflow-x: hidden;
+}
+
+
+/* ----------------------FOR PRE MATCH INFO-----------------------/*
 
 /* Style tab links */
-    
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-    
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-    
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-    
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-    
-    input:checked+.slider {
-        background-color: #2196F3;
-    }
-    
-    input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-    
-    input:checked+.slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-    
-    .pickupButton {
-        background-color: #7722cc;
-        border: 1px solid black;
-        margin: 0 auto;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        right: 10%;
-    }
-    
-    .pickupButton2 {
-        background-color: #7722cc;
-        border: 1px solid black;
-        margin: 0 auto;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        position: absolute;
-        top: 70%;
-        right: 10%;
-    }
-    
-    .tablink {
-        background-color: #555;
-        color: white;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 1% 2%;
-        font-size: 70%;
-        width: 16.66%;
-    }
-    
-    .tablink:hover {
-        background-color: grey;
-    }
-    /* Style the tab content (and add height:100% for full page content) */
-    
-    .tabcontent {
-        color: #7722cc;
-        display: none;
-        height: 100%;
-    }
-    
-    h1 {
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        position: relative;
-        top: 10%;
-        left: 45%;
-    }
-    
-    input[type=radio] {
-        border: 0px;
-        width: 8%;
-        height: 1em;
-    }
-    
-    .robotRadio {
-        font-size: 50px;
-    }
-    
-    .container {
-        position: absolute;
-        width: 50%;
-        top: 20%;
-        left: 40%;
-    }
-    /* Make the image responsive */
-    
-    .container img {
-        position: relative;
-        width: auto;
-        height: auto;
-    }
-    /* ----------------FOR AUTO TAB-------------------- */
-    
-    #Auto img {
-        width: 75%;
-        height: 85%;
-        align-content: center;
-    }
-    
-    .input-number-group {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-    
-    .input-number-group input[type=number]::-webkit-inner-spin-button,
-    .input-number-group input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        appearance: none;
-    }
-    
-    .input-number-group .input-group-button {
-        line-height: calc(80px/2 - 5px);
-    }
-    
-    .input-number-group .input-number {
-        color: white;
-        width: 50px;
-        padding: 0 12px;
-        text-align: center;
-        outline: none;
-        display: block;
-        margin: 0;
-    }
-    
-    .input-number-group .input-number2 {
-        color: white;
-        width: 50px;
-        padding: 0 12px;
-        text-align: center;
-        outline: none;
-        display: block;
-        margin: 0;
-    }
-    
-    .input-number-group .input-number,
-    .input-number-group .input-number2,
-    .input-number-group .input-number-decrement,
-    .input-number-group .input-number-increment {
-        border: 1px solid #cacaca;
-        height: 25px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        border-radius: 0;
-    }
-    
-    .input-number-group .input-number-decrement,
-    .input-number-group .input-number-increment {
-        display: inline-block;
-        width: 30px;
-        background: #e6e6e6;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    
-    .input-number-group .input-number-decrement {
-        margin-right: 0.3rem;
-    }
-    
-    .input-number-group .input-number-increment {
-        margin-left: 0.3rem;
-    }
-    
-    .counter {
-        position: absolute;
-        top: 95%;
-        left: 80%;
-    }
-    
-    .autoDropdown:hover,
-    .autoDropdown:focus {
-        background-color: #7722cc;
-    }
-    
-    .teleopDropdown:hover,
-    .teleopDropdown:focus {
-        background-color: #7722cc;
-    }
-    
-    .teleopDropdown-content,
-    .autoDropdown-content {
-        display: none;
-        position: absolute;
-        background-color: grey;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        left: 50%;
-        top: 50%;
-        width: 30%;
-    }
-    
-    .teleopDropdown-content a,
-    .autoDropdown-content a {
-        color: black;
-        padding: 1% 1%;
-        text-decoration: none;
-        display: block;
-    }
-    
-    .autoDropdown a:hover,
-    .teleopDropdown a:hover {
-        background-color: #ddd;
-    }
-    
-    .show {
-        display: block;
-    }
-    
-    #Teleop img {
-        position: relative;
-        width: 75%;
-        height: 85%;
-        align-content: center;
-    }
-    
-    #Auto {
-        background-color: black;
-    }
-    
-    #Pre {
-        background-color: black;
-    }
-    
-    #Teleop {
-        background-color: black;
-    }
-    
-    #Endgame {
-        background-color: black;
-    }
-    
-    #Post {
-        background-color: black;
-    }
-    
-    .climbOption {
-        font-size: 30px;
-        position: relative;
-    }
+
+
+/* For level check button */
+
+.button {
+    background-color: #7722cc;
+    color: white;
+    font-size: 130%;
+    text-align: center;
+    border: 0%;
+    float: right;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #7722cc;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #7722cc;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* For level check button end*/
+
+.pickupButton {
+    background-color: #7722cc;
+    border: 1px solid black;
+    margin: 0 auto;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+}
+
+.pickupButton2 {
+    background-color: #7722cc;
+    border: 1px solid black;
+    margin: 0 auto;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    right: 10%;
+}
+
+.tablink {
+    background-color: #7722cc;
+    color: white;
+    float: left;
+    border-color: white;
+    outline: none;
+    cursor: pointer;
+    padding: 1% 2%;
+    font-size: 70%;
+    width: 16.66%;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+
+.tabcontent {
+    color: #7722cc;
+    display: none;
+    height: 100%;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 100%;
+    text-align: center;
+    position: relative;
+    font-weight: normal;
+    padding: 0%;
+    margin: 0%;
+}
+
+.matchNumHead {
+    background-color: #7722cc;
+    padding: 1%;
+}
+
+input[type=radio] {
+    border: 0%;
+    width: 8%;
+    height: 1em;
+    font-size: 100%;
+}
+
+.robotRadio {
+    font-size: 300%;
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    color: #7722cc;
+}
+
+.preMatchInfo {
+    font-size: 220%;
+    display: inline-block;
+    position: relative;
+}
+
+.postMatchInfo {
+    font-size: 290%;
+    position: relative;
+}
+
+.container {
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    left: 40%;
+}
+
+
+/* Make the image responsive */
+
+.container img {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+
+/* ----------------FOR AUTO TAB-------------------- */
+
+#Auto img {
+    width: 75%;
+    height: 85%;
+    align-content: center;
+}
+
+.counter {
+    position: absolute;
+    top: 95%;
+    left: 80%;
+}
+
+.autoDropdown:hover,
+.autoDropdown:focus {
+    background-color: #7722cc;
+}
+
+.teleopDropdown:hover,
+.teleopDropdown:focus {
+    background-color: #7722cc;
+}
+
+.teleopDropdown-content,
+.autoDropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 30%;
+    top: 45%;
+    width: 30%;
+}
+
+.teleopDropdown-content a,
+.autoDropdown-content a {
+    color: black;
+    padding: 1% 1%;
+    text-decoration: none;
+    display: block;
+}
+
+.autoDropdown a:hover,
+.teleopDropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+#Teleop img {
+    position: relative;
+    width: 75%;
+    height: 85%;
+    align-content: center;
+}
+
+#Auto {
+    background-color: black;
+}
+
+#Pre {
+    background-color: black;
+}
+
+#Teleop {
+    background-color: black;
+}
+
+#Endgame {
+    background-color: black;
+}
+
+#Post {
+    background-color: black;
+}
+
+.climbOption {
+    font-size: 30px;
+    position: relative;
+}
