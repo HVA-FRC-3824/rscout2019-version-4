@@ -357,7 +357,6 @@ function autoFieldInput() {
     if (dropDownCheck == false) {
         document.getElementById("autoDropdown").classList.toggle("show");
     }
-    dropDownCheck = true;
 }
 
 
@@ -366,19 +365,20 @@ function teleopFieldInput() {
     if (dropDownCheck == false) {
         document.getElementById("teleopDropdown").classList.toggle("show");
     }
-    dropDownCheck = true;
 }
 
 
 //opens the second dropdown/popup whem you click on the first one
 function autoFieldInput2() {
     document.getElementById("autoDropdown2").classList.toggle("show");
+    dropDownCheck = true;
 }
 
 
 //same as above but tele
 function teleopFieldInput2() {
     document.getElementById("teleopDropdown2").classList.toggle("show");
+    dropDownCheck = true;
 }
 
 //transfers the balls held value from auto to tele

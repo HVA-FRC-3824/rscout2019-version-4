@@ -117,8 +117,16 @@
     -->
 
     <div id="Auto" class="tabcontent">
+        <div id="imageDiv">
+            <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
+        </div>
 
-        <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
+        <div id="autoRight">
+            <h2 id="ballsHeld"> Balls Held </h2>
+            <button class="pickupButton" onclick="increment(0, 0);">Picked Up From Floor</button>
+        </div>
+
+
         <div id="autoDropdown" class="autoDropdown-content">
             <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Inner Port</a>
             <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Outer Top</a>
@@ -133,14 +141,14 @@
             <a href="#lowerPort" onclick="hideAutoDropdown2(1)">1 Ball</a>
         </div>
         <!-- Here the 0 that is passed in tells it to increment the auto pickups-->
-        <button class="pickupButton" onclick="increment(0, 0);">Picked Up From Floor</button>
+
         <!--<button class="pickupButton2" onclick="increment(0, 1);">Picked Up From Loading Zone</button>
             <button class="pickupButton" onclick="increment(0, 2);">Picked Up From Steal</button>
             Also the loading zone isn't needed in auto
             Could add steal option
         
         -->
-        <h4 id="ballsHeld"> Balls Held </h4>
+
 
         <!--<div class="counter">
             <div class="input-group input-number-group">
