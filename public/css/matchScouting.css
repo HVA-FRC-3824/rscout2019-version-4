@@ -9,12 +9,7 @@ html {
 }
 
 
-/* ----------------------FOR PRE MATCH INFO-----------------------/*
-
-/* Style tab links */
-
-
-/* For level check button */
+/* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 .button {
     background-color: #7722cc;
@@ -242,6 +237,6 @@ input[type=radio] {
 }
 
 .climbOption {
-    font-size: 30px;
+    font-size: 200%;
     position: relative;
 }

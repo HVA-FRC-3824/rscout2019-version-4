@@ -21,10 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<div class="matchNumHead" id="matchNumHead">
-    <h1 id="matchNumber">Match Number</h1>
-</div>
-
 <body>
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
@@ -35,7 +31,7 @@
 
     <h id="Pre" class="tabcontent">
         <div class="robotRadio"> Scouter Name:
-            <input type="text" name="name" id="scouterName" value="No Name"> <br><br>
+            <input type="text" name="name" id="scouterName" value="No Name">
             <form id="driveStation">
                 <label class="radio" id="blue_1">
                     <input type="radio" id="blue" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
@@ -87,7 +83,6 @@
                 <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
             </label><br><br>Balls started with
-                <br>
             </form>
             <form id=startingBalls>
                 <label class="radio" id="startTop">
@@ -114,12 +109,13 @@
 
     <h id="Auto" class="tabcontent">
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
-        <h2 id="ballsHeld"> Balls Held </h2>
+        <h2 id="ballsHeld"></h2>
         <button class="button" onclick="increment(0, 0);">Picked Up From Floor</button>
         <div id="autoDropdown" class="autoDropdown-content">
             <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Inner Port</a>
             <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Outer Top</a>
             <a href="#lowerPort" onclick="hideAutoDropdown(1),autoFieldInput2()">Lower Port</a>
+            <a href="#miss" onclick="hideAutoDropdown(0),autoFieldInput2()">Miss</a>
         </div>
         <!--The dropdown after the first dropdown -->
         <div id="autoDropdown2" class="autoDropdown-content">
@@ -138,7 +134,7 @@
 
     <h id="Teleop" class="tabcontent">
         <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
-        <h2 id="ballsHeldTele"> Balls Held </h2>
+        <h2 id="ballsHeldTele"> B </h2>
         <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
         <button class="button" onclick="increment(1, 0);">Picked Up From Floor</button>
         <button class="button" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
@@ -146,6 +142,7 @@
             <a href="#innerPort" onclick="hideTeleopDropdown(3),teleopFieldInput2()">Inner Port</a>
             <a href="#outerPort" onclick="hideTeleopDropdown(2),teleopFieldInput2()">High Outer</a>
             <a href="#lowerPort" onclick="hideTeleopDropdown(1),teleopFieldInput2()">Lower Port</a>
+            <a href="#miss" onclick="hideTeleopDropdown(0),autoFieldInput2()">Miss</a>
         </div>
         <div id="teleopDropdown2" class="teleopDropdown-content">
             <a href="#innerPort" onclick="hideTeleopDropdown2(5)">5 Balls</a>

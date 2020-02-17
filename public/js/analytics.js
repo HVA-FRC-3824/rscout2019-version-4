@@ -4,6 +4,7 @@ currentMatch = 0;
 matches = [];
 nameArray = true;
 matchValue = 0;
+nameValue = 0;
 
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
@@ -50,7 +51,7 @@ function pullNames(matches) {
         currentMatch = matches[matchValue];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
     }
-    if (matchValue = match.length) {
+    if (matchValue == matches.length) {
         console.log("Done!")
     }
 }
@@ -68,17 +69,21 @@ function pullCoords(namesArray) {
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
         console.log(currentName);
     }
-    if (namesArray.length = nameValue) {
+    if (namesArray.length == nameValue) {
         matchValue = matchValue + 1
     }
 }
 
 function setsCoords(data) {
-    if (pulledDataFirebase <= namesArray.length) {
+    if (nameValue < namesArray.length - 1) {
         console.log(robotNum, currentMatch, currentName);
         var xy = data.val();
         console.log(xy);
-
+        pullCoords(namesArray);
+    }
+    if (nameValue >= namesArray.length) {
+        matchValue = matchValue + 1
+        pullNames(matches);
     }
 
     //var xyArray = Object.keys(xy);
@@ -101,4 +106,3 @@ function setsCoords(data) {
     var currentCoords = data.val();
     //console.log(currentCoords);
 }*/
-;
