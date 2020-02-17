@@ -142,7 +142,7 @@
             <a href="#innerPort" onclick="hideTeleopDropdown(3),teleopFieldInput2()">Inner Port</a>
             <a href="#outerPort" onclick="hideTeleopDropdown(2),teleopFieldInput2()">High Outer</a>
             <a href="#lowerPort" onclick="hideTeleopDropdown(1),teleopFieldInput2()">Lower Port</a>
-            <a href="#miss" onclick="hideTeleopDropdown(0),autoFieldInput2()">Miss</a>
+            <a href="#miss" onclick="hideTeleopDropdown(0),teleopFieldInput2()">Miss</a>
         </div>
         <div id="teleopDropdown2" class="teleopDropdown-content">
             <a href="#innerPort" onclick="hideTeleopDropdown2(5)">5 Balls</a>
@@ -202,11 +202,11 @@
     This is Post Match
 ============================================
     -->
-
     <div id="Post" class="tabcontent">
         <br>
+        <br>
         <div class=postMatchInfo>
-            <button class="button" id="button" onclick="createMatchArray();">Next Match</button>
+            <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
             <h9>Notes: </h9><input type="text" name="name" value="" id="notes">
             <br> Color Wheel: <br>
             <label class="radio">

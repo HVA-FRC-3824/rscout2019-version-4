@@ -47,7 +47,7 @@ autoScore = 0;
 autoAccuracy = 0;
 teleaccuracy = 0;
 autoShots = 0;
-teleopShots = 0;
+teleShots = 0;
 
 //* Initialize varibles
 
@@ -332,7 +332,6 @@ function chooseDriveStation(drive) {
 function increment(teleOrAuto, wherePickedUp) {
     if (ballsHeld < 5) {
         ballsHeld++;
-
     }
     console.log(ballsHeld + " balls held");
     if (teleOrAuto == 0) {
@@ -456,7 +455,6 @@ function hideAutoDropdown(whereScored) {
         autoMisses++;
     }
     document.getElementById("autoDropdown").classList.toggle("show");
-
 }
 
 //hides the second dropdown in auto and pushes the coords for the heat map and the robot score
@@ -478,6 +476,9 @@ function hideAutoDropdown2(howManyScored) {
 
 function hideTeleopDropdown(whereScored) {
     whereScoredG = whereScored;
+    if (whereScored == 0) {
+        autoMisses++;
+    }
     document.getElementById("teleopDropdown").classList.toggle("show");
     console.log(whereScoredG + " whereScored");
 }
@@ -491,7 +492,7 @@ function hideTeleopDropdown2(howManyScored) {
         yTeleCoords.push(teleY);
         console.log(xTeleCoords);
         console.log(yTeleCoords);
-        teleopShots++;
+        teleShots++;
     }
     document.getElementById("teleopDropdown2").classList.toggle("show");
     console.log(robotScore + " points");

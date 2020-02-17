@@ -135,7 +135,6 @@ input[type=radio] {
 
 .postMatchInfo {
     font-size: 290%;
-    position: relative;
 }
 
 .container {
@@ -239,4 +238,15 @@ input[type=radio] {
 .climbOption {
     font-size: 200%;
     position: relative;
+}
+
+.nextMatch {
+    background-color: #7722cc;
+    float: right;
+    border: 1px solid black;
+    color: white;
+    padding: 1.5% 2%;
+    font-size: 100%;
+    margin: .5% .25%;
+    cursor: pointer;
 }
