@@ -45,7 +45,7 @@ teleMisses = 0;
 teleScore = 0;
 autoScore = 0;
 autoAccuracy = 0;
-teleaccuracy = 0;
+teleAccuracy = 0;
 autoShots = 0;
 teleShots = 0;
 
