@@ -74,41 +74,6 @@ input:checked+.slider:before {
 
 /* For level check button end*/
 
-.pickupButton {
-    background-color: #7722cc;
-    color: white;
-    position: relative;
-    float: right;
-    border: none;
-    outline: none;
-    padding: none;
-    margin: none;
-}
-
-.imageDiv {
-    width: 75%;
-    float: left;
-}
-
-.autoRight {
-    float: right;
-}
-
-.pickupButton2 {
-    background-color: #7722cc;
-    border: 1px solid black;
-    margin: 0 auto;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    position: absolute;
-    top: 70%;
-    right: 10%;
-}
-
 .tablink {
     background-color: #7722cc;
     color: white;
@@ -144,6 +109,7 @@ h2 {
     float: right;
     padding-right: 12%;
     font-size: 400%;
+    position: relative;
 }
 
 .matchNumHead {

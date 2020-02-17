@@ -2,8 +2,8 @@ var robotNum = "";
 currentName = [];
 currentMatch = 0;
 matches = [];
-pulledDataFirebase = 0;
-otherName = true;
+nameArray = true;
+matchValue = 0;
 
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
@@ -45,12 +45,13 @@ function gotData(data) {
 }
 
 function pullNames(matches) {
-    while (otherName) {
+    if (matches.length - 1 > matchValue) {
         console.log(matches.length);
-        currentMatch = matches[i];
+        currentMatch = matches[matchValue];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
-        otherName = false;
-        console.log("preventsSkips is now " + otherName + " and pullNames is waiting for it to finish");
+    }
+    if (matchValue = match.length) {
+        console.log("Done!")
     }
 }
 
@@ -58,34 +59,28 @@ function pullNames(matches) {
 function setsName(data) {
     var names = data.val();
     var namesArray = Object.keys(names);
-    //console.log(names);
-    //console.log(namesArray);
     pullCoords(namesArray);
 }
 
 function pullCoords(namesArray) {
-    for (i = 0; i < namesArray.length; i++) {
-        currentName = namesArray[i];
+    if (namesArray.length - 1 >= nameValue) {
+        currentName = namesArray[nameValue];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
-        console.log("namesArray");
-        for (j = 0; j < 5000; j++) {
-            console.log("Loading...");
-        }
+        console.log(currentName);
+    }
+    if (namesArray.length = nameValue) {
+        matchValue = matchValue + 1
     }
 }
 
 function setsCoords(data) {
     if (pulledDataFirebase <= namesArray.length) {
-        ++pulledDataFirebase;
         console.log(robotNum, currentMatch, currentName);
         var xy = data.val();
         console.log(xy);
-    }
-
-    if (pulledDataFirebase > namesArray.length) {
-        pulledDataFirebase = 0;
 
     }
+
     //var xyArray = Object.keys(xy);
     //console.log(xyArray);
     //xyCoords(xyArray);
@@ -106,3 +101,4 @@ function setsCoords(data) {
     var currentCoords = data.val();
     //console.log(currentCoords);
 }*/
+;

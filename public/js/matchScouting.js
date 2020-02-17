@@ -41,7 +41,6 @@ fullFieldHeight = 638;
 dropDownCheck = false;
 inTeleop = false;
 
-
 //* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
@@ -133,7 +132,6 @@ function createMatchArray() {
             break;
 
     }
-
 
     matchDataArray = {
         name: name,
@@ -237,7 +235,6 @@ function wheel(didSpin) {
         colorWheel = "didBoth";
     }
 }
-
 
 //query's the image coords and does grant's heatmap stuff so they work
 function getShootSpotAuto() {
