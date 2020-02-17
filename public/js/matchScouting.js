@@ -140,9 +140,11 @@ function createMatchArray() {
             break;
 
     }
+    if (autoShots != 0 && teleShots != 0) {
+        autoAccuracy = (autoMisses / autoShots);
+        teleAccuracy = (teleMisses / teleShots);
+    }
 
-    autoAccuracy = (autoMisses / autoShots);
-    teleAccuracy = (teleMisses / teleShots);
     matchDataArray = {
         name: name,
         match: match,
