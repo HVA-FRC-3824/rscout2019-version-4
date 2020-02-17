@@ -69,7 +69,7 @@ function setsName(data) {
 function pullCoords(namesArray) {
     if (namesArray.length - 1 >= nameValue) {
         currentName = namesArray[nameValue];
-        console.log(currentName);
+        console.log(currentName)
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
     }
     if (namesArray.length == nameValue) {
@@ -85,19 +85,20 @@ function setsCoords(data) {
         console.log(xy);
         matchValue = matchValue + 1;
         nameValue = nameValue + 1;
-        if (nameValue == namesArray.length) {
-            matchValue = matchValue + 1;
-            nameValue = 0;
-            //pullNames(matches);
-        }
-        if (namesArray.length - 1 >= nameValue)
+    }
+    if (nameValue == namesArray.length) {
+        matchValue = matchValue + 1;
+        nameValue = 0;
+        //pullNames(matches);
+    }
+    if (namesArray.length - 1 >= nameValue) {
         //pullCoords(namesArray);
     }
-
-    //var xyArray = Object.keys(xy);
-    //console.log(xyArray);
-    //xyCoords(xyArray);
 }
+
+//var xyArray = Object.keys(xy);
+//console.log(xyArray);
+//xyCoords(xyArray);
 
 /*function xyCoords(xyArray) {
     for (i = 0; i < xyArray.length; i++) {
