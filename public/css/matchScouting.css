@@ -11,13 +11,12 @@ html {
 
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
-.button {
+button {
     background-color: #7722cc;
     color: white;
     font-size: 130%;
     text-align: center;
     border: 0%;
-    float: right;
 }
 
 .switch {
@@ -74,11 +73,21 @@ input:checked+.slider:before {
     color: white;
     float: left;
     border-color: white;
-    outline: none;
-    cursor: pointer;
     padding: 1% 2%;
     font-size: 70%;
     width: 16.66%;
+}
+
+.timer {
+    background-color: #7722cc;
+    color: white;
+    float: left;
+    border: none;
+    border-color: #7722cc;
+    padding: 0% 0%;
+    font-size: 170%;
+    padding: .75% 2%;
+    margin: .5% .75%;
 }
 
 
@@ -88,6 +97,18 @@ input:checked+.slider:before {
     color: #7722cc;
     display: none;
     height: 100%;
+}
+
+.autoInteraction {
+    float: right;
+    width: 25%;
+    position: relative;
+}
+
+.teleInteraction {
+    float: right;
+    width: 25%;
+    position: relative;
 }
 
 h1 {
@@ -101,10 +122,21 @@ h1 {
 }
 
 h2 {
-    float: right;
-    padding-right: 12%;
+    float: inherit;
+    padding-right: 45%;
     font-size: 400%;
     position: relative;
+}
+
+.interact {
+    background-color: #7722cc;
+    color: white;
+    float: left;
+    border: none;
+    border-color: #7722cc;
+    padding: 0% 0%;
+    font-size: 170%;
+    width: 100%;
 }
 
 .matchNumHead {

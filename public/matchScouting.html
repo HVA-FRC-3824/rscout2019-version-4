@@ -109,8 +109,13 @@
 
     <h id="Auto" class="tabcontent">
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
-        <h2 id="ballsHeld"></h2>
-        <button class="button" onclick="increment(0, 0);">Picked Up From Floor</button>
+        <div class=autoInteraction>
+            <br>
+            <h2 id="ballsHeld"></h2>
+            <br>
+            <button class="timer" id="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
+        </div>
+
         <div id="autoDropdown" class="autoDropdown-content">
             <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Inner Port</a>
             <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Outer Top</a>
@@ -134,10 +139,16 @@
 
     <h id="Teleop" class="tabcontent">
         <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
-        <h2 id="ballsHeldTele"> B </h2>
+        <div class="teleInteraction">
+            <br>
+            <h2 id="ballsHeldTele"></h2>
+            <br>
+            <button class="timer" onclick="increment(1, 0);">Picked Up From Floor</button>
+            <button class="timer" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
+        </div>
+
         <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
-        <button class="button" onclick="increment(1, 0);">Picked Up From Floor</button>
-        <button class="button" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
+
         <div id="teleopDropdown" class="teleopDropdown-content">
             <a href="#innerPort" onclick="hideTeleopDropdown(3),teleopFieldInput2()">Inner Port</a>
             <a href="#outerPort" onclick="hideTeleopDropdown(2),teleopFieldInput2()">High Outer</a>
@@ -161,11 +172,11 @@
     <div id="Endgame" class="tabcontent">
 
         <h8>Climb Timer</h8>
-        <button class="timerStartButton" onclick="startTimer();" id="Start" name="start">Start<br></button>
-        <button class="timerStopButton" onclick="stopTimer();" id="Stop" name="stop">Stop</button>
-        <button class="timerResetButton" onclick="resetTime();" id="Reset" name="reset">Reset</button>
+        <button class="timer" onclick="startTimer();" id="Start" name="start">Start<br></button>
+        <button class="timer" onclick="stopTimer();" id="Stop" name="stop">Stop</button>
+        <button class="timer" onclick="resetTime();" id="Reset" name="reset">Reset</button>
         <div class="timerText">
-            <p id="climbed_time"></p>
+            <p id="climbed_time">0.00</p>
         </div>
         <div class="climbOption">
             <form>
@@ -187,8 +198,7 @@
                         </label>
                 <label class="radio">
                             <input type="radio" onclick="didClimb('supportedTwo')" id="red" name="name" value="climb">Climbed and supported 2 other robots<br>
-                        </label>
-                <br> Is Level: <br>
+                        </label> Is Level: <br>
                 <label class="switch">
                             <input type="checkbox">
                             <span class="slider" id="levelCheck" onclick="levelCheck()"></span>

@@ -196,6 +196,9 @@ function pushFirebaseMatch(data, heatData) {
         "teleMisses": data.teleMisses,
         "autoScore": data.autoScore,
         "teleScore": data.teleScore,
+        "teleAccuracy": data.teleAccuracy,
+        "autoAccuracy": data.autoAccuracy,
+
     });
     firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "x auto": heatData.xauto,

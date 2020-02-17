@@ -1,5 +1,6 @@
 var robotNum = "";
 currentName = [];
+namesArray = [];
 currentMatch = 0;
 matches = [];
 nameArray = true;
@@ -35,7 +36,8 @@ var sortById = function(prop) {
 
 function displayText() {
     robotNum = document.getElementById("robotNum").value;
-    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData(testvar));
+    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData);
+    console.log(namesArray + " " + matchValue);
 }
 
 function gotData(data) {
@@ -52,26 +54,27 @@ function pullNames(matches) {
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
     }
     if (matchValue == matches.length) {
-        console.log("Done!")
+        console.log("Done!");
     }
 }
 
 
 function setsName(data) {
     var names = data.val();
-    var namesArray = Object.keys(names);
+    namesArray = Object.keys(names);
+    console.log(namesArray);
     pullCoords(namesArray);
 }
 
 function pullCoords(namesArray) {
     if (namesArray.length - 1 >= nameValue) {
         currentName = namesArray[nameValue];
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
         console.log(currentName);
+        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
     }
     if (namesArray.length == nameValue) {
-        matchValue = matchValue + 1
-        pullNames
+        matchValue = matchValue + 1;
+        //pullNames(matches);
     }
 }
 
@@ -80,15 +83,15 @@ function setsCoords(data) {
         console.log(robotNum, currentMatch, currentName);
         var xy = data.val();
         console.log(xy);
-        matchValue = matchValue + 1
-        nameValue = nameValue + 1
+        matchValue = matchValue + 1;
+        nameValue = nameValue + 1;
         if (nameValue == namesArray.length) {
-            matchValue = matchValue + 1
+            matchValue = matchValue + 1;
             nameValue = 0;
-            pullNames(matches);
+            //pullNames(matches);
         }
         if (namesArray.length - 1 >= nameValue)
-            pullCoords(namesArray);
+        //pullCoords(namesArray);
     }
 
     //var xyArray = Object.keys(xy);
