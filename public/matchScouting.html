@@ -200,8 +200,8 @@
                             <input type="radio" onclick="didClimb('supportedTwo')" id="red" name="name" value="climb">Climbed and supported 2 other robots<br>
                         </label> Is Level: <br>
                 <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider" id="levelCheck" onclick="levelCheck()"></span>
+                            <input type="checkbox" id="levelCheck">
+                            <span class="slider"></span>
                         </label>
             </form>
         </div>
@@ -234,6 +234,19 @@
         <label class="radio">
             <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
         <label>
+        </div>
+        <br>
+        <div class=preMatchInfo>
+            Red Card: <br>
+        <label class="switch">
+                <input type="checkbox" id="redCheck">
+                <span class="slider"></span>
+                </label>
+            <br> Yellow Card: <br>
+            <label class="switch">
+                <input type="checkbox" id="yellowCheck">
+                <span class="slider"></span>
+                </label>
         </div>
 
     </div>

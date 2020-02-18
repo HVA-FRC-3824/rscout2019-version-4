@@ -140,9 +140,31 @@ function createMatchArray() {
             break;
 
     }
+    var levelCheck = document.getElementById("levelCheck").checked;
+    console.log(levelCheck)
+    if (levelCheck == true) {
+        isLevel = "level";
+    } else {
+        isLevel = "notLevel";
+    }
+    var yellowCheck = document.getElementById("yellowCheck");
+    var redCheck = document.getElementById("redCheck");
+
+    if (yellowCheck.checked == true) {
+        yellowCheck = "yes";
+    } else {
+        yellowCheck = "no";
+    }
+    if (redCheck.checked == true) {
+        redCheck = "yes";
+    } else {
+        redCheck = "no";
+    }
+
+
     if (autoShots != 0 && teleShots != 0) {
-        autoAccuracy = (autoMisses / autoShots);
-        teleAccuracy = (teleMisses / teleShots);
+        autoAccuracy = 1 - (autoMisses / autoShots);
+        teleAccuracy = 1 - (teleMisses / teleShots);
     }
 
     matchDataArray = {
@@ -167,6 +189,8 @@ function createMatchArray() {
         teleScore: teleScore,
         autoAccuracy: autoAccuracy,
         teleAccuracy: teleAccuracy,
+        yellowCheck: yellowCheck,
+        redCheck: redCheck,
 
     };
 
@@ -200,6 +224,8 @@ function pushFirebaseMatch(data, heatData) {
         "teleScore": data.teleScore,
         "teleAccuracy": data.teleAccuracy,
         "autoAccuracy": data.autoAccuracy,
+        "redCard": data.redCheck,
+        "yellowCard": data.yellowCheck,
 
     });
     firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
@@ -441,15 +467,7 @@ function didClimb(p) {
     climbType = p;
 }
 
-//checks the position of the toggle switch for is level
-function levelCheck() {
-    var levelCheck = document.getElementById("levelCheck");
-    if (levelCheck.checked == true) {
-        isLevel = "level";
-    } else {
-        isLevel = "notLevel";
-    }
-}
+
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -482,7 +500,7 @@ function hideAutoDropdown2(howManyScored) {
 function hideTeleopDropdown(whereScored) {
     whereScoredG = whereScored;
     if (whereScored == 0) {
-        autoMisses++;
+        teleMisses++;
     }
     document.getElementById("teleopDropdown").classList.toggle("show");
     console.log(whereScoredG + " whereScored");
