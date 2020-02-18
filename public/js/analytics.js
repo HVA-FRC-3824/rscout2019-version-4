@@ -3,7 +3,6 @@ currentName = [];
 namesArray = [];
 currentMatch = 0;
 matches = [];
-nameArray = true;
 matchValue = 0;
 nameValue = 0;
 
@@ -94,6 +93,16 @@ function setsCoords(data) {
     if (namesArray.length - 1 >= nameValue) {
         //pullCoords(namesArray);
     }
+}
+
+function resetVars() {
+    robotNum = "";
+    currentName = [];
+    namesArray = [];
+    currentMatch = 0;
+    matches = [];
+    matchValue = 0;
+    nameValue = 0;
 }
 
 //var xyArray = Object.keys(xy);
