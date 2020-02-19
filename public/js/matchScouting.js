@@ -73,7 +73,7 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    //document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>";
+    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='.\index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
         matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button

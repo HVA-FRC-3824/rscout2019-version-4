@@ -47,13 +47,11 @@ function gotData(data) {
 }
 
 function pullNames(matches) {
-    if (matches.length - 1 >= matchValue) {
-        //console.log(matches.length);
+    if ((matches.length - 1) < matchValue) {
+        console.log("Done!");
+    } else {
         currentMatch = matches[matchValue];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
-    }
-    if (matchValue == matches.length) {
-        console.log("Done!");
     }
 }
 
@@ -66,32 +64,24 @@ function setsName(data) {
 }
 
 function pullCoords(namesArray) {
-    if (namesArray.length - 1 >= nameValue) {
+    if ((namesArray.length - 1) >= nameValue) {
         currentName = namesArray[nameValue];
         console.log(currentName)
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
     }
-    if (namesArray.length == nameValue) {
-        matchValue = matchValue + 1;
-        //pullNames(matches);
-    }
 }
 
 function setsCoords(data) {
+    console.log(robotNum, currentMatch, currentName);
+    var xy = data.val();
+    console.log(xy);
+    nameValue++;
     if (namesArray.length - 1 >= nameValue) {
-        console.log(robotNum, currentMatch, currentName);
-        var xy = data.val();
-        console.log(xy);
-        matchValue = matchValue + 1;
-        nameValue = nameValue + 1;
-    }
-    if (nameValue == namesArray.length) {
-        matchValue = matchValue + 1;
+        pullCoords(namesArray);
+    } else {
+        matchValue++;
         nameValue = 0;
-        //pullNames(matches);
-    }
-    if (namesArray.length - 1 >= nameValue) {
-        //pullCoords(namesArray);
+        pullNames(matches);
     }
 }
 

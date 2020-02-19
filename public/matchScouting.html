@@ -30,7 +30,9 @@
     <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
 
     <h id="Pre" class="tabcontent">
-        <div class="robotRadio"> Scouter Name:
+        <div class="robotRadio">
+            <h3 id="matchNumber">Match Number</h3>
+            Scouter Name:
             <input type="text" name="name" id="scouterName" value="No Name">
             <form id="driveStation">
                 <label class="radio" id="blue_1">
@@ -50,7 +52,7 @@
                 </label><br>
                 <label class="radio" id="red_3">
                     <input type="radio" id="red" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
-                </label><br>
+                </label>
             </form>
             </input>
 
