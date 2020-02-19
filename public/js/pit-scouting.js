@@ -4,20 +4,24 @@ var driveTrain;
 var robotData;
 
 function createPitArrary() {
-    teamNum = prompt("Team Number")
-    weight = prompt("Robot Weight")
-    driveTrain = prompt("Drive Train")
-    robotData = { teamNum: teamNum, weight: weight, driveTrain: driveTrain };
+    teamNum = document.getElementById("robotNum").value;
+    weight = document.getElementById("robotWeight").value;
+    driveTrain = document.getElementById("driveTrain").value;
+    climbType = document.getElementById("climbType").value;
+    robotLang = document.getElementById("robotLang").value;
+    robotData = { teamNum: teamNum, weight: weight, driveTrain: driveTrain, climbType: climbType, robotLang: robotLang};
     addPitToFirebase(robotData);
 }
 
 function addPitToFirebase(data) {
-    console.log(data);
-    console.log(teamNum);
-    firebase.database().ref('pitScouting/' + data.teamNum).set({
-        "Weight": data.weight,
-        "DriveTrain": data.driveTrain,
-    });
+    if(confirm("Are you sure?") == true) {
+        firebase.database().ref('pitScouting/' + data.teamNum).set({
+            "Weight": data.weight,
+            "DriveTrain": data.driveTrain,
+            "Robot Language": data.robotLang,
+            "Climb Type": data.climbType,
+        });
+    }
 }
 
 function isNumberKey(evt) {
@@ -27,3 +31,4 @@ function isNumberKey(evt) {
 
     return true;
 }
+
