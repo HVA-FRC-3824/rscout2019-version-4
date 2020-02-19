@@ -22,13 +22,13 @@
         
         #heatmapContainerWrapper {
             max-width: 80%;
-            max-height: 80%;
+            height: auto;
             position: relative;
         }
         
         #heatmapContainer {
             max-width: 100%;
-            max-height: 100%;
+            height: auto;
         }
         
         h1 {
@@ -71,7 +71,7 @@
 
     <div id="heatmapContainerWrapper">
         <div id="heatmapContainer">
-            <img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img>
+            <img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img>
         </div>
         <div>
             <button onclick="resetDiv(), makeMap(1);" class='button'>
@@ -92,11 +92,15 @@
     <script src="./js/heatmap/build/heatmap.js"></script>
     <script>
         function resetDiv() {
-            document.body.innerHTML = " <div id='heatmapContainerWrapper'><div id='heatmapContainer'><img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img></div><div> <button onclick='resetDiv(), makeMap(1);' class='button'> Teleop </button> <button onclick='resetDiv(), makeMap(0);' class='button'> Auto </button> </div>"
+            document.body.innerHTML = " <div id='heatmapContainerWrapper'><div id='heatmapContainer'><img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img></div><div> <button onclick='resetDiv(), makeMap(1);' class='button'> Teleop </button> <button onclick='resetDiv(), makeMap(0);' class='button'> Auto </button> </div>"
         }
 
         function makeMap(autoOrTele) {
-
+            if (autoOrTele == 0) {
+                document.getElementById("autoField").src = './images/red-field.png';
+            } else {
+                document.getElementById("autoField").src = './images/full-field.png';
+            }
             xAutoArr = JSON.parse(localStorage.getItem("xAutoStore"));
             yAutoArr = JSON.parse(localStorage.getItem("yAutoStore"));
             xTeleArr = JSON.parse(localStorage.getItem("xTeleStore"));
