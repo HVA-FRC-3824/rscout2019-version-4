@@ -56,3 +56,29 @@ body {
 .button:hover {
     background-color: #aaaaff;
 }
+
+h1 {
+    color: #ffffff;
+    font-size: 225%;
+    padding-left: 1%;
+    padding-top: 1%;
+    margin: 0%;
+}
+
+h2 {
+    color: white;
+    padding-bottom: 0%;
+    padding: 0%;
+    margin: 0%;
+}
+
+.pitScout {
+    text-align: center;
+}
+
+.pitText {
+    padding: 0%;
+    font-size: 125%;
+}
+
+
