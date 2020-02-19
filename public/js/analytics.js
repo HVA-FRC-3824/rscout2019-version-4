@@ -5,6 +5,11 @@ currentMatch = 0;
 matches = [];
 matchValue = 0;
 nameValue = 0;
+masterXauto = [];
+masterYauto = [];
+masterXtele = [];
+masterYtele = [];
+
 
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
@@ -48,7 +53,9 @@ function gotData(data) {
 
 function pullNames(matches) {
     if ((matches.length - 1) < matchValue) {
-        console.log("Done!");
+        alert("Done!");
+        console.log(masterXauto);
+        console.log(masterYauto);
     } else {
         currentMatch = matches[matchValue];
         firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
@@ -75,6 +82,10 @@ function setsCoords(data) {
     console.log(robotNum, currentMatch, currentName);
     var xy = data.val();
     console.log(xy);
+    masterXauto.push(xy["x auto"]);
+    masterYauto.push(xy["y auto"]);
+    masterXtele.push(xy["x tele"]);
+    masterYtele.push(xy["y tele"]);
     nameValue++;
     if (namesArray.length - 1 >= nameValue) {
         pullCoords(namesArray);
@@ -93,8 +104,19 @@ function resetVars() {
     matches = [];
     matchValue = 0;
     nameValue = 0;
+    masterXauto = [];
+    masterYauto = [];
+    masterXtele = [];
+    masterYtele = [];
 }
 
+function storeArrays() {
+    localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
+    localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
+    localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
+    localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
+    alert("Done!");
+}
 //var xyArray = Object.keys(xy);
 //console.log(xyArray);
 //xyCoords(xyArray);
