@@ -320,8 +320,6 @@ function getShootSpotAuto() {
         autoX = autoX * autoWidthMult;
         autoY = autoY * autoHeightMult;
     }
-    autoX = autoX * autoWidthMult;
-    autoY = autoY * autoHeightMult;
 }
 
 //does the same as get shoot spot auto but for teleop
