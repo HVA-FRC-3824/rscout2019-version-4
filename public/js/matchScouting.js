@@ -307,6 +307,19 @@ function getShootSpotAuto() {
     autoX = event.clientX;
     autoY = event.clientY - buttonHeight;
     console.log("x: " + autoX + ", " + "y: " + autoY)
+    if (teamSide == "B") {
+        xAxis = autoWidth/2;
+        yAxis = autoHeight/2;
+        var xDiff = xAxis-autoX;
+        var yDiff = yAxis-autoY;
+        var flippedX = xAxis+xDiff;
+        var flippedY = yAxis+yDiff;
+        autoX = flippedX * autoWidthMult;
+        autoY = flippedY * autoHeightMult;
+    } else {
+        autoX = autoX * autoWidthMult;
+        autoY = autoY * autoHeightMult;
+    }
     autoX = autoX * autoWidthMult;
     autoY = autoY * autoHeightMult;
 }
