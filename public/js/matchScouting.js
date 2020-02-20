@@ -110,6 +110,10 @@ function createMatchArray() {
     console.log(driveStation);
 
     var name = document.getElementById("scouterName").value;
+    if (name == "") {
+        name = "No Name";
+        alert("no Name!");
+    }
 
     var notes = document.getElementById("notes").value;
 

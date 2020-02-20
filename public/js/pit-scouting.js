@@ -10,6 +10,9 @@ function createPitArray() {
     driveTrain = document.getElementById("driveTrain").value;
     climbType = document.getElementById("climbType").value;
     robotLang = document.getElementById("robotLang").value;
+    if(robotNum == ''){
+        robotNum = "noRobot"
+    }
     var robotData = { robotNum: robotNum, weight: weight, driveTrain: driveTrain, climbType: climbType, robotLang: robotLang};
     pushPit(robotData);
 }
@@ -22,6 +25,11 @@ function pushPit(data) {
         "driveTrain": data.driveTrain,
         "robotLang": data.robotLang,
     })
+    if(robotNum == 'robotNum'){
+        alert("No Robot Entered!");
+    } else {
+        alert("pushed!");
+    }
 }
 
 function isNumberKey(evt) {
