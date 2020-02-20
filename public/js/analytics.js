@@ -10,7 +10,25 @@ masterYauto = [];
 masterXtele = [];
 masterYtele = [];
 
-
+function passwordCheck(){
+    firebase.database().ref('/password/' + "2713").once("value", passCheck);
+}
+function passCheck(passcode){
+    console.log(passcode)
+    password = prompt("Password?");
+    if (passcode.val() == password){
+        alert("success!");
+        robotNum = document.getElementById("robotNum").value;
+        if (robotNum == "" || robotNum == null || robotNum == " "){
+            alert("put something in!");
+        }else{
+            displayText();
+        }
+            
+    }else{
+        alert("Wrong password");
+    }
+}
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
     var baseUrl = 'https://www.thebluealliance.com/api/v3'; //base TBA url
@@ -41,7 +59,7 @@ var sortById = function(prop) {
 function displayText() {
     robotNum = document.getElementById("robotNum").value;
     firebase.database().ref('/heatMap/' + robotNum).once("value", gotData);
-    console.log(namesArray + " " + matchValue);
+    console.log(robotNum);
 }
 
 function gotData(data) {
@@ -54,6 +72,7 @@ function gotData(data) {
 function pullNames(matches) {
     if ((matches.length - 1) < matchValue) {
         alert("Done!");
+        storeArrays()
         console.log(masterXauto);
         console.log(masterYauto);
     } else {
@@ -116,6 +135,7 @@ function storeArrays() {
     localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
     localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
     alert("Done!");
+
 }
 //var xyArray = Object.keys(xy);
 //console.log(xyArray);
