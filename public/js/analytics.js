@@ -56,66 +56,67 @@ var sortById = function(prop) {
     };
 };
 
-function displayText() {
-    robotNum = document.getElementById("robotNum").value;
-    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData);
+
+function displayText() {//this function pulls the team number that the user entered
+    robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
+    firebase.database().ref('/heatMap/' + robotNum).once("value", gotData); //acutally gets the data from firebase, then runs gotData()
     console.log(robotNum);
 }
 
-function gotData(data) {
-    var robotData = data.val();
-    matches = Object.keys(robotData);
-    console.log(matches);
-    pullNames(matches);
+function gotData(data) { //makes the data readable
+    var robotData = data.val(); //takes the value of the data
+    matches = Object.keys(robotData); //makes the matches into an array
+    console.log(matches); 
+    pullNames(matches); //runs pullNames() with matches as the arguement
 }
 
-function pullNames(matches) {
-    if ((matches.length - 1) < matchValue) {
-        alert("Done!");
-        storeArrays()
+function pullNames(matches) { //either cycles through to the next match or it will move on to storing the arrays
+    if ((matches.length - 1) < matchValue) { 
+        alert("Done!"); //means it is done pulling data from firebase
+        storeArrays() //makes the pulled data push onto local storage
         console.log(masterXauto);
         console.log(masterYauto);
-    } else {
-        currentMatch = matches[matchValue];
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName);
+    } else { //continues to pull from firebase
+        currentMatch = matches[matchValue]; //makes the currentMatch var according to the matchValue var
+        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName); //pull that certain matches data from our firebase database
     }
 }
 
 
-function setsName(data) {
-    var names = data.val();
-    namesArray = Object.keys(names);
+function setsName(data) { //makes the match data pulled readable and puts the names from the database into an array
+    var names = data.val(); //takes the value of the data
+    namesArray = Object.keys(names); //makes the names data into an array
     console.log(namesArray);
-    pullCoords(namesArray);
+    pullCoords(namesArray); //runs the pullCoords() function with the namesArray as the arguement
 }
 
-function pullCoords(namesArray) {
+function pullCoords(namesArray) { //pulls the data under each name in the names array
     if ((namesArray.length - 1) >= nameValue) {
-        currentName = namesArray[nameValue];
+        currentName = namesArray[nameValue]; //makes the current name var equal to a certain name value according to the "nameValue" var
         console.log(currentName)
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords);
+        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords); //pulls the coords under the name specified by the "currentName" var and then runs the setsCoords() function
     }
 }
 
-function setsCoords(data) {
-    console.log(robotNum, currentMatch, currentName);
-    var xy = data.val();
-    console.log(xy);
-    masterXauto.push(xy["x auto"]);
+function setsCoords(data) { //makes the coords into their own array and decides if it must loop to a new match or name
+    console.log(robotNum, currentMatch, currentName); 
+    var xy = data.val(); //takes the value of the data
+    console.log(xy); 
+    masterXauto.push(xy["x auto"]); //pushes the data to the master array
     masterYauto.push(xy["y auto"]);
     masterXtele.push(xy["x tele"]);
     masterYtele.push(xy["y tele"]);
-    nameValue++;
-    if (namesArray.length - 1 >= nameValue) {
-        pullCoords(namesArray);
+    nameValue++; //increments the nameValue var
+    if (namesArray.length - 1 >= nameValue) { //decides if you need to loop to the new match or new name function
+        pullCoords(namesArray); //returns to change the currentName var
     } else {
-        matchValue++;
-        nameValue = 0;
-        pullNames(matches);
+        matchValue++; //increments the matchValue var
+        nameValue = 0; //resets the name value var
+        pullNames(matches); //returns to change the currentMatch var 
     }
 }
 
-function resetVars() {
+function resetVars() { 
     robotNum = "";
     currentName = [];
     namesArray = [];
@@ -129,7 +130,7 @@ function resetVars() {
     masterYtele = [];
 }
 
-function storeArrays() {
+function storeArrays() { //stores the heatmap data in the local storage
     localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
     localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
     localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
