@@ -302,14 +302,8 @@ function getShootSpotAuto() {
     console.log(event.clientX + " " + event.clientY);
     console.log(autoX + " " + autoY);
     if (teamSide == "B") {
-        xAxis = autoImage.clientWidth / 2;
-        yAxis = autoImage.clientHeight / 2;
-        var xDiff = xAxis - autoX;
-        var yDiff = yAxis - autoY;
-        var flippedX = xAxis + xDiff;
-        var flippedY = yAxis + yDiff;
-        autoX = flippedX;
-        autoY = flippedY;
+        autoX = (((autoImage.clientWidth - event.clientX) / autoImage.clientWidth) * 1033);
+        autoY = (((autoImage.clientHeight - event.clientY) / autoImage.clientHeight) * 638);
     }
 }
 
