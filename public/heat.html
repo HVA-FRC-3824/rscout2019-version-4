@@ -11,7 +11,7 @@
 
     <div id="heatmapContainerWrapper">
         <div id="heatmapContainer">
-            <img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img>
+            <img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img>
         </div>
         <div>
             <button onclick="resetDiv(), makeMap(1);" class='button'>
@@ -39,14 +39,25 @@
         var yAutoArr = [];
         var xTeleArr = [];
         var yTeleArr = [];
+        var xAutoHeat = [];
+        var yAutoHeat = [];
+        var xTeleHeat = [];
+        var yTeleHeat = [];
 
         function resetDiv() {
             document.body.innerHTML = " <div id='heatmapContainerWrapper'><div id='heatmapContainer'><img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img></div><div> <button onclick='resetDiv(), makeMap(1);' class='button'> Teleop </button> <button onclick='resetDiv(), makeMap(0);' class='button'> Auto </button> </div>"
         }
 
         function makeMap(autoOrTele) {
+            xTeleHeat = [];
+            yTeleHeat = [];
+            xHeatHeat = [];
+            yHeatHeat = [];
             if (autoOrTele == 0) {
                 document.getElementById("autoField").src = './images/red-field.png';
+                for (i = 0; i < 100; i++) {
+                    console.log("Loading...");
+                }
             } else {
                 document.getElementById("autoField").src = './images/full-field.png';
             }
@@ -54,52 +65,34 @@
             yAutoArr = JSON.parse(localStorage.getItem("yAutoStore"));
             xTeleArr = JSON.parse(localStorage.getItem("xTeleStore"));
             yTeleArr = JSON.parse(localStorage.getItem("yTeleStore"));
-            console.log(xAutoArr)
-            
+            //console.log(xAutoArr)
+
             if (autoOrTele == 0) {
                 for (var i = 0; i < xAutoArr.length; i++) {
-
                     var innerArrayLength = xAutoArr[i].length;
-
                     for (var j = 0; j < innerArrayLength; j++) {
-                        var xAutoRescale = xAutoArr[i][j];
-                        var yAutoRescale = yAutoArr[i][j];
-                        var field = document.getElementById("autoField");
-                        autoWidth = field.clientWidth;
-                        autoHeight = field.clientHeight;
-                        autoWidthPercent = autoWidth / autoFieldWidth;
-                        autoHeightPercent = autoHeight / autoFieldHeight;
-                        autoWidthMult = 1 / autoWidthPercent;
-                        autoHeightMult = 1 / autoHeightPercent;
-                        xAutoArr[i][j] = xAutoRescale * autoWidthMult;
-                        yAutoArr[i][j] = yAutoRescale * autoHeightMult;
-                        console.log(xAutoArr);
-                        console.log(yAutoArr);
+                        var field = document.querySelector("#autoField");
+                        var xAutoRescale = (xAutoArr[i][j] / 1033) * field.clientWidth;
+                        var yAutoRescale = (yAutoArr[i][j] / 638) * field.clientHeight;
+                        xAutoHeat.push(xAutoRescale);
+                        yAutoHeat.push(yAutoRescale);
                     }
                 }
             } else if (autoOrTele == 1) {
                 for (var i = 0; i < xTeleArr.length; i++) {
-
                     var innerArrayLength = xTeleArr[i].length;
-
                     for (var j = 0; j < innerArrayLength; j++) {
-                        var xTeleRescale = xTeleArr[i][j];
-                        var yTeleRescale = yTeleArr[i][j];
-                        var field = document.getElementById("autoField");
-                        teleWidth = field.clientWidth;
-                        teleHeight = field.clientHeight;
-                        teleWidthPercent = teleWidth / fullFieldWidth;
-                        teleHeightPercent = teleHeight / fullFieldHeight;
-                        teleWidthMult = 1 / teleWidthPercent;
-                        teleHeightMult = 1 / teleHeightPercent;
-                        xTeleArr[i][j] = xTeleRescale * teleWidthMult;
-                        yTeleArr[i][j] = yTeleRescale * teleHeightMult;
+                        var field = document.querySelector("#autoField");
+                        var xTeleRescale = (xTeleArr[i][j] / 1287) * field.clientWidth;
+                        var yTeleRescale = (yTeleArr[i][j] / 638) * field.clientHeight;
+                        xTeleHeat.push(xTeleRescale);
+                        yTeleHeat.push(yTeleRescale);
                     }
                 }
             }
-            
-            
-            
+
+
+
             // create a heatmap instance
             var heatmap = h337.create({
                 container: document.getElementById('heatmapContainer'),
@@ -109,69 +102,57 @@
                 // backgroundColor with alpha so you can see through it
                 backgroundColor: 'rgba(0, 0, 58, 0.5)'
             });
-                
+
             var heatmapContainer = document.getElementById('heatmapContainerWrapper');
             if (autoOrTele == 0) {
-                for (var i = 0; i < xAutoArr.length; i++) {
-
-                    var innerArrayLength = xAutoArr[i].length;
-
-                    for (var j = 0; j < innerArrayLength; j++) {
-                        console.log(xAutoArr[i][j]);
-                        console.log(yAutoArr[i][j]);
-                        var x = Math.round(xAutoArr[i][j]);
-                        var y = Math.round(yAutoArr[i][j]);
-                        heatmap.addData({
-                            x: x,
-                            y: y,
-                            value: 35
-                        })
-                    }
+                console.log(xAutoArr);
+                console.log(xAutoHeat);
+                for (var i = 0; i < xAutoHeat.length; i++) {
+                    var x = Math.round(xAutoHeat[i]);
+                    var y = Math.round(yAutoHeat[i]);
+                    heatmap.addData({
+                        x: x,
+                        y: y,
+                        value: 35
+                    })
                 }
             } else if (autoOrTele == 1) {
-                for (var i = 0; i < xTeleArr.length; i++) {
-
-                    var innerArrayLength = xTeleArr[i].length;
-
-                    for (var j = 0; j < innerArrayLength; j++) {
-                        console.log(xTeleArr[i][j]);
-                        console.log(yTeleArr[i][j]);
-                        var x = Math.round(xTeleArr[i][j]);
-                        var y = Math.round(yTeleArr[i][j]);
-                        heatmap.addData({
-                            x: x,
-                            y: y,
-                            value: 35
-                        })
-                    }
+                for (var i = 0; i < xTeleHeat.length; i++) {
+                    var x = Math.round(xTeleHeat[i]);
+                    var y = Math.round(yTeleHeat[i]);
+                    heatmap.addData({
+                        x: x,
+                        y: y,
+                        value: 35
+                    })
                 }
             }
         }
-                
 
 
 
 
-            /*      
-                    heatmapContainer.onmousemove = heatmapContainer.ontouchmove = function(e) {
-                      // we need preventDefault for the touchmove
-                      e.preventDefault();
-                      var x = e.layerX;
-                      var y = e.layerY;
-                      if (e.touches) {
-                        x = e.touches[0].pageX;
-                        y = e.touches[0].pageY;
-                      }
-                      
-                      heatmap.addData({ x: x, y: y, value: 1 });
 
-                    };
+        /*      
+                heatmapContainer.onmousemove = heatmapContainer.ontouchmove = function(e) {
+                  // we need preventDefault for the touchmove
+                  e.preventDefault();
+                  var x = e.layerX;
+                  var y = e.layerY;
+                  if (e.touches) {
+                    x = e.touches[0].pageX;
+                    y = e.touches[0].pageY;
+                  }
+                  
+                  heatmap.addData({ x: x, y: y, value: 1 });
 
-                    heatmapContainer.onclick = function(e) {
-                      var x = e.layerX;
-                      var y = e.layerY;
-                      heatmap.addData({ x: x, y: y, value: 1 });
-                    }; */
+                };
+
+                heatmapContainer.onclick = function(e) {
+                  var x = e.layerX;
+                  var y = e.layerY;
+                  heatmap.addData({ x: x, y: y, value: 1 });
+                }; */
     </script>
 
 </body>

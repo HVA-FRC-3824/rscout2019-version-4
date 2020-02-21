@@ -295,50 +295,33 @@ function wheel(didSpin) {
 //query's the image coords and does grant's heatmap stuff so they work
 function getShootSpotAuto() {
     var autoImage = document.querySelector("#autoField");
-    autoWidth = autoImage.clientWidth;
-    autoHeight = autoImage.clientHeight;
-    autoWidthPercent = autoWidth / autoFieldWidth;
-    autoHeightPercent = autoHeight / autoFieldHeight;
-    autoWidthMult = 1 / autoWidthPercent;
-    autoHeightMult = 1 / autoHeightPercent;
-    console.log("Current width=" + autoWidth + ", " + "Current height=" + autoHeight);
     var autoButton = document.querySelector("#defaultOpen");
     var buttonHeight = autoButton.clientHeight;
-    autoX = event.clientX;
-    autoY = event.clientY - buttonHeight;
-    console.log("x: " + autoX + ", " + "y: " + autoY)
+    autoX = ((event.clientX / autoImage.clientWidth) * 1033)
+    autoY = (((event.clientY - buttonHeight) / autoImage.clientHeight) * 638)
+    console.log(event.clientX + " " + event.clientY);
+    console.log(autoX + " " + autoY);
     if (teamSide == "B") {
-        xAxis = autoWidth/2;
-        yAxis = autoHeight/2;
-        var xDiff = xAxis-autoX;
-        var yDiff = yAxis-autoY;
-        var flippedX = xAxis+xDiff;
-        var flippedY = yAxis+yDiff;
-        autoX = flippedX * autoWidthMult;
-        autoY = flippedY * autoHeightMult;
-    } else {
-        autoX = autoX * autoWidthMult;
-        autoY = autoY * autoHeightMult;
+        xAxis = autoImage.clientWidth / 2;
+        yAxis = autoImage.clientHeight / 2;
+        var xDiff = xAxis - autoX;
+        var yDiff = yAxis - autoY;
+        var flippedX = xAxis + xDiff;
+        var flippedY = yAxis + yDiff;
+        autoX = flippedX;
+        autoY = flippedY;
     }
 }
 
 //does the same as get shoot spot auto but for teleop
 function getShootSpotTeleop() {
     var teleImage = document.querySelector("#teleopField");
-    teleWidth = teleImage.clientWidth;
-    teleHeight = teleImage.clientHeight;
-    teleWidthPercent = teleWidth / fullFieldWidth;
-    teleHeightPercent = teleHeight / fullFieldHeight;
-    teleWidthMult = 1 / teleWidthPercent;
-    teleHeightMult = 1 / teleHeightPercent;
-    console.log("Current width=" + teleWidth + ", " + "Current height=" + teleHeight);
     var teleButton = document.querySelector("#defaultOpen");
     var buttonHeight = teleButton.clientHeight;
-    teleX = event.clientX;
-    teleY = event.clientY - buttonHeight;
-    console.log("tele x: " + teleX + ", " + "tele y: " + teleY)
-    teleX = teleX * teleWidthMult;
-    teleY = teleY * teleHeightMult;
+    teleX = ((event.clientX / teleImage.clientWidth) * 1287)
+    teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638)
+    console.log(teleX + " " + teleY);
+
 }
 
 
@@ -537,7 +520,7 @@ function hideTeleopDropdown2(howManyScored) {
     dropDownCheck = false;
 }
 
-function backConfirm(){
+function backConfirm() {
     if (confirm("Are you sure?") == true) {
         location.replace('./schedule.html')
     }

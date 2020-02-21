@@ -112,10 +112,11 @@
     <h id="Auto" class="tabcontent">
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
-            <br>
-            <h2 id="ballsHeld"></h2>
-            <br>
-            <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
+            <h2 id="ballslabel">
+                <br>
+                <h2 id="ballsHeld"></h2>
+                <br>
+                <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
         </div>
 
         <div id="autoDropdown" class="autoDropdown-content">
@@ -142,8 +143,9 @@
     <h id="Teleop" class="tabcontent">
         <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
         <div class="teleInteraction">
+            <h2 id="ballslabel"> </h2>
             <br>
-            <h2 id="ballsHeldTele"></h2>
+            <h2 id="ballsHeldTele"> </h2>
             <br>
             <button class="interact" onclick="increment(1, 0);">Picked Up From Floor</button>
             <button class="interact" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
