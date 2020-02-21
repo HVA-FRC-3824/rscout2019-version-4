@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="setsLocalName()">
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
     <button class="tablink" onclick="transferBalls(), openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>

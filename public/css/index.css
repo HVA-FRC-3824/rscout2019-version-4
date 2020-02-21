@@ -99,3 +99,13 @@ h2 {
     cursor: pointer;
 }
 
+.message {
+    text-align: center;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.clearButton {
+    text-align: center;
+    margin-top: 1%;
+}

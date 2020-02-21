@@ -111,8 +111,9 @@ function createMatchArray() {
 
     var name = document.getElementById("scouterName").value;
     if (name == "") {
-        name = "No Name";
-        alert("no Name!");
+        name = localStorage.getItem("localName");
+    } else {
+        localStorage.setItem("localName", name);
     }
 
     var notes = document.getElementById("notes").value;
@@ -248,6 +249,10 @@ function nextMatch() {
     mNumber++;
     localStorage.setItem("num", mNumber);
     location.replace("./schedule.html");
+}
+
+function setsLocalName() {
+    document.getElementById("scouterName").value = localStorage.getItem("localName");
 }
 
 //the tab buttons at the top of the page
