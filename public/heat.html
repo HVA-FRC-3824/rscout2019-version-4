@@ -9,18 +9,23 @@
 
 <body>
 
-    <div id="heatmapContainerWrapper">
+    <div id="heatmapContainerWrapper" class='getridofthesestupidmargins' >
         <div id="heatmapContainer">
             <img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img>
         </div>
-        <div>
-            <button onclick="resetDiv(), makeMap(1);" class='button'>
-          Teleop
-      </button>
-            <button onclick="resetDiv() , makeMap(0);" class='button'>
-        Auto
-      </button>
-        </div>
+
+        
+    </div>
+    <div class='heatButtons'>
+        <button onclick="resetDiv(), makeMap(1);" class='button'>
+            Teleop
+        </button>
+        <button onclick="resetDiv() , makeMap(0);" class='button'>
+            Auto
+        </button>
+        <button onclick="location.replace('analytics.html')" class='button'>
+            Back
+        </button>
     </div>
     <!--
     </div>
@@ -45,7 +50,7 @@
         var yTeleHeat = [];
 
         function resetDiv() {
-            document.body.innerHTML = " <div id='heatmapContainerWrapper'><div id='heatmapContainer'><img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img></div><div> <button onclick='resetDiv(), makeMap(1);' class='button'> Teleop </button> <button onclick='resetDiv(), makeMap(0);' class='button'> Auto </button> </div>"
+            document.body.innerHTML = " <div id='heatmapContainerWrapper' class='getridofthesestupidmargins'><div id='heatmapContainer'><img src='./images/full-field.png' id='autoField' width='100000' height='50000'></img></div><div class='heatButtons'> <button onclick='resetDiv(), makeMap(1);' class='button'> Teleop </button> <button onclick='resetDiv(), makeMap(0);' class='button'> Auto </button> <button onclick='location.replace('analytics.html');' class='button'> Back </button> </div>"
         }
 
         function makeMap(autoOrTele) {
