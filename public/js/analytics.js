@@ -10,25 +10,27 @@ masterYauto = [];
 masterXtele = [];
 masterYtele = [];
 
-function passwordCheck(){
+function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
 }
-function passCheck(passcode){
+
+function passCheck(passcode) {
     console.log(passcode)
     password = prompt("Password?");
-    if (passcode.val() == password){
+    if (passcode.val() == password) {
         alert("success!");
         robotNum = document.getElementById("robotNum").value;
-        if (robotNum == "" || robotNum == null || robotNum == " "){
+        if (robotNum == "" || robotNum == null || robotNum == " ") {
             alert("put something in!");
-        }else{
+        } else {
             displayText();
         }
-            
-    }else{
+
+    } else {
         alert("Wrong password");
     }
 }
+
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
     var baseUrl = 'https://www.thebluealliance.com/api/v3'; //base TBA url
@@ -57,7 +59,7 @@ var sortById = function(prop) {
 };
 
 
-function displayText() {//this function pulls the team number that the user entered
+function displayText() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
     firebase.database().ref('/heatMap/' + robotNum).once("value", gotData); //acutally gets the data from firebase, then runs gotData()
     console.log(robotNum);
@@ -66,12 +68,12 @@ function displayText() {//this function pulls the team number that the user ente
 function gotData(data) { //makes the data readable
     var robotData = data.val(); //takes the value of the data
     matches = Object.keys(robotData); //makes the matches into an array
-    console.log(matches); 
+    console.log(matches);
     pullNames(matches); //runs pullNames() with matches as the arguement
 }
 
 function pullNames(matches) { //either cycles through to the next match or it will move on to storing the arrays
-    if ((matches.length - 1) < matchValue) { 
+    if ((matches.length - 1) < matchValue) {
         alert("Done!"); //means it is done pulling data from firebase
         storeArrays() //makes the pulled data push onto local storage
         console.log(masterXauto);
@@ -99,9 +101,9 @@ function pullCoords(namesArray) { //pulls the data under each name in the names 
 }
 
 function setsCoords(data) { //makes the coords into their own array and decides if it must loop to a new match or name
-    console.log(robotNum, currentMatch, currentName); 
+    console.log(robotNum, currentMatch, currentName);
     var xy = data.val(); //takes the value of the data
-    console.log(xy); 
+    console.log(xy);
     masterXauto.push(xy["x auto"]); //pushes the data to the master array
     masterYauto.push(xy["y auto"]);
     masterXtele.push(xy["x tele"]);
@@ -116,7 +118,7 @@ function setsCoords(data) { //makes the coords into their own array and decides 
     }
 }
 
-function resetVars() { 
+function resetVars() {
     robotNum = "";
     currentName = [];
     namesArray = [];
@@ -135,6 +137,7 @@ function storeArrays() { //stores the heatmap data in the local storage
     localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
     localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
     localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
+    localStorage.setItem("robotHeatNum", robotNum);
     alert("Done!");
 
 }

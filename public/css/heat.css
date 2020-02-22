@@ -15,13 +15,15 @@ body * {
 }
 
 #heatmapContainerWrapper {
-    max-width: 75%;
+    width: 75%;
+    max-width: 100%;
     height: 100%;
     position: relative;
     margin-right: 0%;
 }
 
 #heatmapContainer {
+    width: 100%;
     max-width: 100%;
     height: 100%;
 }
@@ -53,7 +55,7 @@ button {
     background-color: #7722cc;
     float: left;
     border: none;
-    padding: 0% 0%;
+    padding: 12%;
     margin-bottom: 10%;
     font-size: 170%;
     width: 100%;
@@ -63,6 +65,8 @@ button {
     float: right;
     text-align: right;
     width: 25%;
+    font-size: 200%;
+    padding-top: 1%;
 }
 
 .getridofthesestupidmargins {
@@ -74,4 +78,9 @@ img {
     opacity: 1;
     max-width: 100%;
     height: 100%;
+}
+
+.robotNum {
+    color: white;
+    text-align: center;
 }

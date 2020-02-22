@@ -211,7 +211,7 @@ function createMatchArray() {
 
 function pushFirebaseMatch(data, heatData) {
     console.log(data);
-    firebase.database().ref('matchScouting/' + data.match + '/' + data.teamNumber + '/' + data.name + '/').set({
+    firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
         "robotScore": data.robotScore,
@@ -381,8 +381,8 @@ function increment(teleOrAuto, wherePickedUp) {
     } else {
         console.log("debugIncrement");
     }
-    document.getElementById("ballsHeld").innerHTML = ballsHeld;
-    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
+    document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
 
@@ -392,8 +392,8 @@ function decrement() {
         ballsHeld--;
     }
     console.log(ballsHeld + " balls held");
-    document.getElementById("ballsHeld").innerHTML = ballsHeld;
-    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
+    document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
 
@@ -428,7 +428,7 @@ function teleopFieldInput2() {
 
 //transfers the balls held value from auto to tele
 function transferBalls() {
-    document.getElementById("ballsHeldTele").innerHTML = ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
 //Endgame Timer

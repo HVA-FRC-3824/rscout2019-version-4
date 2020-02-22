@@ -22,8 +22,8 @@ button {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 10vw;
+    height: 8vh;
 }
 
 .switch input {
@@ -103,12 +103,14 @@ input:checked+.slider:before {
     float: right;
     width: 25%;
     position: relative;
+    text-align: center;
 }
 
 .teleInteraction {
     float: right;
     width: 25%;
     position: relative;
+    text-align: center;
 }
 
 h1 {
@@ -122,9 +124,9 @@ h1 {
 }
 
 h2 {
-    float: inherit;
-    padding-right: 45%;
-    font-size: 400%;
+    float: right;
+    padding-right: 10%;
+    font-size: 200%;
     position: relative;
 }
 
@@ -142,9 +144,9 @@ h3 {
     float: left;
     border: none;
     border-color: #7722cc;
-    padding: 0% 0%;
+    padding: 14% 0%;
     margin-bottom: 10%;
-    font-size: 170%;
+    font-size: 150%;
     width: 100%;
 }
 
@@ -161,7 +163,7 @@ input[type=radio] {
 }
 
 .robotRadio {
-    font-size: 300%;
+    font-size: 8vh;
     display: inline-block;
     position: relative;
     width: 50%;
@@ -169,13 +171,34 @@ input[type=radio] {
 }
 
 .preMatchInfo {
-    font-size: 220%;
+    font-size: 6vh;
     display: inline-block;
     position: relative;
+    height: 100vh;
 }
 
 .postMatchInfo {
-    font-size: 290%;
+    font-size: 6vh;
+    width: 60%;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+.levelButton {
+    font-size: 8vh;
+    float: right;
+    width: 25%;
+    position: relative;
+    display: inline-block;
+}
+
+.cardsInfo {
+    font-size: 6vh;
+    width: 40%;
+    display: inline-block;
+    position: relative;
+    float: right;
 }
 
 .container {
@@ -278,8 +301,10 @@ input[type=radio] {
 }
 
 .climbOption {
-    font-size: 200%;
+    font-size: 6vh;
     position: relative;
+    width: 75%;
+    display: inline-block;
 }
 
 .nextMatch {
@@ -288,7 +313,7 @@ input[type=radio] {
     border: 1px solid black;
     color: white;
     padding: 1.5% 2%;
-    font-size: 100%;
+    font-size: 150%;
     margin: .5% .25%;
     cursor: pointer;
 }

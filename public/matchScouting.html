@@ -73,33 +73,34 @@
                 var match = localStorage.getItem("num");
                 document.getElementById("matchNumber").innerHTML = "Match Number: " + match;
             </script>
-
-            <form id=startPosition>
-                Field Start Position <br>
-                <label class="radio" id="startTop">
+            <div class="preMatchInfo">
+                <form id=startPosition>
+                    Field Start Position <br>
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
             </label><br>
-                <label class="radio" id="startTop">
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
             </label><br>
-                <label class="radio" id="startTop">
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
             </label><br><br>Balls started with
-            </form>
-            <form id=startingBalls>
-                <label class="radio" id="startTop">
+                </form>
+                <form id=startingBalls>
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
             </label><br>
-                <label class="radio" id="startTop">
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
             </label><br>
-                <label class="radio" id="startTop">
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
             </label><br>
-                <label class="radio" id="startTop">
+                    <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
             </label><br>
-            </form>
+                </form>
+            </div>
         </div>
     </h>
 
@@ -112,11 +113,9 @@
     <h id="Auto" class="tabcontent">
         <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
-            <h2 id="ballslabel">
-                <br>
-                <h2 id="ballsHeld"></h2>
-                <br>
-                <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
+            <h2 id="ballsHeld"></h2>
+            <br>
+            <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
         </div>
 
         <div id="autoDropdown" class="autoDropdown-content">
@@ -143,8 +142,6 @@
     <h id="Teleop" class="tabcontent">
         <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
         <div class="teleInteraction">
-            <h2 id="ballslabel"> </h2>
-            <br>
             <h2 id="ballsHeldTele"> </h2>
             <br>
             <button class="interact" onclick="increment(1, 0);">Picked Up From Floor</button>
@@ -202,13 +199,19 @@
                         </label>
                 <label class="radio">
                             <input type="radio" onclick="didClimb('supportedTwo')" id="red" name="name" value="climb">Climbed and supported 2 other robots<br>
-                        </label> Is Level: <br>
-                <label class="switch">
+                </form>
+                            
+            </label>
+        </div>
+        <div class="levelButton">Bar Is Level: <br>
+            <label class="switch">
                             <input type="checkbox" id="levelCheck">
                             <span class="slider"></span>
-                        </label>
-            </form>
+                    </label>
         </div>
+
+
+
     </div>
 
     <!--
@@ -220,7 +223,7 @@
         <br>
         <br>
         <div class=postMatchInfo>
-            <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
+
             <h9>Notes: </h9><input type="text" name="name" value="" id="notes">
             <br> Color Wheel: <br>
             <label class="radio">
@@ -240,7 +243,9 @@
         <label>
         </div>
         <br>
-        <div class=preMatchInfo>
+        <div class=cardsInfo>
+            <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
+            <br><br><br>
             Red Card: <br>
         <label class="switch">
                 <input type="checkbox" id="redCheck">
