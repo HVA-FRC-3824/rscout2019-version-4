@@ -9,6 +9,11 @@ masterXauto = [];
 masterYauto = [];
 masterXtele = [];
 masterYtele = [];
+xAutoArr = [];
+yAutoArr = [];
+xTeleArr = [];
+yTeleArr = [];
+heatData = {};
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
@@ -23,7 +28,7 @@ function passCheck(passcode) {
         if (robotNum == "" || robotNum == null || robotNum == " ") {
             alert("put something in!");
         } else {
-            displayText();
+            pullData();
         }
 
     } else {
@@ -59,7 +64,7 @@ var sortById = function(prop) {
 };
 
 
-function displayText() { //this function pulls the team number that the user entered
+function pullData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
     firebase.database().ref('/heatMap/' + robotNum).once("value", gotData); //acutally gets the data from firebase, then runs gotData()
     console.log(robotNum);
@@ -67,11 +72,49 @@ function displayText() { //this function pulls the team number that the user ent
 
 function gotData(data) { //makes the data readable
     var robotData = data.val(); //takes the value of the data
-    matches = Object.keys(robotData); //makes the matches into an array
-    console.log(matches);
-    pullNames(matches); //runs pullNames() with matches as the arguement
+    console.log(robotData);
+    heatData = JSON.stringify(robotData);
+    heat = JSON.parse(heatData);
+    matchArr = Object.keys(heat);
+    for (i = 0; i < matchArr.length; i++) {
+        currentMatch = matchArr[i];
+        namesArr = Object.keys(heat[currentMatch]);
+
+        for (j = 0; j < namesArr.length; j++) {
+            currentName = namesArr[i];
+            xAuto = "x auto";
+            yAuto = "y auto";
+            xTele = "x tele";
+            yTele = "y tele";
+            xAutoArr = heat[currentMatch][currentName][xAuto];
+            yAutoArr = heat[currentMatch][currentName][yAuto];
+            xTeleArr = heat[currentMatch][currentName][xTele];
+            yTeleArr = heat[currentMatch][currentName][yTele];
+            console.log(xAutoArr);
+            console.log(yTeleArr);
+            masterXauto.push(xAutoArr);
+            masterYauto.push(yAutoArr);
+            masterXtele.push(xTeleArr);
+            masterYtele.push(yTeleArr);
+        }
+    }
+
+    localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
+    localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
+    localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
+    localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
+    localStorage.setItem("robotHeatNum", robotNum);
+    alert("Done!");
+
+    /*
+        console.log(heatData.length);
+        matches = Object.keys(robotData); //makes the matches into an array
+        console.log(matches);
+        pullNames(matches); //runs pullNames() with matches as the arguement
+    */
 }
 
+/*
 function pullNames(matches) { //either cycles through to the next match or it will move on to storing the arrays
     if ((matches.length - 1) < matchValue) {
         alert("Done!"); //means it is done pulling data from firebase
