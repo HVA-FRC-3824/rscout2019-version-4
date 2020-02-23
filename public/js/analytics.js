@@ -14,6 +14,25 @@ yAutoArr = [];
 xTeleArr = [];
 yTeleArr = [];
 heatData = {};
+driveStationMaster = [];
+startPositionMaster = [];
+robotScoreMaster = [];
+autoPickedUpFloorMaster = [];
+autoPickedUpBayMaster = [];
+teleopPickedUpFloorMaster = [];
+teleopPickedUpBayMaster = [];
+climbTypeMaster = [];
+notesMaster = [];
+climbTimeMaster = [];
+colorWheelMaster = [];
+autoMissesMaster = [];
+teleMissesMaster = [];
+autoScoreMaster = [];
+teleScoreMaster = [];
+teleAccuracyMaster = [];
+autoAccuracyMaster = [];
+redCardMaster = [];
+yellowCardMaster = [];
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
@@ -29,6 +48,7 @@ function passCheck(passcode) {
             alert("put something in!");
         } else {
             pullData();
+            pullMatchData();
         }
 
     } else {
@@ -81,21 +101,16 @@ function gotData(data) { //makes the data readable
         namesArr = Object.keys(heat[currentMatch]);
 
         for (j = 0; j < namesArr.length; j++) {
-            currentName = namesArr[i];
+            currentName = namesArr[j];
             xAuto = "x auto";
             yAuto = "y auto";
             xTele = "x tele";
             yTele = "y tele";
-            xAutoArr = heat[currentMatch][currentName][xAuto];
-            yAutoArr = heat[currentMatch][currentName][yAuto];
-            xTeleArr = heat[currentMatch][currentName][xTele];
-            yTeleArr = heat[currentMatch][currentName][yTele];
-            console.log(xAutoArr);
-            console.log(yTeleArr);
-            masterXauto.push(xAutoArr);
-            masterYauto.push(yAutoArr);
-            masterXtele.push(xTeleArr);
-            masterYtele.push(yTeleArr);
+            console.log("here: " + currentMatch + " " + currentName);
+            masterXauto.push(heat[currentMatch][currentName][xAuto]);
+            masterYauto.push(heat[currentMatch][currentName][yAuto]);
+            masterXtele.push(heat[currentMatch][currentName][xTele]);
+            masterYtele.push(heat[currentMatch][currentName][yTele]);
         }
     }
 
@@ -105,8 +120,51 @@ function gotData(data) { //makes the data readable
     localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
     localStorage.setItem("robotHeatNum", robotNum);
     alert("Done!");
+    
 
-    /*
+function pullMatchData() { //this function pulls the team number that the user entered
+    robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
+    firebase.database().ref('/matchScouting/' + robotNum).once("value", gotMatchData); //acutally gets the data from firebase, then runs gotData()
+    console.log(robotNum);
+}
+
+function gotMatchData(data) { //makes the data readable
+    var matchData = data.val(); //takes the value of the data
+    jsonMatchData = JSON.stringify(matchData);
+    matchParsed = JSON.parse(jsonMatchData);
+    matchNums = Object.keys(matchParsed);
+    for (i = 0; i < matchNums.length; i++) {
+        currMatch = matchNums[i];
+        matchNames = Object.keys(matchParsed[currMatch]);
+        for (j = 0; j < matchNames.length; j++) {
+            currName = matchNames[j];
+            console.log("here: " + currentMatch + " " + currentName);
+            nameBlameMaster.push(currName);
+            matchNumberMaster.push(currMatch);
+            driveStationMaster.push(matchParsed[currentMatch][currName]["driveStation"]);
+            startPositionMaster.push(matchParsed[currentMatch][currName]["startPosition"]);
+            robotScoreMaster.push(matchParsed[currentMatch][currName]["robotScore"]);
+            autoPickedUpFloorMaster.push(matchParsed[currentMatch][currName]["autoPickedUpFloor"]);
+            autoPickedUpBayMaster.push(matchParsed[currentMatch][currName]["autoPickedUpBay"]);
+            teleopPickedUpFloorMaster.push(matchParsed[currentMatch][currName]["teleopPickedUpFloor"]);
+            teleopPickedUpBayMaster.push(matchParsed[currentMatch][currName]["teleopPickedUpBay"]);
+            climbTypeMaster.push(matchParsed[currentMatch][currName]["climbType"]);
+            notesMaster.push(matchParsed[currentMatch][currName]["notes"]);
+            climbTimeMaster.push(matchParsed[currentMatch][currName]["climbTime"]);
+            colorWheelMaster.push(matchParsed[currentMatch][currName]["colorWheel"]);
+            autoMissesMaster.push(matchParsed[currentMatch][currName]["autoMisses"]);
+            teleMissesMaster.push(matchParsed[currentMatch][currName]["teleMisses"]);
+            autoScoreMaster.push(matchParsed[currentMatch][currName]["autoScore"]);
+            teleScoreMaster.push(matchParsed[currentMatch][currName]["teleScore"]);
+            teleAccuracyMaster.push(matchParsed[currentMatch][currName]["teleAccuracy"]);
+            autoAccuracyMaster.push(matchParsed[currentMatch][currName]["autoAccuracy"]);
+            redCardMaster.push(matchParsed[currentMatch][currName]["redCard"]);
+            yellowCardMaster.push(matchParsed[currentMatch][currName]["yellowCard"]);
+            console.log("Done!");
+        }
+    }
+
+/*
         console.log(heatData.length);
         matches = Object.keys(robotData); //makes the matches into an array
         console.log(matches);
@@ -197,9 +255,4 @@ function storeArrays() { //stores the heatmap data in the local storage
             console.log("Loading...");
         }
     }
-}*/
-
-/*function coordArrays(data) {
-    var currentCoords = data.val();
-    //console.log(currentCoords);
 }*/
