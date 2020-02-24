@@ -33,6 +33,9 @@ teleAccuracyMaster = [];
 autoAccuracyMaster = [];
 redCardMaster = [];
 yellowCardMaster = [];
+nameBlameMaster = [];
+matchNumberMaster = [];
+currDataTable = 0;
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
@@ -120,7 +123,7 @@ function gotData(data) { //makes the data readable
     localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
     localStorage.setItem("robotHeatNum", robotNum);
     alert("Done!");
-    
+}    
 
 function pullMatchData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
@@ -138,38 +141,56 @@ function gotMatchData(data) { //makes the data readable
         matchNames = Object.keys(matchParsed[currMatch]);
         for (j = 0; j < matchNames.length; j++) {
             currName = matchNames[j];
-            console.log("here: " + currentMatch + " " + currentName);
+            console.log("here: " + currMatch + " " + currentName);
             nameBlameMaster.push(currName);
             matchNumberMaster.push(currMatch);
-            driveStationMaster.push(matchParsed[currentMatch][currName]["driveStation"]);
-            startPositionMaster.push(matchParsed[currentMatch][currName]["startPosition"]);
-            robotScoreMaster.push(matchParsed[currentMatch][currName]["robotScore"]);
-            autoPickedUpFloorMaster.push(matchParsed[currentMatch][currName]["autoPickedUpFloor"]);
-            autoPickedUpBayMaster.push(matchParsed[currentMatch][currName]["autoPickedUpBay"]);
-            teleopPickedUpFloorMaster.push(matchParsed[currentMatch][currName]["teleopPickedUpFloor"]);
-            teleopPickedUpBayMaster.push(matchParsed[currentMatch][currName]["teleopPickedUpBay"]);
-            climbTypeMaster.push(matchParsed[currentMatch][currName]["climbType"]);
-            notesMaster.push(matchParsed[currentMatch][currName]["notes"]);
-            climbTimeMaster.push(matchParsed[currentMatch][currName]["climbTime"]);
-            colorWheelMaster.push(matchParsed[currentMatch][currName]["colorWheel"]);
-            autoMissesMaster.push(matchParsed[currentMatch][currName]["autoMisses"]);
-            teleMissesMaster.push(matchParsed[currentMatch][currName]["teleMisses"]);
-            autoScoreMaster.push(matchParsed[currentMatch][currName]["autoScore"]);
-            teleScoreMaster.push(matchParsed[currentMatch][currName]["teleScore"]);
-            teleAccuracyMaster.push(matchParsed[currentMatch][currName]["teleAccuracy"]);
-            autoAccuracyMaster.push(matchParsed[currentMatch][currName]["autoAccuracy"]);
-            redCardMaster.push(matchParsed[currentMatch][currName]["redCard"]);
-            yellowCardMaster.push(matchParsed[currentMatch][currName]["yellowCard"]);
+            driveStationMaster.push(matchParsed[currMatch][currName]["driveStation"]);
+            startPositionMaster.push(matchParsed[currMatch][currName]["startPosition"]);
+            robotScoreMaster.push(matchParsed[currMatch][currName]["robotScore"]);
+            autoPickedUpFloorMaster.push(matchParsed[currMatch][currName]["autoPickedUpFloor"]);
+            autoPickedUpBayMaster.push(matchParsed[currMatch][currName]["autoPickedUpBay"]);
+            teleopPickedUpFloorMaster.push(matchParsed[currMatch][currName]["teleopPickedUpFloor"]);
+            teleopPickedUpBayMaster.push(matchParsed[currMatch][currName]["teleopPickedUpBay"]);
+            climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
+            notesMaster.push(matchParsed[currMatch][currName]["notes"]);
+            climbTimeMaster.push(matchParsed[currMatch][currName]["climbTime"]);
+            colorWheelMaster.push(matchParsed[currMatch][currName]["colorWheel"]);
+            autoMissesMaster.push(matchParsed[currMatch][currName]["autoMisses"]);
+            teleMissesMaster.push(matchParsed[currMatch][currName]["teleMisses"]);
+            autoScoreMaster.push(matchParsed[currMatch][currName]["autoScore"]);
+            teleScoreMaster.push(matchParsed[currMatch][currName]["teleScore"]);
+            teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
+            autoAccuracyMaster.push(matchParsed[currMatch][currName]["autoAccuracy"]);
+            redCardMaster.push(matchParsed[currMatch][currName]["redCard"]);
+            yellowCardMaster.push(matchParsed[currMatch][currName]["yellowCard"]);
             console.log("Done!");
+            setTable();
         }
     }
+}
 
-/*
-        console.log(heatData.length);
-        matches = Object.keys(robotData); //makes the matches into an array
-        console.log(matches);
-        pullNames(matches); //runs pullNames() with matches as the arguement
-    */
+function setTable() {
+    document.getElementById("nameBlame").innerHTML = nameBlameMaster[currDataTable];
+    document.getElementById("matchTableNum").innerHTML = matchNumberMaster[currDataTable];
+    document.getElementById("driveStat").innerHTML = driveStationMaster[currDataTable];
+    document.getElementById("startPos").innerHTML = startPositionMaster[currDataTable];
+    document.getElementById("robotTableSco").innerHTML = robotScoreMaster[currDataTable];
+    document.getElementById("autoFloorTable").innerHTML = autoPickedUpFloorMaster[currDataTable];
+    document.getElementById("autoBayTable").innerHTML = autoPickedUpBayMaster[currDataTable];
+    document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
+    document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
+    document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
+    document.getElementById("isLevelTable").innerHTML = climbTypeMaster[currDataTable];
+    document.getElementById("climbTimeTable").innerHTML = climbTimeMaster[currDataTable];
+    document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
+    document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
+    document.getElementById("teleMissTable").innerHTML = teleMissesMaster[currDataTable];
+    document.getElementById("autoScoreTable").innerHTML = autoScoreMaster[currDataTable];
+    document.getElementById("teleScoreTable").innerHTML = teleScoreMaster[currDataTable];
+    document.getElementById("autoAccuTable").innerHTML = autoAccuracyMaster[currDataTable];
+    document.getElementById("teleAccuTable").innerHTML = teleAccuracyMaster[currDataTable];
+    document.getElementById("redTable").innerHTML = redCardMaster[currDataTable];
+    document.getElementById("yellowTable").innerHTML = yellowCardMaster[currDataTable];
 }
 
 /*

@@ -21,8 +21,7 @@
 </head>
 
 <body>
-    <form action=".\index.html">
-        <button type="submit" class="buttonBack">
+    <button type="submit" onclick="location.replace('./schedule.html')" class="buttonBack">
         Back
     </button>
     </form>
@@ -31,13 +30,108 @@
         <button onclick=passwordCheck() class="button">
             Pull from firebase and Push to Heatmap
         </button>
-        <form action="./heat.html">
-        <button type="submit" class="button">
-        Heatmap
-        </button>
-        </form>
+    <button type="submit" onclick="location.replace('./schedule.html')" class="button">
+            Heatmap
+    </button>
+    <button type="submit" onclick="currDataTable--, setTable()" class="button">
+    Last table
+    </button>
+    <button type="submit" onclick="currDataTable++, setTable()" class="button">
+    Next table
+    </button>
     </div>
-    
+    <div class="tablediv">
+        <table class="matchDataTable">
+            <tr>
+                <th> Data Type </th>
+                <th> Value </th>
+            </tr>
+            <tr>
+                <th> Name </th>
+                <th id="nameBlame"></th>
+            </tr>
+            <tr>
+                <th> Match </th>
+                <th  id="matchTableNum">Data Point</th>
+            </tr>
+            <tr>
+                <th> Drive Station </th>
+                <th id="driveStat">Data Point</th>
+            </tr>
+            <tr>
+                <th> Start Position </th>
+                <th id="startPos">Data Point</th>
+            </tr>
+            <tr>
+                <th> Robot Score </th>
+                <th id="robotTableSco">Data Point</th>
+            </tr>
+            <tr>
+                <th> Auto Floor Pickup </th>
+                <th id="autoFloorTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Auto Bay Pickup </th>
+                <th id="autoBayTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Tele Floor Pickup </th>
+                <th id="teleFloorTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Tele Bay Pickup </th>
+                <th id="teleBayTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Climb Type </th>
+                <th id="climbTypeTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Level </th>
+                <th  id="isLevelTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Climb Time </th>
+                <th id="climbTimeTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Color Wheel </th>
+                <th id="colorWheelTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Tele Misses </th>
+                <th id="teleMissTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Auto Misses </th>
+                <th id="autoMissTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Auto Score </th>
+                <th id="autoScoreTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Tele Score </th>
+                <th id="teleScoreTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Auto Acc. </th>
+                <th id="autoAccuTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Tele Acc. </th>
+                <th id="teleAccuTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Red Card </th>
+                <th id="redTable">Data Point</th>
+            </tr>
+            <tr>
+                <th> Yellow Check </th>
+                <th id="yellowTable">Data Point</th>
+            </tr>
+        </table>
+    </div>    
 
     <!--
     <div class="btn-group">

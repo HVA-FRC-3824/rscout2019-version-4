@@ -19,6 +19,17 @@ body {
     padding: 0;
 }
 
+.tablediv {
+    width: 25%;
+    float: left;
+    color: white;
+}
+
+.matchDataTable {
+    color: white;
+    background-color: #7722cc;
+}
+
 .buttonBack {
     background-color: #7722cc;
     float: left;
