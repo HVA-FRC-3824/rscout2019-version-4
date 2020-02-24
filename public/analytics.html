@@ -30,15 +30,16 @@
         <button onclick=passwordCheck() class="button">
             Pull from firebase and Push to Heatmap
         </button>
-    <button type="submit" onclick="location.replace('./schedule.html')" class="button">
+    <button type="submit" onclick="location.replace('./heat.html')" class="button">
             Heatmap
     </button>
-    <button type="submit" onclick="currDataTable--, setTable()" class="button">
+    <button type="submit" onclick="lessTable()" class="button">
     Last table
     </button>
-    <button type="submit" onclick="currDataTable++, setTable()" class="button">
+    <button type="submit" onclick="moreTable()" class="button">
     Next table
     </button>
+    <h2 id="averageScore"></h2>
     </div>
     <div class="tablediv">
         <table class="matchDataTable">

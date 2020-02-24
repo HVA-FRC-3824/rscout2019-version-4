@@ -5,11 +5,7 @@ html {
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
-    overflow: hidden;
-}
-
-.pitScout {
-    overflow: scroll;
+    overflow: auto;
 }
 
 body {

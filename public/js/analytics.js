@@ -165,6 +165,11 @@ function gotMatchData(data) { //makes the data readable
             yellowCardMaster.push(matchParsed[currMatch][currName]["yellowCard"]);
             console.log("Done!");
             setTable();
+            for (i = 0; i < (robotScoreMaster.length-1); i++) {
+                var robotScoreTotal = 0;
+                robotScoreTotal += robotScoreMaster[i];
+                document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length-1);
+            }
         }
     }
 }
@@ -191,6 +196,21 @@ function setTable() {
     document.getElementById("teleAccuTable").innerHTML = teleAccuracyMaster[currDataTable];
     document.getElementById("redTable").innerHTML = redCardMaster[currDataTable];
     document.getElementById("yellowTable").innerHTML = yellowCardMaster[currDataTable];
+}
+
+function lessTable() {
+    if (currDataTable > 0) {
+        currDataTable--;
+        setTable();
+    }
+}
+
+
+function moreTable() {
+    if ((nameBlameMaster.length - 1) > currDataTable) {
+        currDataTable++;
+        setTable();
+    }
 }
 
 /*
