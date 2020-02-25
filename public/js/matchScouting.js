@@ -171,7 +171,10 @@ function createMatchArray() {
         autoAccuracy = 1 - (autoMisses / autoShots);
         teleAccuracy = 1 - (teleMisses / teleShots);
     }
-
+    //rounding climb time and accuracy
+    climbTime = (Math.round((climbTime + Number.EPSILON) * 100) / 100);
+    autoAccuracy = (Math.round((autoAccuracy + Number.EPSILON) * 100) / 100);
+    teleAccuracy = (Math.round((teleAccuracy + Number.EPSILON) * 100) / 100);
     matchDataArray = {
         name: name,
         match: match,
@@ -246,7 +249,6 @@ function pushFirebaseMatch(data, heatData) {
 function nextMatch() {
     console.log(match)
     mNumber = localStorage.getItem("num");
-    mNumber++;
     localStorage.setItem("num", mNumber);
     location.replace("./schedule.html");
 }

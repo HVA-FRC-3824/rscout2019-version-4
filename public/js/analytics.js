@@ -37,6 +37,8 @@ nameBlameMaster = [];
 matchNumberMaster = [];
 currDataTable = 0;
 robotScoreTotal = 0;
+autoAccuracyTotal = 0;
+teleAccuracyTotal = 0;
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
@@ -173,11 +175,15 @@ function gotMatchData(data) { //makes the data readable
         }
     }
     for (t = 0; t < (robotScoreMaster.length); t++) {
-        robotScoreTotal += robotScoreMaster[i];
-        document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length);
-        document.getElementById("maxScore").innerHTML = "Max Score: " + Math.max(robotScoreMaster);
-        document.getElementById("minScore").innerHTML = "Min Score: " + Math.min(robotScoreMaster);
+        robotScoreTotal += robotScoreMaster[t];
+        autoAccuracyTotal += autoAccuracyMaster[t];
+        teleAccuracyTotal += teleAccuracyMaster[t];
     }
+    document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length);
+    document.getElementById("maxScore").innerHTML = "Max Score: " + Math.max(...robotScoreMaster);
+    document.getElementById("minScore").innerHTML = "Min Score: " + Math.min(...robotScoreMaster);
+    document.getElementById("averageAutoAcc").innerHTML = "Auto Accuracy: " + (Math.round(((autoAccuracyTotal / autoAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+    document.getElementById("averageTeleAcc").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
 }
 
 function setTable() {
@@ -191,7 +197,6 @@ function setTable() {
     document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
     document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
     document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
-    document.getElementById("isLevelTable").innerHTML = climbTypeMaster[currDataTable];
     document.getElementById("climbTimeTable").innerHTML = climbTimeMaster[currDataTable];
     document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
     document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
@@ -218,88 +223,3 @@ function moreTable() {
         setTable();
     }
 }
-
-/*
-function pullNames(matches) { //either cycles through to the next match or it will move on to storing the arrays
-    if ((matches.length - 1) < matchValue) {
-        alert("Done!"); //means it is done pulling data from firebase
-        storeArrays() //makes the pulled data push onto local storage
-        console.log(masterXauto);
-        console.log(masterYauto);
-    } else { //continues to pull from firebase
-        currentMatch = matches[matchValue]; //makes the currentMatch var according to the matchValue var
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch).once("value", setsName); //pull that certain matches data from our firebase database
-    }
-}
-
-
-function setsName(data) { //makes the match data pulled readable and puts the names from the database into an array
-    var names = data.val(); //takes the value of the data
-    namesArray = Object.keys(names); //makes the names data into an array
-    console.log(namesArray);
-    pullCoords(namesArray); //runs the pullCoords() function with the namesArray as the arguement
-}
-
-function pullCoords(namesArray) { //pulls the data under each name in the names array
-    if ((namesArray.length - 1) >= nameValue) {
-        currentName = namesArray[nameValue]; //makes the current name var equal to a certain name value according to the "nameValue" var
-        console.log(currentName)
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName).once("value", setsCoords); //pulls the coords under the name specified by the "currentName" var and then runs the setsCoords() function
-    }
-}
-
-function setsCoords(data) { //makes the coords into their own array and decides if it must loop to a new match or name
-    console.log(robotNum, currentMatch, currentName);
-    var xy = data.val(); //takes the value of the data
-    console.log(xy);
-    masterXauto.push(xy["x auto"]); //pushes the data to the master array
-    masterYauto.push(xy["y auto"]);
-    masterXtele.push(xy["x tele"]);
-    masterYtele.push(xy["y tele"]);
-    nameValue++; //increments the nameValue var
-    if (namesArray.length - 1 >= nameValue) { //decides if you need to loop to the new match or new name function
-        pullCoords(namesArray); //returns to change the currentName var
-    } else {
-        matchValue++; //increments the matchValue var
-        nameValue = 0; //resets the name value var
-        pullNames(matches); //returns to change the currentMatch var 
-    }
-}
-
-function resetVars() {
-    robotNum = "";
-    currentName = [];
-    namesArray = [];
-    currentMatch = 0;
-    matches = [];
-    matchValue = 0;
-    nameValue = 0;
-    masterXauto = [];
-    masterYauto = [];
-    masterXtele = [];
-    masterYtele = [];
-}
-
-function storeArrays() { //stores the heatmap data in the local storage
-    localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
-    localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
-    localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
-    localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
-    localStorage.setItem("robotHeatNum", robotNum);
-    alert("Done!");
-
-}
-//var xyArray = Object.keys(xy);
-//console.log(xyArray);
-//xyCoords(xyArray);
-
-/*function xyCoords(xyArray) {
-    for (i = 0; i < xyArray.length; i++) {
-        currentCoordArray = xyArray[i];
-        firebase.database().ref('/heatMap/' + robotNum + '/' + currentMatch + '/' + currentName + '/' + currentCoordArray).once("value", coordArrays);
-        console.log("xyArray");
-        for (j = 0; j < 5000; j++) {
-            console.log("Loading...");
-        }
-    }
-}*/
