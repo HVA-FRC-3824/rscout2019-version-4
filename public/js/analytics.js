@@ -36,13 +36,13 @@ yellowCardMaster = [];
 nameBlameMaster = [];
 matchNumberMaster = [];
 currDataTable = 0;
+robotScoreTotal = 0;
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
 }
 
 function passCheck(passcode) {
-    console.log(passcode)
     password = prompt("Password?");
     if (passcode.val() == password) {
         alert("success!");
@@ -90,12 +90,12 @@ var sortById = function(prop) {
 function pullData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
     firebase.database().ref('/heatMap/' + robotNum).once("value", gotData); //acutally gets the data from firebase, then runs gotData()
-    console.log(robotNum);
+    //console.log(robotNum);
 }
 
-function gotData(data) { //makes the data readable
-    var robotData = data.val(); //takes the value of the data
-    console.log(robotData);
+function gotData(heatData) { //makes the data readable
+    var robotData = heatData.val(); //takes the value of the data
+    //console.log(robotData);
     heatData = JSON.stringify(robotData);
     heat = JSON.parse(heatData);
     matchArr = Object.keys(heat);
@@ -109,7 +109,7 @@ function gotData(data) { //makes the data readable
             yAuto = "y auto";
             xTele = "x tele";
             yTele = "y tele";
-            console.log("here: " + currentMatch + " " + currentName);
+            //console.log("here: " + currentMatch + " " + currentName);
             masterXauto.push(heat[currentMatch][currentName][xAuto]);
             masterYauto.push(heat[currentMatch][currentName][yAuto]);
             masterXtele.push(heat[currentMatch][currentName][xTele]);
@@ -123,7 +123,7 @@ function gotData(data) { //makes the data readable
     localStorage.setItem("yTeleStore", JSON.stringify(masterYtele));
     localStorage.setItem("robotHeatNum", robotNum);
     alert("Done!");
-}    
+}
 
 function pullMatchData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
@@ -137,11 +137,13 @@ function gotMatchData(data) { //makes the data readable
     matchParsed = JSON.parse(jsonMatchData);
     matchNums = Object.keys(matchParsed);
     for (i = 0; i < matchNums.length; i++) {
+        console.log(matchNums);
         currMatch = matchNums[i];
         matchNames = Object.keys(matchParsed[currMatch]);
+        console.log(matchNames);
         for (j = 0; j < matchNames.length; j++) {
             currName = matchNames[j];
-            console.log("here: " + currMatch + " " + currentName);
+            console.log("MatchData: " + currMatch + " " + currentName);
             nameBlameMaster.push(currName);
             matchNumberMaster.push(currMatch);
             driveStationMaster.push(matchParsed[currMatch][currName]["driveStation"]);
@@ -163,14 +165,18 @@ function gotMatchData(data) { //makes the data readable
             autoAccuracyMaster.push(matchParsed[currMatch][currName]["autoAccuracy"]);
             redCardMaster.push(matchParsed[currMatch][currName]["redCard"]);
             yellowCardMaster.push(matchParsed[currMatch][currName]["yellowCard"]);
-            console.log("Done!");
+            console.log("Another One");
             setTable();
-            for (i = 0; i < (robotScoreMaster.length-1); i++) {
-                var robotScoreTotal = 0;
-                robotScoreTotal += robotScoreMaster[i];
-                document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length-1);
+            for (l = 0; l < 1000; l++) {
+                console.log("Loading...");
             }
         }
+    }
+    for (t = 0; t < (robotScoreMaster.length); t++) {
+        robotScoreTotal += robotScoreMaster[i];
+        document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length);
+        document.getElementById("maxScore").innerHTML = "Max Score: " + Math.max(robotScoreMaster);
+        document.getElementById("minScore").innerHTML = "Min Score: " + Math.min(robotScoreMaster);
     }
 }
 

@@ -25,21 +25,27 @@
         Back
     </button>
     </form>
-    <input type="text" name="robotNum" id="robotNum">
+
     <div class="btn-group">
         <button onclick=passwordCheck() class="button">
             Pull from firebase and Push to Heatmap
         </button>
-    <button type="submit" onclick="location.replace('./heat.html')" class="button">
+        <button type="submit" onclick="location.replace('./heat.html')" class="button">
             Heatmap
     </button>
-    <button type="submit" onclick="lessTable()" class="button">
+        <button type="submit" onclick="lessTable()" class="button">
     Last table
     </button>
-    <button type="submit" onclick="moreTable()" class="button">
+        <button type="submit" onclick="moreTable()" class="button">
     Next table
     </button>
-    <h2 id="averageScore"></h2>
+        <input placeholder="Robot Number" type="text" name="robotNum" id="robotNum" class="textBox">
+        <div class="headers">
+            <h2 id="averageScore">AverageScore</h2>
+            <h2 id="maxScore">Max Score</h2>
+            <h2 id="minScore">Min Score</h2>
+        </div>
+
     </div>
     <div class="tablediv">
         <table class="matchDataTable">
@@ -53,7 +59,7 @@
             </tr>
             <tr>
                 <th> Match </th>
-                <th  id="matchTableNum">Data Point</th>
+                <th id="matchTableNum">Data Point</th>
             </tr>
             <tr>
                 <th> Drive Station </th>
@@ -89,7 +95,7 @@
             </tr>
             <tr>
                 <th> Level </th>
-                <th  id="isLevelTable">Data Point</th>
+                <th id="isLevelTable">Data Point</th>
             </tr>
             <tr>
                 <th> Climb Time </th>
@@ -132,7 +138,7 @@
                 <th id="yellowTable">Data Point</th>
             </tr>
         </table>
-    </div>    
+    </div>
 
     <!--
     <div class="btn-group">

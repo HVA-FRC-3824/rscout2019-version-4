@@ -13,12 +13,14 @@ body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-size: 3vh;
 }
 
 .tablediv {
     width: 25%;
     float: left;
     color: white;
+    font-size: 2vh;
 }
 
 .matchDataTable {
@@ -74,6 +76,14 @@ h1 {
     padding-left: 1%;
     padding-top: 1%;
     margin: 0%;
+}
+
+.textBox {
+    font-size: 4vh;
+}
+
+.headers {
+    float: right;
 }
 
 h2 {
