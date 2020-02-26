@@ -2,7 +2,12 @@ var robotNum = "";
 weight = "";
 driveTrain = "";
 climbType = "";
-
+normalZone = "";
+normalShot = "";
+autoStats = "";
+controlPanel = "";
+driveExp = "";
+mobilityStats = "";
 
 function createPitArray() {
     robotNum = document.getElementById("robotNum").value;
@@ -10,6 +15,13 @@ function createPitArray() {
     driveTrain = document.getElementById("driveTrain").value;
     climbType = document.getElementById("climbType").value;
     robotLang = document.getElementById("robotLang").value;
+    normalZone = document.getElementById("normalZone").value;
+    normalShot = document.getElementById("normalShot").value;
+    autoStats = document.getElementById("autoStats").value;
+    controlPanel = document.getElementById("controlPanel").value;
+    driveExp = document.getElementById("driveExp").value;
+    moveStats = document.getElementById("moveStats").value;
+    
     if(robotNum == ''){
         robotNum = "noRobot"
     }
@@ -24,6 +36,12 @@ function pushPit(data) {
         "robotWeight": data.weight,
         "driveTrain": data.driveTrain,
         "robotLang": data.robotLang,
+        "normalShot": data.normalShot,
+        "normalZone": data.normalZone,
+        "autoStats": data.autoStats,
+        "controlPanel": data.controlPanel,
+        "driveExp": data.driveExp,
+        "moveStats": data.moveStats,
     })
     if(robotNum == 'robotNum'){
         alert("No Robot Entered!");
