@@ -69,7 +69,7 @@ function filterSchedule(qual) {
 }
 
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/2020week0/matches"); //* Runs kidnap with the specified url
+    kidnap("/event/2019hop/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
