@@ -25,7 +25,7 @@ function createPitArray() {
     if(robotNum == ''){
         robotNum = "noRobot"
     }
-    var robotData = { robotNum: robotNum, weight: weight, driveTrain: driveTrain, climbType: climbType, robotLang: robotLang};
+    var robotData = { robotNum: robotNum, weight: weight, driveTrain: driveTrain, climbType: climbType, robotLang: robotLang, normalZone: normalZone, normalShot: normalShot, autoStats: autoStats, controlPanel: controlPanel, driveExp: driveExp, moveStats: moveStats};
     pushPit(robotData);
 }
 

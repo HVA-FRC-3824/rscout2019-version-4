@@ -20,6 +20,10 @@ body {
     font-size: 3vw;
 }
 
+.loadingsdk {
+    text-align: center;
+}
+
 .tablediv {
     width: 25%;
     float: left;
