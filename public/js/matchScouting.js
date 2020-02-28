@@ -224,37 +224,41 @@ function createMatchArray() {
 
 function pushFirebaseMatch(data, heatData) {
     console.log(data);
-    firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
-        "driveStation": data.driveStation,
-        "startPosition": data.startPos,
-        "robotScore": data.robotScore,
-        "autoPickedUpFloor": data.pickedUpAutoFloor,
-        "autoPickedUpBay": data.pickedUpAutoBay,
-        "teleopPickedUpFloor": data.pickedUpTeleopFloor,
-        "teleopPickedUpBay": data.pickedUpTeleopBay,
-        "climbType": data.climbType + " " + data.isLevel,
-        "notes": data.notes,
-        "climbTime": data.climbTime,
-        "colorWheel": data.colorWheel,
-        "autoMisses": data.autoMisses,
-        "teleMisses": data.teleMisses,
-        "autoScore": data.autoScore,
-        "teleScore": data.teleScore,
-        "teleAccuracy": data.teleAccuracy,
-        "autoAccuracy": data.autoAccuracy,
-        "redCard": data.redCheck,
-        "yellowCard": data.yellowCheck,
-        "ballsDroppedAuto": data.ballsDroppedAuto,
-        "ballsDroppedTele": data.ballsDroppedTele,
-        "MovedAuto": data.autoMove,
-    });
+    for (var i > 3; i = 0; i++) {
+        firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
+            "driveStation": data.driveStation,
+            "startPosition": data.startPos,
+            "robotScore": data.robotScore,
+            "autoPickedUpFloor": data.pickedUpAutoFloor,
+            "autoPickedUpBay": data.pickedUpAutoBay,
+            "teleopPickedUpFloor": data.pickedUpTeleopFloor,
+            "teleopPickedUpBay": data.pickedUpTeleopBay,
+            "climbType": data.climbType + " " + data.isLevel,
+            "notes": data.notes,
+            "climbTime": data.climbTime,
+            "colorWheel": data.colorWheel,
+            "autoMisses": data.autoMisses,
+            "teleMisses": data.teleMisses,
+            "autoScore": data.autoScore,
+            "teleScore": data.teleScore,
+            "teleAccuracy": data.teleAccuracy,
+            "autoAccuracy": data.autoAccuracy,
+            "redCard": data.redCheck,
+            "yellowCard": data.yellowCheck,
+            "ballsDroppedAuto": data.ballsDroppedAuto,
+            "ballsDroppedTele": data.ballsDroppedTele,
+            "MovedAuto": data.autoMove,
+        });
+    
+        firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
+            "x auto": heatData.xauto,
+            "y auto": heatData.yauto,
+            "x tele": heatData.xtele,
+            "y tele": heatData.ytele,
+        });
+    
+    }
 
-    firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
-        "x auto": heatData.xauto,
-        "y auto": heatData.yauto,
-        "x tele": heatData.xtele,
-        "y tele": heatData.ytele,
-    });
     setTimeout(nextMatch, 1000);
 }
 
