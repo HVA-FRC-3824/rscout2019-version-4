@@ -43,10 +43,11 @@
         var autoFieldHeight = 638;
         var fullFieldWidth = 1287;
         var fullFieldHeight = 638;
-        var xAutoArr = [];
-        var yAutoArr = [];
-        var xTeleArr = [];
-        var yTeleArr = [];
+        var xAutoArr = [placeArr];
+        var yAutoArr = [placeArr];
+        var xTeleArr = [placeArr];
+        var yTeleArr = [placeArr];
+        var placeArr = ["0"];
         var xAutoHeat = [];
         var yAutoHeat = [];
         var xTeleHeat = [];
@@ -76,7 +77,6 @@
             robotNum = localStorage.getItem("robotHeatNum");
             document.getElementById("robotHeatNum").innerHTML = "Team Number: " + robotNum;
             //console.log(xAutoArr)
-
             if (autoOrTele == 0) {
                 for (var i = 0; i < xAutoArr.length; i++) {
                     var innerArrayLength = xAutoArr[i].length;

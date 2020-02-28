@@ -121,8 +121,9 @@ function gotData(heatData) { //makes the data readable
             masterXtele.push(heat[currentMatch][currentName][xTele]);
             masterYtele.push(heat[currentMatch][currentName][yTele]);
         }
+        
     }
-
+    
     localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
     localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
     localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
