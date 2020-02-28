@@ -20,6 +20,15 @@ body {
     font-size: 3vw;
 }
 
+.superScout {
+    font-size: 2vw;
+}
+
+.superText {
+    height: 200px;
+    font-size: 14pt;
+}
+
 .loadingsdk {
     text-align: center;
 }

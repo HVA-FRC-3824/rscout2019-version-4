@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="pitScout">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desiread features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!--reference the css stuff-->
+    <!--reference the css stuff-->
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <!--reference javascript stuff-->
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script type="text/javascript" src="./js/super-scout.js"></script>
+    <!--script type="text/javascript" src="./js/firebase.js"></!--script-->
+
+</head>
+
+<body class="superScout">
+    <!--
+    <form action=".\index.html">
+        <button type="submit" class="buttonBack">
+            Back
+        </button>
+    </form>
+
+    <button onclick=createPitArrary()>
+        pitScout
+    </button>
+    -->
+    <div class="pitScout">
+        <h1>Super Scouting</h1>
+        <br>
+
+        <h2>Match Number</h2>
+        <textarea rows="7" cols="29" id="superMatch"></textarea>
+
+        <h2>Name</h2>
+        <textarea rows="7" cols="29" id="superName"></textarea>
+
+        <h2>Notes</h2>
+        <textarea rows="7" cols="29" id="superNotes"></textarea>
+
+        <br>
+        <button onclick=createSuperArray() class="submit">Submit</button>
+    </div>
+
+</body>
+
+</html>

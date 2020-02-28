@@ -48,6 +48,9 @@ autoAccuracy = 0;
 teleAccuracy = 0;
 autoShots = 0;
 teleShots = 0;
+ballsDroppedAuto = 0;
+ballsDroppedTele = 0;
+autoMove = "";
 
 //* Initialize varibles
 
@@ -69,7 +72,7 @@ function filterSchedule(qual) {
 }
 
 function makeSchedule() { //* Makes schedule
-    kidnap("/event/scmb2020/matches"); //* Runs kidnap with the specified url
+    kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
@@ -154,7 +157,6 @@ function createMatchArray() {
     }
     var yellowCheck = document.getElementById("yellowCheck");
     var redCheck = document.getElementById("redCheck");
-
     if (yellowCheck.checked == true) {
         yellowCheck = "yes";
     } else {
@@ -166,6 +168,12 @@ function createMatchArray() {
         redCheck = "no";
     }
 
+    var autoMoveCheck = document.getElementById("autoLineCheck");
+    if (autoMoveCheck.checked == true) {
+        autoMove = "Moved";
+    } else {
+        autoMove = "didntMove";
+    }
 
     if (autoShots != 0 && teleShots != 0) {
         autoAccuracy = 1 - (autoMisses / autoShots);
@@ -199,7 +207,9 @@ function createMatchArray() {
         teleAccuracy: teleAccuracy,
         yellowCheck: yellowCheck,
         redCheck: redCheck,
-
+        ballsDroppedAuto: ballsDroppedAuto,
+        ballsDroppedTele: ballsDroppedTele,
+        autoMove: autoMove,
     };
 
     heatMapArray = {
@@ -234,8 +244,11 @@ function pushFirebaseMatch(data, heatData) {
         "autoAccuracy": data.autoAccuracy,
         "redCard": data.redCheck,
         "yellowCard": data.yellowCheck,
-
+        "ballsDroppedAuto": data.ballsDroppedAuto,
+        "ballsDroppedTele": data.ballsDroppedTele,
+        "MovedAuto": data.autoMove,
     });
+
     firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "x auto": heatData.xauto,
         "y auto": heatData.yauto,
@@ -389,13 +402,20 @@ function increment(teleOrAuto, wherePickedUp) {
 
 
 //decrements the balls held counter
-function decrement() {
+function decrement(ifDrop) {
     if (ballsHeld > 0) {
         ballsHeld--;
     }
     console.log(ballsHeld + " balls held");
     document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
+    if (ifDrop == 1 && ballsHeld > 0) {
+        ballsDroppedAuto++;
+    } else if (ifDrop == 2 && ballsHeld > 0) {
+        ballsDroppedTele++;
+    } else {
+        console.log("");
+    }
 }
 
 
