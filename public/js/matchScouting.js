@@ -51,6 +51,7 @@ teleShots = 0;
 ballsDroppedAuto = 0;
 ballsDroppedTele = 0;
 autoMove = "";
+fell = "";
 
 //* Initialize varibles
 
@@ -179,6 +180,12 @@ function createMatchArray() {
         autoAccuracy = 1 - (autoMisses / autoShots);
         teleAccuracy = 1 - (teleMisses / teleShots);
     }
+    var falls = document.getElementById("f");
+    if (f.checked == true) {
+        fell = "F"
+    } else {
+        fell = "noF"
+    }
     //rounding climb time and accuracy
     climbTime = (Math.round((climbTime + Number.EPSILON) * 100) / 100);
     autoAccuracy = (Math.round((autoAccuracy + Number.EPSILON) * 100) / 100);
@@ -210,6 +217,7 @@ function createMatchArray() {
         ballsDroppedAuto: ballsDroppedAuto,
         ballsDroppedTele: ballsDroppedTele,
         autoMove: autoMove,
+        fell: fell,
     };
 
     heatMapArray = {
@@ -247,6 +255,7 @@ function pushFirebaseMatch(data, heatData) {
         "ballsDroppedAuto": data.ballsDroppedAuto,
         "ballsDroppedTele": data.ballsDroppedTele,
         "MovedAuto": data.autoMove,
+        "Fell": data.fell,
     });
 
     firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
