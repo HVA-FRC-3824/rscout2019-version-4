@@ -39,6 +39,10 @@ currDataTable = 0;
 robotScoreTotal = 0;
 autoAccuracyTotal = 0;
 teleAccuracyTotal = 0;
+autoLineMaster = [];
+ballsDroppedAutoMaster = [];
+ballsDroppedTeleMaster = [];
+fellMaster = [];
 
 function passwordCheck() {
     firebase.database().ref('/password/' + "2713").once("value", passCheck);
@@ -167,6 +171,10 @@ function gotMatchData(data) { //makes the data readable
             autoAccuracyMaster.push(matchParsed[currMatch][currName]["autoAccuracy"]);
             redCardMaster.push(matchParsed[currMatch][currName]["redCard"]);
             yellowCardMaster.push(matchParsed[currMatch][currName]["yellowCard"]);
+            autoLineMaster.push(matchParsed[currMatch][currName]["MovedAuto"]);
+            ballsDroppedAutoMaster.push(matchParsed[currMatch][currName]["ballsDroppedAuto"]);
+            ballsDroppedTeleMaster.push(matchParsed[currMatch][currName]["ballsDroppedTele"]);
+            fellMaster.push(matchParsed[currMatch][currName]["Fell"]);
             console.log("Another One");
             setTable();
             for (l = 0; l < 1000; l++) {
@@ -207,6 +215,10 @@ function setTable() {
     document.getElementById("teleAccuTable").innerHTML = teleAccuracyMaster[currDataTable];
     document.getElementById("redTable").innerHTML = redCardMaster[currDataTable];
     document.getElementById("yellowTable").innerHTML = yellowCardMaster[currDataTable];
+    document.getElementById("autoLine").innerHTML = autoLineMaster[currDataTable];
+    document.getElementById("autoDropped").innerHTML = ballsDroppedAutoMaster[currDataTable];
+    document.getElementById("teleDropped").innerHTML = ballsDroppedTeleMaster[currDataTable];
+    document.getElementById("fell").innerHTML = fellMaster[currDataTable];
 }
 
 function lessTable() {
