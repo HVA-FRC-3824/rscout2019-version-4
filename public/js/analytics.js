@@ -132,6 +132,11 @@ function gotData(heatData) { //makes the data readable
     alert("Done!");
 }
 
+function clearLocalStorage() {
+    localStorage.clear();
+    alert("Done!");
+}
+
 function pullMatchData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
     firebase.database().ref('/matchScouting/' + robotNum).once("value", gotMatchData); //acutally gets the data from firebase, then runs gotData()
