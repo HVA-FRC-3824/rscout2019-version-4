@@ -10,22 +10,22 @@
 <body>
 
     <div id="heatmapContainerWrapper" class='getridofthesestupidmargins'>
-        <div id="heatmapContainer">
+        <div id="heatmapContainer"> <!--bounds of the heatmap-->
             <img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img>
         </div>
     </div>
-
+    
     <div id="heatButtons" class="heatButtons">
-        <button onclick="resetDiv(), makeMap(1);" class='button'>
+        <button onclick="resetDiv(), makeMap(1);" class='button'><!--sets the div to the tele data for the entered team-->
             Teleop
         </button>
-        <button onclick="resetDiv() , makeMap(0);" class='button'>
+        <button onclick="resetDiv() , makeMap(0);" class='button'> <!--sets the heatmap to the auto data for the entered team-->
             Auto
         </button>
-        <button onclick="location.replace('analytics.html')" class='button'>
+        <button onclick="location.replace('analytics.html')" class='button'> <!--takes you back to the analytics page-->
             Back
         </button>
-        <div class="robotNum">
+        <div class="robotNum"> <!--shows the team which you are currently viewing-->
             <h2 id="robotHeatNum">Team Number: 3824</h2>
         </div>
     </div>
