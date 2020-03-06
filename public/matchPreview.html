@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<html>
 
 <head>
-    <title>Match Preview</title>
-    <meta charset="UTF-8">
+    <title>Schedule</title>
+    <meta charset="UTF-8"></meta>
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -10,20 +11,29 @@
     <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
     <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
     <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desiread features are loaded -->
+    <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/matchScouting.css">
+    <link rel="stylesheet" type="text/css" href="./css/schedule.css">
     <!--reference javascript stuff-->
-    <script type="text/javascript" src="./analytics.js"></script>
-    <script type="text/javascript" src="./firebase.js"></script>
-    <script type="text/javascript" src="./js/matchScouting.js"></script>
+    <script type="text/javascript" src="./js/analytics.js"></script>
+    <script type="text/javascript" src="./js/firebase.js"></script>
+    <script type="text/javascript" src="js/matchScouting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-
-<body>
-    <button onclick='startMatchPreview(5, "aString")'> Match 5 :
-        <p style='color:#C1666B'> redAlliance </p> vs
-        <p style='color:#4357AD'> blueAlliance </p>
-        </button>
+<!--TODO make pullMatch pull the match inputed by the user-->
+<body id="populateMatches">
+    <button onclick=pullMatch(7) class="button"> Preview Match </button> <br> 
+    <div id="backButton">
+        <form action=".\index.html">
+            <button type="submit" class="buttonBack">
+                    Back
+                </button>
+        </form>
+    </div>
 </body>
+<script>
+    pullMatch(7)
+</script>
+
+</html>

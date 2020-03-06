@@ -76,6 +76,21 @@ function filterSchedule(qual) {
     return qual.comp_level == "qm";
 }
 
+function pullMatch(matchNumber) {
+    kidnap("/event/2020scmb/matches");
+    console.log(James);
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    filteredJames = James.filter(filterSchedule);
+    var i = filteredJames.length;
+    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
+    createAlliance(matchNumber);
+    matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+    btn = document.createElement("BUTTON"); //* creates a button
+    btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+    document.body.appendChild(btn);
+}
+
+
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
