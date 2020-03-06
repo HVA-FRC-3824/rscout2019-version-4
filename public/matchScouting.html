@@ -55,10 +55,8 @@
                 </label>
             </form>
             </input>
-
         </div>
         <div class=preMatchInfo>
-
             <script>
                 //Display team numbers alongside position
                 var alliances = JSON.parse(localStorage.getItem("alliances"))
@@ -116,7 +114,9 @@
             <h2 id="ballsHeld"></h2>
             <br>
             <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
-            <button class="interact" onclick="decrement(1);">Dropped Ball</button> Moved off auto line:<br>
+            <button class="interact" onclick="decrement(1);">Dropped Ball</button>
+            <h2>Moved off auto line:
+            </h2><br>
             <label class="switch">
                     <input type="checkbox" id="autoLineCheck">
                     <span class="slider"></span>
@@ -178,13 +178,13 @@
 
     <div id="Endgame" class="tabcontent">
 
-        <h8>Climb Timer</h8>
+        <!--<h8>Climb Timer</h8>
         <button class="timer" onclick="startTimer();" id="Start" name="start">Start<br></button>
         <button class="timer" onclick="stopTimer();" id="Stop" name="stop">Stop</button>
         <button class="timer" onclick="resetTime();" id="Reset" name="reset">Reset</button>
         <div class="timerText">
             <p id="climbed_time">0.00</p>
-        </div>
+        </div>-->
         <div class="climbOption">
             <form>
                 Climb Options: <br>

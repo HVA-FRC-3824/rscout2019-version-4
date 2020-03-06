@@ -59,13 +59,17 @@ function createAlliance(matchNumber) { //* This function creates each and concat
     var i = matchNumber - 1
     blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
     redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
-
 }
 
 function startMatchScouting(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
     localStorage.setItem("alliances", JSON.stringify(alliances));
     location.replace("./matchScouting.html");
+};
+
+function createMatchPreview(mNumber, alliances) {
+    localStorage.setItem("num", mNumber);
+    localStorage.setItem("alliances", JSON.stringify(alliances));
 };
 
 function filterSchedule(qual) {
@@ -107,7 +111,7 @@ function loadSchedule() {
 function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
-    //thanks erick
+    //thanks Erik
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
@@ -187,7 +191,6 @@ function createMatchArray() {
         fell = "noF"
     }
     //rounding climb time and accuracy
-    climbTime = (Math.round((climbTime + Number.EPSILON) * 100) / 100);
     autoAccuracy = (Math.round((autoAccuracy + Number.EPSILON) * 100) / 100);
     teleAccuracy = (Math.round((teleAccuracy + Number.EPSILON) * 100) / 100);
     matchDataArray = {
@@ -204,7 +207,6 @@ function createMatchArray() {
         climbType: climbType,
         isLevel: isLevel,
         notes: notes,
-        climbTime: climbTime,
         colorWheel: colorWheel,
         teleMisses: teleMisses,
         autoMisses: autoMisses,
@@ -242,7 +244,6 @@ function pushFirebaseMatch(data, heatData) {
         "teleopPickedUpBay": data.pickedUpTeleopBay,
         "climbType": data.climbType + " " + data.isLevel,
         "notes": data.notes,
-        "climbTime": data.climbTime,
         "colorWheel": data.colorWheel,
         "autoMisses": data.autoMisses,
         "teleMisses": data.teleMisses,
@@ -298,7 +299,6 @@ function openPage(pageName) {
     document.getElementById(pageName).style.display = "block";
     document.getElementById("input-number").innerHTML = 0;
     document.getElementById("input-number2").innerHTML = 0;
-    //document.getElementById("demo").innerHTML = climbTime;
     var match = localStorage.getItem("num");
     document.getElementById("matchNum").innerHTML = match;
     console.log(match);
@@ -462,7 +462,7 @@ function transferBalls() {
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
-//Endgame Timer
+/*Endgame Timer
 var climbTime = 0;
 
 function startTimer() {
@@ -487,7 +487,7 @@ function resetTime() {
     climbTime = 0;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
-//end of timer code
+//end of timer code*/
 
 
 //sets the climb radio button to a global variable

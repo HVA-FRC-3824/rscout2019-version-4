@@ -23,7 +23,6 @@ teleopPickedUpFloorMaster = [];
 teleopPickedUpBayMaster = [];
 climbTypeMaster = [];
 notesMaster = [];
-climbTimeMaster = [];
 colorWheelMaster = [];
 autoMissesMaster = [];
 teleMissesMaster = [];
@@ -121,9 +120,9 @@ function gotData(heatData) { //makes the data readable
             masterXtele.push(heat[currentMatch][currentName][xTele]);
             masterYtele.push(heat[currentMatch][currentName][yTele]);
         }
-        
+
     }
-    
+
     localStorage.setItem("xAutoStore", JSON.stringify(masterXauto));
     localStorage.setItem("yAutoStore", JSON.stringify(masterYauto));
     localStorage.setItem("xTeleStore", JSON.stringify(masterXtele));
@@ -167,7 +166,6 @@ function gotMatchData(data) { //makes the data readable
             teleopPickedUpBayMaster.push(matchParsed[currMatch][currName]["teleopPickedUpBay"]);
             climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
             notesMaster.push(matchParsed[currMatch][currName]["notes"]);
-            climbTimeMaster.push(matchParsed[currMatch][currName]["climbTime"]);
             colorWheelMaster.push(matchParsed[currMatch][currName]["colorWheel"]);
             autoMissesMaster.push(matchParsed[currMatch][currName]["autoMisses"]);
             teleMissesMaster.push(matchParsed[currMatch][currName]["teleMisses"]);
@@ -211,7 +209,6 @@ function setTable() {
     document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
     document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
     document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
-    document.getElementById("climbTimeTable").innerHTML = climbTimeMaster[currDataTable];
     document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
     document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
     document.getElementById("teleMissTable").innerHTML = teleMissesMaster[currDataTable];

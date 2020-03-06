@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Match Preview</title>
+    <meta charset="UTF-8">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desiread features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!--reference the css stuff-->
+    <link rel="stylesheet" type="text/css" href="./css/matchScouting.css">
+    <!--reference javascript stuff-->
+    <script type="text/javascript" src="./analytics.js"></script>
+    <script type="text/javascript" src="./firebase.js"></script>
+    <script type="text/javascript" src="./js/matchScouting.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button onclick='startMatchPreview(5, "aString")'> Match 5 :
+        <p style='color:#C1666B'> redAlliance </p> vs
+        <p style='color:#4357AD'> blueAlliance </p>
+        </button>
+</body>
