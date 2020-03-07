@@ -22,8 +22,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <!--TODO make pullMatch pull the match inputed by the user-->
+
 <body id="populateMatches">
-    <button onclick=pullMatch(7) class="button"> Preview Match </button> <br> 
+    <input placeholder="Match Number" type="text" name="matchNumPreview" id="matchNumPreview" class="textBox">
+    <button onclick=pullMatch(7) class="button"> Preview Match </button> <br>
     <div id="backButton">
         <form action=".\index.html">
             <button type="submit" class="buttonBack">
@@ -33,7 +35,7 @@
     </div>
 </body>
 <script>
-    pullMatch(7)
+    pullMatchInput();
 </script>
 
 </html>

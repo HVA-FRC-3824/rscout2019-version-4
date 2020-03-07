@@ -76,13 +76,18 @@ function filterSchedule(qual) {
     return qual.comp_level == "qm";
 }
 
+function pullMatchInput() {
+    matchPreviewNum = document.getElementById("matchNumPreview").value;
+    pullMatch(matchPreviewNum);
+}
+
 function pullMatch(matchNumber) {
     kidnap("/event/2020scmb/matches");
     console.log(James);
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
+    document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     createAlliance(matchNumber);
     matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
     btn = document.createElement("BUTTON"); //* creates a button
@@ -205,6 +210,17 @@ function createMatchArray() {
     } else {
         fell = "noF"
     }
+
+    if (xTeleCoords.length == 0) {
+        xTeleCoords.push(0);
+        yTeleCoords.push(0);
+    }
+
+    if (xAutoCoords.length == 0) {
+        xAutoCoords.push(0);
+        yAutoCoords.push(0);
+    }
+
     //rounding climb time and accuracy
     autoAccuracy = (Math.round((autoAccuracy + Number.EPSILON) * 100) / 100);
     teleAccuracy = (Math.round((teleAccuracy + Number.EPSILON) * 100) / 100);
@@ -525,19 +541,27 @@ function hideAutoDropdown(whereScored) {
 
 //hides the second dropdown in auto and pushes the coords for the heat map and the robot score
 function hideAutoDropdown2(howManyScored) {
-    robotScore = robotScore + ((whereScoredG * 2) * howManyScored);
-    autoScore = autoScore + ((whereScoredG * 2) * howManyScored);
-    for (i = 0; i < howManyScored; i++) {
-        decrement();
-        xAutoCoords.push(autoX);
-        yAutoCoords.push(autoY);
-        console.log(xAutoCoords);
-        console.log(yAutoCoords);
-        autoShots++;
+    if (howManyScored == 0) {
+        document.getElementById("autoDropdown2").classList.toggle("show");
+        console.log(robotScore + " points");
+        dropDownCheck = false;
+        return
+    } else {
+        robotScore = robotScore + ((whereScoredG * 2) * howManyScored);
+        autoScore = autoScore + ((whereScoredG * 2) * howManyScored);
+        for (i = 0; i < howManyScored; i++) {
+            decrement();
+            xAutoCoords.push(autoX);
+            yAutoCoords.push(autoY);
+            console.log(xAutoCoords);
+            console.log(yAutoCoords);
+            autoShots++;
+        }
+        document.getElementById("autoDropdown2").classList.toggle("show");
+        console.log(robotScore);
+        dropDownCheck = false;
     }
-    document.getElementById("autoDropdown2").classList.toggle("show");
-    console.log(robotScore);
-    dropDownCheck = false;
+
 }
 
 function hideTeleopDropdown(whereScored) {
@@ -550,19 +574,26 @@ function hideTeleopDropdown(whereScored) {
 }
 
 function hideTeleopDropdown2(howManyScored) {
-    robotScore = robotScore + (whereScoredG * howManyScored);
-    teleScore = teleScore + (whereScoredG * howManyScored);
-    for (i = 0; i < howManyScored; i++) {
-        decrement();
-        xTeleCoords.push(teleX);
-        yTeleCoords.push(teleY);
-        console.log(xTeleCoords);
-        console.log(yTeleCoords);
-        teleShots++;
+    if (howManyScored == 0) {
+        document.getElementById("teleopDropdown2").classList.toggle("show");
+        console.log(robotScore + " points");
+        dropDownCheck = false;
+        return
+    } else {
+        robotScore = robotScore + (whereScoredG * howManyScored);
+        teleScore = teleScore + (whereScoredG * howManyScored);
+        for (i = 0; i < howManyScored; i++) {
+            decrement();
+            xTeleCoords.push(teleX);
+            yTeleCoords.push(teleY);
+            console.log(xTeleCoords);
+            console.log(yTeleCoords);
+            teleShots++;
+        }
+        document.getElementById("teleopDropdown2").classList.toggle("show");
+        console.log(robotScore + " points");
+        dropDownCheck = false;
     }
-    document.getElementById("teleopDropdown2").classList.toggle("show");
-    console.log(robotScore + " points");
-    dropDownCheck = false;
 }
 
 function backConfirm() {
