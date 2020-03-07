@@ -69,7 +69,8 @@ function startMatchScouting(mNumber, alliances) {
 
 function createMatchPreview(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
-    localStorage.setItem("alliances", JSON.stringify(alliances));
+    localStorage.setItem("blueAlliance", alliances.blue.team_keys);
+    localStorage.setItem("redAlliance", alliances.red.team_keys);
 };
 
 function filterSchedule(qual) {
@@ -89,12 +90,11 @@ function pullMatch(matchNumber) {
     var i = filteredJames.length;
     document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     createAlliance(matchNumber);
-    matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+    matchInfo = ("<button onclick =  'createMatchPreview(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
     btn = document.createElement("BUTTON"); //* creates a button
     btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
     document.body.appendChild(btn);
 }
-
 
 function makeSchedule() { //* Makes schedule
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
@@ -123,11 +123,7 @@ function loadSchedule() {
         document.body.appendChild(btn);
     };
 }
-
 /* ------------for matchScouting------------- */
-
-
-
 function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");

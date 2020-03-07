@@ -302,7 +302,7 @@ input[type=radio] {
 }
 
 .climbOption {
-    font-size: 6vh;
+    font-size: 10vh;
     position: relative;
     width: 75%;
     display: inline-block;
