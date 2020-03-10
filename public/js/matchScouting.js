@@ -53,6 +53,8 @@ ballsDroppedTele = 0;
 autoMove = "";
 fell = "";
 previousMatch = 1;
+dStation = 0;
+ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
 
 //* Initialize varibles
 
@@ -79,13 +81,14 @@ function filterSchedule(qual) {
 }
 
 function pullMatchInput() {
+    ontoBlue = false;
     matchPreviewNum = document.getElementById("matchNumPreview").value;
     pullMatch(matchPreviewNum);
 }
 
-function pullMatch(matchNumber) {
+function pullMatch(matchNumber) { // pulls TBA api data and James's it, sets our alliance numbers to where they need to be
     kidnap("/event/2020scmb/matches");
-    console.log(James);
+    //console.log(James);
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
@@ -99,45 +102,87 @@ function pullMatch(matchNumber) {
     document.getElementById("b1").innerHTML = alliance.blue.team_keys[0].slice(3);
     document.getElementById("b2").innerHTML = alliance.blue.team_keys[1].slice(3);
     document.getElementById("b3").innerHTML = alliance.blue.team_keys[2].slice(3);
-    pullPreviewData(alliance.red.team_keys[0].slice(3));
+    if (ontoBlue == true) {
+        pullPreviewData(alliance.blue.team_keys[dStation].slice(3));
+    } else {
+        pullPreviewData(alliance.red.team_keys[dStation].slice(3));
+    }
+    //TODO pass in all the stuff above this into a function somehow so we dont have to pull from TBA for every robot
+    //again this is not a high priority like maybe after smokey becasue it works 
 }
 
 function pullPreviewData(robotNumber) {
     firebase.database().ref('/matchScouting/' + robotNumber).once("value", gotMatchData);
+    //gets the json from firebase of a certain robot
 }
 
 function gotMatchData(data) { //makes the data readable
-    var matchData = data.val(); //takes the value of the data
-    jsonMatchData = JSON.stringify(matchData);
-    matchParsed = JSON.parse(jsonMatchData);
-    matchNums = Object.keys(matchParsed);
-    for (i = 0; i < matchNums.length; i++) {
-        console.log(matchNums);
+    //Be sure to reset all master arrays and variables in between robots here
+    teleAccuracyMaster = [];
+    teleAccuracyTotal = 0;
+    climbTypeMaster = [];
+    var matchData = data.val(); //gets us some data from firebase
+    var jsonMatchData = JSON.stringify(matchData);
+    var matchParsed = JSON.parse(jsonMatchData);
+    var matchNums = Object.keys(matchParsed);
+    for (i = 0; i < matchNums.length; i++) { //couple for loops to grab alllll the data for that robot
+        //console.log(matchNums);
         currMatch = matchNums[i];
         matchNames = Object.keys(matchParsed[currMatch]);
-        console.log(matchNames);
+        //console.log(matchNames);
         for (j = 0; j < matchNames.length; j++) {
             currName = matchNames[j];
-            console.log("MatchData: " + currMatch + " " + currentName);
+            //console.log("MatchData: " + currMatch + " " + currentName);
+            //ALL DATA WE WANT GOES HERE
             teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
-            for (l = 0; l < 1000; l++) {
+            climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
+
+            //A:: DATA WE WANT GOES HERE
+            for (l = 0; l < 500; l++) {
                 console.log("Loading...");
-            }
+            } //might not need this but its here because im scared it will break things again 
         }
     }
-    for (t = 0; t < (teleAccuracyMaster.length); t++) {
+    for (t = 0; t < (teleAccuracyMaster.length); t++) { //to calculate averages or compline data, could be used for other things that just tele accuracy master
         teleAccuracyTotal += teleAccuracyMaster[t];
     }
-    document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
-
+    //TODO: switch case to determine which div to put the data in / just a more efficient way to to do all of this
+    //works for now tho so we gooooood
+    console.log("Running ifs");
+    if (dStation == 0 && ontoBlue == false) {
+        document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+        dStation = 1;
+        pullMatch(document.getElementById("matchNumPreview").value);
+    } else if (dStation == 1 && ontoBlue == false) {
+        document.getElementById("red2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+        dStation = 2;
+        pullMatch(document.getElementById("matchNumPreview").value);
+    } else if (dStation == 2 && ontoBlue == false) {
+        document.getElementById("red3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+        dStation = 0;
+        ontoBlue = true;
+        pullMatch(document.getElementById("matchNumPreview").value);
+    } else if (dStation == 0 && ontoBlue == true) {
+        document.getElementById("blue1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+        dStation = 1;
+        ontoBlue = true;
+        pullMatch(document.getElementById("matchNumPreview").value);
+    } else if (dStation == 1 && ontoBlue == true) {
+        document.getElementById("blue2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+        dStation = 2;
+        ontoBlue = true;
+        pullMatch(document.getElementById("matchNumPreview").value);
+    } else if (dStation == 2 && ontoBlue == true) {
+        document.getElementById("blue3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+    }
+    //
+    //THIS WILL ACTUALLY PUT THE DATA ON SCREEN, PUT ALL THE DATA ON THERE AT ONCE BY PUTTING IT 
+    //ALL EQUAL TO THE INNERHTML OF THE DESIRED DRIVE STATION
+    //
 }
 
 function makeSchedule() { //* Makes schedule
-    var previousMatch = 5;
-    testPre = localStorage.getItem("previousMatch");
-    if (testPre != null) {
-        previousMatch = localStorage.getItem("previousMatch");
-    }
+    previousMatch = localStorage.getItem("previousMatch");
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
@@ -174,7 +219,7 @@ function createMatchArray() {
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
-    console.log(driveStation);
+    //console.log(driveStation);
 
     var name = document.getElementById("scouterName").value;
     if (name == "") {
@@ -312,7 +357,8 @@ function pushFirebaseMatch(data, heatData) {
         "autoPickedUpBay": data.pickedUpAutoBay,
         "teleopPickedUpFloor": data.pickedUpTeleopFloor,
         "teleopPickedUpBay": data.pickedUpTeleopBay,
-        "climbType": data.climbType + " " + data.isLevel,
+        "climbType": data.climbType,
+        "isLevel": data.isLevel,
         "notes": data.notes,
         "colorWheel": data.colorWheel,
         "autoMisses": data.autoMisses,
@@ -531,29 +577,6 @@ function teleopFieldInput2() {
 function transferBalls() {
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
-
-/*Endgame Timer
-var climbTime = 0;
-function startTimer() {
-    if (timeKeep != null) {
-        clearInterval(timeKeep);
-    }
-    timeKeep = setInterval(incrementTime, 10);
-    console.log("starting timer");
-}
-function stopTimer() {
-    clearInterval(timeKeep);
-    console.log("stopping timer");
-}
-function incrementTime() {
-    climbTime += .01;
-    document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
-}
-function resetTime() {
-    climbTime = 0;
-    document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
-}
-//end of timer code*/
 
 
 //sets the climb radio button to a global variable
