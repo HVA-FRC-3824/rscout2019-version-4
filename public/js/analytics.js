@@ -22,6 +22,7 @@ autoPickedUpBayMaster = [];
 teleopPickedUpFloorMaster = [];
 teleopPickedUpBayMaster = [];
 climbTypeMaster = [];
+isLevelMaster = [];
 notesMaster = [];
 colorWheelMaster = [];
 autoMissesMaster = [];
@@ -165,6 +166,7 @@ function gotMatchData(data) { //makes the data readable
             teleopPickedUpFloorMaster.push(matchParsed[currMatch][currName]["teleopPickedUpFloor"]);
             teleopPickedUpBayMaster.push(matchParsed[currMatch][currName]["teleopPickedUpBay"]);
             climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
+            isLevelMaster.push(matchParsed[currMatch][currName]["isLevel"]);
             notesMaster.push(matchParsed[currMatch][currName]["notes"]);
             colorWheelMaster.push(matchParsed[currMatch][currName]["colorWheel"]);
             autoMissesMaster.push(matchParsed[currMatch][currName]["autoMisses"]);
@@ -209,6 +211,7 @@ function setTable() {
     document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
     document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
     document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
+    document.getElementById("isLevelTable").innerHTML = isLevelMaster[currDataTabble];
     document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
     document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
     document.getElementById("teleMissTable").innerHTML = teleMissesMaster[currDataTable];
@@ -237,41 +240,3 @@ function moreTable() {
         setTable();
     }
 }
-
-/*function eachBotPull() { / / this
-function pulls the team number that the user entered
-robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
-firebase.database().ref('/matchScouting/' + robotNum).once("value", eachBot); //acutally gets the data from firebase, then runs gotData()
-console.log(robotNum);
-}
-
-function eachBot(data) { //makes the data readable
-    var matchData = data.val(); //takes the value of the data
-    jsonMatchData = JSON.stringify(matchData);
-    matchParsed = JSON.parse(jsonMatchData);
-    matchNums = Object.keys(matchParsed);
-    for (i = 0; i < matchNums.length; i++) {
-        console.log(matchNums);
-        currMatch = matchNums[i];
-        matchNames = Object.keys(matchParsed[currMatch]);
-        console.log(matchNames);
-        for (j = 0; j < matchNames.length; j++) {
-            currName = matchNames[j];
-            console.log("MatchData: " + currMatch + " " + currentName);
-            nameBlameMaster.push(currName);
-            matchNumberMaster.push(currMatch);
-            robotScoreMaster.push(matchParsed[currMatch][currName]["robotScore"]);
-            climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
-            colorWheelMaster.push(matchParsed[currMatch][currName]["colorWheel"]);
-            teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
-            autoAccuracyMaster.push(matchParsed[currMatch][currName]["autoAccuracy"]);
-            autoLineMaster.push(matchParsed[currMatch][currName]["MovedAuto"]);
-            console.log("Another One");
-            setTable();
-            for (l = 0; l < 1000; l++) {
-                console.log("Loading...");
-            }
-        }
-    }
-}
-*/
