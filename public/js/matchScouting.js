@@ -103,7 +103,7 @@ function pullMatch(matchNumber) {
 }
 
 function pullPreviewData(robotNumber) {
-    firebase.databse().red('/matchScouting/' + robotNumber).once("value", gotMatchData);
+    firebase.database().red('/matchScouting/' + robotNumber).once("value", gotMatchData);
 }
 
 function gotMatchData(data) { //makes the data readable
