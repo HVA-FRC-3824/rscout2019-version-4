@@ -52,7 +52,7 @@ ballsDroppedAuto = 0;
 ballsDroppedTele = 0;
 autoMove = "";
 fell = "";
-previousMatch = 1;
+previousMatch = 0;
 
 //* Initialize varibles
 
@@ -133,11 +133,7 @@ function gotMatchData(data) { //makes the data readable
 }
 
 function makeSchedule() { //* Makes schedule
-    var previousMatch = 5;
-    testPre = localStorage.getItem("previousMatch");
-    if (testPre != null) {
-        previousMatch = localStorage.getItem("previousMatch");
-    }
+    previousMatch = localStorage.getItem("previousMatch");
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
