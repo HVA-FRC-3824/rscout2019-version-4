@@ -133,7 +133,11 @@ function gotMatchData(data) { //makes the data readable
 }
 
 function makeSchedule() { //* Makes schedule
-    previousMatch = localStorage.getItem("previousMatch");
+    var previousMatch = 5;
+    testPre = localStorage.getItem("previousMatch");
+    if (testPre != null) {
+        previousMatch = localStorage.getItem("previousMatch");
+    }
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
@@ -530,7 +534,6 @@ function transferBalls() {
 
 /*Endgame Timer
 var climbTime = 0;
-
 function startTimer() {
     if (timeKeep != null) {
         clearInterval(timeKeep);
@@ -538,17 +541,14 @@ function startTimer() {
     timeKeep = setInterval(incrementTime, 10);
     console.log("starting timer");
 }
-
 function stopTimer() {
     clearInterval(timeKeep);
     console.log("stopping timer");
 }
-
 function incrementTime() {
     climbTime += .01;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
-
 function resetTime() {
     climbTime = 0;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
