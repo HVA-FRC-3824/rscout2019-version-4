@@ -141,6 +141,7 @@ function pullMatchData() { //this function pulls the team number that the user e
     console.log(robotNum);
 }
 
+
 function gotMatchData(data) { //makes the data readable
     var matchData = data.val(); //takes the value of the data
     jsonMatchData = JSON.stringify(matchData);
@@ -190,7 +191,7 @@ function gotMatchData(data) { //makes the data readable
         autoAccuracyTotal += autoAccuracyMaster[t];
         teleAccuracyTotal += teleAccuracyMaster[t];
     }
-    document.getElementById("averageScore").innerHTML = "Average Score: " + (robotScoreTotal / robotScoreMaster.length);
+    document.getElementById("averageScore").innerHTML = "Average Score: " + (Math.round(((robotScoreTotal / robotScoreMaster.length) + Number.EPSILON) * 100) / 100);
     document.getElementById("maxScore").innerHTML = "Max Score: " + Math.max(...robotScoreMaster);
     document.getElementById("minScore").innerHTML = "Min Score: " + Math.min(...robotScoreMaster);
     document.getElementById("averageAutoAcc").innerHTML = "Auto Accuracy: " + (Math.round(((autoAccuracyTotal / autoAccuracyMaster.length) + Number.EPSILON) * 100) / 100);

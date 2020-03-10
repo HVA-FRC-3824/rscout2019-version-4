@@ -6,7 +6,7 @@ body {
 }
 
 .buttonBack {
-    background-color: #000000;
+    background-color: #E4DFDA;
     position: absolute;
     top: 0%;
     left: 0%;
@@ -27,4 +27,19 @@ button {
 
 button:hover {
     background-color: #aaaaff;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 'header header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+    grid-gap: 2%;
+    background-color: #7722cc;
+    padding: 2%;
+}
+
+.grid-container>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 2% 0;
+    font-size: 200%;
 }

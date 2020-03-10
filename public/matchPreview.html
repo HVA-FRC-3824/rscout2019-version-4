@@ -14,21 +14,41 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="./css/matchPreview.css">
     <!--reference javascript stuff-->
     <script type="text/javascript" src="./js/analytics.js"></script>
     <script type="text/javascript" src="./js/firebase.js"></script>
     <script type="text/javascript" src="js/matchScouting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<!--TODO make pullMatch pull the match inputed by the user-->
 
 <body id="populateMatches">
-    <input placeholder="Match Number" type="text" name="matchNumPreview" id="matchNumPreview" class="textBox">
-    <button onclick=pullMatchInput() class="button"> Preview Match </button> <br>
-    <div id="backButton">
-        <form action=".\index.html">
-            <button type="submit" class="buttonBack">
+    <div class="grid-container">
+        <div class="grid-item">
+            <p id="b1" style="color:blue;">blue 1:</p>
+        </div>
+        <div class="grid-item ">
+            <p id="b2" style="color:blue;">blue 2:</p>
+            <p id="red1Data"></p>
+        </div>
+        <div class="grid-item ">
+            <p id="b3" style="color:blue;">blue 3:</p>
+        </div>
+        <div class="grid-item ">
+            <p id="r1" style="color:red;">red 1:</p>
+        </div>
+        <div class="grid-item ">
+            <p id="r2" style="color:red;">red 2: </p>
+        </div>
+        <div class="grid-item ">
+            <p id="r3" style="color:red;">red 3:</p>
+        </div>
+    </div>
+    <input placeholder="Match Number" type="text " name="matchNumPreview" id="matchNumPreview" class="textBox">
+    <button onclick=pullMatchInput() class="button "> Preview Match </button> <br>
+    <div id="backButton ">
+        <form action=".\index.html ">
+            <button type="submit " class="buttonBack ">
                     Back
                 </button>
         </form>

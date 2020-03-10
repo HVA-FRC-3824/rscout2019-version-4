@@ -52,6 +52,7 @@ ballsDroppedAuto = 0;
 ballsDroppedTele = 0;
 autoMove = "";
 fell = "";
+previousMatch = 1;
 
 //* Initialize varibles
 
@@ -88,21 +89,57 @@ function pullMatch(matchNumber) {
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
+    //document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     createAlliance(matchNumber);
-    matchInfo = ("<button onclick =  'createMatchPreview(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-    btn = document.createElement("BUTTON"); //* creates a button
-    btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-    document.body.appendChild(btn);
+    //matchInfo = ("<button onclick =  'createMatchPreview(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+    var alliance = (filteredJames[matchNumber - 1].alliances);
+    document.getElementById("r1").innerHTML = alliance.red.team_keys[0].slice(3);
+    document.getElementById("r2").innerHTML = alliance.red.team_keys[1].slice(3);
+    document.getElementById("r3").innerHTML = alliance.red.team_keys[2].slice(3);
+    document.getElementById("b1").innerHTML = alliance.blue.team_keys[0].slice(3);
+    document.getElementById("b2").innerHTML = alliance.blue.team_keys[1].slice(3);
+    document.getElementById("b3").innerHTML = alliance.blue.team_keys[2].slice(3);
+    pullPreviewData(alliance.red.team_keys[0].slice(3));
+}
+
+function pullPreviewData(robotNumber) {
+    firebase.databse().red('/matchScouting/' + robotNumber).once("value", gotMatchData);
+}
+
+function gotMatchData(data) { //makes the data readable
+    var matchData = data.val(); //takes the value of the data
+    jsonMatchData = JSON.stringify(matchData);
+    matchParsed = JSON.parse(jsonMatchData);
+    matchNums = Object.keys(matchParsed);
+    for (i = 0; i < matchNums.length; i++) {
+        console.log(matchNums);
+        currMatch = matchNums[i];
+        matchNames = Object.keys(matchParsed[currMatch]);
+        console.log(matchNames);
+        for (j = 0; j < matchNames.length; j++) {
+            currName = matchNames[j];
+            console.log("MatchData: " + currMatch + " " + currentName);
+            teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
+            for (l = 0; l < 1000; l++) {
+                console.log("Loading...");
+            }
+        }
+    }
+    for (t = 0; t < (teleAccuracyMaster.length); t++) {
+        teleAccuracyTotal += teleAccuracyMaster[t];
+    }
+    document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+
 }
 
 function makeSchedule() { //* Makes schedule
+    previousMatch = localStorage.getItem("previousMatch");
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
-    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
         matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
@@ -128,6 +165,8 @@ function createMatchArray() {
     //var database = firebase.database;
     match = localStorage.getItem("num");
     //thanks Erik
+
+    localStorage.setItem("previousMatch", match);
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
