@@ -97,12 +97,17 @@ function pullMatch(matchNumber) {
 }
 
 function makeSchedule() { //* Makes schedule
+    var previousMatch = 5;
+    testPre = localStorage.getItem("previousMatch");
+    if (testPre != null) {
+        previousMatch = localStorage.getItem("previousMatch");
+    }
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
-    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
         matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
@@ -491,7 +496,6 @@ function transferBalls() {
 
 /*Endgame Timer
 var climbTime = 0;
-
 function startTimer() {
     if (timeKeep != null) {
         clearInterval(timeKeep);
@@ -499,17 +503,14 @@ function startTimer() {
     timeKeep = setInterval(incrementTime, 10);
     console.log("starting timer");
 }
-
 function stopTimer() {
     clearInterval(timeKeep);
     console.log("stopping timer");
 }
-
 function incrementTime() {
     climbTime += .01;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
 }
-
 function resetTime() {
     climbTime = 0;
     document.getElementById("climbed_time").innerHTML = climbTime.toFixed(2);
