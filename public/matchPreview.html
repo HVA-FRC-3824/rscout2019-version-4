@@ -23,40 +23,73 @@
 </head>
 
 <body id="populateMatches">
-    <div class="grid-container">
-        <div class="grid-item">
-            <p id="b1" style="color:blue;">blue 1:</p>
-            <p id="blue1Data"></p>
+    <div class="wrapper">
+        <div class="grid-container">
+            <div class="grid-item">
+                <p id="b1" style="color:blue;">blue 1:
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                as;lkdfj;laskdfj<br>
+                </p>
+                <p id="blue1Data"></p>
+            </div>
+            <div class="grid-item ">
+                <p id="b2" style="color:blue;">blue 2:</p>
+                <p id="blue2Data"></p>
+            </div>
+            <div class="grid-item ">
+                <p id="b3" style="color:blue;">blue 3:</p>
+                <p id="blue3Data"></p>
+            </div>
         </div>
-        <div class="grid-item ">
-            <p id="b2" style="color:blue;">blue 2:</p>
-            <p id="blue2Data"></p>
+        <div style="margin-bottom: 2%">
+            <input placeholder="Match Number" type="text" name="matchNumPreview" id="matchNumPreview" class="textBox">
+            <button onclick=pullMatchInput() class="button"> Preview Match (refresh between uses) </button> <br>
         </div>
-        <div class="grid-item ">
-            <p id="b3" style="color:blue;">blue 3:</p>
-            <p id="blue3Data"></p>
+        <div class="grid-container">
+            <div class="grid-item ">
+                <p id="r1" style="color:red;">red 1:</p>
+                <p id="red1Data"></p>
+            </div>
+            <div class="grid-item ">
+                <p id="r2" style="color:red;">red 2: </p>
+                <p id="red2Data"></p>
+            </div>
+            <div class="grid-item ">
+                <p id="r3" style="color:red;">red 3:</p>
+                <p id="red3Data"></p>
+            </div>
         </div>
-        <div class="grid-item ">
-            <p id="r1" style="color:red;">red 1:</p>
-            <p id="red1Data"></p>
+        
+        <div id="backButton ">
+            <form action=".\index.html ">
+                <button type="submit " class="buttonBack ">
+                        Back
+                    </button>
+            </form>
         </div>
-        <div class="grid-item ">
-            <p id="r2" style="color:red;">red 2: </p>
-            <p id="red2Data"></p>
-        </div>
-        <div class="grid-item ">
-            <p id="r3" style="color:red;">red 3:</p>
-            <p id="red3Data"></p>
-        </div>
-    </div>
-    <input placeholder="Match Number" type="text " name="matchNumPreview" id="matchNumPreview" class="textBox">
-    <button onclick=pullMatchInput() class="button "> Preview Match (refresh between uses) </button> <br>
-    <div id="backButton ">
-        <form action=".\index.html ">
-            <button type="submit " class="buttonBack ">
-                    Back
-                </button>
-        </form>
     </div>
 </body>
 <script>
