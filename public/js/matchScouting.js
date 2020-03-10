@@ -52,7 +52,7 @@ ballsDroppedAuto = 0;
 ballsDroppedTele = 0;
 autoMove = "";
 fell = "";
-previousMatch = 1;
+previousMatch = 9;
 dStation = 0;
 ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
 
@@ -183,6 +183,10 @@ function gotMatchData(data) { //makes the data readable
 
 function makeSchedule() { //* Makes schedule
     previousMatch = localStorage.getItem("previousMatch");
+    if (previousMatch == null) {
+        previousMatch = 1;
+    }
+    console.log(previousMatch);
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
@@ -215,7 +219,9 @@ function createMatchArray() {
     match = localStorage.getItem("num");
     //thanks Erik
 
-    localStorage.setItem("previousMatch", match);
+    //actualMatch = parseInt(match) a
+    var nextMat = parseInt(match) + 1;
+    localStorage.setItem("previousMatch", nextMat);
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
@@ -348,7 +354,8 @@ function createMatchArray() {
 }
 
 function pushFirebaseMatch(data, heatData) {
-    console.log(data);
+    alert("can this just work now lmao");
+    console.log(data)
     firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
@@ -386,10 +393,11 @@ function pushFirebaseMatch(data, heatData) {
 
 //Brings you back to the populate matches/shedule page
 function nextMatch() {
-    console.log(match)
-    mNumber = localStorage.getItem("num");
-    localStorage.setItem("num", mNumber);
-    location.replace("./schedule.html");
+    console.log("i don't think this is running in the slightest")
+    //console.log(match)
+    //mNumber = localStorage.getItem("num");
+    //localStorage.setItem("num", mNumber);
+    //location.replace("./schedule.html");
 }
 
 function setsLocalName() {
