@@ -31,6 +31,13 @@ body {
 
 .loadingsdk {
     text-align: center;
+    margin-right: 30%;
+}
+
+.divsdk {
+    float: center;
+    margin-left: 4%;
+    margin-right: 4%;
 }
 
 .tablediv {
@@ -81,6 +88,11 @@ body {
     font-size: 100%;
     margin: .5% .25%;
     cursor: pointer;
+    display: inline-block;
+}
+
+.button-wrapper {
+    text-align: center;
 }
 
 .button:hover {
