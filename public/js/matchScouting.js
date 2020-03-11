@@ -54,6 +54,7 @@ fell = "";
 previousMatch = 1;
 dStation = 0;
 ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
+actualMatch = 0;
 
 //* Initialize varibles
 
@@ -181,17 +182,17 @@ function gotMatchData(data) { //makes the data readable
 }
 
 function makeSchedule() { //* Makes schedule
-    /*    previousMatch = localStorage.getItem("previousMatch");
-        if (previousMatch == null) {
-            previousMatch = 1;
-        }*/
+    previousMatch = localStorage.getItem("previousMatch");
+    if (previousMatch == null) {
+        previousMatch = 1;
+    }
     console.log(previousMatch);
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
-    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
         matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
@@ -218,8 +219,8 @@ function createMatchArray() {
     match = localStorage.getItem("num");
     //thanks Erik
 
-    //actualMatch = parseInt(match) a
-    //var nextMat = parseInt(match) + 1;
+    var nextMat = parseInt(match) + 1;
+    localStorage.setItem("previousMatch", nextMat);
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
@@ -379,7 +380,7 @@ function pushFirebaseMatch(data, heatData) {
         "y tele": heatData.ytele,
     });
 
-    setTimeout(function(){nextMatch();},3000);
+    setTimeout(function(){nextMatch();}, 1000);
 }
 
 //Brings you back to the populate matches/shedule page
