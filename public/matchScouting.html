@@ -36,22 +36,22 @@
             <input type="text" name="name" id="scouterName" value="">
             <form id="driveStation">
                 <label class="radio" id="blue_1">
-                    <input type="radio" id="blue" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
+                    <input type="radio" id="blue1" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
                 </label><br>
                 <label class="radio" id="blue_2">
-                    <input type="radio" id="blue" onclick="chooseDriveStation('B2')" name="name" value="B2"> Blue 2, 
+                    <input type="radio" id="blue2" onclick="chooseDriveStation('B2')" name="name" value="B2"> Blue 2, 
                 </label><br>
                 <label class="radio" id="blue_3">
-                    <input type="radio" id="blue" onclick="chooseDriveStation('B3')" name="name" value="B3"> Blue 3, 
+                    <input type="radio" id="blue3" onclick="chooseDriveStation('B3')" name="name" value="B3"> Blue 3, 
                 </label><br>
                 <label class="radio" id="red_1">
-                    <input type="radio" id="red" onclick="chooseDriveStation('R1')" name="name" value="R1"> Red 1, 
+                    <input type="radio" id="red1" onclick="chooseDriveStation('R1')" name="name" value="R1"> Red 1, 
                 </label><br>
                 <label class="radio" id="red_2">
-                    <input type="radio" id="red" onclick="chooseDriveStation('R2')" name="name" value="R2"> Red 2, 
+                    <input type="radio" id="red2" onclick="chooseDriveStation('R2')" name="name" value="R2"> Red 2, 
                 </label><br>
                 <label class="radio" id="red_3">
-                    <input type="radio" id="red" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
+                    <input type="radio" id="red3" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
                 </label>
             </form>
             </input>
@@ -188,18 +188,18 @@
             <p id="climbed_time">0.00</p>
         </div>-->
         <div class="climbOption">
-            <form>
+            <form is="climbOptions">
                 Climb Options: <br>
                 <label class="radio">
-                    <input type="radio" onclick="didClimb('none')" id="red" name="name" value="climb">Did not climb<br>
-                <label>
+                    <input type="radio" onclick="didClimb('none')" id="climbButton" name="name" value="climb">Did not climb
+                </label><br>
                 <label class="radio">
-                    <input type="radio" onclick="didClimb('triedButFailed')" id="red" name="name" value="climb">Attempted climb but failed<br>
-                <label>
+                    <input type="radio" onclick="didClimb('triedButFailed')" id="climbButton" name="name" value="climb">Attempted climb but failed
+                </label><br>
                 <label class="radio">
-                    <input type="radio" onclick="didClimb('climbed')" id="red" name="name" value="climb">Successfully Climbed<br>
-                <label>
-            </label>
+                    <input type="radio" onclick="didClimb('climbed')" id="climbButton"  name="name" value="climb">Successfully Climbed
+                </label><br>
+            </form>
         </div>
         <div class="levelButton">Bar Is Level: <br>
             <label class="switch">
@@ -224,7 +224,7 @@
 
             <h9>Notes: </h9>
             <br>
-            <textarea rows="4" cols="45" id="superNotes"></textarea>
+            <input id="notes"></input>
             <br> Color Wheel: <br>
             <label class="radio">
             <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>

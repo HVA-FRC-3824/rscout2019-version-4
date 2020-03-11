@@ -233,9 +233,7 @@ function createMatchArray() {
     }
 
     var notes = document.getElementById("notes").value;
-
-    var alliances = JSON.parse(localStorage.getItem("alliances"));
-
+    var alliances = (JSON.parse(localStorage.getItem("alliances")));
     switch (driveStation) {
         case "B1":
             teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
@@ -259,9 +257,7 @@ function createMatchArray() {
             teamNumber = 9999;
             break;
     }
-
     var levelCheck = document.getElementById("levelCheck").checked;
-    console.log(levelCheck)
     if (levelCheck == true) {
         isLevel = "level";
     } else {
@@ -339,14 +335,13 @@ function createMatchArray() {
         autoMove: autoMove,
         fell: fell,
     };
-
+    console.log(matchDataArray);
     heatMapArray = {
         xauto: xAutoCoords,
         yauto: yAutoCoords,
         xtele: xTeleCoords,
         ytele: yTeleCoords,
     }
-    console.log("we got to here at least");
     pushFirebaseMatch(matchDataArray, heatMapArray);
 }
 
@@ -383,13 +378,12 @@ function pushFirebaseMatch(data, heatData) {
         "x tele": heatData.xtele,
         "y tele": heatData.ytele,
     });
-    setTimeout(nextMatch, 1000);
+
+    setTimeout(function(){nextMatch();},3000);
 }
 
 //Brings you back to the populate matches/shedule page
 function nextMatch() {
-    alert("try now i guess");
-    console.log("i don't think this is running in the slightest")
     console.log(match)
     mNumber = localStorage.getItem("num");
     localStorage.setItem("num", mNumber);
@@ -417,8 +411,6 @@ function openPage(pageName) {
 
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
-    document.getElementById("input-number").innerHTML = 0;
-    document.getElementById("input-number2").innerHTML = 0;
     var match = localStorage.getItem("num");
     document.getElementById("matchNum").innerHTML = match;
     console.log(match);
