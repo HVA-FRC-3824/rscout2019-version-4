@@ -1,8 +1,6 @@
 body {
     background-color: black;
     text-align: center;
-    margin-left: 25%;
-    margin-right: 25%;
 }
 
 .buttonBack {
@@ -29,17 +27,26 @@ button:hover {
     background-color: #aaaaff;
 }
 
+.wrapper {
+    width: 90vw;
+    height: 69vh;
+    padding: 5vw 5vh;
+}
+
 .grid-container {
     display: grid;
-    grid-template-areas: 'header header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+    grid-template-areas: 'header header header';
     grid-gap: 2%;
     background-color: #7722cc;
     padding: 2%;
+    margin-bottom: 2%;
+
 }
 
 .grid-container>div {
     background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 2% 0;
+    padding: 10%;
     font-size: 200%;
+    overflow-y: auto;
+    max-height: 30vh;
 }
