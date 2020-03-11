@@ -8,7 +8,6 @@ names = "No Name";
 startPos = "";
 robotAction = "";
 itemsDropped = "";
-climbTime = 0;
 timeKeep = 0;
 slider = 0;
 climbType = "";
@@ -52,7 +51,7 @@ ballsDroppedAuto = 0;
 ballsDroppedTele = 0;
 autoMove = "";
 fell = "";
-previousMatch = 9;
+previousMatch = 1;
 dStation = 0;
 ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
 
@@ -182,17 +181,17 @@ function gotMatchData(data) { //makes the data readable
 }
 
 function makeSchedule() { //* Makes schedule
-    previousMatch = localStorage.getItem("previousMatch");
-    if (previousMatch == null) {
-        previousMatch = 1;
-    }
+    /*    previousMatch = localStorage.getItem("previousMatch");
+        if (previousMatch == null) {
+            previousMatch = 1;
+        }*/
     console.log(previousMatch);
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
     document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
-    for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
+    for (matchNumber = 1; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
         matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("BUTTON"); //* creates a button
@@ -220,8 +219,7 @@ function createMatchArray() {
     //thanks Erik
 
     //actualMatch = parseInt(match) a
-    var nextMat = parseInt(match) + 1;
-    localStorage.setItem("previousMatch", nextMat);
+    //var nextMat = parseInt(match) + 1;
 
     var teamNumber = 0;
     startPos = localStorage.getItem("startPos");
@@ -236,8 +234,7 @@ function createMatchArray() {
 
     var notes = document.getElementById("notes").value;
 
-
-    var alliances = JSON.parse(localStorage.getItem("alliances"))
+    var alliances = JSON.parse(localStorage.getItem("alliances"));
 
     switch (driveStation) {
         case "B1":
@@ -261,8 +258,8 @@ function createMatchArray() {
         default:
             teamNumber = 9999;
             break;
-
     }
+
     var levelCheck = document.getElementById("levelCheck").checked;
     console.log(levelCheck)
     if (levelCheck == true) {
@@ -349,12 +346,11 @@ function createMatchArray() {
         xtele: xTeleCoords,
         ytele: yTeleCoords,
     }
-
+    console.log("we got to here at least");
     pushFirebaseMatch(matchDataArray, heatMapArray);
 }
 
 function pushFirebaseMatch(data, heatData) {
-    alert("can this just work now lmao");
     console.log(data)
     firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
@@ -381,7 +377,6 @@ function pushFirebaseMatch(data, heatData) {
         "MovedAuto": data.autoMove,
         "Fell": data.fell,
     });
-
     firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "x auto": heatData.xauto,
         "y auto": heatData.yauto,
@@ -393,11 +388,12 @@ function pushFirebaseMatch(data, heatData) {
 
 //Brings you back to the populate matches/shedule page
 function nextMatch() {
+    alert("try now i guess");
     console.log("i don't think this is running in the slightest")
-    //console.log(match)
-    //mNumber = localStorage.getItem("num");
-    //localStorage.setItem("num", mNumber);
-    //location.replace("./schedule.html");
+    console.log(match)
+    mNumber = localStorage.getItem("num");
+    localStorage.setItem("num", mNumber);
+    location.replace("./schedule.html");
 }
 
 function setsLocalName() {
