@@ -32,15 +32,15 @@
         </button>
         <button type="submit" onclick="location.replace('./heat.html')" class="button">
             Heatmap
-    </button>
+        </button>
         <button type="submit" onclick="lessTable()" class="button">
-    Last table
-    </button>
+            Last table
+        </button>
         <button type="submit" onclick="moreTable()" class="button">
-    Next table
-    </button>
+            Next table
+        </button>
         <div class="clearButton">
-            <button onclick=clearLocalStorage() class="submit">Clear Local Storage</button>
+            <button onclick=clearLocalStorage() class="analyticsLocal">Clear Local Storage</button>
         </div>
         <input placeholder="Robot Number" type="text" name="robotNum" id="robotNum" class="textBox">
         <div class="headers">
@@ -50,7 +50,6 @@
             <h2 id="averageAutoAcc">Auto Accuracy</h2>
             <h2 id="averageTeleAcc">Tele Accuracy</h2>
         </div>
-
     </div>
     <div class="tablediv">
         <table class="matchDataTable">
@@ -155,6 +154,9 @@
                 <th id="fell">Data Point</th>
             </tr>
         </table>
+    </div>
+    <div id="climbDataWrapper">
+
     </div>
 
     <!--

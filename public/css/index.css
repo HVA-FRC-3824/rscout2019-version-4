@@ -77,7 +77,6 @@ body {
 
 .btn-group .button {
     background-color: #7722cc;
-    float: left;
     border: 1px solid black;
     margin: 0 auto;
     color: white;
@@ -93,6 +92,20 @@ body {
 
 .button-wrapper {
     text-align: center;
+}
+
+.analyticsLocal {
+    background-color: #7722cc;
+    border: 1px solid black;
+    margin: 0 auto;
+    color: white;
+    padding: 1.5% 2%;
+    text-align: center;
+    text-decoration: none;
+    align-content: center;
+    font-size: 100%;
+    margin: .5% .25%;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -156,6 +169,5 @@ h2 {
 }
 
 .clearButton {
-    text-align: center;
     margin-top: 1%;
 }
