@@ -55,6 +55,7 @@ previousMatch = 1;
 dStation = 0;
 ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
 actualMatch = 0;
+action = [];
 
 //* Initialize varibles
 
@@ -641,7 +642,10 @@ function hideTeleopDropdown2(howManyScored) {
             yTeleCoords.push(teleY);
             console.log(xTeleCoords);
             console.log(yTeleCoords);
+            console.log(howManyScored);
             teleShots++;
+            console.log("tele"+howManyScored);
+            action.push("tele"+howManyScored);
         }
         document.getElementById("teleopDropdown2").classList.toggle("show");
         console.log(robotScore + " points");
@@ -653,4 +657,8 @@ function backConfirm() {
     if (confirm("Are you sure?") == true) {
         location.replace('./schedule.html');
     }
+}
+
+function undo() {
+    
 }
