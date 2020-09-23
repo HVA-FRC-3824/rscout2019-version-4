@@ -23,14 +23,14 @@ function createPitArray() {
     moveStats = document.getElementById("moveStats").value;
     
     if(robotNum == ''){
-        robotNum = "noRobot"
+        robotNum = "noRobot";
     }
     var robotData = { robotNum: robotNum, weight: weight, driveTrain: driveTrain, climbType: climbType, robotLang: robotLang, normalZone: normalZone, normalShot: normalShot, autoStats: autoStats, controlPanel: controlPanel, driveExp: driveExp, moveStats: moveStats};
     pushPit(robotData);
 }
 
 function pushPit(data) {
-    console.log(data)
+    console.log(data);
     firebase.database().ref('pitScouting/' + data.robotNum).set({
         "climbType": data.climbType,
         "robotWeight": data.weight,
@@ -42,7 +42,7 @@ function pushPit(data) {
         "controlPanel": data.controlPanel,
         "driveExp": data.driveExp,
         "moveStats": data.moveStats,
-    })
+    });
     if(robotNum == 'robotNum'){
         alert("No Robot Entered!");
     } else {

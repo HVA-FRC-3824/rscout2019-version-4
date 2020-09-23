@@ -84,7 +84,7 @@ function kidnap(newUrl) {
     $(document).ajaxError(function() { //this function alerts an error if the pulling the data is unsuccessful
         alert("An error occurred!");
     });
-};
+}
 
 var sortById = function(prop) {
     return function(x, y) {

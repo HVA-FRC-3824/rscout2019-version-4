@@ -135,8 +135,10 @@ function gotMatchData(data) { //makes the data readable
             currName = matchNames[j];
             //console.log("MatchData: " + currMatch + " " + currentName);
             //ALL DATA WE WANT GOES HERE
-            teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
-            climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
+            teleAccuracyStr = "teleAccuracy";
+            climbTypeStr = "climbType";
+            teleAccuracyMaster.push(matchParsed.currMatch.currName.teleAccuracyStr);
+            climbTypeMaster.push(matchParsed.currMatch.currName.climbTypeStr);
 
             //A:: DATA WE WANT GOES HERE
             for (l = 0; l < 500; l++) {
