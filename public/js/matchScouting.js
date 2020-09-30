@@ -383,7 +383,7 @@ function pushFirebaseMatch(data, heatData) {
         "y tele": heatData.ytele,
     });
 
-    setTimeout(function(){nextMatch();}, 1000);
+    setTimeout(function() { nextMatch(); }, 1000);
 }
 
 //Brings you back to the populate matches/shedule page
@@ -646,8 +646,8 @@ function hideTeleopDropdown2(howManyScored) {
             console.log(yTeleCoords);
             console.log(howManyScored);
             teleShots++;
-            console.log("tele"+howManyScored);
-            action.push("tele"+howManyScored);
+            console.log("tele" + howManyScored);
+            action.push("tele" + howManyScored);
         }
         document.getElementById("teleopDropdown2").classList.toggle("show");
         console.log(robotScore + " points");
@@ -662,5 +662,9 @@ function backConfirm() {
 }
 
 function undo() {
-    
+
+}
+
+function dummy() {
+    //testing git Kraken
 }
