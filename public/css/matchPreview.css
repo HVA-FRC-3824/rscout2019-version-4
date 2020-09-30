@@ -37,10 +37,9 @@ button:hover {
     display: grid;
     grid-template-areas: 'header header header';
     grid-gap: 2%;
-    background-color: #7722cc;
+    background-color: #4682aa;
     padding: 2%;
     margin-bottom: 2%;
-
 }
 
 .grid-container>div {

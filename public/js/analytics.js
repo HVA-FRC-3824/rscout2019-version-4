@@ -200,8 +200,7 @@ function gotMatchData(data) { //makes the data readable
     document.getElementById("averageTeleAcc").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
 }
 
-function setClimbTable(){
-}
+function setClimbTable() {}
 
 function setTable() {
     document.getElementById("nameBlame").innerHTML = nameBlameMaster[currDataTable];

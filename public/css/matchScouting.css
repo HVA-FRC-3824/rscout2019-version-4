@@ -12,8 +12,8 @@ html {
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #7722cc;
-    color: white;
+    background-color: #45658b;
+    color: #45658b;
     font-size: 130%;
     text-align: center;
     border: 0%;
@@ -52,11 +52,11 @@ button {
 }
 
 input:checked+.slider {
-    background-color: #7722cc;
+    background-color: #45658b;
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #7722cc;
+    box-shadow: 0 0 1px #45658b;
 }
 
 input:checked+.slider:before {
@@ -69,7 +69,7 @@ input:checked+.slider:before {
 /* For level check button end*/
 
 .tablink {
-    background-color: #7722cc;
+    background-color: #45658b;
     color: white;
     float: left;
     border-color: white;
@@ -79,11 +79,11 @@ input:checked+.slider:before {
 }
 
 .timer {
-    background-color: #7722cc;
+    background-color: #45658b;
     color: white;
     float: left;
     border: none;
-    border-color: #7722cc;
+    border-color: #45658b;
     padding: 0% 0%;
     font-size: 170%;
     padding: .75% 2%;
@@ -94,7 +94,7 @@ input:checked+.slider:before {
 /* Style the tab content (and add height:100% for full page content) */
 
 .tabcontent {
-    color: #7722cc;
+    color: #45658b;
     display: none;
     height: 100%;
 }
@@ -140,11 +140,11 @@ h3 {
 }
 
 .interact {
-    background-color: #7722cc;
+    background-color: #45658b;
     color: white;
     float: left;
     border: none;
-    border-color: #7722cc;
+    border-color: #45658b;
     padding: 9% 0%;
     margin-bottom: 10%;
     font-size: 150%;
@@ -152,7 +152,7 @@ h3 {
 }
 
 .matchNumHead {
-    background-color: #7722cc;
+    background-color: #4682aa;
     padding: 1%;
 }
 
@@ -168,7 +168,7 @@ input[type=radio] {
     display: inline-block;
     position: relative;
     width: 50%;
-    color: #7722cc;
+    color: #4682aa;
 }
 
 .preMatchInfo {
@@ -235,19 +235,19 @@ input[type=radio] {
 
 .autoDropdown:hover,
 .autoDropdown:focus {
-    background-color: #7722cc;
+    background-color: #45658b;
 }
 
 .teleopDropdown:hover,
 .teleopDropdown:focus {
-    background-color: #7722cc;
+    background-color: #45658b;
 }
 
 .teleopDropdown-content,
 .autoDropdown-content {
     display: none;
     position: absolute;
-    background-color: grey;
+    background-color: #4682aa;
     overflow: auto;
     box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -267,7 +267,7 @@ input[type=radio] {
 
 .autoDropdown a:hover,
 .teleopDropdown a:hover {
-    background-color: #ddd;
+    background-color: #4682aa;
 }
 
 .show {
@@ -309,7 +309,7 @@ input[type=radio] {
 }
 
 .nextMatch {
-    background-color: #7722cc;
+    background-color: #4682aa;
     float: right;
     border: 1px solid black;
     color: white;

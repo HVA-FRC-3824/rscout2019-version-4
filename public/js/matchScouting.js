@@ -410,7 +410,7 @@ function openPage(pageName) {
     //* Remove the background color of all tablinks/buttons
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "#7722cc";
+        tablinks[i].style.backgroundColor = "#45658b";
     }
 
     //* Show the specific tab content

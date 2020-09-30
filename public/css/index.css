@@ -49,15 +49,15 @@ body {
 
 .matchDataTable {
     color: white;
-    background-color: #7722cc;
+    background-color: #4682aa;
 }
 
 .buttonBack {
-    background-color: #7722cc;
+    background-color: #4682aa;
     float: left;
     border: 1px solid black;
     margin: 0 auto;
-    color: white;
+    color: #45658b;
     padding: 1.5% 2%;
     text-align: center;
     text-decoration: none;
@@ -76,7 +76,7 @@ body {
 }
 
 .btn-group .button {
-    background-color: #7722cc;
+    background-color: #4682aa;
     border: 1px solid black;
     margin: 0 auto;
     color: white;
@@ -95,7 +95,7 @@ body {
 }
 
 .analyticsLocal {
-    background-color: #7722cc;
+    background-color: #45658b;
     border: 1px solid black;
     margin: 0 auto;
     color: white;
@@ -148,7 +148,7 @@ h2 {
 }
 
 .submit {
-    background-color: #7722cc;
+    background-color: #4682aa;
     float: center;
     border: 1px solid black;
     margin: 0 auto;
