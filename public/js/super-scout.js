@@ -19,5 +19,5 @@ function createSuperArray() {
 function pushSuper(data) {
     firebase.database().ref('superScout/' + data.matchNum + '/' + data.superName).set({
         "notes": data.notes,
-    })
+    });
 }

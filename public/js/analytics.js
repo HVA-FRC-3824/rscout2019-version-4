@@ -1,3 +1,4 @@
+/*jshint sub:true*/
 var robotNum = "";
 currentName = [];
 namesArray = [];
