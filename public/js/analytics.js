@@ -99,6 +99,7 @@ function pullData() { //this function pulls the team number that the user entere
     //console.log(robotNum);
 }
 
+
 function gotData(heatData) { //makes the data readable
     var robotData = heatData.val(); //takes the value of the data
     //console.log(robotData);
@@ -214,7 +215,7 @@ function setTable() {
     document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
     document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
     document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
-    document.getElementById("isLevelTable").innerHTML = isLevelMaster[currDataTabble];
+    document.getElementById("isLevelTable").innerHTML = isLevelMaster[currDataTable];
     document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
     document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
     document.getElementById("teleMissTable").innerHTML = teleMissesMaster[currDataTable];
