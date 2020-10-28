@@ -21,26 +21,26 @@
 </head>
 
 <body>
-    <button type="submit" onclick="location.replace('./index.html')" class="buttonBack">
+    <button type="submit" onclick="location.replace('./index.html')">
         Back
     </button>
     </form>
 
     <div class="btn-group">
-        <button onclick=passwordCheck() class="button">
+        <button onclick=passwordCheck()>
             Pull from firebase and Push to Heatmap
         </button>
-        <button type="submit" onclick="location.replace('./heat.html')" class="button">
+        <button type="submit" onclick="location.replace('./heat.html')">
             Heatmap
         </button>
-        <button type="submit" onclick="lessTable()" class="button">
+        <button type="submit" onclick="lessTable()">
             Last table
         </button>
-        <button type="submit" onclick="moreTable()" class="button">
+        <button type="submit" onclick="moreTable()">
             Next table
         </button>
         <div class="clearButton">
-            <button onclick=clearLocalStorage() class="analyticsLocal">Clear Local Storage</button>
+            <button onclick=clearLocalStorage()>Clear Local Storage</button>
         </div>
         <input placeholder="Robot Number" type="text" name="robotNum" id="robotNum" class="textBox">
         <div class="headers">

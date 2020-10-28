@@ -4,28 +4,30 @@
 <head>
     <meta charset="utf-8">
     <title>heatmap test</title>
-    <link rel="stylesheet" type="text/css" href="./css/heat.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 
 <body>
 
     <div id="heatmapContainerWrapper" class='getridofthesestupidmargins'>
-        <div id="heatmapContainer"> <!--bounds of the heatmap-->
+        <div id="heatmapContainer">
+            <!--bounds of the heatmap-->
             <img src='./images/red-field.png' id='autoField' width='100000' height='50000'></img>
         </div>
     </div>
-    
+
     <div id="heatButtons" class="heatButtons">
-        <button onclick="resetDiv(), makeMap(1);" class='button'><!--sets the div to the tele data for the entered team-->
+        <button onclick="resetDiv(), makeMap(1);"><!--sets the div to the tele data for the entered team-->
             Teleop
         </button>
-        <button onclick="resetDiv() , makeMap(0);" class='button'> <!--sets the heatmap to the auto data for the entered team-->
+        <button onclick="resetDiv() , makeMap(0);"> <!--sets the heatmap to the auto data for the entered team-->
             Auto
         </button>
-        <button onclick="location.replace('analytics.html')" class='button'> <!--takes you back to the analytics page-->
+        <button onclick="location.replace('analytics.html')"> <!--takes you back to the analytics page-->
             Back
         </button>
-        <div class="robotNum"> <!--shows the team which you are currently viewing-->
+        <div class="robotNum">
+            <!--shows the team which you are currently viewing-->
             <h2 id="robotHeatNum">Team Number: 3824</h2>
         </div>
     </div>

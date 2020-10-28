@@ -14,7 +14,7 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <!--reference javascript stuff-->
     <script type="text/javascript" src="./js/analytics.js"></script>
     <script type="text/javascript" src="./js/firebase.js"></script>
@@ -23,14 +23,18 @@
 </head>
 
 <body id="populateMatches">
-    <button onclick=makeSchedule() class="button"> Populate Matches </button> <br>
-    <div id="backButton">
-        <form action=".\index.html">
-            <button type="submit" class="buttonBack">
+
+    <form action=".\index.html">
+        <button type="submit" class="backBtn">
                     Back
                 </button>
-        </form>
+    </form>
+    <div class="center">
+        <button onclick=makeSchedule() class="populateMatchesBtn"> Populate Matches </button>
     </div>
+
+
+
 </body>
 <script>
     loadSchedule();

@@ -16,6 +16,10 @@ body {
     font-size: 3vh;
 }
 
+form {
+    display: inline;
+}
+
 .pitBody {
     font-size: 3vw;
 }
@@ -49,22 +53,7 @@ body {
 
 .matchDataTable {
     color: white;
-    background-color: #4682aa;
-}
-
-.buttonBack {
-    background-color: #4682aa;
-    float: left;
-    border: 1px solid black;
-    margin: 0 auto;
-    color: #45658b;
-    padding: 1.5% 2%;
-    text-align: center;
-    text-decoration: none;
-    align-content: center;
-    font-size: 100%;
-    margin: .5% .25%;
-    cursor: pointer;
+    background-color: blue;
 }
 
 #load {
@@ -75,40 +64,33 @@ body {
     left: 25%;
 }
 
-.btn-group .button {
-    background-color: #4682aa;
-    border: 1px solid black;
-    margin: 0 auto;
-    color: white;
-    padding: 1.5% 2%;
-    text-align: center;
-    text-decoration: none;
-    align-content: center;
-    font-size: 100%;
-    margin: .5% .25%;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.button-wrapper {
+.center {
     text-align: center;
 }
 
-.analyticsLocal {
-    background-color: #45658b;
-    border: 1px solid black;
+button {
+    background-color: #170580;
+    border-radius: 20px;
     margin: 0 auto;
     color: white;
     padding: 1.5% 2%;
-    text-align: center;
-    text-decoration: none;
-    align-content: center;
-    font-size: 100%;
+    text-decoration: wavy;
+    font-size: 2.16vw;
     margin: .5% .25%;
     cursor: pointer;
 }
 
-.button:hover {
+.backBtn {
+    background-color: rgb(194, 29, 29);
+}
+
+.matchBtn {
+    padding-left: 10%;
+    padding-right: 10%;
+    border-color: #170580;
+}
+
+button:hover {
     background-color: #aaaaff;
 }
 
