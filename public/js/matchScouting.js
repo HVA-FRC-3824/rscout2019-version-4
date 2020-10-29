@@ -216,6 +216,11 @@ function loadSchedule() {
         document.body.appendChild(btn);
     }
 }
+
+function pullAbstractData() {
+    
+}
+
 /* ------------for matchScouting------------- */
 function createMatchArray() {
     //var database = firebase.database;
