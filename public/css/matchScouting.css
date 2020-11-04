@@ -12,8 +12,9 @@ html {
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #45658b;
-    color: #45658b;
+    background-color: #3824cc;
+    color: #fff;
+    border-radius: 1vw;
     font-size: 130%;
     text-align: center;
     border: 0%;
@@ -69,32 +70,21 @@ input:checked+.slider:before {
 /* For level check button end*/
 
 .tablink {
-    background-color: #45658b;
+    background-color: #3824cc;
+    border-radius: 0;
     color: white;
     float: left;
-    border-color: white;
+    border-color: #ff6961;
     padding: 1% 2%;
     font-size: 70%;
     width: 16.66%;
-}
-
-.timer {
-    background-color: #45658b;
-    color: white;
-    float: left;
-    border: none;
-    border-color: #45658b;
-    padding: 0% 0%;
-    font-size: 170%;
-    padding: .75% 2%;
-    margin: .5% .75%;
 }
 
 
 /* Style the tab content (and add height:100% for full page content) */
 
 .tabcontent {
-    color: #45658b;
+    color: #3824cc;
     display: none;
     height: 100%;
 }
@@ -140,20 +130,14 @@ h3 {
 }
 
 .interact {
-    background-color: #45658b;
+    background-color: #3824cc;
     color: white;
     float: left;
     border: none;
-    border-color: #45658b;
     padding: 9% 0%;
     margin-bottom: 10%;
     font-size: 150%;
     width: 100%;
-}
-
-.matchNumHead {
-    background-color: #4682aa;
-    padding: 1%;
 }
 
 input[type=radio] {
@@ -168,7 +152,6 @@ input[type=radio] {
     display: inline-block;
     position: relative;
     width: 50%;
-    color: #4682aa;
 }
 
 .preMatchInfo {
@@ -192,14 +175,6 @@ input[type=radio] {
     width: 25%;
     position: relative;
     display: inline-block;
-}
-
-.cardsInfo {
-    font-size: 6vh;
-    width: 40%;
-    display: inline-block;
-    position: relative;
-    float: right;
 }
 
 .container {
@@ -235,21 +210,21 @@ input[type=radio] {
 
 .autoDropdown:hover,
 .autoDropdown:focus {
-    background-color: #45658b;
+    background-color: #3824cc;
 }
 
 .teleopDropdown:hover,
 .teleopDropdown:focus {
-    background-color: #45658b;
+    background-color: #3824cc;
 }
 
 .teleopDropdown-content,
 .autoDropdown-content {
     display: none;
     position: absolute;
-    background-color: #4682aa;
+    background-color: #3824cc;
     overflow: auto;
-    box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.651);
     z-index: 1;
     left: 30%;
     top: 10%;
@@ -263,11 +238,6 @@ input[type=radio] {
     font-size: 200%;
     text-decoration: none;
     display: block;
-}
-
-.autoDropdown a:hover,
-.teleopDropdown a:hover {
-    background-color: #4682aa;
 }
 
 .show {
@@ -299,22 +269,4 @@ input[type=radio] {
 
 #Post {
     background-color: black;
-}
-
-.climbOption {
-    font-size: 10vh;
-    position: relative;
-    width: 75%;
-    display: inline-block;
-}
-
-.nextMatch {
-    background-color: #4682aa;
-    float: right;
-    border: 1px solid black;
-    color: white;
-    padding: 1.5% 2%;
-    font-size: 150%;
-    margin: .5% .25%;
-    cursor: pointer;
 }

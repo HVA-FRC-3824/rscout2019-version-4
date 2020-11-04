@@ -194,11 +194,12 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = " <form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><div class='center'><button onclick=makeSchedule() class='populateMatchesBtn1'> Populate Matches </button> </div>    ";
+    document.body.innerHTML = "<div> <form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><button onclick=makeSchedule() class='populateMatchesBtn1'> Populate Matches </button>  </div>    ";
     for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button class='matchBtn' onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
+        matchInfo = ("<button class='matchBtn' onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#cc2233'>" + redAlliance + "</p> vs <p style='color:#6699cc'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("DIV"); //* creates a button
+        btn.className = "matchBtnDiv"
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
     }
@@ -218,7 +219,7 @@ function loadSchedule() {
 }
 
 function pullAbstractData() {
-    
+
 }
 
 /* ------------for matchScouting------------- */
@@ -415,7 +416,7 @@ function openPage(pageName) {
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
     var match = localStorage.getItem("num");
-    document.getElementById("matchNum").innerHTML = match;
+    //document.getElementById("matchNum").innerHTML = match;
     console.log(match);
 
 }

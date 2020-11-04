@@ -1,5 +1,5 @@
 html {
-    background: url("../images/3824logo.jpg") no-repeat center center fixed;
+    background: url("../images/Background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -14,23 +14,11 @@ body {
     margin: 0;
     padding: 0;
     font-size: 3vh;
+    text-align: center;
 }
 
 form {
     display: inline;
-}
-
-.pitBody {
-    font-size: 3vw;
-}
-
-.superScout {
-    font-size: 2vw;
-}
-
-.superText {
-    height: 200px;
-    font-size: 14pt;
 }
 
 .loadingsdk {
@@ -64,12 +52,8 @@ form {
     left: 25%;
 }
 
-.center {
-    text-align: center;
-}
-
 button {
-    background-color: #170580;
+    background-color: #3824cc;
     border-radius: 20px;
     margin: 0 auto;
     color: white;
@@ -81,17 +65,28 @@ button {
 }
 
 .backBtn {
-    background-color: rgb(194, 29, 29);
+    background-color: #a8d1ff;
+    float: left;
+    color: #000;
 }
 
 .matchBtn {
-    padding-left: 10%;
-    padding-right: 10%;
+    background-color: #3824cc8a;
+    font-size: 3vw;
     border-color: #170580;
+    margin: 0;
+}
+
+.matchBtnDiv {
+    display: inline-block
 }
 
 button:hover {
     background-color: #aaaaff;
+}
+
+.headers {
+    float: right;
 }
 
 h1 {
@@ -102,14 +97,6 @@ h1 {
     margin: 0%;
 }
 
-.textBox {
-    font-size: 4vh;
-}
-
-.headers {
-    float: right;
-}
-
 h2 {
     color: white;
     padding-bottom: 0%;
@@ -117,16 +104,6 @@ h2 {
     margin: 0%;
     font-size: 175%;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.pitScout {
-    text-align: center;
-}
-
-.pitText {
-    padding: 0%;
-    font-size: 200%;
-    margin-bottom: 4%;
 }
 
 .submit {
