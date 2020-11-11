@@ -20,6 +20,10 @@ button {
     border: 0%;
 }
 
+form {
+    color: rgb(204, 204, 204);
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -74,7 +78,6 @@ input:checked+.slider:before {
     border-radius: 0;
     color: white;
     float: left;
-    border-color: #ff6961;
     padding: 1% 2%;
     font-size: 70%;
     width: 16.66%;
@@ -116,6 +119,7 @@ h2 {
     position: relative;
     display: inline-block;
     margin: 0%;
+    color: rgb(24, 168, 204);
 }
 
 .interact {
@@ -136,7 +140,7 @@ input[type=radio] {
 }
 
 .robotRadio {
-    font-size: 8vh;
+    font-size: 10vh;
     width: 50%;
     display: inline-block;
 }
