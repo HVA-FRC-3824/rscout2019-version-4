@@ -1,2 +1,0 @@
-/*jshint sub:true*/
-var 
