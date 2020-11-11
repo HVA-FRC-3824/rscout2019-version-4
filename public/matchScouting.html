@@ -31,10 +31,11 @@
     <button class="tablink" onclick="backConfirm()"> Back to Schedule </button>
     <!--<button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button> -->
     <h id="Pre" class="tabcontent">
+
+        <h2 id="matchNumber" style="float:right">Match Number</h2>
+        <h2>Scouter Name:</h2>
+        <input type="text" name="name" id="scouterName" value="">
         <div class="robotRadio">
-            <h3 id="matchNumber">Match Number</h3>
-            Scouter Name:
-            <input type="text" name="name" id="scouterName" value="">
             <form id="driveStation">
                 <label class="radio" id="blue_1" style="color:#779fff">
                     <input type="radio" id="blue1" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
@@ -72,35 +73,35 @@
                 var match = localStorage.getItem("num");
                 document.getElementById("matchNumber").innerHTML = "Match Number: " + match;
             </script>
-            <div class="preMatchInfo">
-                <form id=startPosition>
-                    Field Start Position <br>
-                    <label class="radio" id="startTop">
+            <form id=startPosition>
+                Field Start Position <br>
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
             </label><br>
-                    <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
             </label><br>
-                    <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
-            </label><br><br> Balls started with
-                </form>
-                <form id=startingBalls>
-                    <label class="radio" id="startTop">
+            </label><br><br>
+            </form>
+            <form id=startingBalls>
+                Balls started with<br>
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
             </label><br>
-                    <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
             </label><br>
-                    <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
             </label><br>
-                    <label class="radio" id="startTop">
+                <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
             </label><br>
-                </form>
-            </div>
+            </form>
         </div>
+
     </h>
 
     <!--
@@ -183,16 +184,9 @@
 
     <div id="Endgame" class="tabcontent">
 
-        <!--<h8>Climb Timer</h8>
-        <button class="timer" onclick="startTimer();" id="Start" name="start">Start<br></button>
-        <button class="timer" onclick="stopTimer();" id="Stop" name="stop">Stop</button>
-        <button class="timer" onclick="resetTime();" id="Reset" name="reset">Reset</button>
-        <div class="timerText">
-            <p id="climbed_time">0.00</p>
-        </div>-->
         <div class="climbOption">
             <form is="climbOptions">
-                Climb Options: <br>
+                <h3>Climb Options:</h3> <br>
                 <label class="radio">
                     <input type="radio" onclick="didClimb('none')" id="climbButton" name="name" value="climb">Did not climb
                 </label><br>

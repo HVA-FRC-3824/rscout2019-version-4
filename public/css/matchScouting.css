@@ -104,38 +104,26 @@ input:checked+.slider:before {
 }
 
 h1 {
-    color: #ffffff;
-    font-size: 100%;
+    color: #3824cc;
+    font-size: 10vw;
     text-align: center;
     position: relative;
-    font-weight: normal;
-    padding: 0%;
-    margin: 0%;
+    display: inline-block;
 }
 
 h2 {
-    float: right;
-    padding-right: 10%;
-    font-size: 7vh;
+    font-size: 3vw;
     position: relative;
-    margin: 0.1em;
-}
-
-h3 {
-    float: inherit;
-    padding: 0;
-    margin: 0;
-    font-size: 50%;
-    position: relative;
+    display: inline-block;
+    margin: 0%;
 }
 
 .interact {
     background-color: #3824cc;
     color: white;
     float: left;
-    border: none;
+    border: 1%;
     padding: 9% 0%;
-    margin-bottom: 10%;
     font-size: 150%;
     width: 100%;
 }
@@ -149,9 +137,8 @@ input[type=radio] {
 
 .robotRadio {
     font-size: 8vh;
-    display: inline-block;
-    position: relative;
     width: 50%;
+    display: inline-block;
 }
 
 .preMatchInfo {
@@ -167,14 +154,6 @@ input[type=radio] {
     display: inline-block;
     position: relative;
     float: left;
-}
-
-.levelButton {
-    font-size: 8vh;
-    float: right;
-    width: 25%;
-    position: relative;
-    display: inline-block;
 }
 
 .container {
