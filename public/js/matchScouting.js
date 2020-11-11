@@ -1,3 +1,4 @@
+/*jshint sub:true*/
 var matchInfo = "";
 redAlliance = "";
 blueAlliance = "";
@@ -11,7 +12,7 @@ itemsDropped = "";
 timeKeep = 0;
 slider = 0;
 climbType = "";
-filteredJames = [];
+filteredJames = {};
 ballsHeld = 0;
 ballsHeldTeleop = 0;
 teamSide = "";
@@ -91,7 +92,7 @@ function pullMatch(matchNumber) { // pulls TBA api data and James's it, sets our
     kidnap("/event/2020scmb/matches");
     //console.log(James);
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    filteredJames = James.filter(filterSchedule);
+    filteredJames = James.filter();
     var i = filteredJames.length;
     //document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     createAlliance(matchNumber);
@@ -217,8 +218,21 @@ function loadSchedule() {
     }
 }
 
-function pullAbstractData() {
-    
+/*
+    wtd key = (make/load schedule == 0, team # for match & etc == 1; pulling other TBA data == 2 ) 
+*/
+/*------------for pulling TBA data-----------*/
+function pullTBAData(currURL, wtd) {
+    kidnap(currURL);
+    if (wtd == 0) {
+
+    } else if (wtd == 1) {
+        
+    } else if (wtd == 2) {
+        
+    } //else if (wtd == 3) {
+
+    //}
 }
 
 /* ------------for matchScouting------------- */

@@ -1,3 +1,4 @@
+/*jshint sub:true*/
 var notes = "";
 matchNum = "";
 superName = "";
