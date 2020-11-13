@@ -58,6 +58,13 @@ ontoBlue = false; //im lazy so we now have varibles that just check if something
 actualMatch = 0;
 action = [];
 
+//orginially from analytics.js
+var sortById = function(prop) {
+    return function(x, y) {
+        return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
+    };
+};
+
 //* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
@@ -81,7 +88,7 @@ function createMatchPreview(mNumber, alliances) {
 function filterSchedule(qual) {
     return qual.comp_level == "qm";
 }
-
+/*
 function pullMatchInput() {
     ontoBlue = false;
     matchPreviewNum = document.getElementById("matchNumPreview").value;
@@ -89,7 +96,7 @@ function pullMatchInput() {
 }
 
 function pullMatch(matchNumber) { // pulls TBA api data and James's it, sets our alliance numbers to where they need to be
-    kidnap("/event/2020scmb/matches");
+    James = kidnap("/event/2020scmb/matches");
     //console.log(James);
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter();
@@ -112,7 +119,8 @@ function pullMatch(matchNumber) { // pulls TBA api data and James's it, sets our
     //TODO pass in all the stuff above this into a function somehow so we dont have to pull from TBA for every robot
     //again this is not a high priority like maybe after smokey becasue it works 
 }
-
+*/
+/*
 function pullPreviewData(robotNumber) {
     firebase.database().ref('/matchScouting/' + robotNumber).once("value", gotMatchData);
     //gets the json from firebase of a certain robot
@@ -125,7 +133,7 @@ function gotMatchData(data) { //makes the data readable
     climbTypeMaster = [];
     var matchData = data.val(); //gets us some data from firebase
     var jsonMatchData = JSON.stringify(matchData);
-    var matchParsed = JSON.parse(jsonMatchData);
+    var matchParsed = JSON.parse(jsonMatchData); 
     var matchNums = Object.keys(matchParsed);
     for (i = 0; i < matchNums.length; i++) { //couple for loops to grab alllll the data for that robot
         //console.log(matchNums);
@@ -184,7 +192,7 @@ function gotMatchData(data) { //makes the data readable
     //ALL EQUAL TO THE INNERHTML OF THE DESIRED DRIVE STATION
     //
 }
-
+*/
 function makeSchedule() { //* Makes schedule
     previousMatch = localStorage.getItem("previousMatch");
     if (previousMatch == null) {
@@ -217,6 +225,8 @@ function loadSchedule() {
         document.body.appendChild(btn);
     }
 }
+
+
 
 /*
     wtd key = (make/load schedule == 0, team # for match & etc == 1; pulling other TBA data == 2 ) 

@@ -66,6 +66,7 @@ function passCheck(passcode) {
     }
 }
 
+/*
 function kidnap(newUrl) {
     //These variables store the data returned from the functions.
     var baseUrl = 'https://www.thebluealliance.com/api/v3'; //base TBA url
@@ -92,6 +93,7 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
+*/
 
 function pullData() { //this function pulls the team number that the user entered
     robotNum = document.getElementById("robotNum").value; //sets the var robotNum equal to the robot number to be positive
