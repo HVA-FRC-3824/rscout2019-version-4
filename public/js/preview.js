@@ -1,4 +1,6 @@
 /*jshint sub:true*/
+var ontoBlue = false;
+
 function pullMatchInput() {
     ontoBlue = false;
     matchPreviewNum = document.getElementById("matchNumPreview").value;
@@ -6,10 +8,10 @@ function pullMatchInput() {
 }
 
 function pullMatch(matchNumber) { // pulls TBA api data and James's it, sets our alliance numbers to where they need to be
-    var James = kidnap("/event/2020scmb/matches");
-    console.log(James);
-    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    filteredJames = James.filter();
+    preJames = kidnap("/event/2020scmb/matches");
+    console.log(preJames);
+    preJames.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    filteredJames = preJames.filter();
     var i = filteredJames.length;
     //document.body.innerHTML = "<input placeholder='Match Number' type='text' name='matchNumPreview' id='matchNumPreview' class='textBox'><button onclick=pullMatchInput() class='button1'> Preview Match </button> <br><form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     createAlliance(matchNumber);
@@ -38,13 +40,13 @@ function pullPreviewData(robotNumber) {
 
 function gotMatchData(data) { //makes the data readable
     //Be sure to reset all master arrays and variables in between robots here
-    teleAccuracyMaster = [];
+    var teleAccuracyMaster = [];
     teleAccuracyTotal = 0;
     climbTypeMaster = [];
-    var matchData = data.val(); //gets us some data from firebase
-    var jsonMatchData = JSON.stringify(matchData);
-    var matchParsed = JSON.parse(jsonMatchData);
-    var matchNums = Object.keys(matchParsed);
+    matchData = data.val(); //gets us some data from firebase
+    jsonMatchData = JSON.stringify(matchData);
+    matchParsed = JSON.parse(jsonMatchData);
+    matchNums = Object.keys(matchParsed);
     for (i = 0; i < matchNums.length; i++) { //couple for loops to grab alllll the data for that robot
         //console.log(matchNums);
         currMatch = matchNums[i];
@@ -101,4 +103,10 @@ function gotMatchData(data) { //makes the data readable
     //THIS WILL ACTUALLY PUT THE DATA ON SCREEN, PUT ALL THE DATA ON THERE AT ONCE BY PUTTING IT 
     //ALL EQUAL TO THE INNERHTML OF THE DESIRED DRIVE STATION
     //
+}
+
+function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
+    var i = matchNumber - 1;
+    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 }
