@@ -55,12 +55,11 @@ previousMatch = 1;
 dStation = 0;
 ontoBlue = false; //im lazy so we now have varibles that just check if something has happened
 actualMatch = 0;
-action = [];
 
 //* Initialize varibles
 
 function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    var i = matchNumber - 1;
+    var i = matchNumber - 1
     blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
     redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 }
@@ -69,13 +68,13 @@ function startMatchScouting(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
     localStorage.setItem("alliances", JSON.stringify(alliances));
     location.replace("./matchScouting.html");
-}
+};
 
 function createMatchPreview(mNumber, alliances) {
     localStorage.setItem("num", mNumber);
     localStorage.setItem("blueAlliance", alliances.blue.team_keys);
     localStorage.setItem("redAlliance", alliances.red.team_keys);
-}
+};
 
 function filterSchedule(qual) {
     return qual.comp_level == "qm";
@@ -135,10 +134,8 @@ function gotMatchData(data) { //makes the data readable
             currName = matchNames[j];
             //console.log("MatchData: " + currMatch + " " + currentName);
             //ALL DATA WE WANT GOES HERE
-            teleAccuracyStr = "teleAccuracy";
-            climbTypeStr = "climbType";
-            teleAccuracyMaster.push(matchParsed.currMatch.currName.teleAccuracyStr);
-            climbTypeMaster.push(matchParsed.currMatch.currName.climbTypeStr);
+            teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
+            climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
 
             //A:: DATA WE WANT GOES HERE
             for (l = 0; l < 500; l++) {
@@ -194,17 +191,16 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = "<div> <form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><button onclick=makeSchedule() class='populateMatchesBtn1'> Populate Matches </button>  </div>    ";
+    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
     for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button class='matchBtn' onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#cc2233'>" + redAlliance + "</p> vs <p style='color:#6699cc'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("DIV"); //* creates a button
-        btn.className = "matchBtnDiv"
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("BUTTON"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
-    }
+    };
     localStorage.setItem("blueAllianceData", JSON.stringify(filteredJames));
-}
+};
 
 function loadSchedule() {
     James = JSON.parse(localStorage.getItem("blueAllianceData"));
@@ -215,13 +211,8 @@ function loadSchedule() {
         btn = document.createElement("BUTTON"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
-    }
+    };
 }
-
-function pullAbstractData() {
-
-}
-
 /* ------------for matchScouting------------- */
 function createMatchArray() {
     //var database = firebase.database;
@@ -299,9 +290,9 @@ function createMatchArray() {
     }
     var falls = document.getElementById("f");
     if (f.checked == true) {
-        fell = "F";
+        fell = "F"
     } else {
-        fell = "noF";
+        fell = "noF"
     }
 
     if (xTeleCoords.length == 0) {
@@ -351,12 +342,12 @@ function createMatchArray() {
         yauto: yAutoCoords,
         xtele: xTeleCoords,
         ytele: yTeleCoords,
-    };
+    }
     pushFirebaseMatch(matchDataArray, heatMapArray);
 }
 
 function pushFirebaseMatch(data, heatData) {
-    console.log(data);
+    console.log(data)
     firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
@@ -389,12 +380,12 @@ function pushFirebaseMatch(data, heatData) {
         "y tele": heatData.ytele,
     });
 
-    setTimeout(function() { nextMatch(); }, 1000);
+    setTimeout(function(){nextMatch();}, 1000);
 }
 
 //Brings you back to the populate matches/shedule page
 function nextMatch() {
-    console.log(match);
+    console.log(match)
     mNumber = localStorage.getItem("num");
     localStorage.setItem("num", mNumber);
     location.replace("./schedule.html");
@@ -411,15 +402,21 @@ function openPage(pageName) {
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "";
-    }
+    };
+
+    //* Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "#7722cc";
+    };
 
     //* Show the specific tab content
     document.getElementById(pageName).style.display = "block";
     var match = localStorage.getItem("num");
-    //document.getElementById("matchNum").innerHTML = match;
+    document.getElementById("matchNum").innerHTML = match;
     console.log(match);
 
-}
+};
 
 
 //checks the state of the wheel spin radio button and sets that to the global variable
@@ -442,8 +439,8 @@ function getShootSpotAuto() {
     var autoImage = document.querySelector("#autoField");
     var autoButton = document.querySelector("#defaultOpen");
     var buttonHeight = autoButton.clientHeight;
-    autoX = ((event.clientX / autoImage.clientWidth) * 1033);
-    autoY = (((event.clientY - buttonHeight) / autoImage.clientHeight) * 638);
+    autoX = ((event.clientX / autoImage.clientWidth) * 1033)
+    autoY = (((event.clientY - buttonHeight) / autoImage.clientHeight) * 638)
     console.log(event.clientX + " " + event.clientY);
     console.log(autoX + " " + autoY);
     if (teamSide == "B") {
@@ -457,8 +454,8 @@ function getShootSpotTeleop() {
     var teleImage = document.querySelector("#teleopField");
     var teleButton = document.querySelector("#defaultOpen");
     var buttonHeight = teleButton.clientHeight;
-    teleX = ((event.clientX / teleImage.clientWidth) * 1287);
-    teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638);
+    teleX = ((event.clientX / teleImage.clientWidth) * 1287)
+    teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638)
     console.log(teleX + " " + teleY);
 
 }
@@ -601,7 +598,7 @@ function hideAutoDropdown2(howManyScored) {
         document.getElementById("autoDropdown2").classList.toggle("show");
         console.log(robotScore + " points");
         dropDownCheck = false;
-        return;
+        return
     } else {
         robotScore = robotScore + ((whereScoredG * 2) * howManyScored);
         autoScore = autoScore + ((whereScoredG * 2) * howManyScored);
@@ -634,7 +631,7 @@ function hideTeleopDropdown2(howManyScored) {
         document.getElementById("teleopDropdown2").classList.toggle("show");
         console.log(robotScore + " points");
         dropDownCheck = false;
-        return;
+        return
     } else {
         robotScore = robotScore + (whereScoredG * howManyScored);
         teleScore = teleScore + (whereScoredG * howManyScored);
@@ -644,10 +641,7 @@ function hideTeleopDropdown2(howManyScored) {
             yTeleCoords.push(teleY);
             console.log(xTeleCoords);
             console.log(yTeleCoords);
-            console.log(howManyScored);
             teleShots++;
-            console.log("tele" + howManyScored);
-            action.push("tele" + howManyScored);
         }
         document.getElementById("teleopDropdown2").classList.toggle("show");
         console.log(robotScore + " points");
@@ -657,14 +651,6 @@ function hideTeleopDropdown2(howManyScored) {
 
 function backConfirm() {
     if (confirm("Are you sure?") == true) {
-        location.replace('./schedule.html');
+        location.replace('./schedule.html')
     }
-}
-
-function undo() {
-
-}
-
-function dummy() {
-    //testing git Kraken
 }

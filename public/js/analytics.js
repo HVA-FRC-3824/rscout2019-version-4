@@ -1,4 +1,3 @@
-/*jshint sub:true*/
 var robotNum = "";
 currentName = [];
 namesArray = [];
@@ -85,7 +84,7 @@ function kidnap(newUrl) {
     $(document).ajaxError(function() { //this function alerts an error if the pulling the data is unsuccessful
         alert("An error occurred!");
     });
-}
+};
 
 var sortById = function(prop) {
     return function(x, y) {
@@ -98,7 +97,6 @@ function pullData() { //this function pulls the team number that the user entere
     firebase.database().ref('/heatMap/' + robotNum).once("value", gotData); //acutally gets the data from firebase, then runs gotData()
     //console.log(robotNum);
 }
-
 
 function gotData(heatData) { //makes the data readable
     var robotData = heatData.val(); //takes the value of the data
@@ -202,7 +200,8 @@ function gotMatchData(data) { //makes the data readable
     document.getElementById("averageTeleAcc").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
 }
 
-function setClimbTable() {}
+function setClimbTable(){
+}
 
 function setTable() {
     document.getElementById("nameBlame").innerHTML = nameBlameMaster[currDataTable];
@@ -215,7 +214,7 @@ function setTable() {
     document.getElementById("teleFloorTable").innerHTML = teleopPickedUpFloorMaster[currDataTable];
     document.getElementById("teleBayTable").innerHTML = teleopPickedUpBayMaster[currDataTable];
     document.getElementById("climbTypeTable").innerHTML = climbTypeMaster[currDataTable];
-    document.getElementById("isLevelTable").innerHTML = isLevelMaster[currDataTable];
+    document.getElementById("isLevelTable").innerHTML = isLevelMaster[currDataTabble];
     document.getElementById("colorWheelTable").innerHTML = colorWheelMaster[currDataTable];
     document.getElementById("autoMissTable").innerHTML = autoMissesMaster[currDataTable];
     document.getElementById("teleMissTable").innerHTML = teleMissesMaster[currDataTable];
