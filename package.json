@@ -1,12 +1,15 @@
 {
-  "name": "r-scout2019.75",
-  "version": "0.0.0",
-  "description": "rScout2019.75",
-  "main": "server.js",
-  "author": {
-    "name": "Evan Boswell"
-  },
-  "devDependencies": {
-    "eslint-plugin-promise": "^4.2.1"
-  }
+    "name": "r-scout2019.75",
+    "version": "0.0.0",
+    "description": "rScout2019.75",
+    "main": "server.js",
+    "author": {
+        "name": "Evan Boswell"
+    },
+    "devDependencies": {
+        "eslint-plugin-promise": "^4.2.1"
+    },
+    "engines": {
+        "node": "12"
+    }
 }
