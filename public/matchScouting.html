@@ -25,8 +25,7 @@
 <body onload="setsLocalName()">
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
     <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
-    <button class="tablink" onclick="transferBalls(), openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
-    <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
+    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="backConfirm()"> Back to Schedule </button>
     <!--<button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button> -->
@@ -122,12 +121,6 @@
             <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
             <button class="interact" onclick="decrement(1);">Dropped Ball</button>
             <button class="interact" onclick="undo();">Undo</button>
-            <h2>Moved off auto line:
-            </h2><br>
-            <label class="switch">
-                    <input type="checkbox" id="autoLineCheck">
-                    <span class="slider"></span>
-                </label>
         </div>
 
         <div id="autoDropdown" class="autoDropdown-content">
@@ -181,39 +174,7 @@
         </div>
     </h>
     <!--
-============================================
-    We're in the Endgame now
-============================================
-    -->
 
-    <div id="Endgame" class="tabcontent">
-
-        <div class="climbOption">
-            <form is="climbOptions">
-                <h3>Climb Options:</h3> <br>
-                <label class="radio">
-                    <input type="radio" onclick="didClimb('none')" id="climbButton" name="name" value="climb">Did not climb
-                </label><br>
-                <label class="radio">
-                    <input type="radio" onclick="didClimb('triedButFailed')" id="climbButton" name="name" value="climb">Attempted climb but failed
-                </label><br>
-                <label class="radio">
-                    <input type="radio" onclick="didClimb('climbed')" id="climbButton"  name="name" value="climb">Successfully Climbed
-                </label><br>
-            </form>
-        </div>
-        <div class="levelButton">Bar Is Level: <br>
-            <label class="switch">
-                            <input type="checkbox" id="levelCheck">
-                            <span class="slider"></span>
-                    </label> <br>Fall<br>
-            <label class="switch">
-                    <input type="checkbox" id="f">
-                    <span class="slider"></span>
-                </label>
-        </div>
-    </div>
-    <!--
 ============================================
     This is Post Match
 ============================================

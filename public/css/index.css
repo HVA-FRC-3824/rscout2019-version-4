@@ -17,6 +17,10 @@ body {
     text-align: center;
 }
 
+div {
+    display: inline-block;
+}
+
 form {
     display: inline;
 }
@@ -68,6 +72,7 @@ button {
     background-color: #a8d1ff;
     float: left;
     color: #000;
+    position: relative;
 }
 
 .matchBtn {
@@ -128,5 +133,11 @@ h2 {
 }
 
 .clearButton {
-    margin-top: 1%;
+    margin-top: 50%;
+}
+
+.scheduleButton {
+    padding: 5% 5%;
+    text-align: left;
+    content: 32% 32%;
 }

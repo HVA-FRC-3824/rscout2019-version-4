@@ -494,7 +494,7 @@ function chooseDriveStation(drive) {
 
 
 //increments the balls held variable and adds to the picked up in auto and picked up in tele
-function increment(teleOrAuto, wherePickedUp) {
+function increment(isIncrementing, teleOrAuto, wherePickedUp) {
     if (ballsHeld < 5) {
         ballsHeld++;
     }

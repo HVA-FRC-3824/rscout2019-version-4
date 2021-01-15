@@ -1,5 +1,6 @@
 let James = {};
 
+
 function loadSchedule() {
     James = JSON.parse(localStorage.getItem("blueAllianceData"));
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
@@ -23,6 +24,7 @@ function kidnap(newUrl) {
         },
         method: 'GET', //This defines the method we use to pull data from Blue Alliance, in this instance we are using GET
         dataType: 'json', //This defines what format the data that is pulled from Blue Alliance will be in, in this instance we are pulling Json files
+        async: false,
         success: function(data) { //this function logs our data in the console if it is successfully pulled
             James = data;
             console.log(James);
@@ -43,7 +45,6 @@ var sortById = function(prop) {
     };
 };
 
-
 function makeSchedule() { //* Makes schedule
 
     //* Checks localStorage for the last match scouted 
@@ -58,13 +59,52 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button> <br>        <form action='./index.html'>    <button type='submit' class='buttonBack'>Back</button></form>";
+    document.body.innerHTML = "<button onclick=makeSchedule() class='button1'> Populate Matches </button>      <form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><br>";
     for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
+        matchInfo = ("<button class='scheduleButton'  onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + ": <p style='color:#C1666B'>" + redAlliance + "</p> vs <p style='color:#4357AD'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("DIV"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
     };
     localStorage.setItem("blueAllianceData", JSON.stringify(filteredJames));
 };
+
+function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
+    var i = matchNumber - 1
+    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
+}
+
+function openPage(pageName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "";
+    };
+
+    document.getElementById(pageName).style.display = "block";
+}
+
+function filterSchedule(qual) {
+    return qual.comp_level == "qm";
+}
+
+function startMatchScouting(mNumber, alliances) {
+    localStorage.setItem("num", mNumber);
+    localStorage.setItem("alliances", JSON.stringify(alliances));
+    location.replace("./matchScouting.html");
+};
+
+/* -- creates the matchscouting data array -- */
+function createMatchArray() {
+
+}
+
+
+//back button for match scouting. Graham
+function backConfirm() {
+    if (confirm("Are you sure?") == true) {
+        location.replace('./schedule.html')
+    }
+}
