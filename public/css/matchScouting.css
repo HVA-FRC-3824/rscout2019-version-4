@@ -27,8 +27,8 @@ form {
 .switch {
     position: relative;
     display: inline-block;
-    width: 10vw;
-    height: 8vh;
+    width: 20vw;
+    height: 10vh;
 }
 
 .switch input {
@@ -49,6 +49,18 @@ form {
     transition: .4s;
 }
 
+.sliderYellow {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
 .slider:before {
     position: absolute;
     content: "";
@@ -56,12 +68,23 @@ form {
     transition: .4s;
 }
 
+.sliderYellow:before {
+    position: absolute;
+    content: "";
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
 input:checked+.slider {
-    background-color: #45658b;
+    background-color: red;
+}
+
+input:checked+.sliderYellow {
+    background-color: yellow;
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #45658b;
+    box-shadow: 0 0 1px black;
 }
 
 input:checked+.slider:before {
@@ -80,7 +103,7 @@ input:checked+.slider:before {
     float: left;
     padding: 1% 2%;
     font-size: 70%;
-    width: 16.66%;
+    width: 20%;
 }
 
 
@@ -153,7 +176,7 @@ input[type=radio] {
 }
 
 .postMatchInfo {
-    font-size: 6vh;
+    font-size: 8.25vh;
     width: 60%;
     display: inline-block;
     position: relative;
@@ -183,12 +206,6 @@ input[type=radio] {
     width: 75%;
     height: 85%;
     align-content: center;
-}
-
-.counter {
-    position: absolute;
-    top: 95%;
-    left: 80%;
 }
 
 .autoDropdown:hover,
@@ -252,4 +269,15 @@ input[type=radio] {
 
 #Post {
     background-color: black;
+}
+
+.nextMatch {
+    padding: 1.5%;
+    margin-left: 0vh;
+    font-size: 9vh;
+}
+
+.cardsInfo {
+    font-size: 9vh;
+    margin-left: 150vh;
 }

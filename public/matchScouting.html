@@ -20,6 +20,8 @@
     <script type="text/javascript" src="./js/matchScouting.js"></script>
     <link rel="icon" href="../images/rbtoc logo.png" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 
 <body onload="setsLocalName()">
@@ -114,29 +116,27 @@
     -->
 
     <h id="Auto" class="tabcontent">
-        <img onclick="getShootSpotAuto(), autoFieldInput()" src="" alt="auto field" id="autoField"></img>
+        <img onclick="fieldInput()" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
+            <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
+            <button class="interact" onclick="incrementBallsHeld(1,false);">Dropped Ball</button>
             <h2 id="ballsHeld"></h2>
-            <br>
-            <button class="interact" onclick="increment(0, 0);">Picked Up From Floor</button>
-            <button class="interact" onclick="decrement(1);">Dropped Ball</button>
-            <button class="interact" onclick="undo();">Undo</button>
         </div>
 
         <div id="autoDropdown" class="autoDropdown-content">
-            <a href="#innerPort" onclick="hideAutoDropdown(3), autoFieldInput2()">Circle</a>
-            <a href="#outterPort" onclick="hideAutoDropdown(2),autoFieldInput2()">Hexagon</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown(1),autoFieldInput2()">Rectangle</a>
-            <a href="#miss" onclick="hideAutoDropdown(0),autoFieldInput2()">Miss</a>
+            <a href="#innerPort" onclick="fieldInput2(), hideDropdown()">Circle</a>
+            <a href="#outterPort" onclick="fieldInput2(), hideDropdown()">Hexagon</a>
+            <a href="#lowerPort" onclick="fieldInput2(), hideDropdown()">Rectangle</a>
+            <a href="#miss" onclick="fieldInput2(), hideDropdown()">Miss</a>
         </div>
         <!--The dropdown after the first dropdown -->
         <div id="autoDropdown2" class="autoDropdown-content">
-            <a href="#innerPort" onclick="hideAutoDropdown2(5)">5 Balls</a>
-            <a href="#outerPort" onclick="hideAutoDropdown2(4)">4 Balls</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown2(3)">3 Balls</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown2(2)">2 Balls</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown2(1)">1 Ball</a>
-            <a href="#lowerPort" onclick="hideAutoDropdown2(0)">Cancel</a>
+            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false)">5 Balls</a>
+            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false)">1 Ball</a>
+            <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
     <!--
@@ -146,31 +146,31 @@
     -->
 
     <h id="Teleop" class="tabcontent">
-        <img onclick="getShootSpotTeleop(), teleopFieldInput()" src="" alt="Teleop field" id="teleopField"></img>
+        <img onclick="fieldInput()" src="" alt="Teleop field" id="teleopField"></img>
         <div class="teleInteraction">
+
+
+            <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
+            <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Loading Zone</button>
+            <button class="interact" onclick="incrementBallsHeld(1, false);">Dropped Ball</button>
             <h2 id="ballsHeldTele"> </h2>
-            <br>
-            <button class="interact" onclick="increment(1, 0);">Picked Up From Floor</button>
-            <button class="interact" onclick="increment(1, 1);">Picked Up From Loading Zone</button>
-            <button class="interact" onclick="decrement(2);">Dropped Ball</button>
-            <button class="interact" onclick="undo();">Undo</button>
         </div>
 
         <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
 
         <div id="teleopDropdown" class="teleopDropdown-content">
-            <a href="#innerPort" onclick="hideTeleopDropdown(3),teleopFieldInput2()">Circle</a>
-            <a href="#outerPort" onclick="hideTeleopDropdown(2),teleopFieldInput2()">Hexagon</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown(1),teleopFieldInput2()">Rectangle</a>
-            <a href="#miss" onclick="hideTeleopDropdown(0),teleopFieldInput2()">Miss</a>
+            <a href="#innerPort" onclick="hideDropdown(),fieldInput2()">Circle</a>
+            <a href="#outerPort" onclick="hideDropdown(),fieldInput2()">Hexagon</a>
+            <a href="#lowerPort" onclick="hideDropdown(),fieldInput2()">Rectangle</a>
+            <a href="#miss" onclick="hideDropdown(),fieldInput2()">Miss</a>
         </div>
         <div id="teleopDropdown2" class="teleopDropdown-content">
-            <a href="#innerPort" onclick="hideTeleopDropdown2(5)">5 Balls</a>
-            <a href="#outerPort" onclick="hideTeleopDropdown2(4)">4 Balls</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown2(3)">3 Balls</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown2(2)">2 Balls</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown2(1)">1 Ball</a>
-            <a href="#lowerPort" onclick="hideTeleopDropdown2(0)">Cancel</a>
+            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false)">5 Balls</a>
+            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false)">1 Ball</a>
+            <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
     <!--
@@ -207,7 +207,7 @@
         <br>
         <div class=cardsInfo>
             <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
-            <br><br><br>
+            <br><br>
             Red Card: <br>
         <label class="switch">
                 <input type="checkbox" id="redCheck">
@@ -216,7 +216,7 @@
             <br> Yellow Card: <br>
             <label class="switch">
                 <input type="checkbox" id="yellowCheck">
-                <span class="slider"></span>
+                <span class="sliderYellow"></span>
                 </label>
         </div>
 
