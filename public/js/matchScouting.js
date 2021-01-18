@@ -11,6 +11,10 @@ function openPage(pageName) {
     document.getElementById(pageName).style.display = "block";
 }
 
+function localName() {
+    document.getElementById("scouterName").value = localStorage.getItem("localName");
+}
+
 //========================== Pre Match Info =====================================//
 
 
@@ -28,14 +32,7 @@ function chooseDriveStation(drive) { //Making the field image appear after chosi
 }
 
 
-//========================== Pre Match Info End =================================//
-
-/* -- creates the matchscouting data array -- */
-function createMatchArray() {
-
-}
-
-
+//========================== Auto & Teleop Tabs =================================//
 
 //Opening the Tele And Auto Dropdowns
 function fieldInput() {
@@ -64,7 +61,6 @@ function hideDropdown2() {
     document.getElementById("teleopDropdown2").classList.toggle("show");
 }
 
-
 //Keeping track of balls held
 function incrementBallsHeld(balls, pickedUp) {
     if (pickedUp) {
@@ -80,9 +76,67 @@ function incrementBallsHeld(balls, pickedUp) {
     }
     document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
-
 }
 
+//===================== Matchscouting Array creation ============================//
+
+function createMatchArray() {
+    //stores the previous match number for reference on next schedule load
+    let match = localStorage.getItem("num");
+    localStorage.setItem("previousMatch", parseInt(match)+1);
+
+    let name = document.getElementById("scouterName").value;
+    if (name == "") {
+        name = localStorage.getItem("localName");
+    } else {
+        localStorage.setItem("localName", name);
+    }
+
+    //TODO: ask weston if we still want to get notes from scouters
+    let notes = document.getElementById("notes").value;
+    
+    let teamNumber = 0;
+    let alliances = JSON.parse(localStorage.getItem("alliances"));
+    switch (driveStation) {
+        case "B1":
+            teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
+            break;
+        case "B2":
+            teamNumber = parseInt(alliances.blue.team_keys[1].slice(3));
+            break;
+        case "B3":
+            teamNumber = parseInt(alliances.blue.team_keys[2].slice(3));
+            break;
+        case "R1":
+            teamNumber = parseInt(alliances.blue.team_keys[0].slice(3));
+            break;
+        case "R2":
+            teamNumber = parseInt(alliances.blue.team_keys[1].slice(3));
+            break;
+        case "B3":
+            teamNumber = parseInt(alliances.blue.team_keys[2].slice(3));
+            break;
+        default:
+            teamNumber = 9999;
+            break;
+    }
+    
+    let yellowCheck = document.getElementById("yellowCheck");
+    if (yellowCheck.checked == true) {
+        yellowCheck = "yes";
+    } else {
+        yellowCheck = "no";
+    }
+    
+    let redCheck = document.getElementById("redCheck");
+    if (redCheck.checked == true) { 
+        redCheck = "yes";
+    } else {
+        redCheck = "no";
+    }
+
+    
+}
 
 //back button for match scouting. -Graham
 function backConfirm() {
