@@ -83,7 +83,7 @@ function incrementBallsHeld(balls, pickedUp) {
 function createMatchArray() {
     //stores the previous match number for reference on next schedule load
     let match = localStorage.getItem("num");
-    localStorage.setItem("previousMatch", parseInt(match)+1);
+    localStorage.setItem("previousMatch", parseInt(match) + 1);
 
     let name = document.getElementById("scouterName").value;
     if (name == "") {
@@ -94,7 +94,7 @@ function createMatchArray() {
 
     //TODO: ask weston if we still want to get notes from scouters
     let notes = document.getElementById("notes").value;
-    
+
     let teamNumber = 0;
     let alliances = JSON.parse(localStorage.getItem("alliances"));
     switch (driveStation) {
@@ -120,22 +120,22 @@ function createMatchArray() {
             teamNumber = 9999;
             break;
     }
-    
+
     let yellowCheck = document.getElementById("yellowCheck");
     if (yellowCheck.checked == true) {
         yellowCheck = "yes";
     } else {
         yellowCheck = "no";
     }
-    
+
     let redCheck = document.getElementById("redCheck");
-    if (redCheck.checked == true) { 
+    if (redCheck.checked == true) {
         redCheck = "yes";
     } else {
         redCheck = "no";
     }
 
-    
+
 }
 
 //back button for match scouting. -Graham

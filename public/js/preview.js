@@ -1,15 +1,13 @@
-
-
 function pullMatchInput() {
     let ontoBlue = false;
     matchPreviewNum = document.getElementById('matchNumPreview').value;
     pullMatch(matchPreviewNum);
 }
 
-function pullMatch (matchNumber) {
+function pullMatch(matchNumber) {
     kidnap("/event/2020scmb/match/");
     James.sort(sortById("match_number"));
-    let filteredJames = James.filter(filterSchedule); 
+    let filteredJames = James.filter(filterSchedule);
     let i = filteredJames.length;
 
     createAlliance(matchNumber);
@@ -109,4 +107,3 @@ function createAlliance(matchNumber) { //* This function creates each and concat
     blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
     redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 }
-

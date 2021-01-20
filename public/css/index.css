@@ -1,5 +1,5 @@
 html {
-    background: url("../images/Background.jpg") no-repeat center center fixed;
+    background: url("../images/Background.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -57,25 +57,26 @@ form {
 }
 
 button {
-    background-color: #3824cc;
-    border-radius: 20px;
+    /*background-color: #3824cc;*/
+    border-radius: 10px;
+    border-width: 0px;
     margin: 0 auto;
     color: white;
     padding: 1.5% 2%;
-    text-decoration: wavy;
     font-size: 2.16vw;
     margin: .5% .25%;
     cursor: pointer;
+    background-image: linear-gradient(#5B5A56, #41403B);
 }
 
 .backBtn {
-    background-color: #a8d1ff;
+    background-color: #38aa24;
     float: left;
-    color: #000;
     position: relative;
+    background-size: contain;
 }
 
-.matchBtn {
+. .matchBtn {
     background-color: #3824cc8a;
     font-size: 3vw;
     border-color: #170580;
@@ -137,8 +138,9 @@ h2 {
 }
 
 .scheduleButton {
-    margin: 0%;
-    padding: 0% 0%;
+    padding: 7%, 7%;
     display: inline-block;
-    background-image: linear-gradient(red, yellow);
+    background-image: linear-gradient(#3E3E3E);
+    transform: scale(.85);
+    font-size: 250%;
 }
