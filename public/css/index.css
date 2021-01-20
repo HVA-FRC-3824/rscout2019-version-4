@@ -6,15 +6,16 @@ html {
     background-size: cover;
     height: 100%;
     overflow: auto;
+    font-family: Ubuntu !important;
 }
 
 body {
     color: rgba(0, 0, 0, 0.87);
-    font-family: Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 3vh;
     text-align: center;
+    font-family: Ubuntu;
 }
 
 div {
@@ -76,7 +77,7 @@ button {
     background-size: contain;
 }
 
-. .matchBtn {
+.matchBtn {
     background-color: #3824cc8a;
     font-size: 3vw;
     border-color: #170580;

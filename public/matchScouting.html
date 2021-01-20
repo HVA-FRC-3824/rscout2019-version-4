@@ -12,6 +12,7 @@
     <script defer src="/__/firebase/8.2.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desiread features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <!--reference the css stuff-->
     <link rel="stylesheet" type="text/css" href="./css/matchScouting.css">
     <!--reference javascript stuff-->
@@ -33,8 +34,8 @@
     <!--<button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button> -->
     <h id="Pre" class="tabcontent">
 
-        <h2 id="matchNumber" style="float:right">Match Number</h2>
-        <h2>Scouter Name:</h2>
+        <h2 id="matchNumber" class="matchNumber" style="float:right">Match Number</h2>
+        <h2 class="scouterName">Scouter Name:</h2>
         <input type="text" name="name" id="scouterName" value="">
         <div class="robotRadio">
             <form id="driveStation">
@@ -67,7 +68,6 @@
                 document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
                 document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
                 document.getElementById("blue_3").innerHTML += alliances.blue.team_keys[2].slice(3);
-
                 document.getElementById("red_1").innerHTML += alliances.red.team_keys[0].slice(3);
                 document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
                 document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);

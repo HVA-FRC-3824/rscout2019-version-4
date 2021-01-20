@@ -4,7 +4,7 @@ body,
 html {
     height: 100%;
     margin: 0;
-    font-family: Arial;
+    font-family: Ubuntu;
     overflow-x: auto;
 }
 
@@ -12,7 +12,7 @@ html {
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #3824cc;
+    background-color: #3E3E3E;
     color: #fff;
     border-radius: 1vw;
     font-size: 130%;
@@ -21,7 +21,7 @@ button {
 }
 
 form {
-    color: rgb(204, 204, 204);
+    color: #3e3e3e;
 }
 
 .switch {
@@ -97,13 +97,14 @@ input:checked+.slider:before {
 /* For level check button end*/
 
 .tablink {
-    background-color: #3824cc;
+    color: #3E3E3E;
     border-radius: 0;
     color: white;
     float: left;
     padding: 1% 2%;
-    font-size: 70%;
+    font-size: 100%;
     width: 20%;
+    font-family: Ubuntu;
 }
 
 
@@ -113,6 +114,11 @@ input:checked+.slider:before {
     color: #3824cc;
     display: none;
     height: 100%;
+    max-width: 100%;
+    background-size: cover;
+
+    background-size: contain;
+    background: url("../images/matchScoutingBackground.jpg");
 }
 
 .autoInteraction {
@@ -138,15 +144,18 @@ h1 {
 }
 
 h2 {
+    background-color: #3e3e3e; 
     font-size: 3vw;
-    position: relative;
+    margin-left: 2%;
     display: inline-block;
     margin: 0%;
-    color: rgb(24, 168, 204);
+    color: white;
+    border-radius: 4vh;
+    padding: 3vh;
 }
 
 .interact {
-    background-color: #3824cc;
+    background-image: linear-gradient(#3E3E3E);
     color: white;
     float: left;
     border: 1%;
@@ -163,16 +172,23 @@ input[type=radio] {
 }
 
 .robotRadio {
+    position: relative;
+    top:-16vh;
+    position: 20%; 
     font-size: 10vh;
-    width: 50%;
+    width: 45%;
     display: inline-block;
 }
 
 .preMatchInfo {
+    font-family: Ubuntu !important;
     font-size: 6vh;
     display: inline-block;
     position: relative;
     height: 100vh;
+    color: black;
+    right: -10vh;
+    top: -13.5vh
 }
 
 .postMatchInfo {
@@ -280,4 +296,16 @@ input[type=radio] {
 .cardsInfo {
     font-size: 9vh;
     margin-left: 150vh;
+}
+
+.matchNumber {
+    font-size: 70%;
+    position: relative;
+    left: 0;
+    padding: 2vh;
+    border-radius: 0vh;;
+}
+.scouterName {
+    margin-top: 1.5vh;
+    position: relative;
 }
