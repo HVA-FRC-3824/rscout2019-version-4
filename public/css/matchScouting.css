@@ -6,29 +6,30 @@ html {
     margin: 0;
     font-family: Ubuntu;
     overflow-x: auto;
+    /* overflow-y: hidden; */
 }
 
 
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #3E3E3E;
+    background-color: #3824cc;
     color: #fff;
-    border-radius: 1vw;
-    font-size: 130%;
+    border-radius: 1em;
+    font-size: 5vmin;
     text-align: center;
     border: 0%;
 }
 
 form {
-    color: #3e3e3e;
+    color: rgb(204, 204, 204);
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 20vw;
-    height: 10vh;
+    width: 20vmin;
+    height: 10em;
 }
 
 .switch input {
@@ -97,14 +98,13 @@ input:checked+.slider:before {
 /* For level check button end*/
 
 .tablink {
-    color: #3E3E3E;
+    background-color: #3E3E3E;
     border-radius: 0;
     color: white;
     float: left;
     padding: 1% 2%;
-    font-size: 100%;
+    font-size: 3.3vmin;
     width: 20%;
-    font-family: Ubuntu;
 }
 
 
@@ -116,9 +116,8 @@ input:checked+.slider:before {
     height: 100%;
     max-width: 100%;
     background-size: cover;
-
     background-size: contain;
-    background: url("../images/matchScoutingBackground.jpg");
+    background: url("../images/matchScoutingBackground.jpg") no-repeat;
 }
 
 .autoInteraction {
@@ -137,21 +136,21 @@ input:checked+.slider:before {
 
 h1 {
     color: #3824cc;
-    font-size: 10vw;
+    font-size: 10vmin;
     text-align: center;
     position: relative;
     display: inline-block;
 }
 
 h2 {
-    background-color: #3e3e3e; 
-    font-size: 3vw;
-    margin-left: 2%;
+    background-color: #3e3e3e;
+    font-size: 4.8vmin;
+    position: relative;
     display: inline-block;
     margin: 0%;
+    padding: 0.7em;
     color: white;
-    border-radius: 4vh;
-    padding: 3vh;
+    border-radius: 1em;
 }
 
 .interact {
@@ -160,7 +159,7 @@ h2 {
     float: left;
     border: 1%;
     padding: 9% 0%;
-    font-size: 150%;
+    font-size: 10vmin;
     width: 100%;
 }
 
@@ -172,27 +171,23 @@ input[type=radio] {
 }
 
 .robotRadio {
-    position: relative;
-    top:-16vh;
-    position: 20%; 
-    font-size: 10vh;
-    width: 45%;
+    font-size: 10vmin;
+    width: 50%;
     display: inline-block;
+    float: left;
 }
 
 .preMatchInfo {
-    font-family: Ubuntu !important;
-    font-size: 6vh;
-    display: inline-block;
+    font-size: 6vmin;
     position: relative;
-    height: 100vh;
-    color: black;
-    right: -10vh;
-    top: -13.5vh
+    display: inline-block;
+    float: right;
+    margin-right: 5em;
+    top: -2em;
 }
 
 .postMatchInfo {
-    font-size: 8.25vh;
+    font-size: 8.25em;
     width: 60%;
     display: inline-block;
     position: relative;
@@ -202,8 +197,6 @@ input[type=radio] {
 .container {
     position: absolute;
     width: 50%;
-    top: 20%;
-    left: 40%;
 }
 
 
@@ -289,23 +282,26 @@ input[type=radio] {
 
 .nextMatch {
     padding: 1.5%;
-    margin-left: 0vh;
-    font-size: 9vh;
+    margin-left: 0em;
+    font-size: 9em;
 }
 
 .cardsInfo {
-    font-size: 9vh;
-    margin-left: 150vh;
+    font-size: 9em;
+    margin-left: 150em;
 }
 
 .matchNumber {
-    font-size: 70%;
+    font-size: 3vmin;
     position: relative;
     left: 0;
-    padding: 2vh;
-    border-radius: 0vh;;
+    padding: 0.7em;
+    border-radius: 0.2em;
 }
-.scouterName {
-    margin-top: 1.5vh;
-    position: relative;
+
+.nameBox {
+    font-size: 3vmin;
+    height: 2em;
+    width: 14em;
+    margin-right: 10em;
 }

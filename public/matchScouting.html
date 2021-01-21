@@ -24,6 +24,11 @@
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
+<script>
+    if (screen.availHeight > screen.availWidth) {
+        alert("Please use Landscape!");
+    }
+</script>
 
 <body onload="localName()">
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
@@ -36,7 +41,7 @@
 
         <h2 id="matchNumber" class="matchNumber" style="float:right">Match Number</h2>
         <h2 class="scouterName">Scouter Name:</h2>
-        <input type="text" name="name" id="scouterName" value="">
+        <input class="nameBox" type="text" name="name" id="scouterName" value="">
         <div class="robotRadio">
             <form id="driveStation">
                 <label class="radio" id="blue_1" style="color:#2945e2">
