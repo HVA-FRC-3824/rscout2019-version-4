@@ -107,3 +107,18 @@ function createAlliance(matchNumber) { //* This function creates each and concat
     blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
     redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 }
+
+function loadSchedule() {
+    James = JSON.parse(localStorage.getItem("blueAllianceData"));
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," +
+            JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber +
+            ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance +
+            "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("BUTTON"); //* creates a button
+        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+        document.body.appendChild(btn);
+    };
+}

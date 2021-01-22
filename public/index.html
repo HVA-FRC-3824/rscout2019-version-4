@@ -17,12 +17,9 @@
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
     <link rel="stylesheet" type="text/css" href=".\css\index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<script>
-    if (screen.availHeight > screen.availWidth) {
-        alert("Please use Landscape!");
-    }
-</script>
+
 
 <body>
     <script type="text/javascript" src="./js/analytics.js"></script>
@@ -30,9 +27,7 @@
     <script type="text/javascript" src="./js/matchScouting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <div class="divsdk">
-        <p id="load" class="loadingsdk">Firebase SDK Loading&hellip;</p>
-    </div>
+
     <div class="menuButtons">
         <form action=".\analytics.html">
             <button type="submit">
@@ -64,7 +59,9 @@
             </button>
         </form>
     </div>
-
+    <div class="divsdk">
+        <p id="load" class="loadingsdk">Created by Evan Boswell, Nick Broyles, Max Howell, Grant Johnson, Weston Agreda, Graham Boswell. Firebase SDK loaded with auth, database, storage</p>
+    </div>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </body>

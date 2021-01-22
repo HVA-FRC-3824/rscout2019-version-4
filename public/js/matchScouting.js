@@ -1,5 +1,6 @@
 let ballsHeld = 0;
 let dropDownCheck = false;
+let xAutoCoords = [];
 
 function openPage(pageName) {
     var i, tabcontent, tablinks;
@@ -92,9 +93,6 @@ function createMatchArray() {
         localStorage.setItem("localName", name);
     }
 
-    //TODO: ask weston if we still want to get notes from scouters
-    let notes = document.getElementById("notes").value;
-
     let teamNumber = 0;
     let alliances = JSON.parse(localStorage.getItem("alliances"));
     switch (driveStation) {
@@ -135,9 +133,60 @@ function createMatchArray() {
         redCheck = "no";
     }
 
+    if (autoShots != 0 && teleShots != 0) {
+        autoAccuracy = 1 - (autoMisses / autoShots);
+        teleAccuracy = 1 - (teleMisses / teleShots);
+    }
+
+    if (xTeleCoords.length == 0) {
+        xTeleCoords.push(0);
+        yTeleCoords.push(0);
+    }
+
+    if (xAutoCoords.length == 0) {
+        xAutoCoords.push(0);
+        yAutoCoords.push(0);
+    }
+
 
 }
 
+function pushFirebaseMatch(data, heatData) {
+    console.log(data)
+    firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
+        "driveStation": data.driveStation,
+        "startPosition": data.startPos,
+        "robotScore": data.robotScore,
+        "autoPickedUpFloor": data.pickedUpAutoFloor,
+        "autoPickedUpBay": data.pickedUpAutoBay,
+        "teleopPickedUpFloor": data.pickedUpTeleopFloor,
+        "teleopPickedUpBay": data.pickedUpTeleopBay,
+        "climbType": data.climbType,
+        "isLevel": data.isLevel,
+        "notes": data.notes,
+        "colorWheel": data.colorWheel,
+        "autoMisses": data.autoMisses,
+        "teleMisses": data.teleMisses,
+        "autoScore": data.autoScore,
+        "teleScore": data.teleScore,
+        "teleAccuracy": data.teleAccuracy,
+        "autoAccuracy": data.autoAccuracy,
+        "redCard": data.redCheck,
+        "yellowCard": data.yellowCheck,
+        "ballsDroppedAuto": data.ballsDroppedAuto,
+        "ballsDroppedTele": data.ballsDroppedTele,
+        "MovedAuto": data.autoMove,
+        "Fell": data.fell,
+    });
+    firebase.database().ref('heatMap/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
+        "x auto": heatData.xauto,
+        "y auto": heatData.yauto,
+        "x tele": heatData.xtele,
+        "y tele": heatData.ytele,
+    });
+
+    setTimeout(function() { nextMatch(); }, 1000);
+}
 //back button for match scouting. -Graham
 function backConfirm() {
     if (confirm("Are you sure?") == true) {

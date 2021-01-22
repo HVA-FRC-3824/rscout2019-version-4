@@ -5,15 +5,15 @@ html {
     height: 100%;
     margin: 0;
     font-family: Ubuntu;
-    overflow-x: auto;
-    /* overflow-y: hidden; */
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #3824cc;
+    background-color: #48054B;
     color: #fff;
     border-radius: 1em;
     font-size: 5vmin;
@@ -28,8 +28,8 @@ form {
 .switch {
     position: relative;
     display: inline-block;
-    width: 20vmin;
-    height: 10em;
+    width: 7em;
+    height: 2em;
 }
 
 .switch input {
@@ -111,7 +111,7 @@ input:checked+.slider:before {
 /* Style the tab content (and add height:100% for full page content) */
 
 .tabcontent {
-    color: #3824cc;
+    color: white;
     display: none;
     height: 100%;
     max-width: 100%;
@@ -148,6 +148,17 @@ h2 {
     position: relative;
     display: inline-block;
     margin: 0%;
+    padding: 0.5em;
+    color: white;
+    border-radius: 1em;
+}
+
+h3 {
+    background-color: #E45D38;
+    font-size: 4.8vmin;
+    position: relative;
+    display: inline-block;
+    margin: 0%;
     padding: 0.7em;
     color: white;
     border-radius: 1em;
@@ -159,7 +170,7 @@ h2 {
     float: left;
     border: 1%;
     padding: 9% 0%;
-    font-size: 10vmin;
+    font-size: 5vmin;
     width: 100%;
 }
 
@@ -183,11 +194,11 @@ input[type=radio] {
     display: inline-block;
     float: right;
     margin-right: 5em;
-    top: -2em;
+    top: -1em;
 }
 
 .postMatchInfo {
-    font-size: 8.25em;
+    font-size: 7vmin;
     width: 60%;
     display: inline-block;
     position: relative;
@@ -219,23 +230,23 @@ input[type=radio] {
 
 .autoDropdown:hover,
 .autoDropdown:focus {
-    background-color: #3824cc;
+    background-color: #E45D38;
 }
 
 .teleopDropdown:hover,
 .teleopDropdown:focus {
-    background-color: #3824cc;
+    background-color: #E45D38;
 }
 
 .teleopDropdown-content,
 .autoDropdown-content {
     display: none;
     position: absolute;
-    background-color: #3824cc;
+    background-color: #E45D38;
     overflow: auto;
     box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.651);
     z-index: 1;
-    left: 30%;
+    left: 20%;
     top: 10%;
     width: 30%;
 }
@@ -281,14 +292,14 @@ input[type=radio] {
 }
 
 .nextMatch {
-    padding: 1.5%;
-    margin-left: 0em;
-    font-size: 9em;
+    padding: 0.6em;
+    font-size: 7vmin;
+    float: right;
 }
 
 .cardsInfo {
-    font-size: 9em;
-    margin-left: 150em;
+    font-size: 6vmin;
+    float: right;
 }
 
 .matchNumber {

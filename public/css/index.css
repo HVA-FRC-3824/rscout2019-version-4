@@ -27,14 +27,11 @@ form {
 }
 
 .loadingsdk {
-    text-align: center;
-    margin-right: 30%;
+    posistion: relative;
 }
 
 .divsdk {
-    float: center;
-    margin-left: 4%;
-    margin-right: 4%;
+    width: 100%;
 }
 
 .tablediv {
@@ -50,11 +47,10 @@ form {
 }
 
 #load {
-    color: rgb(255, 255, 255);
-    font-size: 15px;
-    position: absolute;
-    top: 90%;
-    left: 25%;
+    color: white;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }
 
 button {
@@ -71,10 +67,10 @@ button {
 }
 
 .backBtn {
-    background-color: #38aa24;
     float: left;
-    position: relative;
-    background-size: contain;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .matchBtn {
@@ -143,5 +139,5 @@ h2 {
     display: inline-block;
     background-image: linear-gradient(#3E3E3E);
     transform: scale(.85);
-    font-size: 250%;
+    font-size: 3vw;
 }
