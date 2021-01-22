@@ -9,9 +9,7 @@ function pullMatch(matchNumber) {
     James.sort(sortById("match_number"));
     let filteredJames = James.filter(filterSchedule);
     let i = filteredJames.length;
-
     createAlliance(matchNumber);
-
     let alliances = (filteredJames[matchNumber - 1].alliances);
     document.getElementById("r1").innerHTML = alliance.red.team_keys[0].slice(3);
     document.getElementById("r2").innerHTML = alliance.red.team_keys[1].slice(3);

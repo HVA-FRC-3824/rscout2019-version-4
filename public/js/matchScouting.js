@@ -1,6 +1,9 @@
 let ballsHeld = 0;
 let dropDownCheck = false;
 let xAutoCoords = [];
+letyAutoCoords = [];
+let xTeleCoords = [];
+let yTeleCoords = [];
 
 function openPage(pageName) {
     var i, tabcontent, tablinks;
@@ -79,6 +82,22 @@ function incrementBallsHeld(balls, pickedUp) {
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
+//=========================== Post-Match Info ===================================//
+
+function wheel(didSpin) {
+    if (didSpin == 0) {
+        colorWheel = "didntSpin";
+    } else if (didSpin == 1) {
+        colorWheel = "selectedColor";
+    } else if (didSpin == 2) {
+        colorWheel = "spun3Times";
+    } else if (didSpin == 3) {
+        colorWheel = "failedWheel";
+    } else if (didSpin == 4) {
+        colorWheel = "didBoth";
+    }
+}
+
 //===================== Matchscouting Array creation ============================//
 
 function createMatchArray() {
@@ -134,9 +153,12 @@ function createMatchArray() {
     }
 
     if (autoShots != 0 && teleShots != 0) {
-        autoAccuracy = 1 - (autoMisses / autoShots);
-        teleAccuracy = 1 - (teleMisses / teleShots);
+        let autoAccuracy = 1 - (autoMisses / autoShots);
+        let teleAccuracy = 1 - (teleMisses / teleShots);
     }
+
+    autoAccuracy = (Math.round((autoAccuracy + Number.EPSILON) * 100) / 100);
+    teleAccuracy = (Math.round((teleAccuracy + Number.EPSILON) * 100) / 100);
 
     if (xTeleCoords.length == 0) {
         xTeleCoords.push(0);
@@ -148,7 +170,37 @@ function createMatchArray() {
         yAutoCoords.push(0);
     }
 
-
+    let matchDataArray = {
+        name: name,
+        match: match,
+        teamNumber: teamNumber,
+        driveStation: driveStation,
+        startPos: startPos,
+        robotScore: robotScore,
+        pickedUpAutoBay: pickedUpAutoBay,
+        pickedUpAutoFloor: pickedUpAutoFloor,
+        pickedUpTeleopFloor: pickedUpTeleopFloor,
+        pickedUpTeleopBay: pickedUpTeleopBay,
+        colorWheel: colorWheel,
+        teleMisses: teleMisses,
+        autoMisses: autoMisses,
+        autoScore: autoScore,
+        teleScore: teleScore,
+        autoAccuracy: autoAccuracy,
+        teleAccuracy: teleAccuracy,
+        yellowCheck: yellowCheck,
+        redCheck: redCheck,
+        ballsDroppedAuto: ballsDroppedAuto,
+        ballsDroppedTele: ballsDroppedTele,
+    }
+    console.log(matchDataArray);
+    heatMapArray = {
+        xauto: xAutoCoords,
+        yauto: yAutoCoords,
+        xtele: xTeleCoords,
+        ytele: yTeleCoords,
+    }
+    pushFirebaseMatch(matchDataArray, heatMapArray);
 }
 
 function pushFirebaseMatch(data, heatData) {
@@ -187,7 +239,16 @@ function pushFirebaseMatch(data, heatData) {
 
     setTimeout(function() { nextMatch(); }, 1000);
 }
-//back button for match scouting. -Graham
+
+//===================== Returning to schedule =============================//
+
+function nextMatch() {
+    console.log(match)
+    mNumber = localStorage.getItem("num");
+    localStorage.setItem("num", mNumber);
+    location.replace("./schedule.html");
+}
+
 function backConfirm() {
     if (confirm("Are you sure?") == true) {
         location.replace('./schedule.html')
