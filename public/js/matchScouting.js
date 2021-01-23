@@ -1,9 +1,9 @@
-let ballsHeld = 0;
-let dropDownCheck = false;
-let xAutoCoords = [];
-letyAutoCoords = [];
-let xTeleCoords = [];
-let yTeleCoords = [];
+var ballsHeld = 0;
+var dropDownCheck = false;
+var xAutoCoords = [];
+var yAutoCoords = [];
+var xTeleCoords = [];
+var yTeleCoords = [];
 
 function openPage(pageName) {
     var i, tabcontent, tablinks;
@@ -66,7 +66,7 @@ function hideDropdown2() {
 }
 
 //Keeping track of balls held
-function incrementBallsHeld(balls, pickedUp) {
+function incrementBallsHeld(balls, pickedUp, teleop) {
     if (pickedUp) {
         if (ballsHeld < 5) {
             ballsHeld += balls;
@@ -75,11 +75,45 @@ function incrementBallsHeld(balls, pickedUp) {
         if (ballsHeld > 0) {
             if (ballsHeld >= balls) {
                 ballsHeld -= balls;
+                if (teleop) {
+                    for (i = 0; i < balls; i++) {
+                        xTeleCoords.push(teleX);
+                        yTeleCoords.push(teley);
+                    }
+                } else if (!teleop) {
+                    for (i = 0; i < balls; i++) {
+                        xAutoCoords.push(autoX);
+                        yAutoCoords.push(autoY);
+                    }
+                }
             }
         }
     }
     document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
     document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
+}
+
+function getShootSpot(teleop) {
+    if (teleop) {
+        var teleImage = document.querySelector("#teleopField");
+        var teleButton = document.querySelector("#defaultOpen");
+        var buttonHeight = teleButton.clientHeight;
+        teleX = ((event.clientX / teleImage.clientWidth) * 1287);
+        teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638);
+        console.log(teleX + " " + teleY);
+    } else if (!teleop) {
+        var autoImage = document.querySelector("#autoField");
+        var autoButton = document.querySelector("#defaultOpen");
+        var buttonHeight = autoButton.clientHeight;
+        autoX = ((event.clientX / autoImage.clientWidth) * 1033)
+        autoY = (((event.clientY - buttonHeight) / autoImage.clientHeight) * 638)
+        console.log(autoX + " " + autoY);
+        if (teamSide == "B") {
+            autoX = (((autoImage.clientWidth - event.clientX) / autoImage.clientWidth) * 1033);
+            autoY = (((autoImage.clientHeight - event.clientY) / autoImage.clientHeight) * 638);
+        }
+    }
+
 }
 
 //=========================== Post-Match Info ===================================//
@@ -215,7 +249,6 @@ function pushFirebaseMatch(data, heatData) {
         "teleopPickedUpBay": data.pickedUpTeleopBay,
         "climbType": data.climbType,
         "isLevel": data.isLevel,
-        "notes": data.notes,
         "colorWheel": data.colorWheel,
         "autoMisses": data.autoMisses,
         "teleMisses": data.teleMisses,

@@ -1,0 +1,50 @@
+html {
+    background: url("../images/matchPreviewBackground.jpg") center center fixed;
+    background-size: cover;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: clear;
+    padding: 10px;
+    opacity: 1;
+}
+
+body {
+    text-align: top;
+    text-align: center;
+    opacity: 1;
+}
+
+.buttonBack {
+    background-color: #E4DFDA;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+button {
+    background-color: #E4DFDA;
+    opacity: 0.75;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #aaaaff;
+}
+
+.grid-container>div {
+    background-color: #48056B;
+    padding: 10%;
+    font-size: 200%;
+    overflow-y: auto;
+    max-height: 30vh;
+}

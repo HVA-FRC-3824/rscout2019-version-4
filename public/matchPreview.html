@@ -14,12 +14,13 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/matchPreview.css">
     <link rel="icon" href="../images/rbtoc logo.png" type="image/x-icon">
     <!--reference javascript stuff-->
-    <script type="text/javascript" src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/preview.js"></script>
-    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="./js/schedule.js"></script>
+    <script type="text/javascript" src="./js/data.js"></script>
+    <script type="text/javascript" src="./js/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -41,36 +42,36 @@
         </div>
         <div style="margin-bottom: 2%">
             <input placeholder="Match Number" type="text" name="matchNumPreview" id="matchNumPreview" class="textBox">
-            <button onclick=pullMatchInput() class="button"> Preview Match (refresh between uses) </button> <br>
+            <button onclick="pullMatchInput()" class="button "> Preview Match </button> <br>
         </div>
-        <div class="grid-container">
+        <div class="grid-container ">
             <div class="grid-item ">
-                <p id="r1" style="color:red;">red 1:</p>
-                <p id="red1Data"></p>
+                <p id="r1" style="color:red; ">red 1:</p>
+                <p id="red1Data "></p>
             </div>
             <div class="grid-item ">
-                <p id="r2" style="color:red;">red 2: </p>
-                <p id="red2Data"></p>
+                <p id="r2" style="color:red; ">red 2: </p>
+                <p id="red2Data "></p>
             </div>
             <div class="grid-item ">
-                <p id="r3" style="color:red;">red 3:</p>
-                <p id="red3Data"></p>
+                <p id="r3" style="color:red; ">red 3:</p>
+                <p id="red3Data "></p>
             </div>
         </div>
 
         <div id="backButton ">
             <form action=".\index.html ">
-                <button type="submit" class="backBtn">
+                <button type="submit " class="backBtn ">
                         Back
                     </button>
             </form>
         </div>
     </div>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport " content="width=device-width, user-scalable=no ">
+
 </body>
 <script>
     loadSchedule();
-    pullMatchInput();
 </script>
 
 </html>

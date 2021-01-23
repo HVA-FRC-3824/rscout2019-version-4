@@ -454,8 +454,8 @@ function getShootSpotTeleop() {
     var teleImage = document.querySelector("#teleopField");
     var teleButton = document.querySelector("#defaultOpen");
     var buttonHeight = teleButton.clientHeight;
-    teleX = ((event.clientX / teleImage.clientWidth) * 1287)
-    teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638)
+    teleX = ((event.clientX / teleImage.clientWidth) * 1287);
+    teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638);
     console.log(teleX + " " + teleY);
 }
 

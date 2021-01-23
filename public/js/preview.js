@@ -4,13 +4,15 @@ function pullMatchInput() {
     pullMatch(matchPreviewNum);
 }
 
+
 function pullMatch(matchNumber) {
-    kidnap("/event/2020scmb/match/");
+    kidnap("/event/2020scmb/matches");
     James.sort(sortById("match_number"));
-    let filteredJames = James.filter(filterSchedule);
-    let i = filteredJames.length;
+    filteredJames = James.filter(filterSchedule);
+    console.log(filteredJames);
+    var i = filteredJames.length;
     createAlliance(matchNumber);
-    let alliances = (filteredJames[matchNumber - 1].alliances);
+    var alliance = (filteredJames[matchNumber - 1].alliances);
     document.getElementById("r1").innerHTML = alliance.red.team_keys[0].slice(3);
     document.getElementById("r2").innerHTML = alliance.red.team_keys[1].slice(3);
     document.getElementById("r3").innerHTML = alliance.red.team_keys[2].slice(3);
@@ -92,31 +94,4 @@ function gotMatchData(data) { //makes the data readable
     //THIS WILL ACTUALLY PUT THE DATA ON SCREEN, PUT ALL THE DATA ON THERE AT ONCE BY PUTTING IT 
     //ALL EQUAL TO THE INNERHTML OF THE DESIRED DRIVE STATION
     //
-}
-
-// ===================== supporting functions ===================== //
-
-function filterSchedule(qual) {
-    return qual.comp_level == "qm";
-}
-
-function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    let i = matchNumber - 1
-    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
-    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
-}
-
-function loadSchedule() {
-    James = JSON.parse(localStorage.getItem("blueAllianceData"));
-    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," +
-            JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber +
-            ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance +
-            "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
-        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-        document.body.appendChild(btn);
-    };
 }

@@ -21,7 +21,9 @@
     <script type="text/javascript" src="./js/matchScouting.js"></script>
     <link rel="icon" href="../images/rbtoc logo.png" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 
@@ -117,7 +119,7 @@
     -->
 
     <h id="Auto" class="tabcontent">
-        <img onclick="fieldInput()" src="" alt="auto field" id="autoField"></img>
+        <img onclick="fieldInput(), getShootSpot(false)" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
             <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
             <button class="interact" onclick="incrementBallsHeld(1,false);">Dropped Ball</button>
@@ -132,11 +134,11 @@
         </div>
         <!--The dropdown after the first dropdown -->
         <div id="autoDropdown2" class="autoDropdown-content">
-            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false)">5 Balls</a>
-            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false)">4 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false)">3 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false)">2 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false)">1 Ball</a>
+            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false,false)">5 Balls</a>
+            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false,false)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false,false)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false,false)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,false)">1 Ball</a>
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
@@ -147,7 +149,7 @@
     -->
 
     <h id="Teleop" class="tabcontent">
-        <img onclick="fieldInput()" src="" alt="Teleop field" id="teleopField"></img>
+        <img onclick="fieldInput(), getShootSpot(true)" src="" alt="Teleop field" id="teleopField"></img>
         <div class="teleInteraction">
 
             <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
@@ -165,11 +167,11 @@
             <a href="#miss" onclick="hideDropdown(),fieldInput2()">Miss</a>
         </div>
         <div id="teleopDropdown2" class="teleopDropdown-content">
-            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false)">5 Balls</a>
-            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false)">4 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false)">3 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false)">2 Balls</a>
-            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false)">1 Ball</a>
+            <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false,true)">5 Balls</a>
+            <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false,true)">4 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false,true)">3 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false,true)">2 Balls</a>
+            <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,true)">1 Ball</a>
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
@@ -184,9 +186,6 @@
         <br>
         <div class=postMatchInfo>
 
-            <h9>Notes: </h9>
-            <br>
-            <input id="notes"></input>
             <br> Color Wheel: <br>
             <label class="radio">
             <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
