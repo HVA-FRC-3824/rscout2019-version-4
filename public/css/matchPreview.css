@@ -42,7 +42,7 @@ button:hover {
 }
 
 .grid-container>div {
-    background-color: #48056B;
+    background-color: rgba(198, 204, 190, 0.5);
     padding: 10%;
     font-size: 200%;
     overflow-y: auto;
