@@ -29,14 +29,26 @@
 
 
 <body onload="localName()">
+
+    <!--
+============================================
+        Tablinks at the top of the page
+============================================
+    -->
+
     <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-    <button class="tablink" onclick="openPage('Auto','white'), teamColor('drive')">Auto</button>
-    <button class="tablink" onclick="openPage('Teleop','white'), teamColor('driveStation')"> Teleop </button>
+    <button class="tablink" onclick="openPage('Auto','white'), updateBallsHeld()">Auto</button>
+    <button class="tablink" onclick="openPage('Teleop','white'), updateBallsHeld()"> Teleop </button>
     <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
     <button class="tablink" onclick="backConfirm()"> Back to Schedule </button>
-    <!--<button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button> -->
-    <h id="Pre" class="tabcontent">
 
+    <!--
+============================================
+    This is Pre Match Info
+============================================
+    -->
+
+    <h id="Pre" class="tabcontent">
         <h2 id="matchNumber" class="matchNumber" style="float:right">Match Number</h2>
         <h2 class="scouterName">Scouter Name:</h2>
         <input class="nameBox" type="text" name="name" id="scouterName" value="">
@@ -77,10 +89,9 @@
                 var match = localStorage.getItem("num");
                 document.getElementById("matchNumber").innerHTML = "Match Number: " + match;
             </script>
-            <h2>Field Start Position
-            </h2>
-            <form id=startPosition>
 
+            <h2>Field Start Position</h2>
+            <form id=startPosition>
                 <label class="radio" id="startTop">
                 <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
             </label><br>
@@ -91,25 +102,23 @@
                 <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
             </label><br><br>
             </form>
-            <h2>Balls started with
-            </h2>
-            <form id=startingBalls>
 
+            <h2>Balls started with</h2>
+            <form id=startingBalls>
                 <label class="radio" id="startTop">
-                <input type="radio"  onclick="chooseStartBalls(0)" name="name" value="1"> 0 Balls
+                <input type="radio"  onclick="setBallsHeld(0)" name="name" value="1"> 0 Balls
             </label><br>
                 <label class="radio" id="startTop">
-                <input type="radio"  onclick="chooseStartBalls(1)" name="name" value="2"> 1 Ball
+                <input type="radio"  onclick="setBallsHeld(1)" name="name" value="2"> 1 Ball
             </label><br>
                 <label class="radio" id="startTop">
-                <input type="radio"  onclick="chooseStartBalls(2)" name="name" value="3"> 2 Balls
+                <input type="radio"  onclick="setBallsHeld(2)" name="name" value="3"> 2 Balls
             </label><br>
                 <label class="radio" id="startTop">
-                <input type="radio"  onclick="chooseStartBalls(3)" name="name" value="3"> 3 Balls
+                <input type="radio"  onclick="setBallsHeld(3)" name="name" value="3"> 3 Balls
             </label><br>
             </form>
         </div>
-
     </h>
 
     <!--
@@ -142,6 +151,7 @@
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
+
     <!--
 ============================================
     This is Teleop  
@@ -157,9 +167,6 @@
             <button class="interact" onclick="incrementBallsHeld(1, false,true,true);">Dropped Ball</button>
             <h3 id="ballsHeldTele"> </h3>
         </div>
-
-        <!-- Here the 1 that is passed in tells it to increment the teleop pickups-->
-
         <div id="teleopDropdown" class="teleopDropdown-content">
             <a href="#innerPort" onclick="hideDropdown(),fieldInput2()">Circle</a>
             <a href="#outerPort" onclick="hideDropdown(),fieldInput2()">Hexagon</a>
@@ -175,58 +182,57 @@
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
     </h>
-    <!--
 
+    <!--
 ============================================
     This is Post Match
 ============================================
     -->
+
     <div id="Post" class="tabcontent">
         <br>
         <br>
-        <div class=postMatchInfo>
 
+        <div class=postMatchInfo>
             <br> Color Wheel: <br>
             <label class="radio">
-            <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
-        <label>
-        <label class="radio">
-            <input type="radio" onclick="wheel(1)" name="wheel" >Selected color on color wheel<br>
-        <label>
-        <label class="radio">
-            <input type="radio" onclick="wheel(2)" name="wheel" >Spun wheel 3 times<br>
-        <label>
-        <label class="radio">
-            <input type="radio" onclick="wheel(4)" name="wheel" >Spun three times and chose color<br>
-        <label>
-        <label class="radio">
-            <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
-        <label>
+                <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
+            <label>
+            <label class="radio">
+                <input type="radio" onclick="wheel(1)" name="wheel" >Selected color on color wheel<br>
+            <label>
+            <label class="radio">
+                <input type="radio" onclick="wheel(2)" name="wheel" >Spun wheel 3 times<br>
+            <label>
+            <label class="radio">
+                <input type="radio" onclick="wheel(4)" name="wheel" >Spun three times and chose color<br>
+            <label>
+            <label class="radio">
+                <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
+            <label>
         </div>
         <br>
+
         <div class=cardsInfo>
             <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
-            <br><br>
-            Red Card: <br>
-        <label class="switch">
+
+            <br><br>Red Card: <br>
+            <label class="switch">
                 <input type="checkbox" id="redCheck">
                 <span class="slider"></span>
                 </label>
-            <br> Yellow Card: <br>
+
+            <br> Yellow Card:<br>
             <label class="switch">
                 <input type="checkbox" id="yellowCheck">
                 <span class="sliderYellow"></span>
                 </label>
         </div>
-
     </div>
-
 </body>
 
-</input>
-
 <!-- 
-    🚌. 🏃 
+    🚌.  🏃 
     🚌. 🏃 
     🚌. 🏃 
     🚌. 🏃 

@@ -21,7 +21,6 @@ function localName() {
 
 //========================== Pre Match Info =====================================//
 
-
 function chooseDriveStation(drive) { //Making the field image appear after chosing team
     teamSide = drive.slice(0, 1);
     if (teamSide == "R") {
@@ -33,6 +32,10 @@ function chooseDriveStation(drive) { //Making the field image appear after chosi
     } else {
         alert("No Team Selected")
     }
+}
+
+function setBallsHeld(startingBalls) {
+    ballsHeld += startingBalls;
 }
 
 
@@ -59,42 +62,9 @@ function hideDropdown() {
     }
 }
 
-
 function hideDropdown2() {
     document.getElementById("autoDropdown2").classList.toggle("show");
     document.getElementById("teleopDropdown2").classList.toggle("show");
-}
-
-//Keeping track of balls held
-function incrementBallsHeld(balls, pickedUp, teleop, dropped) {
-    if (pickedUp) {
-        if (ballsHeld < 5) {
-            ballsHeld += balls;
-        }
-    } else if (!pickedUp) {
-        if (ballsHeld > 0) {
-            if (ballsHeld >= balls) {
-                ballsHeld -= balls;
-                if (!dropped) {
-                    if (teleop) {
-                        for (i = 0; i < balls; i++) {
-                            xTeleCoords.push(teleX);
-                            yTeleCoords.push(teley);
-                        }
-                    } else if (!teleop) {
-                        for (i = 0; i < balls; i++) {
-                            xAutoCoords.push(autoX);
-                            yAutoCoords.push(autoY);
-                        }
-                    }
-                } else {
-                    console.log("Drop");
-                }
-            }
-        }
-    }
-    document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
-    document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
 function getShootSpot(teleop) {
@@ -117,7 +87,42 @@ function getShootSpot(teleop) {
             autoY = (((autoImage.clientHeight - event.clientY) / autoImage.clientHeight) * 638);
         }
     }
+}
 
+//Keeping track of balls held
+function incrementBallsHeld(balls, pickedUp, teleop, dropped) {
+    if (pickedUp) {
+        if (ballsHeld < 5) {
+            ballsHeld += balls;
+        }
+    } else if (!pickedUp) {
+        if (ballsHeld > 0) {
+            if (ballsHeld >= balls) {
+                ballsHeld -= balls;
+                if (!dropped) {
+                    if (teleop) {
+                        for (i = 0; i < balls; i++) {
+                            xTeleCoords.push(teleX);
+                            yTeleCoords.push(teleY);
+                        }
+                    } else if (!teleop) {
+                        for (i = 0; i < balls; i++) {
+                            xAutoCoords.push(autoX);
+                            yAutoCoords.push(autoY);
+                        }
+                    }
+                } else {
+                    console.log("Drop");
+                }
+            }
+        }
+    }
+    updateBallsHeld();
+}
+
+function updateBallsHeld() {
+    document.getElementById("ballsHeld").innerHTML = "Balls Held: " + ballsHeld;
+    document.getElementById("ballsHeldTele").innerHTML = "Balls Held: " + ballsHeld;
 }
 
 //=========================== Post-Match Info ===================================//
@@ -273,7 +278,6 @@ function pushFirebaseMatch(data, heatData) {
         "x tele": heatData.xtele,
         "y tele": heatData.ytele,
     });
-
     setTimeout(function() { nextMatch(); }, 1000);
 }
 

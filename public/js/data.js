@@ -29,3 +29,44 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
+
+function sortTBAData() {
+    //sorts through the tba data
+    kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    filteredJames = James.filter(filterSchedule);
+    var len = filteredJames.length;
+    for (let i = 0; i < len; i++) {
+        //loop through at grab all thems data 
+        currentMatchData = filteredJames[i];
+        b1 = currentMatchData.alliances.blue.team_keys[0];
+        b1Num = b1.slice(3, 8);
+        console.log(b1Num);
+        b2 = currentMatchData.alliances.blue.team_keys[1];
+        b3 = currentMatchData.alliances.blue.team_keys[2];
+        r1 = currentMatchData.alliances.red.team_keys[0];
+        r2 = currentMatchData.alliances.red.team_keys[1];
+        r3 = currentMatchData.alliances.red.team_keys[2];
+
+        b1MovedOffAutoLine = currentMatchData.score_breakdown.blue.initLineRobot1;
+        b2MovedOffAutoLine = currentMatchData.score_breakdown.blue.initLineRobot2;
+        b3MovedOffAutoLine = currentMatchData.score_breakdown.blue.initLineRobot3;
+        r1MovedOffAutoLine = currentMatchData.score_breakdown.red.initLineRobot1;
+        r2MovedOffAutoLine = currentMatchData.score_breakdown.red.initLineRobot2;
+        r3MovedOffAutoLine = currentMatchData.score_breakdown.red.initLineRobot3;
+
+        b1Climbed = currentMatchData.score_breakdown.blue.endgameRobot1;
+        b2Climbed = currentMatchData.score_breakdown.blue.endgameRobot2;
+        b3Climbed = currentMatchData.score_breakdown.blue.endgameRobot3;
+        r1Climbed = currentMatchData.score_breakdown.red.endgameRobot1;
+        r2Climbed = currentMatchData.score_breakdown.red.endgameRobot2;
+        r3Climbed = currentMatchData.score_breakdown.red.endgameRobot3;
+
+
+    }
+    console.log(filteredJames);
+}
+
+function filterSchedule(qual) {
+    return qual.comp_level == "qm";
+}

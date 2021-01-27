@@ -261,7 +261,7 @@ input[type=radio] {
 .autoDropdown-content a {
     color: black;
     padding: 5% 5%;
-    font-size: 200%;
+    font-size: 150%;
     text-decoration: none;
     display: block;
 }
