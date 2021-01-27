@@ -1,6 +1,7 @@
 html {
     background: url("../images/matchPreviewBackground.jpg") center center fixed;
     background-size: cover;
+    font-family: Ubuntu;
 }
 
 .grid-container {
@@ -17,16 +18,16 @@ body {
     opacity: 1;
 }
 
-.buttonBack {
-    background-color: #E4DFDA;
-    position: absolute;
+.backBtn {
+    background-color: #E45D38;
     top: 0%;
     left: 0%;
+    float: left;
 }
 
 button {
-    background-color: #E4DFDA;
-    opacity: 0.75;
+    background-color: #782656;
+    color: white;
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -35,6 +36,7 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 button:hover {
@@ -42,9 +44,11 @@ button:hover {
 }
 
 .grid-container>div {
-    background-color: rgba(198, 204, 190, 0.5);
+    background-image: linear-gradient(#5B5A56, #41403B);
     padding: 10%;
     font-size: 200%;
+    color: white;
     overflow-y: auto;
     max-height: 30vh;
+    font-family: Ubuntu !important;
 }

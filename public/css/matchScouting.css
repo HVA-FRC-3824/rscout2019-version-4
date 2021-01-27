@@ -13,12 +13,13 @@ html {
 /* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
-    background-color: #48054B;
+    background-color: #782656;
     color: #fff;
     border-radius: 1em;
     font-size: 5vmin;
     text-align: center;
     border: 0%;
+    border-style: outset;
 }
 
 form {
@@ -151,6 +152,8 @@ h2 {
     padding: 0.5em;
     color: white;
     border-radius: 1em;
+    border-style: outset;
+    border-color: grey;
 }
 
 h3 {
@@ -162,6 +165,8 @@ h3 {
     padding: 0.7em;
     color: white;
     border-radius: 1em;
+    border-style: outset;
+    border-color: #782656;
 }
 
 .interact {
@@ -172,6 +177,7 @@ h3 {
     padding: 9% 0%;
     font-size: 5vmin;
     width: 100%;
+    border-style: outset;
 }
 
 input[type=radio] {

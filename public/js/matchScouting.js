@@ -66,7 +66,7 @@ function hideDropdown2() {
 }
 
 //Keeping track of balls held
-function incrementBallsHeld(balls, pickedUp, teleop) {
+function incrementBallsHeld(balls, pickedUp, teleop, dropped) {
     if (pickedUp) {
         if (ballsHeld < 5) {
             ballsHeld += balls;
@@ -75,16 +75,20 @@ function incrementBallsHeld(balls, pickedUp, teleop) {
         if (ballsHeld > 0) {
             if (ballsHeld >= balls) {
                 ballsHeld -= balls;
-                if (teleop) {
-                    for (i = 0; i < balls; i++) {
-                        xTeleCoords.push(teleX);
-                        yTeleCoords.push(teley);
+                if (!dropped) {
+                    if (teleop) {
+                        for (i = 0; i < balls; i++) {
+                            xTeleCoords.push(teleX);
+                            yTeleCoords.push(teley);
+                        }
+                    } else if (!teleop) {
+                        for (i = 0; i < balls; i++) {
+                            xAutoCoords.push(autoX);
+                            yAutoCoords.push(autoY);
+                        }
                     }
-                } else if (!teleop) {
-                    for (i = 0; i < balls; i++) {
-                        xAutoCoords.push(autoX);
-                        yAutoCoords.push(autoY);
-                    }
+                } else {
+                    console.log("Drop");
                 }
             }
         }

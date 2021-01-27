@@ -121,8 +121,8 @@
     <h id="Auto" class="tabcontent">
         <img onclick="fieldInput(), getShootSpot(false)" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
-            <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
-            <button class="interact" onclick="incrementBallsHeld(1,false);">Dropped Ball</button>
+            <button class="interact" onclick="incrementBallsHeld(1, true,false,false);">Picked Up From Floor</button>
+            <button class="interact" onclick="incrementBallsHeld(1,false,false,true);">Dropped Ball</button>
             <h3 id="ballsHeld"></h3>
         </div>
 
@@ -154,7 +154,7 @@
 
             <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
             <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Loading Zone</button>
-            <button class="interact" onclick="incrementBallsHeld(1, false);">Dropped Ball</button>
+            <button class="interact" onclick="incrementBallsHeld(1, false,true,true);">Dropped Ball</button>
             <h3 id="ballsHeldTele"> </h3>
         </div>
 
