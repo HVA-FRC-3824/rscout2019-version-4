@@ -1,4 +1,4 @@
-var dataObject = [];
+var filteredJames = [];
 matchNumber = 1;
 dStation = 0;
 teamSide = "red";
@@ -6,14 +6,9 @@ robotNumber = 9999;
 
 
 function pullMatchData() {
-    //var matchNumber = document.getElementById('matchNumPreview').value;
-    //console.log(matchNumber)
     kidnap("/event/2020scmb/matches");
-    console.log(James);
     James.sort(sortById("match_number"));
-    console.log("line 12: ", James);
-    dataObject = James.filter(filterSchedule);
-    console.log("line 14", dataObject);
+    filteredJames = James.filter(filterSchedule);
 }
 
 function pullMatchInput() {
@@ -37,6 +32,7 @@ function pullMatch() {
 
 //gets the json from firebase of a certain robot
 function pullPreviewData(robotNumber) {
+    console.log(robotNumber);
     firebase.database().ref('/matchScouting/' + robotNumber).once("value", gotMatchData);
 }
 
@@ -48,26 +44,20 @@ function gotMatchData(data) { //makes the data readable
     //gets us some data from firebase
     var matchParsed = JSON.parse(JSON.stringify(data.val()));
     var matchNums = Object.keys(matchParsed);
-    for (let i = 0; i < matchNums.length; i++) { //couple for loops to grab alllll the data for that robot
+    for (i = 0; i < matchNums.length; i++) { //couple for loops to grab alllll the data for that robot
         //console.log(matchNums);
         var currMatch = matchNums[i];
         var matchNames = Object.keys(matchParsed[currMatch]);
         //console.log(matchNames);
-        for (let i = 0; i < matchNames.length; i++) {
-            currName = matchNames[i];
+        for (j = 0; j < matchNames.length; j++) {
+            currName = matchNames[j];
             //console.log("MatchData: " + currMatch + " " + currentName);
             //ALL DATA WE WANT GOES HERE
             teleAccuracyMaster.push(matchParsed[currMatch][currName]["teleAccuracy"]);
             climbTypeMaster.push(matchParsed[currMatch][currName]["climbType"]);
-            /*
-            //A:: DATA WE WANT GOES HERE
-            for (l = 0; l < 500; l++) {
-                console.log("Loading...");
-            } //might not need this but its here because im scared it will break things again
-            */
         }
     }
-    for (t = 0; t < (teleAccuracyMaster.length); t++) { //to calculate averages or compline data, could be used for other things that just tele accuracy master
+    for (t = 0; t < (teleAccuracyMaster.length); t++) { //to calculate averages or combine data, could be used for other things that just tele accuracy master
         teleAccuracyTotal += teleAccuracyMaster[t];
     }
 
@@ -78,38 +68,44 @@ function gotMatchData(data) { //makes the data readable
         case "0r":
             console.log("0r");
             document.getElementById("r1").innerHTML = robotNumber;
-            //document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 1;
             pullMatch();
+            break;
         case "1r":
             console.log("1r");
             document.getElementById("r2").innerHTML = robotNumber;
-            //document.getElementById("red2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("red2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 2;
             pullMatch();
+            break;
         case "2r":
             console.log("2r");
             document.getElementById("r3").innerHTML = robotNumber;
-            //document.getElementById("red3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("red3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 0;
             teamSide = "blue";
             pullMatch();
+            break;
         case "0b":
             console.log("0b");
             document.getElementById("b1").innerHTML = robotNumber;
-            //document.getElementById("blue1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("blue1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 1;
             pullMatch();
+            break;
         case "1b":
             console.log("1b");
             document.getElementById("b2").innerHTML = robotNumber;
-            //document.getElementById("blue2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("blue2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 2;
             pullMatch();
+            break;
         case "2b":
             console.log("2b");
             document.getElementById("b3").innerHTML = robotNumber;
-            //document.getElementById("blue3data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
+            document.getElementById("blue3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
+            break;
     }
 }
 
