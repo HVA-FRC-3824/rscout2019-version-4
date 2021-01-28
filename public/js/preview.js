@@ -1,28 +1,37 @@
-var dStation = 0;
-var matchNumber = 1;
-var teamSide = "red";
-var robotNumber = 9999;
+var dataObject = [];
+matchNumber = 1;
+dStation = 0;
+teamSide = "red";
+robotNumber = 9999;
+
 
 function pullMatchData() {
-    matchNumber = document.getElementById('matchNumPreview').value;
-    console.log(matchNumber)
+    //var matchNumber = document.getElementById('matchNumPreview').value;
+    //console.log(matchNumber)
     kidnap("/event/2020scmb/matches");
+    console.log(James);
     James.sort(sortById("match_number"));
-    var filteredJames = James.filter(filterSchedule);
+    console.log("line 12: ", James);
+    dataObject = James.filter(filterSchedule);
+    console.log("line 14", dataObject);
 }
 
 function pullMatchInput() {
-    if (teamSide == "red") {
-        console.log("this is red");
-        robotNumber = filteredJames[matchNumber - 1].alliances.red.team_keys[dStation].slice(3);
-    } else {
-        console.log("this is blue");
-        robotNumber = filteredJames[matchNumber - 1].alliances.blue.team_keys[dStation].slice(3);
-    }
-    pullMatch(robotNumber);
+    matchNumber = document.getElementById('matchNumPreview').value;
+    console.log(matchNumber);
+    dStation = 0;
+    teamSide = "red";
+    pullMatch();
 }
 
-function pullMatch(robotNumber) {
+function pullMatch() {
+    if (teamSide == "red") {
+        console.log("this is red");
+        robotNumber = dataObject[matchNumber - 1].alliances.red.team_keys[dStation].slice(3);
+    } else {
+        console.log("this is blue");
+        robotNumber = dataObject[matchNumber - 1].alliances.blue.team_keys[dStation].slice(3);
+    }
     pullPreviewData(robotNumber);
 }
 
@@ -67,56 +76,63 @@ function gotMatchData(data) { //makes the data readable
     var teamStation = dStation + teamSide.substring(0, 1);
     switch (teamStation) {
         case "0r":
+            console.log("0r");
             document.getElementById("r1").innerHTML = robotNumber;
             //document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
             dStation = 1;
-            pullMatch(document.getElementById("matchNumPreview").value);
+            pullMatch();
         case "1r":
+            console.log("1r");
             document.getElementById("r2").innerHTML = robotNumber;
             //document.getElementById("red2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
             dStation = 2;
-            pullMatch(document.getElementById("matchNumPreview").value);
+            pullMatch();
         case "2r":
+            console.log("2r");
             document.getElementById("r3").innerHTML = robotNumber;
             //document.getElementById("red3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
             dStation = 0;
-            switchColor = (filteredJames[matchNumber - 1].alliances.blue.team_keys[0].slice(3))
-            teamSide = blue;
-            pullMatch(document.getElementById("matchNumPreview").value);
+            teamSide = "blue";
+            pullMatch();
         case "0b":
+            console.log("0b");
             document.getElementById("b1").innerHTML = robotNumber;
             //document.getElementById("blue1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
             dStation = 1;
-            pullMatch(document.getElementById("matchNumPreview").value);
+            pullMatch();
         case "1b":
+            console.log("1b");
             document.getElementById("b2").innerHTML = robotNumber;
             //document.getElementById("blue2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
             dStation = 2;
-            pullMatch(document.getElementById("matchNumPreview").value);
+            pullMatch();
         case "2b":
+            console.log("2b");
             document.getElementById("b3").innerHTML = robotNumber;
             //document.getElementById("blue3data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100) + climbTypeMaster;
-            pullMatch(document.getElementById("matchNumPreview").value);
     }
-    //
-    //THIS WILL ACTUALLY PUT THE DATA ON SCREEN, PUT ALL THE DATA ON THERE AT ONCE BY PUTTING IT 
-    //ALL EQUAL TO THE INNERHTML OF THE DESIRED DRIVE STATION
-    //
 }
 
+// ====================== Supporting Functions ============================= //
 /*
-function pullMatch(matchNumber) {
-    
-    var i = filteredJames.length;
-    //createAlliance(matchNumber);
-    var alliance = (filteredJames[matchNumber - 1].alliances);
-    document.getElementById("r1").innerHTML = alliance.red.team_keys[0].slice(3);
-    document.getElementById("r2").innerHTML = alliance.red.team_keys[1].slice(3);
-    document.getElementById("r3").innerHTML = alliance.red.team_keys[2].slice(3);
-    document.getElementById("b1").innerHTML = alliance.blue.team_keys[0].slice(3);
-    document.getElementById("b2").innerHTML = alliance.blue.team_keys[1].slice(3);
-    document.getElementById("b3").innerHTML = alliance.blue.team_keys[2].slice(3);
-    pullPreviewData(alliance.blue.team_keys[dStation].slice(3), "b");
-    pullPreviewData(alliance.red.team_keys[dStation].slice(3), "r");
+function loadSchedule() {
+    James = JSON.parse(localStorage.getItem("blueAllianceData"));
+    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
+    /*for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
+        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
+        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," +
+            JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber +
+            ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance +
+            "</p></button>"); //*Defines matchInfo as the text of a button
+        btn = document.createElement("BUTTON"); //* creates a button
+        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
+        document.body.appendChild(btn);
+    };
+}
+
+function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
+    var i = matchNumber - 1
+    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
+    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
 }
 */

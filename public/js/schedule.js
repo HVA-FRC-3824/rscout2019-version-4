@@ -107,13 +107,4 @@ function makeSchedule() { //* Makes schedule
     localStorage.setItem("blueAllianceData", JSON.stringify(filteredJames));
 };
 
-function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    var i = matchNumber - 1
-    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
-    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
-}
-
-function filterSchedule(qual) {
-    return qual.comp_level == "qm";
-}
 //TODO make buttons and add to screen
