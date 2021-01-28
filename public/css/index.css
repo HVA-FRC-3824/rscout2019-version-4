@@ -77,6 +77,7 @@ button {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    margin-right: 100%;
 }
 
 .matchBtn {
