@@ -41,12 +41,16 @@ function sortTBAData() {
         currentMatchData = filteredJames[i];
         b1 = currentMatchData.alliances.blue.team_keys[0];
         b1Num = b1.slice(3, 8);
-        console.log(b1Num);
         b2 = currentMatchData.alliances.blue.team_keys[1];
+        b2Num = b2.slice(3, 8);
         b3 = currentMatchData.alliances.blue.team_keys[2];
+        b3Num = b3.slice(3, 8);
         r1 = currentMatchData.alliances.red.team_keys[0];
+        r1Num = b1.slice(3, 8);
         r2 = currentMatchData.alliances.red.team_keys[1];
+        r2Num = b1.slice(3, 8);
         r3 = currentMatchData.alliances.red.team_keys[2];
+        r3Num = b1.slice(3, 8);
 
         b1MovedOffAutoLine = currentMatchData.score_breakdown.blue.initLineRobot1;
         b2MovedOffAutoLine = currentMatchData.score_breakdown.blue.initLineRobot2;
@@ -62,6 +66,12 @@ function sortTBAData() {
         r2Climbed = currentMatchData.score_breakdown.red.endgameRobot2;
         r3Climbed = currentMatchData.score_breakdown.red.endgameRobot3;
 
+        console.log(b1Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        console.log(b2Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        console.log(b3Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        console.log(r1Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        console.log(r2Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        console.log(r3Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
 
     }
     console.log(filteredJames);

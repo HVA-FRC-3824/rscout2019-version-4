@@ -144,7 +144,7 @@ h1 {
 }
 
 h2 {
-    background-color: #3e3e3e;
+    background-color: #782656;
     font-size: 4.8vmin;
     position: relative;
     display: inline-block;
@@ -154,6 +154,7 @@ h2 {
     border-radius: 1em;
     border-style: outset;
     border-color: grey;
+    border-width: 2px;
 }
 
 h3 {
@@ -167,6 +168,7 @@ h3 {
     border-radius: 1em;
     border-style: outset;
     border-color: #782656;
+    border-width: 2px;
 }
 
 .interact {
@@ -200,7 +202,8 @@ input[type=radio] {
     display: inline-block;
     float: right;
     margin-right: 5em;
-    top: -1em;
+    top: -1.86em;
+    left: -10vh;
 }
 
 .postMatchInfo {
@@ -311,9 +314,14 @@ input[type=radio] {
 .matchNumber {
     font-size: 3vmin;
     position: relative;
+    top: .075vh;
     left: 0;
     padding: 0.7em;
-    border-radius: 0.2em;
+    border-style: outset;
+    border-color: #782656;
+    border-width: 2px;
+    background-color: #E45D38;
+    border-radius: 0;
 }
 
 .nameBox {
@@ -321,4 +329,8 @@ input[type=radio] {
     height: 2em;
     width: 14em;
     margin-right: 10em;
+}
+
+.scouterName {
+    top: .2vh;
 }

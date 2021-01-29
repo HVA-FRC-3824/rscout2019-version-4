@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // // ??????????????????????????????????????????????????????????????
-    // // The Firebase SDK is initialized and available here!
+    ////The Firebase SDK is initialized and available here!
     // Set the configuration for your app
     // TODO: Replace with your project's config object
     var config = {
@@ -12,19 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get a reference to the database service
     var database = firebase.database();
 
-    // firebase.auth().onAuthStateChanged(user => { });
-    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-    // firebase.messaging().requestPermission().then(() => { });
-    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-    //
-    // // ??????????????????????????????????????????????????????????????
-
     try {
         let app = firebase.app();
         let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-        document.getElementById('load').innerHTML = `Created by Evan Boswell, Nick Broyles, Max Howell, Grant Johnson, Weston Agreda, Graham Boswell. Firebase SDK loaded with ${features.join(', ')}`;
+        if (document.URL.includes("index.html")) {
+            document.getElementById('load').innerHTML = `Created by Evan Boswell, Nick Broyles, Max Howell, Grant Johnson, Weston Agreda, Graham Boswell. Firebase SDK loaded with ${features.join(', ')}`;
+        }
+
     } catch (e) {
         console.error(e);
-        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        if (document.URL.includes("index.html")) {
+            document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
     }
 });

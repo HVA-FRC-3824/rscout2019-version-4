@@ -22,10 +22,10 @@ function pullMatchInput() {
 function pullMatch() {
     if (teamSide == "red") {
         console.log("this is red");
-        robotNumber = dataObject[matchNumber - 1].alliances.red.team_keys[dStation].slice(3);
+        robotNumber = filteredJames[matchNumber - 1].alliances.red.team_keys[dStation].slice(3);
     } else {
         console.log("this is blue");
-        robotNumber = dataObject[matchNumber - 1].alliances.blue.team_keys[dStation].slice(3);
+        robotNumber = filteredJames[matchNumber - 1].alliances.blue.team_keys[dStation].slice(3);
     }
     pullPreviewData(robotNumber);
 }
@@ -108,27 +108,3 @@ function gotMatchData(data) { //makes the data readable
             break;
     }
 }
-
-// ====================== Supporting Functions ============================= //
-/*
-function loadSchedule() {
-    James = JSON.parse(localStorage.getItem("blueAllianceData"));
-    James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
-    /*for (matchNumber = 1; matchNumber <= James.length; matchNumber++) { //* For loop for creating the schedule
-        createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button onclick =  'startMatchScouting(" + matchNumber + "," +
-            JSON.stringify(James[matchNumber - 1].alliances) + ")'> Match " + matchNumber +
-            ": <p style='color:red'>" + redAlliance + "</p> | vs | <p style='color:blue'>" + blueAlliance +
-            "</p></button>"); //*Defines matchInfo as the text of a button
-        btn = document.createElement("BUTTON"); //* creates a button
-        btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
-        document.body.appendChild(btn);
-    };
-}
-
-function createAlliance(matchNumber) { //* This function creates each and concatenates each alliance number into a string
-    var i = matchNumber - 1
-    blueAlliance = filteredJames[i].alliances.blue.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.blue.team_keys[2].slice(3);
-    redAlliance = filteredJames[i].alliances.red.team_keys[0].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[1].slice(3) + " | " + filteredJames[i].alliances.red.team_keys[2].slice(3);
-}
-*/
