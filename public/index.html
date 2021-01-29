@@ -16,50 +16,44 @@
     <script defer src="/__/firebase/8.2.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-    <!--reference the css stuff-->
+
+    <!-- reference the js pages -->
+    <script type="text/javascript" src="./js/analytics.js"></script>
+    <script type="text/javascript" src="./js/firebase.js"></script>
+    <script type="text/javascript" src="./js/matchScouting.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/auth.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--reference the css pages-->
     <link rel="stylesheet" type="text/css" href=".\css\index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 
 <body>
-    <script type="text/javascript" src="./js/analytics.js"></script>
-    <script type="text/javascript" src="./js/firebase.js"></script>
-    <script type="text/javascript" src="./js/matchScouting.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
     <div class="menuButtons">
-        <form action=".\analytics.html">
-            <button type="submit">
-                Analytics
-            </button>
-        </form>
+        <button id="analyticsBttn">
+            Analytics
+        </button>
 
-        <form action="./schedule.html">
-            <button type="submit">
-                Match Scouting
-            </button>
-        </form>
+        <button id="matchBttn">
+            Match Scouting
+        </button>
 
-        <form action="./pit-scouting.html">
-            <button type="submit">
-                Pit Scouting
-            </button>
-        </form>
+        <button id="pitBttn">
+            Pit Scouting
+        </button>
 
-        <form action="./superScout.html">
-            <button type="submit">
-                Super Scout
-            </button>
-        </form>
+        <button id="superBttn">
+            Super Scout
+        </button>
 
-        <form action="./matchPreview.html">
-            <button type="submit">
-                Match Preview
-            </button>
-        </form>
+        <button id="previewBttn">
+            Match Preview
+        </button>
     </div>
+
     <div class="divsdk">
         <p id="load" class="loadingsdk">Firebase SDK Loading&hellip;</p>
     </div>
