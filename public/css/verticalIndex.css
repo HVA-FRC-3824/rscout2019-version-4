@@ -1,0 +1,70 @@
+html {
+    background: url("../images/Background.png") center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: auto;
+    font-family: Ubuntu !important;
+}
+
+body {
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+    padding: 0;
+    font-size: 3vh;
+    text-align: center;
+    font-family: Ubuntu;
+}
+
+div {
+    display: inline-block;
+}
+
+form {
+    display: inline;
+}
+
+button {
+    /*background-color: #3824cc;*/
+    border-radius: 10px;
+    border-width: 0px;
+    margin: 0 auto;
+    color: white;
+    padding: 1.5% 2%;
+    font-size: 10.16vw;
+    margin: .5% .25%;
+    cursor: pointer;
+    font-family: Ubuntu !important;
+    background-image: linear-gradient(#5B5A56, #41403B);
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 275%;
+    padding-left: 1%;
+    padding-top: 1%;
+    margin: 0%;
+}
+
+h2 {
+    color: white;
+    padding-bottom: 0%;
+    padding: 0%;
+    margin: 0%;
+    font-size: 175%;
+}
+
+.message {
+    text-align: center;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#load {
+    color: white;
+    bottom: 0;
+    position: fixed;
+    width: 80%;
+}

@@ -8,7 +8,7 @@
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.2.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.2.0/firebase-database.js"></script>
-    <!--<script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>-->
+    <!--<script defer src="/__01/firebase/7.0.0/firebase-messaging.js"></script>-->
     <script defer src="/__/firebase/8.2.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desiread features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
@@ -16,9 +16,11 @@
     <!--reference the css stuff-->
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <!--reference javascript stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="icon" href="../images/rbtoc logo.png" type="image/x-icon">
-    <script type="text/javascript" src="./js/pit-scouting.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    </style>
+    <script type="text/javascript" src="./js/pitScouting.js"></script>
     <!--script type="text/javascript" src="./js/firebase.js"></!--script-->
 
 </head>
@@ -35,49 +37,71 @@
         pitScout
     </button>
     -->
-    <div class="pitScout">
-        <h1>Pit Scouting</h1>
-        <br>
 
-        <h2>Team Number</h2>
-        <input type="text" class="pitText" name="robotNum" id="robotNum" onkeypress="return isNumberKey(event)">
-
-        <h2>Drive Train</h2>
-        <input type="text" class="pitText" name="robotNum" id="driveTrain">
-
-        <h2>Robot Language</h2>
-        <input type="text" class="pitText" name="robotNum" id="robotLang">
-
-        <h2>Weight</h2>
-        <input type="text" class="pitText" name="robotNum" id="robotWeight" onkeypress="return isNumberKey(event)">
-
-        <h2>Normal Loading Zone</h2>
-        <input type="text" class="pitText" name="robotNum" id="normalZone">
-
-        <h2>Normal shooting location</h2>
-        <input type="text" class="pitText" name="robotNum" id="normalShot">
-
-        <h2>Climb? How fast?</h2>
-        <input type="text" class="pitText" name="robotNum" id="climbType">
-        <br>
-
-        <h2>Auto? Scoring amount in auto?</h2>
-        <input type="text" class="pitText" name="robotNum" id="autoStats">
-        <br>
-
-        <h2>Control Panel?</h2>
-        <input type="text" class="pitText" name="robotNum" id="controlPanel">
-        <br>
-
-        <h2>How experienced is your drive team?</h2>
-        <input type="text" class="pitText" name="robotNum" id="driveExp">
-        <br>
-
-        <h2>Speed of robot? Driving in Shield Generator?</h2>
-        <input type="text" class="pitText" name="robotNum" id="moveStats">
-        <br>
-        <button onclick=createPitArray() class="submit">Submit</button>
+    <h1>Pit Scouting</h1>
+    <br>
+    <div id="grid" class="grid-container">
+        <div class="grid-item">
+            <h5>Team Number</h5>
+            <input type="text" class="pitText" name="robotNum" id="robotNum" onkeypress="return isNumberKey(event)">
+        </div>
+        <div class="grid-item">
+            <h5>Drive Train</h5>
+            <input type="text" class="pitText" name="robotNum" id="driveTrain">
+        </div>
+        <div class="grid-item">
+            <h5>Robot Language</h5>
+            <input type="text" class="pitText" name="robotNum" id="robotLang"></div>
+        <div class="grid-item">
+            <h5>Weight</h5>
+            <input type="text" class="pitText" name="robotNum" id="robotWeight" onkeypress="return isNumberKey(event)"></div>
+        <div class="grid-item">
+            <h5>Normal Loading Zone</h5>
+            <input type="text" class="pitText" name="robotNum" id="normalZone">
+        </div>
+        <div class="grid-item">
+            <h5>Normal shooting location</h5>
+            <input type="text" class="pitText" name="robotNum" id="normalShot">
+        </div>
+        <div class="grid-item">
+            <h5>Climb? How fast?</h5>
+            <input type="text" class="pitText" name="robotNum" id="climbType">
+            <br>
+        </div>
+        <div class="grid-item">
+            <h5>Auto? Scoring amount in auto?</h5>
+            <input type="text" class="pitText" name="robotNum" id="autoStats">
+            <br></div>
+        <div class="grid-item">
+            <h5>Control Panel?</h5>
+            <input type="text" class="pitText" name="robotNum" id="controlPanel">
+            <br>
+        </div>
+        <div class="grid-item">
+            <h5>Drive team experience?</h5>
+            <input type="text" class="pitText" name="robotNum" id="driveExp">
+            <br></div>
+        <div class="grid-item">
+            <h5>Speed of robot?</h5>
+            <input type="text" class="pitText" name="robotNum" id="moveStats">
+            <br></div>
+        <div class="grid-item">
+            <h5>Short bot?</h5>
+            <input type="text" class="pitText" name="robotNum" id="moveStats">
+            <br></div>
     </div>
+    </div>
+    <script>
+        window.addEventListener("orientationchange", function(event) {
+            if (screen.availHeight > screen.availWidth) {
+                document.getElementById("grid").className = "newClass";
+            } else {
+                document.getElementById("grid").className = "grid-container";
+            }
+        });
+    </script>
+    <button onclick=createPitArray() class="submit">Submit</button>
+
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </body>
 

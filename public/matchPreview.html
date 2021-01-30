@@ -25,7 +25,13 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-
+<script>
+    window.addEventListener("orientationchange", function(event) {
+        if (screen.availHeight > screen.availWidth) {
+            alert("Please Change to Vertical!");
+        }
+    });
+</script>
 
 <body id="populateMatches">
     <div class="wrapper">

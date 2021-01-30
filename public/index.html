@@ -14,13 +14,25 @@
     <script defer src="/__/firebase/8.2.0/firebase-firestore.js"></script>
     <!-- <script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script> -->
     <script defer src="/__/firebase/8.2.0/firebase-storage.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    </style>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href=".\css\index.css">
+    <link id="css" rel="stylesheet" type="text/css" href=".\css\index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
+<script>
+    var css = document.getElementById('css');
+    window.addEventListener("orientationchange", function(event) {
+        if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
+            css.setAttribute('href', 'css/verticalIndex.css');
+        } else {
+            css.setAttribute('href', 'css/index.css');
+        }
+    });
+</script>
 
 <body>
     <script type="text/javascript" src="./js/analytics.js"></script>
@@ -29,33 +41,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-    <div class="menuButtons">
+    <div id="menuDiv" class="menuButtons">
         <form action=".\analytics.html">
-            <button type="submit">
+            <button id="menuButton" type="submit">
                 Analytics
             </button>
         </form>
 
         <form action="./schedule.html">
-            <button type="submit">
+            <button id="menuButton" type="submit">
                 Match Scouting
             </button>
         </form>
 
-        <form action="./pit-scouting.html">
-            <button type="submit">
+        <form action="./pitScouting.html">
+            <button id="menuButton" type="submit">
                 Pit Scouting
             </button>
         </form>
 
         <form action="./superScout.html">
-            <button type="submit">
+            <button id="menuButton" type="submit">
                 Super Scout
             </button>
         </form>
 
         <form action="./matchPreview.html">
-            <button type="submit">
+            <button id="menuButton" type="submit">
                 Match Preview
             </button>
         </form>
