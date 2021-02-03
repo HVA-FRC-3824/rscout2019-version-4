@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     //firebase.initializeApp(config);
     // Get a reference to the database service
-    var database = firebase.database();
+    const database = firebase.database();
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
     try {
         let app = firebase.app();

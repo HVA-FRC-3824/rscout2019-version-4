@@ -9,7 +9,5 @@
     "devDependencies": {
         "eslint-plugin-promise": "^4.2.1"
     },
-    "engines": {
-        "node": "12"
-    }
+    "engines": {"node": "10"}
 }
