@@ -178,20 +178,48 @@ h5 {
 }
 
 .superMatchHeader {
-    position: (0, 0);
     color: white;
+    padding: 2vh;
     background-image: linear-gradient(to right, #41403B, #5B5A56);
-    border-radius: 2vh;
-}
-
-.superNameHeader {
-    color: white;
-    background-image: linear-gradient(to right, #41403B, #5B5A56);
-    border-radius: 2vh;
+    border-radius: 2em;
+    border-color:black;
+    position: relative;
+    top: -30vh;
 }
 
 .superNotesHeader {
     color: white;
+    padding: 2vh;
     background-image: linear-gradient(to right, #41403B, #5B5A56);
-    border-radius: 2vh;
+    border-radius: 2em;
+    position: relative;
+    top:-30vh;
+    left:-15vw;
+}
+
+#superMatch {
+    position: relative;
+    top:-15vh;
+    left:-22.2vw;
+}
+
+
+#superNotes {
+    position: relative;
+    left:-24vw;
+    top:-3vh;
+    size:200%;
+}
+
+h6 {
+    width:100%;
+    position: relative;
+    font-size: 3.8vmin;
+    top: -8.75vh;
+    color:white;
+    background-color: #3E3E3E;
+    border-style:outset;
+    border-color:grey;
+    padding: 1% 2%;
+    float: left;
 }

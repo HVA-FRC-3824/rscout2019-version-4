@@ -7,6 +7,7 @@ html {
     font-family: Ubuntu;
     overflow-x: hidden;
     overflow-y: hidden;
+    
 }
 
 
@@ -106,6 +107,7 @@ input:checked+.slider:before {
     padding: 1% 2%;
     font-size: 3.3vmin;
     width: 20%;
+    font-family: ubuntu !important;
 }
 
 
@@ -329,8 +331,4 @@ input[type=radio] {
     height: 2em;
     width: 14em;
     margin-right: 10em;
-}
-
-.scouterName {
-    top: .2vh;
 }
