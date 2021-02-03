@@ -21,7 +21,7 @@ function makeSchedule() { //* Makes schedule
     document.body.innerHTML = "<form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><br>";
     for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button class='scheduleButton'  onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + " <br>____________________ <p style='color:#C80815'>" + redAlliance + "</p> vs <p style='color:#0075b3'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        matchInfo = ("<button class='scheduleButton'  onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + " <br>________________ <p style='color:#C80815'>" + redAlliance + "</p> vs <p style='color:#0075b3'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("DIV"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);
