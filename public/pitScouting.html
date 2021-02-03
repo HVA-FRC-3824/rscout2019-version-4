@@ -14,7 +14,7 @@
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link id="css" rel="stylesheet" type="text/css" href="./css/index.css">
     <!--reference javascript stuff-->
     <link rel="icon" href="../images/rbtoc logo.png" type="image/x-icon">
     <style>
@@ -92,13 +92,7 @@
     </div>
     </div>
     <script>
-        window.addEventListener("orientationchange", function(event) {
-            if (screen.availHeight > screen.availWidth) {
-                document.getElementById("grid").className = "newClass";
-            } else {
-                document.getElementById("grid").className = "grid-container";
-            }
-        });
+        changeOrientation();
     </script>
     <button onclick=createPitArray() class="submit">Submit</button>
 

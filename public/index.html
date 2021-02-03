@@ -24,17 +24,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script>
-    var css = document.getElementById('css');
-    window.addEventListener("orientationchange", function(event) {
+    function changeOrientation() {
+        var css = document.getElementById('css');
         if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
             css.setAttribute('href', 'css/verticalIndex.css');
         } else {
             css.setAttribute('href', 'css/index.css');
         }
-    });
+        window.addEventListener("orientationchange", function(event) {
+            if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
+                css.setAttribute('href', 'css/verticalIndex.css');
+            } else {
+                css.setAttribute('href', 'css/index.css');
+            }
+        });
+    }
 </script>
 
-<body>
+<body onload="changeOrientation()">
     <script type="text/javascript" src="./js/analytics.js"></script>
     <script type="text/javascript" src="./js/firebase.js"></script>
     <script type="text/javascript" src="./js/matchScouting.js"></script>
@@ -81,6 +88,7 @@
         if (!document.URL.includes("index.html")) {
             location.replace('./index.html')
         }
+        changeOrientation();
     </script>
 </body>
 

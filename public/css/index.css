@@ -7,6 +7,7 @@ html {
     height: 100%;
     overflow: auto;
     font-family: Ubuntu !important;
+    overflow: hidden;
 }
 
 body {
@@ -174,4 +175,23 @@ h5 {
     padding: 1.3vh;
     font-weight: bold;
     margin: 0;
+}
+
+.superMatchHeader {
+    position: (0, 0);
+    color: white;
+    background-image: linear-gradient(to right, #41403B, #5B5A56);
+    border-radius: 2vh;
+}
+
+.superNameHeader {
+    color: white;
+    background-image: linear-gradient(to right, #41403B, #5B5A56);
+    border-radius: 2vh;
+}
+
+.superNotesHeader {
+    color: white;
+    background-image: linear-gradient(to right, #41403B, #5B5A56);
+    border-radius: 2vh;
 }
