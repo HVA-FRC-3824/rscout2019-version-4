@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
         let app = firebase.app();
-        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        let features = ['auth', 'databse', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
         if (document.URL.includes("index.html")) {
             document.getElementById('load').innerHTML = `Created by Evan Boswell, Nick Broyles, Max Howell, Grant Johnson, Weston Agreda, Graham Boswell. Firebase SDK loaded with ${features.join(', ')}`;
         }
