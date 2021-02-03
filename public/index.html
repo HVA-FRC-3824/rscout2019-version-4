@@ -11,6 +11,7 @@
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.2.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.2.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.2.0/firebase-analytics.js"></script>
     <script defer src="/__/firebase/8.2.0/firebase-firestore.js"></script>
     <!-- <script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script> -->
     <script defer src="/__/firebase/8.2.0/firebase-storage.js"></script>
@@ -19,8 +20,18 @@
     </style>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-    <!--reference the css stuff-->
-    <link id="css" rel="stylesheet" type="text/css" href=".\css\index.css">
+
+    <!-- reference the ajax page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+
+    <!-- reference the other related js pages-->
+    <script type="text/javascript" src="./js/firebase.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+
+    <!--reference the css pages-->
+    <link rel="stylesheet" type="text/css" href=".\css\index.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script>
@@ -41,44 +52,41 @@
     }
 </script>
 
-<body onload="changeOrientation()">
-    <script type="text/javascript" src="./js/analytics.js"></script>
-    <script type="text/javascript" src="./js/firebase.js"></script>
-    <script type="text/javascript" src="./js/matchScouting.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<body>
+    <div class="menuButtons">
+        <button id="analyticsBttn" onclick="openModal('analytics.html')">
+            Analytics
+        </button>
 
-    <div id="menuDiv" class="menuButtons">
-        <form action=".\analytics.html">
-            <button id="menuButton" type="submit">
-                Analytics
-            </button>
-        </form>
+        <button id="matchBttn" onclick="openModal('schedule.html')">
+            Match Scouting
+        </button>
 
-        <form action="./schedule.html">
-            <button id="menuButton" type="submit">
-                Match Scouting
-            </button>
-        </form>
+        <button id="pitBttn" onclick="openModal('pitScouting.html')">
+            Pit Scouting
+        </button>
 
-        <form action="./pitScouting.html">
-            <button id="menuButton" type="submit">
-                Pit Scouting
-            </button>
-        </form>
+        <button id="superBttn" onclick="openModal('superScout.html')">
+            Super Scout
+        </button>
 
-        <form action="./superScout.html">
-            <button id="menuButton" type="submit">
-                Super Scout
-            </button>
-        </form>
-
-        <form action="./matchPreview.html">
-            <button id="menuButton" type="submit">
-                Match Preview
-            </button>
-        </form>
+        <button id="previewBttn" onclick="openModal('matchPreview.html')">
+            Match Preview
+        </button>
     </div>
+
+    <div id="firebaseLogin" class="modal">
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+        <div id="bodyText">
+        </div>
+        <!--<span class="close" onclick="closeModal()">&times;</span>
+            <button onclick="signinModal()">Login</button>
+            <button onclick="signupModal()">Create New Account</button>
+            -->
+    </div>
+
     <div class="divsdk">
         <p id="load" class="loadingsdk">Firebase SDK Loading&hellip;</p>
     </div>
@@ -89,6 +97,10 @@
             location.replace('./index.html')
         }
         changeOrientation();
+        setTimeout(function() {
+            checkUser();
+
+        }, 2000);
     </script>
 </body>
 

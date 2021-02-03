@@ -182,7 +182,7 @@ h5 {
     padding: 2vh;
     background-image: linear-gradient(to right, #41403B, #5B5A56);
     border-radius: 2em;
-    border-color:black;
+    border-color: black;
     position: relative;
     top: -30vh;
 }
@@ -193,33 +193,83 @@ h5 {
     background-image: linear-gradient(to right, #41403B, #5B5A56);
     border-radius: 2em;
     position: relative;
-    top:-30vh;
-    left:-15vw;
+    top: -30vh;
+    left: -15vw;
 }
 
 #superMatch {
     position: relative;
-    top:-15vh;
-    left:-22.2vw;
+    top: -15vh;
+    left: -22.2vw;
 }
-
 
 #superNotes {
     position: relative;
-    left:-24vw;
-    top:-3vh;
-    size:200%;
+    left: -24vw;
+    top: -3vh;
+    size: 200%;
 }
 
 h6 {
-    width:100%;
+    width: 100%;
     position: relative;
     font-size: 3.8vmin;
     top: -8.75vh;
-    color:white;
+    color: white;
     background-color: #3E3E3E;
-    border-style:outset;
-    border-color:grey;
+    border-style: outset;
+    border-color: grey;
     padding: 1% 2%;
     float: left;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 47px;
+    /* Location of the box */
+    left: 32vw;
+    top: 28vh;
+    width: 40%;
+    /* Full width */
+    height: 25%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(255, 255, 255, .7);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    /* color: ; */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-text {
+    margin-top: 10%;
+    margin-bottom: 2%;
 }

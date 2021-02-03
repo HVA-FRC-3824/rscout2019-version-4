@@ -1,3 +1,11 @@
+//check if the user is logged in
+function checkUN() {
+    var user = firebase.auth().currentUser;
+    if (user == null) {
+        location.replace('./index.html');
+    }
+}
+
 //TODO pull tba data from local storage
 
 //TODO parse blue alliance data

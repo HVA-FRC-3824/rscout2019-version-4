@@ -40,3 +40,11 @@ function filterSchedule(qual) {
     return qual.comp_level == "qm";
 }
 //TODO make buttons and add to screen
+
+//=========================firebase login stuff===============================//
+function checkUN() {
+    var user = firebase.auth().currentUser;
+    if (user == null) {
+        location.replace('./index.html');
+    }
+}
