@@ -18,10 +18,10 @@ function makeSchedule() { //* Makes schedule
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number
     filteredJames = James.filter(filterSchedule);
     var i = filteredJames.length;
-    document.body.innerHTML = "<form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><br>";
+    document.body.innerHTML = "<div class='headerBar'> <img src='./images/3824logo1.png' width='10%' height=auto><label>Schedule</label><label style='font-size:40%; float:right; '>Username: [name here]</label></div><form action='./index.html'>    <button type='submit' class='backBtn'>Back</button></form><br>";
     for (matchNumber = previousMatch; matchNumber <= i; matchNumber++) { //* For loop for creating the schedule
         createAlliance(matchNumber); //* Runs createAlliance to print match participants on the button
-        matchInfo = ("<button class='scheduleButton'  onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + " <br>________________ <p style='color:#C80815'>" + redAlliance + "</p> vs <p style='color:#0075b3'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
+        matchInfo = ("<button class='scheduleButton'  onclick =  'startMatchScouting(" + matchNumber + "," + JSON.stringify(filteredJames[matchNumber - 1].alliances) + ")'> Match " + matchNumber + " <br>__________________<p style='color:#C80815'>" + redAlliance + "</p> vs <p style='color:#0075b3'>" + blueAlliance + "</p></button>"); //*Defines matchInfo as the text of a button
         btn = document.createElement("DIV"); //* creates a button
         btn.innerHTML = matchInfo; //* Writes the matchInfo onto the button
         document.body.appendChild(btn);

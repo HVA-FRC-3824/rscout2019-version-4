@@ -23,11 +23,14 @@ signupForm.addEventListener('submit', (e) => {
 // ====================== for the menu onclick buttons ============================= //
 
 function openModal(page) {
+    location.replace("./" + page);
+    /*
     if (firebase.auth().currentUser != null) {
         location.replace("./" + page);
     } else {
-    document.getElementById('firebaseLogin').style.display = "block";
+        document.getElementById('firebaseLogin').style.display = "block";
     }
+    */
 }
 
 function closeModal() {
@@ -43,6 +46,7 @@ function signinModal() {
     document.getElementById('modal-content').innerHTML = "<p class=\"modal-text\" >Email:</p><input type=\"text_box\"><p>Password:</p><input type=\"text_box\"><button>Sign in</button>";
 }
 */
+/*
 let firebaseAppDefined = false
 
 setInterval(() => {
@@ -96,3 +100,4 @@ function checkUser() {
     }
     localStorage.setItem("username", user);
 }
+*/

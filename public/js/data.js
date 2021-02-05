@@ -29,7 +29,7 @@ var sortById = function(prop) {
         return ((x[prop] === y[prop]) ? 0 : ((x[prop] > y[prop]) ? 1 : -1));
     };
 };
-
+/*
 function sortTBAData() {
     //sorts through the tba data
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
@@ -80,3 +80,4 @@ function sortTBAData() {
 function filterSchedule(qual) {
     return qual.comp_level == "qm";
 }
+*/

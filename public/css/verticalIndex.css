@@ -99,3 +99,24 @@ h5 {
 input {
     height: 40%;
 }
+
+.headerBar {
+    color: white;
+    text-align: center;
+    font-size: 150%;
+    background-color: #3E3E3E;
+    border-color: grey;
+    border-style: outset;
+}
+
+label {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+img {
+    padding-left: 1.5%;
+    padding-bottom: 1%;
+    float: left;
+    width: 40%;
+}

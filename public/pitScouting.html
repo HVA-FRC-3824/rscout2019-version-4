@@ -26,19 +26,20 @@
 </head>
 
 <body class="pitBody">
-    <!--
-    <form action=".\index.html">
-        <button type="submit" class="buttonBack">
-            Back
-        </button>
-    </form>
 
+
+    <!--
     <button onclick=createPitArrary()>
         pitScout
     </button>
     -->
 
-    <h1>Pit Scouting</h1>
+    <div class="headerBar">
+        <img src="./images/3824logo1.png" width="10%" height=auto>
+        <label>Pit Scouting </label>
+        <label style="font-size:40%; float:right; ">Username: [name here]</label>
+    </div>
+
     <br>
     <div id="grid" class="grid-container">
         <div class="grid-item">
@@ -94,9 +95,15 @@
     <script>
         changeOrientation();
     </script>
+    <form action=".\index.html">
+        <button type="submit" class="buttonBack">
+            Back
+        </button>
+    </form>
     <button onclick=createPitArray() class="submit">Submit</button>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
+
 </body>
 
 </html>
