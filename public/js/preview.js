@@ -110,6 +110,7 @@ function gotMatchData(data) { //makes the data readable
 }
 
 //=========================firebase login stuff===============================//
+
 function checkUN() {
     var user = firebase.auth().currentUser;
     if (user == null) {

@@ -46,24 +46,31 @@
     <br>
     <div>
         <h2 class="superMatchHeader">Match Number</h2>
-    </div>
-    <div><textarea rows="2" cols="29" id="superMatch"></textarea></div>
-    <div>
+
+        <textarea rows="2" cols="29" id="superMatch"></textarea>
+
         <h2 class="superNotesHeader">Notes</h2>
-    </div>
-    <div><textarea rows="5" cols="29" id="superNotes"></textarea> </div>
-    <div>
+
+        <textarea rows="5" cols="29" id="superNotes"></textarea>
+
         <br>
         <button onclick=createSuperArray() class="submit">Submit</button>
         <meta name="viewport" content="width=device-width, user-scalable=no">
     </div>
     <script>
         document.getElementById("html").style.overflow = "scroll";
-    </script>
-</body>
+        checkUN();
 
-</html>
-</script>
+        function checkUN() {
+            var user = firebase.auth().currentUser;
+            if (user == null) {
+                location.replace('./index.html');
+            }
+        }
+    </script>
+    <form action=".\index.html">
+        <button type="submit" class="backBtn">Back</button>
+    </form>
 </body>
 
 </html>

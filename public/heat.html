@@ -171,6 +171,16 @@
                 }; */
     </script>
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script>
+        checkUN();
+
+        function checkUN() {
+            var user = firebase.auth().currentUser;
+            if (user == null) {
+                location.replace('./index.html');
+            }
+        }
+    </script>
 </body>
 
 </html>

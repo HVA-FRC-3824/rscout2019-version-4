@@ -86,10 +86,9 @@ h2 {
 }
 
 h5 {
-    background-image: linear-gradient(to right, #41403B, #5B5A56);
     border-radius: 1em;
-    font-size: 4vmin;
-    color: white;
+    font-size: 90%;
+    color: black;
     border-color: grey;
     padding: 1.3vh;
     font-weight: bold;
@@ -101,12 +100,10 @@ input {
 }
 
 .headerBar {
-    color: white;
+    color: black;
     text-align: center;
-    font-size: 150%;
-    background-color: #3E3E3E;
-    border-color: grey;
-    border-style: outset;
+    font-size: 210%;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 label {
@@ -115,8 +112,5 @@ label {
 }
 
 img {
-    padding-left: 1.5%;
-    padding-bottom: 1%;
-    float: left;
-    width: 40%;
+    display: none;
 }

@@ -1,15 +1,28 @@
 function changeOrientation() {
     var css = document.getElementById('css');
     if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
-        css.setAttribute('href', 'css/verticalIndex.css');
+        document.styleSheets[0].disabled = true;
+        document.styleSheets[1].disabled = false;
     } else {
-        css.setAttribute('href', 'css/index.css');
+        document.styleSheets[0].disabled = false;
+        document.styleSheets[1].disabled = true;
     }
     window.addEventListener("orientationchange", function(event) {
         if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
-            css.setAttribute('href', 'css/verticalIndex.css');
+            document.styleSheets[0].disabled = true;
+            document.styleSheets[1].disabled = false;
         } else {
-            css.setAttribute('href', 'css/index.css');
+            document.styleSheets[0].disabled = true;
+            document.styleSheets[1].disabled = false;
         }
     });
+}
+
+// ================== Firebase login stuff ===================== //
+
+function checkUN() {
+    var user = firebase.auth().currentUser;
+    if (user == null) {
+        location.replace('./index.html');
+    }
 }

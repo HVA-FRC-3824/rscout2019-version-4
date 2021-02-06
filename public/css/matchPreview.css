@@ -5,6 +5,7 @@ html {
 }
 
 .grid-container {
+    background-color: rgba(255, 255, 255, 0.3);
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: clear;
@@ -44,10 +45,9 @@ button:hover {
 }
 
 .grid-container>div {
-    background-image: linear-gradient(#5B5A56, #41403B);
     padding: 10%;
     font-size: 200%;
-    color: white;
+    color: black;
     overflow-y: auto;
     max-height: 30vh;
     font-family: Ubuntu !important;

@@ -21,7 +21,7 @@ function kidnap(newUrl) {
         alert("An error occurred!");
     });
 
-    console.log(James);
+    //console.log(James);
 };
 
 var sortById = function(prop) {
@@ -66,12 +66,14 @@ function sortTBAData() {
         r2Climbed = currentMatchData.score_breakdown.red.endgameRobot2;
         r3Climbed = currentMatchData.score_breakdown.red.endgameRobot3;
 
-        console.log(b1Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        /*console.log(b1Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
         console.log(b2Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
         console.log(b3Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
         console.log(r1Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
         console.log(r2Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
         console.log(r3Num + ": " + b1MovedOffAutoLine + ", " + b1Climbed);
+        */
+/*
 
     }
     console.log(filteredJames);

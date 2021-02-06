@@ -56,39 +56,28 @@
 <body>
     <div class="headerBar">
         <img src="./images/3824logo1.png">
-        <label>3824 RoHAWKtics</label>
-        <label style="font-size:40%; float:right; ">Username: [name here]</label>
+        <label>Firescout 3824</label>
+        <label id="usernameSlot" style="font-size:40%; float:right; ">Username: [name here]</label>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-    <div class="menuButtons">
-        <button id="analyticsBttn" onclick="openModal('analytics.html')">
+    <div class="menuButtonsDiv">
+        <button class="menuButtons" id="analyticsBttn" onclick="openModal('analytics.html')">
             Analytics
         </button>
 
-        <button id="matchBttn" onclick="openModal('schedule.html')">
+        <button class="menuButtons" id="matchBttn" onclick="openModal('schedule.html')">
             Match Scouting
         </button>
 
-        <button id="pitBttn" onclick="openModal('pitScouting.html')">
+        <button class="menuButtons" id="pitBttn" onclick="openModal('pitScouting.html')">
             Pit Scouting
         </button>
 
-        <button id="superBttn" onclick="openModal('superScout.html')">
+        <button class="menuButtons" id="superBttn" onclick="openModal('superScout.html')">
             Super Scout
         </button>
 
-        <button id="previewBttn" onclick="openModal('matchPreview.html')">
+        <button class="menuButtons" id="previewBttn" onclick="openModal('matchPreview.html')">
             Match Preview
         </button>
     </div>
@@ -115,8 +104,7 @@
         }
         changeOrientation();
         setTimeout(function() {
-            //checkUser();
-
+            checkUser();
         }, 2000);
     </script>
 </body>
