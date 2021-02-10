@@ -7,7 +7,6 @@ html {
     font-family: Ubuntu;
     overflow-x: hidden;
     overflow-y: hidden;
-    
 }
 
 
@@ -146,17 +145,12 @@ h1 {
 }
 
 h2 {
-    background-color: #782656;
-    font-size: 4.8vmin;
+    font-size: 6.8vmin;
     position: relative;
     display: inline-block;
     margin: 0%;
-    padding: 0.5em;
+    padding: 0.4em;
     color: white;
-    border-radius: 1em;
-    border-style: outset;
-    border-color: grey;
-    border-width: 2px;
 }
 
 h3 {

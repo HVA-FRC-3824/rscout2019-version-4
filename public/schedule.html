@@ -14,7 +14,7 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!--reference the css stuff-->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link id="css" rel="stylesheet" type="text/css" href="./css/index.css">
     <!--reference javascript stuff-->
     <script type="text/javascript" src="./js/analytics.js"></script>
     <script type="text/javascript" src="./js/firebase.js"></script>
@@ -42,7 +42,23 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </body>
 <script>
+    function changeOrientation() {
+        var css = document.getElementById('css');
+        if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
+            css.setAttribute('href', 'css/verticalIndex.css');
+        } else {
+            css.setAttribute('href', 'css/index.css');
+        }
+        window.addEventListener("orientationchange", function(event) {
+            if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
+                css.setAttribute('href', 'css/verticalIndex.css');
+            } else {
+                css.setAttribute('href', 'css/index.css');
+            }
+        });
+    }
     document.getElementById("html").style.overflow = "scroll";
+    changeOrientation();
     makeSchedule();
 </script>
 

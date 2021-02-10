@@ -74,6 +74,7 @@ h2 {
     width: 80%;
     margin-left: 10%;
     margin-right: 20%;
+    font-size: 2vh;
 }
 
 .grid-container {
@@ -113,4 +114,20 @@ label {
 
 img {
     display: none;
+}
+
+.scheduleButton {
+    padding: 2%, 2%;
+    display: inline-block;
+    background-image: linear-gradient(#3E3E3E);
+    font-size: 9vw;
+}
+
+.backBtn {
+    font-size: 7vw;
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-right: 100%;
 }
