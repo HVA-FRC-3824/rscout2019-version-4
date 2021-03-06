@@ -85,8 +85,11 @@
     <div id="loginModal" class="modal">
         <div class="model-content" id='modal-content'>
             <span class="close" onclick="closeModal()">&times;</span>
-            <button onclick="signinModal()">Login</button>
-            <button onclick="signupModal()">Create New Account</button>
+            <p class="modal-text">username:</p>
+            <input type='text_box' id='username'>
+            <p>password:</p>
+            <input type='text_box' id='password'>
+            <button onclick="signUp()">Sign in</button>
         </div>
     </div>
 

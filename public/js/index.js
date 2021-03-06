@@ -1,4 +1,6 @@
 // ====================== for the menu onclick buttons ============================= //
+var hashedPass = "";
+var user = "";
 
 function openModal() {
     document.getElementById('loginModal').style.display = "block";
@@ -20,8 +22,10 @@ function signinModal() {
 function signUp() {
     //get data from input box 
     user = document.getElementById("username").value;
-    pass = stringToHash(document.getElementById("password").value);
-    console.log(user + " " + pass);
+    hashedPass = stringToHash(document.getElementById("password").value);
+    console.log(user + " " + hashedPass);
+    user = "/" + user + "/";
+    firebase.database().ref('/logins' + user + "password").once("value", passCheck);
 }
 
 function stringToHash(str) {
@@ -35,4 +39,10 @@ function stringToHash(str) {
     }
 
     return hash;
+}
+
+function passCheck(pass) {
+    if (pass.val() == "") {
+        firebase.database().ref('/logins' + user + "password").set(hashedPass);
+    };
 }
