@@ -12,7 +12,7 @@ function kidnap(newUrl) {
         async: false,
         success: function(data) { //this function logs our data in the console if it is successfully pulled
             James = data;
-            console.log(James);
+            //console.log(James);
             return James;
 
         },

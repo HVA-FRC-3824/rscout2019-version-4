@@ -12,7 +12,7 @@ function makeSchedule() { //* Makes schedule
     if (previousMatch == null) {
         previousMatch = 1;
     }
-    console.log(previousMatch);
+    //console.log(previousMatch);
 
     kidnap("/event/2020scmb/matches"); //* Runs kidnap with the specified url
     James.sort(sortById("match_number")); //* Sorts the output of the of kidnap by match number

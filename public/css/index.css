@@ -225,22 +225,27 @@ h6 {
     /* Stay in place */
     z-index: 1;
     /* Sit on top */
-    padding-top: 47px;
+    padding-top: 0px;
     /* Location of the box */
     left: 32vw;
-    top: 28vh;
+    top: 15vh;
     width: 40%;
     /* Full width */
-    height: 25%;
+    height: 50%;
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-color: rgba(255, 255, 255, 1);
+    background-image: url("../images/matchScoutingBackground.jpg");
     /* Black w/ opacity */
+    background-size: 180%;
+    background-position-y: 0vh;
+    border-style: outset;
+    border-color: grey;
+    border-radius: 2em;
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #782656;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;

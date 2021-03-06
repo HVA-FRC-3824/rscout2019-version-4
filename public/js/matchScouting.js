@@ -74,14 +74,14 @@ function getShootSpot(teleop) {
         var buttonHeight = teleButton.clientHeight;
         teleX = ((event.clientX / teleImage.clientWidth) * 1287);
         teleY = (((event.clientY - buttonHeight) / teleImage.clientHeight) * 638);
-        console.log(teleX + " " + teleY);
+        //console.log(teleX + " " + teleY);
     } else if (!teleop) {
         var autoImage = document.querySelector("#autoField");
         var autoButton = document.querySelector("#defaultOpen");
         var buttonHeight = autoButton.clientHeight;
         autoX = ((event.clientX / autoImage.clientWidth) * 1033)
         autoY = (((event.clientY - buttonHeight) / autoImage.clientHeight) * 638)
-        console.log(autoX + " " + autoY);
+            //console.log(autoX + " " + autoY);
         if (teamSide == "B") {
             autoX = (((autoImage.clientWidth - event.clientX) / autoImage.clientWidth) * 1033);
             autoY = (((autoImage.clientHeight - event.clientY) / autoImage.clientHeight) * 638);
@@ -214,29 +214,29 @@ function createMatchArray() {
     }
 
     let matchDataArray = {
-        name: name,
-        match: match,
-        teamNumber: teamNumber,
-        driveStation: driveStation,
-        startPos: startPos,
-        robotScore: robotScore,
-        pickedUpAutoBay: pickedUpAutoBay,
-        pickedUpAutoFloor: pickedUpAutoFloor,
-        pickedUpTeleopFloor: pickedUpTeleopFloor,
-        pickedUpTeleopBay: pickedUpTeleopBay,
-        colorWheel: colorWheel,
-        teleMisses: teleMisses,
-        autoMisses: autoMisses,
-        autoScore: autoScore,
-        teleScore: teleScore,
-        autoAccuracy: autoAccuracy,
-        teleAccuracy: teleAccuracy,
-        yellowCheck: yellowCheck,
-        redCheck: redCheck,
-        ballsDroppedAuto: ballsDroppedAuto,
-        ballsDroppedTele: ballsDroppedTele,
-    }
-    console.log(matchDataArray);
+            name: name,
+            match: match,
+            teamNumber: teamNumber,
+            driveStation: driveStation,
+            startPos: startPos,
+            robotScore: robotScore,
+            pickedUpAutoBay: pickedUpAutoBay,
+            pickedUpAutoFloor: pickedUpAutoFloor,
+            pickedUpTeleopFloor: pickedUpTeleopFloor,
+            pickedUpTeleopBay: pickedUpTeleopBay,
+            colorWheel: colorWheel,
+            teleMisses: teleMisses,
+            autoMisses: autoMisses,
+            autoScore: autoScore,
+            teleScore: teleScore,
+            autoAccuracy: autoAccuracy,
+            teleAccuracy: teleAccuracy,
+            yellowCheck: yellowCheck,
+            redCheck: redCheck,
+            ballsDroppedAuto: ballsDroppedAuto,
+            ballsDroppedTele: ballsDroppedTele,
+        }
+        //console.log(matchDataArray);
     heatMapArray = {
         xauto: xAutoCoords,
         yauto: yAutoCoords,
@@ -247,7 +247,7 @@ function createMatchArray() {
 }
 
 function pushFirebaseMatch(data, heatData) {
-    console.log(data)
+    //console.log(data)
     firebase.database().ref('matchScouting/' + data.teamNumber + '/' + data.match + '/' + data.name + '/').set({
         "driveStation": data.driveStation,
         "startPosition": data.startPos,
@@ -284,7 +284,7 @@ function pushFirebaseMatch(data, heatData) {
 //===================== Returning to schedule =============================//
 
 function nextMatch() {
-    console.log(match)
+    //console.log(match)
     mNumber = localStorage.getItem("num");
     localStorage.setItem("num", mNumber);
     location.replace("./schedule.html");

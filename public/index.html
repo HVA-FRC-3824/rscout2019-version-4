@@ -102,6 +102,12 @@
         if (!document.URL.includes("index.html")) {
             location.replace('./index.html')
         }
+        try {
+            //console.log(localStorage.getItem("userInfo"))
+        } catch (ReferenceError) {
+            localStorage.setItem(userInfo, null);
+        }
+        document.getElementById("usernameSlot").innerHTML = "Username: " + localStorage.getItem("username");
         changeOrientation();
     </script>
 </body>
