@@ -33,7 +33,6 @@
     <div class="headerBar">
         <img src="./images/3824logo1.png" width="10%" height=auto>
         <label>Schedule</label>
-        <label style="font-size:40%; float:right; ">Username: [name here]</label>
     </div>
 
     <form action=".\index.html">
@@ -42,23 +41,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </body>
 <script>
-    function changeOrientation() {
-        var css = document.getElementById('css');
-        if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
-            css.setAttribute('href', 'css/verticalIndex.css');
-        } else {
-            css.setAttribute('href', 'css/index.css');
-        }
-        window.addEventListener("orientationchange", function(event) {
-            if (document.documentElement.clientHeight > document.documentElement.clientWidth) {
-                css.setAttribute('href', 'css/verticalIndex.css');
-            } else {
-                css.setAttribute('href', 'css/index.css');
-            }
-        });
-    }
-    document.getElementById("html").style.overflow = "scroll";
-    changeOrientation();
     makeSchedule();
 </script>
 

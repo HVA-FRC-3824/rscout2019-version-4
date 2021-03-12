@@ -25,13 +25,7 @@
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
-<script>
-    window.addEventListener("orientationchange", function(event) {
-        if (screen.availHeight > screen.availWidth) {
-            alert("Please Change to Horizontal!");
-        }
-    });
-</script>
+
 
 <body onload="localName()">
 
@@ -40,10 +34,12 @@
         Tablinks at the top of the page
 ============================================
     -->
+    <div id="wrapper">
     <div class="navBar">
         <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
         <button class="tablink" onclick="openPage('Auto','white'), updateBallsHeld()">Auto</button>
         <button class="tablink" onclick="openPage('Teleop','white'), updateBallsHeld()"> Teleop </button>
+        <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
         <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
         <button class="tablink" onclick="backConfirm()"> Back to Schedule </button>
     </div>
@@ -137,7 +133,8 @@
 ============================================
     -->
 
-    <h id="Auto" class="tabcontent">
+    <div id="Auto" class="tabcontent">
+    <div class="autoWrapper">
         <img onclick="fieldInput(), getShootSpot(false)" src="" alt="auto field" id="autoField"></img>
         <div class=autoInteraction>
             <button class="interact" onclick="incrementBallsHeld(1, true,false,false);">Picked Up From Floor</button>
@@ -160,7 +157,8 @@
             <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,false)">1 Ball</a>
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
-    </h>
+        </div>
+    </div>
 
     <!--
 ============================================
@@ -168,7 +166,8 @@
 ============================================
     -->
 
-    <h id="Teleop" class="tabcontent">
+    <div id="Teleop" class="tabcontent">
+        <div class="teleWrapper">
         <img onclick="fieldInput(), getShootSpot(true)" src="" alt="Teleop field" id="teleopField"></img>
         <div class="teleInteraction">
 
@@ -191,7 +190,8 @@
             <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,true)">1 Ball</a>
             <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
         </div>
-    </h>
+    </div>
+</div>
 
     <!--
 ============================================
@@ -200,8 +200,7 @@
     -->
 
     <div id="Post" class="tabcontent">
-        <br>
-        <br>
+    <div id="wrapper">
 
         <div class=postMatchInfo>
             <br> Color Wheel: <br>
@@ -221,29 +220,28 @@
                 <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
             <label>
         </div>
-        <br>
-
+        <div class="nextMatch">
+            <button  id="button" onclick="createMatchArray()">Next Match</button>
+        </div>
         <div class=cardsInfo>
-            <button class="nextMatch" id="button" onclick="createMatchArray()">Next Match</button>
-
-            <br><br>Red Card: <br>
+            <div id="yellowCard">
+            Yellow Card:
+            <label class="switch">
+                <input type="checkbox" id="yellowCheck">
+                <span class="slider"></span>
+                </label><br><br>
+            </div>
+            <div id="redCard">
+            Red Card: 
             <label class="switch">
                 <input type="checkbox" id="redCheck">
                 <span class="slider"></span>
                 </label>
-
-            <br> Yellow Card:<br>
-            <label class="switch">
-                <input type="checkbox" id="yellowCheck">
-                <span class="sliderYellow"></span>
-                </label>
-        </div>
+            </div>
     </div>
+</div>
+</div>
 
-    <!-- Firebase Login -->
-    <script>
-        checkUN();
-    </script>
 </body>
 
 <!-- 

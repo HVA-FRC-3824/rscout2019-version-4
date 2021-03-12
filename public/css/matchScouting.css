@@ -4,11 +4,8 @@ body,
 html {
     height: 100%;
     margin: 0;
-    font-family: Ubuntu;
+    font-family: ubuntu !important;
     background: url("../images/Background.png") center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
@@ -16,169 +13,10 @@ button {
     background-color: #782656;
     color: #fff;
     border-radius: 1em;
-    font-size: 5vmin;
+    font-size: 2em;
     text-align: center;
     border: 0%;
     border-style: outset;
-}
-
-
-/* ----------------------FOR PRE MATCH INFO-----------------------*/
-
-.preMatch {
-    float: left;
-    display: grid;
-    grid-template-columns: 50vw 50vw;
-    grid-template-rows: 10vh 60vh;
-}
-
-.scouterName h2 {
-    display: inline-block;
-}
-
-.scouterName input {
-    font-size: 4vh;
-    float: right;
-}
-
-.preMatch h2 {
-    font-size: 5vh;
-    padding: 0;
-    margin: 0;
-}
-
-.robotRadio {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    font-size: 8vh;
-}
-
-.preMatchInfo {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    font-size: 3.5vh;
-    text-align: center;
-}
-
-.matchNumber {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    text-align: right;
-    padding: 1vh;
-}
-
-
-/*----------------------FOR AUTO --------------------------------*/
-
-form {
-    color: rgb(204, 204, 204);
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 7em;
-    height: 2em;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.sliderYellow {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.sliderYellow:before {
-    position: absolute;
-    content: "";
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked+.slider {
-    background-color: red;
-}
-
-input:checked+.sliderYellow {
-    background-color: yellow;
-}
-
-input:focus+.slider {
-    box-shadow: 0 0 1px black;
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.tablink {
-    background-color: #3E3E3E;
-    border-radius: 0;
-    color: white;
-    float: left;
-    padding: 1% 2%;
-    font-size: 3.3vmin;
-    width: 20%;
-    font-family: ubuntu !important;
-    display: inline-block;
-}
-
-.tabcontent {
-    color: white;
-    display: none;
-    height: 100%;
-    max-width: 100%;
-    background: url("../images/Background.png") center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.autoInteraction {
-    float: right;
-    width: 25%;
-    position: relative;
-    text-align: center;
-}
-
-.teleInteraction {
-    float: right;
-    width: 25%;
-    position: relative;
-    text-align: center;
 }
 
 h1 {
@@ -191,7 +29,7 @@ h1 {
 
 h3 {
     background-color: #E45D38;
-    font-size: 4.8vmin;
+    font-size: 2.5vw;
     position: relative;
     display: inline-block;
     margin: 0%;
@@ -203,59 +41,113 @@ h3 {
     border-width: 2px;
 }
 
-.interact {
-    background-image: linear-gradient(#3E3E3E);
+#wrapper{
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    font-family: ubuntu !important;
+}
+
+.tabcontent {
+    grid-row:2 / 5;
+    grid-column: 1 / 4;
     color: white;
-    float: left;
-    border: 1%;
-    padding: 9% 0%;
-    font-size: 5vmin;
-    width: 100%;
-    border-style: outset;
+    display: none;
+    height: 100%;
+    max-width: 100%;
+    background: url("../images/Background.png") center center fixed;
+    background-size: cover;
+}
+/* -------------------- For nav bar ------------------- */
+
+.navBar{
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    display:flex;
+    justify-content: space-around;
 }
 
-input[type=radio] {
-    border: 0%;
-    width: 0.5em;
-    height: 0.5em;
-    font-size: 100%;
+.tablink {
+    width: 16.66666%;
+    font-size: 2vw;
+    font-family: ubuntu !important;
+    background-color: #3E3E3E;
+    border-radius: 0;
+    color: white;
+    padding:1%;
 }
 
-.postMatchInfo {
-    font-size: 7vmin;
-    width: 60%;
+/* ----------------------FOR PRE MATCH INFO-----------------------*/
+
+.preMatch{
+    display:grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+}
+
+.scouterName h2 {
     display: inline-block;
-    position: relative;
-    float: left;
+    grid-column: 1 / 2;
 }
 
-.container {
-    position: absolute;
-    width: 50%;
+.scouterName input {
+    font-size: 2vw;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-.container img {
-    position: relative;
-    width: auto;
-    height: auto;
+.preMatch h2 {
+    font-size: 3.5vw;
+    padding: 0;
+    margin: 0;
+}
+
+.robotRadio {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    font-size: 4.5vw;
+}
+
+.preMatchInfo {
+    grid-column: 2 / 4;
+    grid-row: 2 / 4;
+    font-size: 2.8vw;
+    text-align: center;
+}
+
+.matchNumber {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    text-align: center;
+    padding: 1vh;
 }
 
 
-/* ----------------FOR AUTO TAB-------------------- */
+/*----------------------FOR AUTO --------------------------------*/
 
-#Auto img {
-    width: 75%;
-    height: 85%;
-    align-content: center;
+.autoWrapper{
+    display:grid;
+    grid-template-columns: 70vw auto;
+    grid-template-rows: auto;
+}
+
+.autoWrapper img{
+    width:90%;
+}
+
+.autoInteraction {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    text-align: center;
+}
+.autoInteraction button{
+    padding:1em;
+    width:100%;
+    font-size: 3.2vw;
 }
 
 .autoDropdown:hover,
 .autoDropdown:focus {
-    background-color: #E45D38;
-}
-
-.teleopDropdown:hover,
-.teleopDropdown:focus {
     background-color: #E45D38;
 }
 
@@ -281,16 +173,104 @@ input[type=radio] {
     display: block;
 }
 
-.show {
-    display: block;
+/* -------------------------- FOR TELE ----------------------- */
+
+.teleWrapper{
+    display:grid;
+    grid-template-columns: 70vw auto;
+    grid-template-rows: auto;
+
 }
 
-#Teleop img {
-    position: relative;
-    width: 75%;
-    height: 85%;
-    align-content: center;
+.teleWrapper img{
+    width:100%;
 }
+
+.teleInteraction {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    text-align: center;
+}
+
+.teleInteraction button{
+    padding:1em;
+    width:100%;
+    font-size: 2.5vw;
+}
+
+.teleopDropdown:hover,
+.teleopDropdown:focus {
+    background-color: #E45D38;
+}
+
+
+/* ------------------- FOR POST MATCH INFO ----------------------- */
+
+.postMatchInfo {
+    font-size: 3.5vw;
+    grid-row: 1 / 4;
+    grid-column: 1 / 2;
+}
+
+.nextMatch {
+    font-size:1.5vw;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    margin-left: auto;
+    margin-right:0;
+}
+
+.nextMatch button{
+    padding: 2vw;
+}
+
+.cardsInfo {
+    text-align: center;
+    font-size:4vw;
+    grid-row: 2 / 4;
+    grid-column: 2 / 3;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: red;
+}
+
+#yellowCard input:checked+.slider {
+    background-color: yellow;
+}
+
+
+
+
+input[type=radio] {
+    border: 0%;
+    width: 0.5em;
+    height: 0.5em;
+    font-size: 100%;
+}
+
+
+
+
 
 #Auto {
     background-color: black;
@@ -310,22 +290,4 @@ input[type=radio] {
 
 #Post {
     background-color: black;
-}
-
-.nextMatch {
-    padding: 0.6em;
-    font-size: 7vmin;
-    float: right;
-}
-
-.cardsInfo {
-    font-size: 6vmin;
-    float: right;
-}
-
-.nameBox {
-    font-size: 3vmin;
-    height: 2em;
-    width: 14em;
-    margin-right: 10em;
 }
