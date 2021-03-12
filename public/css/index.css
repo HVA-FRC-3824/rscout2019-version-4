@@ -231,13 +231,13 @@ h6 {
     top: 15vh;
     width: 40%;
     /* Full width */
-    height: 50%;
+    height: 20%;
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-image: url("../images/matchScoutingBackground.jpg");
+    background-image: url("../images/Background.png");
     /* Black w/ opacity */
-    background-size: 180%;
+    background-size: 150%;
     background-position-y: 0vh;
     border-style: outset;
     border-color: grey;

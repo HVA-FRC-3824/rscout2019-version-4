@@ -52,7 +52,6 @@
     }
 </script>
 
-
 <body>
     <div class="headerBar">
         <img src="./images/3824logo1.png">
@@ -85,11 +84,10 @@
     <div id="loginModal" class="modal">
         <div class="model-content" id='modal-content'>
             <span class="close" onclick="closeModal()">&times;</span>
-            <p class="modal-text">username:</p>
-            <input type='text_box' id='username'>
+
             <p>password:</p>
             <input type='text_box' id='password'>
-            <button onclick="signUp()">Sign in</button>
+            <button onclick="signUp()">Enter</button>
         </div>
     </div>
 
@@ -98,18 +96,7 @@
     </div>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <script>
-        if (!document.URL.includes("index.html")) {
-            location.replace('./index.html')
-        }
-        try {
-            //console.log(localStorage.getItem("userInfo"))
-        } catch (ReferenceError) {
-            localStorage.setItem(userInfo, null);
-        }
-        document.getElementById("usernameSlot").innerHTML = "Username: " + localStorage.getItem("username");
-        changeOrientation();
-    </script>
+
 </body>
 
 </html>

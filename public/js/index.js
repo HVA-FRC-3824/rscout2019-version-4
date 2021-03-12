@@ -1,4 +1,19 @@
+page = "";
+
+function openModal(pageToGo) {
+    if (pageToGo == 'schedule.html') {
+        location.replace(pageToGo);
+    } else {
+        document.getElementById('loginModal').style.display = "block";
+        page = pageToGo;
+    }
+
+
+}
+
+
 // ====================== for the menu onclick buttons ============================= //
+/*
 var hashedPass = "";
 var user = "";
 var page = "";
@@ -23,19 +38,19 @@ function openModal(pageToGo) {
         document.getElementById('loginModal').style.display = "block";
     };
 }
-
+*/
 function closeModal() {
     document.getElementById('loginModal').style.display = "none";
 }
 
 function signUp() {
     //get data from input box 
-    user = document.getElementById("username").value;
     hashedPass = stringToHash(document.getElementById("password").value);
     //console.log(user + " " + hashedPass);
-    user = "/" + user + "/";
-    firebase.database().ref('/logins' + user).once("value", login);
-
+    console.log(hashedPass);
+    if (hashedPass == 1574759) {
+        location.replace(page);
+    }
 }
 
 function stringToHash(str) {
@@ -50,6 +65,7 @@ function stringToHash(str) {
     return hash;
 }
 
+/*
 function login(pass) {
     if (pass.val() == null) {
         console.log("User not found");
@@ -92,4 +108,4 @@ function getCookie(cname) {
         }
     }
     return "";
-}
+}*/

@@ -1,16 +1,16 @@
-/* Set height of body and the document to 100% to enable "full page tabs" */
+/*  ---------------- defaults ------------------- */
 
 body,
 html {
     height: 100%;
     margin: 0;
     font-family: Ubuntu;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    background: url("../images/Background.png") center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-
-
-/* ----------------------FOR PRE MATCH INFO-----------------------*/
 
 button {
     background-color: #782656;
@@ -21,6 +21,54 @@ button {
     border: 0%;
     border-style: outset;
 }
+
+
+/* ----------------------FOR PRE MATCH INFO-----------------------*/
+
+.preMatch {
+    float: left;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 10vh 60vh;
+}
+
+.scouterName h2 {
+    display: inline-block;
+}
+
+.scouterName input {
+    font-size: 4vh;
+    float: right;
+}
+
+.preMatch h2 {
+    font-size: 5vh;
+    padding: 0;
+    margin: 0;
+}
+
+.robotRadio {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-size: 8vh;
+}
+
+.preMatchInfo {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 3.5vh;
+    text-align: center;
+}
+
+.matchNumber {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    text-align: right;
+    padding: 1vh;
+}
+
+
+/*----------------------FOR AUTO --------------------------------*/
 
 form {
     color: rgb(204, 204, 204);
@@ -95,9 +143,6 @@ input:checked+.slider:before {
     transform: translateX(26px);
 }
 
-
-/* For level check button end*/
-
 .tablink {
     background-color: #3E3E3E;
     border-radius: 0;
@@ -107,19 +152,19 @@ input:checked+.slider:before {
     font-size: 3.3vmin;
     width: 20%;
     font-family: ubuntu !important;
+    display: inline-block;
 }
-
-
-/* Style the tab content (and add height:100% for full page content) */
 
 .tabcontent {
     color: white;
     display: none;
     height: 100%;
     max-width: 100%;
+    background: url("../images/Background.png") center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-size: contain;
-    background: url("../images/matchScoutingBackground.jpg") no-repeat;
 }
 
 .autoInteraction {
@@ -142,15 +187,6 @@ h1 {
     text-align: center;
     position: relative;
     display: inline-block;
-}
-
-h2 {
-    font-size: 6.8vmin;
-    position: relative;
-    display: inline-block;
-    margin: 0%;
-    padding: 0.4em;
-    color: white;
 }
 
 h3 {
@@ -185,23 +221,6 @@ input[type=radio] {
     font-size: 100%;
 }
 
-.robotRadio {
-    font-size: 10vmin;
-    width: 50%;
-    display: inline-block;
-    float: left;
-}
-
-.preMatchInfo {
-    font-size: 6vmin;
-    position: relative;
-    display: inline-block;
-    float: right;
-    margin-right: 5em;
-    top: -1.86em;
-    left: -10vh;
-}
-
 .postMatchInfo {
     font-size: 7vmin;
     width: 60%;
@@ -214,9 +233,6 @@ input[type=radio] {
     position: absolute;
     width: 50%;
 }
-
-
-/* Make the image responsive */
 
 .container img {
     position: relative;
@@ -305,19 +321,6 @@ input[type=radio] {
 .cardsInfo {
     font-size: 6vmin;
     float: right;
-}
-
-.matchNumber {
-    font-size: 3vmin;
-    position: relative;
-    top: .075vh;
-    left: 0;
-    padding: 0.7em;
-    border-style: outset;
-    border-color: #782656;
-    border-width: 2px;
-    background-color: #E45D38;
-    border-radius: 0;
 }
 
 .nameBox {

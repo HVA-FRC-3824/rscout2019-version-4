@@ -12,6 +12,7 @@ function openPage(pageName) {
         tabcontent[i].style.display = "";
     };
 
+
     document.getElementById(pageName).style.display = "block";
 }
 
