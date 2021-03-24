@@ -30,146 +30,16 @@
     <div class="headerBar">
         <img src="./images/3824logo1.png" width="10%" height=auto>
         <label>Analytics</label>
-        <label style="font-size:40%; float:right; ">Username: [name here]</label>
     </div>
 
     <!--<button type="submit" onclick="sortTBAData()">
         Button here does stuff
     </button>-->
     <button type="submit" onclick="location.replace('./index.html')">
-        Back
+        Go Back
     </button>
-    </form>
 
-    <div class="btn-group">
-        <button onclick=passwordCheck()>
-            Pull from firebase and Push to Heatmap
-        </button>
-        <button type="submit" onclick="location.replace('./heat.html')">
-            Heatmap
-        </button>
-        <button type="submit" onclick="lessTable()">
-            Last table
-        </button>
-        <button type="submit" onclick="moreTable()">
-            Next table
-        </button>
-        <div class="clearButton">
-            <button onclick=clearLocalStorage()>Clear Local Storage</button>
-        </div>
-        <input placeholder="Robot Number" type="text" name="robotNum" id="robotNum" class="textBox">
-        <div class="headers">
-            <h2 id="averageScore">AverageScore</h2>
-            <h2 id="maxScore">Max Score</h2>
-            <h2 id="minScore">Min Score</h2>
-            <h2 id="averageAutoAcc">Auto Accuracy</h2>
-            <h2 id="averageTeleAcc">Tele Accuracy</h2>
-        </div>
-    </div>
-    <div class="tablediv">
-        <table class="matchDataTable">
-            <tr>
-                <th> Data Type </th>
-                <th> Value </th>
-            </tr>
-            <tr>
-                <th> Name </th>
-                <th id="nameBlame"></th>
-            </tr>
-            <tr>
-                <th> Match </th>
-                <th id="matchTableNum">Data Point</th>
-            </tr>
-            <tr>
-                <th> Drive Station </th>
-                <th id="driveStat">Data Point</th>
-            </tr>
-            <tr>
-                <th> Start Position </th>
-                <th id="startPos">Data Point</th>
-            </tr>
-            <tr>
-                <th> Robot Score </th>
-                <th id="robotTableSco">Data Point</th>
-            </tr>
-            <tr>
-                <th> Auto Floor Pickup </th>
-                <th id="autoFloorTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Auto Bay Pickup </th>
-                <th id="autoBayTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Tele Floor Pickup </th>
-                <th id="teleFloorTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Tele Bay Pickup </th>
-                <th id="teleBayTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Climb Type </th>
-                <th id="climbTypeTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Is Level </th>
-                <th id="isLevelTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Color Wheel </th>
-                <th id="colorWheelTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Tele Misses </th>
-                <th id="teleMissTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Auto Misses </th>
-                <th id="autoMissTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Auto Score </th>
-                <th id="autoScoreTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Tele Score </th>
-                <th id="teleScoreTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Auto Acc. </th>
-                <th id="autoAccuTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Tele Acc. </th>
-                <th id="teleAccuTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Red Card </th>
-                <th id="redTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Yellow Check </th>
-                <th id="yellowTable">Data Point</th>
-            </tr>
-            <tr>
-                <th> Moved off Auto Line </th>
-                <th id="autoLine">Data Point</th>
-            </tr>
-            <tr>
-                <th> Dropped in auto </th>
-                <th id="autoDropped">Data Point</th>
-            </tr>
-            <tr>
-                <th> Dropped in tele </th>
-                <th id="teleDropped">Data Point</th>
-            </tr>
-            <tr>
-                <th> F </th>
-                <th id="fell">Data Point</th>
-            </tr>
-        </table>
-    </div>
+
     <div id="climbDataWrapper">
 
     </div>
@@ -186,4 +56,5 @@
     -->
     <meta name="viewport" content="width=device-width, user-scalable=no">
 </body>
+
 </html>
