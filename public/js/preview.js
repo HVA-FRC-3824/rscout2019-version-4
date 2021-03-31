@@ -11,6 +11,10 @@ function pullMatchData() {
     filteredJames = James.filter(filterSchedule);
 }
 
+function filterSchedule(qual) {
+    return qual.comp_level == "qm";
+}
+
 function pullMatchInput() {
     matchNumber = document.getElementById('matchNumPreview').value;
     console.log(matchNumber);
@@ -21,10 +25,10 @@ function pullMatchInput() {
 
 function pullMatch() {
     if (teamSide == "red") {
-        console.log("this is red");
+        //console.log("this is red");
         robotNumber = filteredJames[matchNumber - 1].alliances.red.team_keys[dStation].slice(3);
     } else {
-        console.log("this is blue");
+        //console.log("this is blue");
         robotNumber = filteredJames[matchNumber - 1].alliances.blue.team_keys[dStation].slice(3);
     }
     pullPreviewData(robotNumber);
@@ -66,21 +70,21 @@ function gotMatchData(data) { //makes the data readable
     var teamStation = dStation + teamSide.substring(0, 1);
     switch (teamStation) {
         case "0r":
-            console.log("0r");
+            //console.log("0r");
             document.getElementById("r1").innerHTML = robotNumber;
             document.getElementById("red1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 1;
             pullMatch();
             break;
         case "1r":
-            console.log("1r");
+            //console.log("1r");
             document.getElementById("r2").innerHTML = robotNumber;
             document.getElementById("red2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 2;
             pullMatch();
             break;
         case "2r":
-            console.log("2r");
+            //console.log("2r");
             document.getElementById("r3").innerHTML = robotNumber;
             document.getElementById("red3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 0;
@@ -88,21 +92,21 @@ function gotMatchData(data) { //makes the data readable
             pullMatch();
             break;
         case "0b":
-            console.log("0b");
+            //console.log("0b");
             document.getElementById("b1").innerHTML = robotNumber;
             document.getElementById("blue1Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 1;
             pullMatch();
             break;
         case "1b":
-            console.log("1b");
+            //console.log("1b");
             document.getElementById("b2").innerHTML = robotNumber;
             document.getElementById("blue2Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             dStation = 2;
             pullMatch();
             break;
         case "2b":
-            console.log("2b");
+            //console.log("2b");
             document.getElementById("b3").innerHTML = robotNumber;
             document.getElementById("blue3Data").innerHTML = "Tele Accuracy: " + (Math.round(((teleAccuracyTotal / teleAccuracyMaster.length) + Number.EPSILON) * 100) / 100);
             break;
