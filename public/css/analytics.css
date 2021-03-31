@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    font-size: 3.7vw;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+th {
+    height: 8vw;
+}
+
+#tHeader {
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+td {
+    color: white;
+}
+
+table td,
+th {
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}
+
+.backBtn {
+    float: right;
+    margin: 1%;
+}
